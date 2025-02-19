@@ -1,4 +1,4 @@
-package umu.pds;
+package dominio;
 
 /**
  * Hello world!
