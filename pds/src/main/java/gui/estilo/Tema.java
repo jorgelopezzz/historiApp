@@ -1,11 +1,11 @@
-package gui;
+package gui.estilo;
 
 import java.awt.Color;
 import java.awt.Font;
 
 public class Tema {
 	
-	private final Color colorFondo;
+	private final Color colorBlanco;
 	private final Color colorClaro;
 	private final Color colorMedio;
 	private final Color colorOscuro;
@@ -13,8 +13,8 @@ public class Tema {
 	private final Font fuenteTexto;
 	private final Font fuenteTitulo;
 	
-	public Tema(Color colorFondo, Color colorClaro, Color colorMedio, Color colorOscuro, Font fuenteTexto, Font fuenteTitulo) {
-		this.colorFondo = colorFondo;
+	public Tema(Color colorBlanco, Color colorClaro, Color colorMedio, Color colorOscuro, Font fuenteTexto, Font fuenteTitulo) {
+		this.colorBlanco = colorBlanco;
 		this.colorClaro = colorClaro;
 		this.colorMedio = colorMedio;
 		this.colorOscuro = colorOscuro;
@@ -22,8 +22,8 @@ public class Tema {
 		this.fuenteTitulo = fuenteTitulo;
 	}
 
-	public Color getColorFondo() {
-		return colorFondo;
+	public Color getColorBlanco() {
+		return colorBlanco;
 	}
 	
 	public Color getColorClaro() {
