@@ -12,6 +12,7 @@ import java.awt.GridBagLayout;
 import java.awt.LayoutManager;
 import java.awt.Window;
 
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -25,8 +26,13 @@ public class GestorGUI {
 	public static final String NOMBRE_APP = "HistoriApp";
 	
 	/* Fuentes y temas */
-	public static final int TAM_TEXTO = 13;
-	public static final int TAM_TITULO = 20;
+	public static final int TAM_TEXTO = 12;
+	public static final int TAM_TITULO = 40;
+	
+	/* Dimensiones de componentes por defecto */
+	public static final int ANCHO_BOTON = 100;
+	public static final int ALTO_BOTON = 30; 
+	public static final int SEPARACION_BOTONES = 20;
 	
 	/* Atributos de utilidad para la GUI */
 	public static Tema temaActual;
@@ -35,7 +41,7 @@ public class GestorGUI {
 	private static GestorGUI instancia;
 	
 	private GestorGUI() {
-		temaActual = ArchivoTemas.GRANATE.getTema();
+		temaActual = ArchivoTemas.CIELO.getTema();
 	}
 	
 	public static GestorGUI getInstancia() {
@@ -73,14 +79,41 @@ public class GestorGUI {
 		etiqueta.setFont(fuente);
 	}
 	
-	public static void configurarPanel(JPanel panel, Color colorFondo, LayoutManager layout) {
-		panel.setBackground(colorFondo);
+	public static void configurarPanel(JPanel panel, boolean esOpaco, LayoutManager layout) {
+		panel.setOpaque(esOpaco);
 		panel.setLayout(layout);
 	}
 	
-	public static void configurarPanel(JPanel panel, Color colorFondo, LayoutManager layout, int ancho, int alto) {
-		configurarPanel(panel, colorFondo, layout);
+	public static void configurarPanel(JPanel panel, boolean esOpaco, LayoutManager layout, Color colorFondo) {
+		panel.setOpaque(esOpaco);
+		panel.setLayout(layout);
+		panel.setBackground(colorFondo);
+	}
+	
+	public static void configurarPanel(JPanel panel, boolean esOpaco, Color colorFondo, LayoutManager layout, int ancho, int alto) {
+		configurarPanel(panel, esOpaco, layout, colorFondo);
 		fijarTamano(ancho, alto, panel);
+	}
+	
+	public static void configurarBoton(JButton boton, Color colorFondo, Color colorLetra, Font fuente, int ancho, int alto) {
+		boton.setFont(fuente);
+		boton.setBackground(colorFondo);
+		boton.setForeground(colorLetra);
+		GestorGUI.fijarTamano(ancho, alto, boton);
+		
+	}
+	
+	public static JButton getBotonPredeterminado(String texto) {
+		
+		JButton boton = new JButton(texto);
+		GestorGUI.configurarBoton(boton, GestorGUI.getInstancia().getColorOscuro(), 
+				GestorGUI.getInstancia().getColorBlanco(), GestorGUI.getInstancia().getFuenteTexto(), 
+				ANCHO_BOTON, ALTO_BOTON);
+		
+		boton.setFocusPainted(false); 
+		boton.setBorderPainted(false);
+		
+		return boton;
 	}
 	
 	public Color getColorBlanco() {
@@ -97,6 +130,10 @@ public class GestorGUI {
 
 	public Color getColorOscuro() {
 		return temaActual.getColorOscuro();
+	}
+	
+	public Color getColorError() {
+		return temaActual.getColorError();
 	}
 
 	public Font getFuenteTexto() {

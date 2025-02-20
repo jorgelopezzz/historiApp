@@ -9,7 +9,7 @@ import gui.GestorGUI;
 public abstract class Ventana extends JFrame {
 	
 	/* Gestión de comportamiento */
-	private final SelectorVentana selector;
+	protected final SelectorVentana selector;
 	
 	/* Dimensiones */
 	protected static final int ANCHO_VENTANA = 800;
