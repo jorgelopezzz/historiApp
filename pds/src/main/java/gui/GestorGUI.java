@@ -32,8 +32,8 @@ public class GestorGUI {
 	public static final int TAM_TITULO = 40;
 	
 	/* Dimensiones de componentes por defecto */
-	public static final int ANCHO_BOTON = 100;
-	public static final int ALTO_BOTON = 30; 
+	public static final int ANCHO_BOTON_PREDET = 100;
+	public static final int ALTO_BOTON_PREDET = 30; 
 	public static final int SEPARACION_BOTONES = 20;
 	
 	/* Atributos de utilidad para la GUI */
@@ -107,9 +107,17 @@ public class GestorGUI {
 		GestorGUI.fijarTamano(ancho, alto, boton);	
 	}
 	
+	private ImageIcon escalarIcono(ImageIcon icono, int ancho, int alto) {
+		return new ImageIcon(icono.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH));		
+	}
+	
 	public ImageIcon iconoDeRecursos(String ruta, int ancho, int alto) {
-		ImageIcon icono = new ImageIcon(getClass().getResource(ruta));
-		return new ImageIcon(icono.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH));
+		return escalarIcono(new ImageIcon(getClass().getResource(ruta)), ancho, alto);
+	}
+	
+	
+	public ImageIcon iconoAbsoluto(String ruta, int ancho, int alto) {
+		return escalarIcono(new ImageIcon(ruta), ancho, alto);
 	}
 	
 	public static JButton getBotonPredeterminado(String texto) {
@@ -117,11 +125,17 @@ public class GestorGUI {
 		JButton boton = new JButton(texto);
 		GestorGUI.configurarBoton(boton, GestorGUI.getInstancia().getColorOscuro(), 
 				GestorGUI.getInstancia().getColorBlanco(), GestorGUI.getInstancia().getFuenteTexto(), 
-				ANCHO_BOTON, ALTO_BOTON);
+				ANCHO_BOTON_PREDET, ALTO_BOTON_PREDET);
 		
 		boton.setFocusPainted(false); 
 		boton.setBorderPainted(false);
 		
+		return boton;
+	}
+	
+	public static JButton getBotonPredeterminado(String texto, int ancho) {
+		JButton boton = getBotonPredeterminado(texto);
+		GestorGUI.fijarTamano(ancho, ALTO_BOTON_PREDET, boton);
 		return boton;
 	}
 	

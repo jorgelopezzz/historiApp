@@ -27,7 +27,7 @@ public enum ArchivoTemas {
 			new Font("Helvetica", Font.PLAIN, GestorGUI.TAM_TITULO)
 			)),
 	CIELO(new Tema(
-			new Color(246,241,241),
+			new Color(250,245,242),
 			new Color(175,211,226),
 			new Color(25,167,206),
 			new Color(20,108,148),

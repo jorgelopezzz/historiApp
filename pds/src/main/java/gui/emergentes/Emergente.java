@@ -18,19 +18,23 @@ public abstract class Emergente extends JDialog {
 	protected JFrame ventanaMadre;
 	
 	/* Dimensiones */
-	protected static final int ANCHO_EMERGENTE = 500;
-	protected static final int ALTO_EMERGENTE = 600;
+	protected static final int ANCHO_EMERGENTE_PREDET = 700;
+	protected static final int ALTO_EMERGENTE_PREDET = 550;
 	
-	public Emergente(String tituloEmergente, Color colorFondo, JFrame ventanaMadre) {
+	public Emergente(String tituloEmergente, Color colorFondo, JFrame ventanaMadre, int ancho, int alto) {
 		super(ventanaMadre, GestorGUI.NOMBRE_APP + " " + tituloEmergente, true);
 		
 		/* Aspectos gráficos */
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		getContentPane().setBackground(colorFondo);
-		GestorGUI.fijarTamano(ANCHO_EMERGENTE, ALTO_EMERGENTE, this);
+		GestorGUI.fijarTamano(ancho, alto, this);
 		
 		/* Para superposición de emergentes */
 		this.ventanaMadre = ventanaMadre;
+	}
+	
+	public Emergente(String tituloEmergente, Color colorFondo, JFrame ventanaMadre) {
+		this(tituloEmergente, colorFondo, ventanaMadre, ANCHO_EMERGENTE_PREDET, ALTO_EMERGENTE_PREDET);
 	}
 	
 	public void cerrar() {
@@ -51,14 +55,6 @@ public abstract class Emergente extends JDialog {
 		});
 	}
 	
-	protected static JPanel construirPanelImagen(String ruta) {
-		JPanel panelImagen = new JPanel();
-		/*
-		etiquetaImagen = new JLabel();
-		etiquetaImagen.setIcon(GestorGUI.getInstancia().iconoDeRecursos(GestorGUI.IMAGEN_PREDET_OSC, LADO_IMAGEN, LADO_IMAGEN));
-		etiquetaImagen.setAlignmentX(Component.LEFT_ALIGNMENT);
-		*/
-		return panelImagen;
-	}
+
 	
 }

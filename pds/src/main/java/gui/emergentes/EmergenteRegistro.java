@@ -1,10 +1,17 @@
 package gui.emergentes;
 
+import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
+import java.util.Optional;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -32,21 +39,27 @@ public class EmergenteRegistro extends Emergente {
 	private CampoPredeterminado campoSaludo;
 	private CampoPredeterminado campoContrasena;
 	private CampoPredeterminado campoRepetirContrasena;
+	
 	private JLabel etiquetaImagen;
 	
 	/* Botones */
 	private JButton botonImagen;
+	private JButton botonBorrar;
 	private JButton botonRegistrar;
 	private JButton botonSalir;
 	
+	/* Atributos a recabar */
+	private String rutaImagen;
+
 	/* Dimensiones */
-	private static final int ANCHO_PANEL = (int) (ANCHO_EMERGENTE * 4.0/5.0);
-	private static final int ALTO_PANEL = (int) (ALTO_EMERGENTE * 2.0/3.0);
+	private static final int ANCHO_PANEL = (int) (ANCHO_EMERGENTE_PREDET * 2.0/3.0);
+	private static final int ALTO_PANEL = (int) (ALTO_EMERGENTE_PREDET * 2.0/3.0);
 	private static final int MARGEN = 5;
 	private static final int ANCHO_CAMPOS = 175;
 	private static final int ALTO_CAMPOS = 25;
 	private static final int ANCHO_ETIQUETAS = 150;
-	private static final int LADO_IMAGEN = 100;
+	private static final int LADO_IMAGEN = 75;
+	private static final int ANCHO_BOTON_GRANDE = 140;
 	
 	public EmergenteRegistro(JFrame ventanaMadre) {
 		super("Registro", GestorGUI.getInstancia().getColorClaro(), ventanaMadre);
@@ -56,8 +69,7 @@ public class EmergenteRegistro extends Emergente {
 	protected void construir() {
 		/* Configuración del panel principal */
 		panelPrincipal = new JPanel();
-		GestorGUI.configurarPanel(panelPrincipal, false, new BoxLayout(panelPrincipal, BoxLayout.Y_AXIS));
-		GestorGUI.fijarTamano(ANCHO_PANEL, ALTO_PANEL, panelPrincipal);
+		GestorGUI.configurarPanel(panelPrincipal, false, new BorderLayout());
 		GestorGUI.centrarPanel(panelPrincipal, this);
 		
 		/* Construcción */
@@ -65,8 +77,8 @@ public class EmergenteRegistro extends Emergente {
 		construirPanelBotones();
 		
 		/* Montaje */
-		panelPrincipal.add(panelEnvolvente);
-		panelPrincipal.add(panelBotones);		
+		panelPrincipal.add(panelEnvolvente, BorderLayout.CENTER);
+		panelPrincipal.add(panelBotones, BorderLayout.SOUTH);		
 		
 		this.add(panelPrincipal);
 		
@@ -76,14 +88,14 @@ public class EmergenteRegistro extends Emergente {
 		
 		/* Panel envolvente */
 		panelEnvolvente = new JPanel();
-		panelEnvolvente.setBackground(GestorGUI.getInstancia().getColorBlanco());
+		GestorGUI.configurarPanel(panelEnvolvente, true, new BorderLayout(), GestorGUI.getInstancia().getColorBlanco());
 		panelEnvolvente.setBorder(new EmptyBorder(MARGEN, MARGEN, MARGEN, MARGEN));
-		//GestorGUI.fijarTamano(ANCHO_PANEL, ALTO_PANEL, panelEnvolvente);
+		GestorGUI.fijarTamano(ANCHO_PANEL-MARGEN, ALTO_PANEL-MARGEN, panelEnvolvente);
 		
 		/* Panel de campos */
 		panelCampos = new JPanel();
 		GestorGUI.configurarPanel(panelCampos, false, new BoxLayout(panelCampos, BoxLayout.Y_AXIS));
-		panelEnvolvente.add(panelCampos);
+		panelEnvolvente.add(panelCampos, BorderLayout.CENTER);
 		
 		/* Borde con texto */
 		TitledBorder bordeTexto = new TitledBorder(null, "Datos de registro", TitledBorder.LEADING, TitledBorder.TOP,
@@ -99,7 +111,7 @@ public class EmergenteRegistro extends Emergente {
 		campoRepetirContrasena = new CampoContrasena("Repetir contraseña:", ANCHO_CAMPOS, ALTO_CAMPOS, ANCHO_ETIQUETAS);
 		
 		/* Imagen */
-		panelImagen = construirPanelImagen(GestorGUI.IMAGEN_PREDET_OSC);
+		construirPanelImagen(GestorGUI.IMAGEN_PREDET_OSC);
 		
 		/* Montaje */
 		panelCampos.add(Box.createVerticalStrut(MARGEN));
@@ -109,17 +121,77 @@ public class EmergenteRegistro extends Emergente {
 		panelCampos.add(campoContrasena.getPanel());
 		panelCampos.add(campoRepetirContrasena.getPanel());
 		panelCampos.add(Box.createVerticalStrut(MARGEN));
-		panelCampos.add(panelImagen);
+		
+		panelEnvolvente.add(panelImagen, BorderLayout.SOUTH);
 		
 	}
 	
+	private void construirPanelImagen(String ruta) {
+		/* Configuración panel */
+		panelImagen = new JPanel();
+		GestorGUI.configurarPanel(panelImagen, false, new BoxLayout(panelImagen, BoxLayout.X_AXIS));
+		GestorGUI.fijarTamano(ANCHO_PANEL-60, 120, panelImagen);
+		
+		/* Vista previa */
+		etiquetaImagen = new JLabel();
+		establecerImagenPredeterminada();
+		etiquetaImagen.setAlignmentX(Component.LEFT_ALIGNMENT);
+		
+		/* Creación de botones y establecimiento de manejadores */
+		botonImagen = GestorGUI.getBotonPredeterminado("Seleccionar imagen", ANCHO_BOTON_GRANDE);
+		manejadorSeleccionarImagen();
+		
+		botonBorrar = GestorGUI.getBotonPredeterminado("Borrar imagen", ANCHO_BOTON_GRANDE);
+		manejadorBorrarImagen();
+		
+		/* Montaje */
+		panelImagen.add(Box.createHorizontalStrut((int) (ANCHO_PANEL/2.0) - LADO_IMAGEN - ANCHO_BOTON_GRANDE));
+		panelImagen.add(etiquetaImagen);
+		panelImagen.add(Box.createHorizontalStrut(GestorGUI.SEPARACION_BOTONES));
+		panelImagen.add(botonImagen);
+		panelImagen.add(Box.createHorizontalStrut(GestorGUI.SEPARACION_BOTONES));
+		panelImagen.add(botonBorrar);
+		
+	}
 
+	private void establecerImagenPredeterminada(){
+		rutaImagen = null;
+		etiquetaImagen.setIcon(GestorGUI.getInstancia().iconoDeRecursos(GestorGUI.IMAGEN_PREDET_OSC, LADO_IMAGEN, LADO_IMAGEN));
+	}
+	
+	private void manejadorSeleccionarImagen() {
+		botonImagen.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {		
+				/* Lanzar la ventana emergente */
+				EmergenteImagen emergente = new EmergenteImagen(ventanaMadre);
+				emergente.mostrar();
+
+				/* Obtener resultado */
+				emergente.obtenerImagen().ifPresentOrElse( (ruta) -> {
+					rutaImagen = ruta;
+					etiquetaImagen.setIcon(GestorGUI.getInstancia().iconoAbsoluto(rutaImagen, LADO_IMAGEN, LADO_IMAGEN));
+				},
+						() ->  {return;} 
+				);
+			}
+		});
+	}
+	
+	private void manejadorBorrarImagen() {
+		botonBorrar.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {		
+				establecerImagenPredeterminada();
+			}
+		});
+	}
 	
 	private void construirPanelBotones() {
 		/* Configuración del panel de botones */
 		panelBotones = new JPanel();
 		GestorGUI.configurarPanel(panelBotones, false, new BoxLayout(panelBotones, BoxLayout.X_AXIS));
-		GestorGUI.fijarTamano(ANCHO_PANEL, GestorGUI.ALTO_BOTON + GestorGUI.SEPARACION_BOTONES, panelBotones);
+		GestorGUI.fijarTamano(ANCHO_PANEL, GestorGUI.ALTO_BOTON_PREDET + GestorGUI.SEPARACION_BOTONES, panelBotones);
 		
 		/* Creación de botones y establecimiento de manejadores */
 		botonRegistrar = GestorGUI.getBotonPredeterminado("Registrarme");
@@ -129,7 +201,7 @@ public class EmergenteRegistro extends Emergente {
 		manejadorSalir(botonSalir);
 		
 		/* Montaje */
-		panelBotones.add(Box.createHorizontalStrut((int)((ANCHO_PANEL-GestorGUI.SEPARACION_BOTONES)/2.0)-GestorGUI.ANCHO_BOTON));
+		panelBotones.add(Box.createHorizontalStrut((int)((ANCHO_PANEL-GestorGUI.SEPARACION_BOTONES)/2.0)-GestorGUI.ANCHO_BOTON_PREDET));
 		panelBotones.add(botonRegistrar);
 		panelBotones.add(Box.createHorizontalStrut(GestorGUI.SEPARACION_BOTONES));
 		panelBotones.add(botonSalir);
@@ -137,7 +209,30 @@ public class EmergenteRegistro extends Emergente {
 	}
 	
 	private void manejadorRegistrar() {
-		
+		botonRegistrar.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {	
+				boolean camposValidos = true;
+				
+				/* Comprobamos que todos los campos obligatorios tengan texto */
+				for( CampoPredeterminado campo : List.of(campoNombre, campoCorreo, campoContrasena, campoRepetirContrasena)) {
+					camposValidos = camposValidos || campo.comprobarCampo();
+				}
+					
+				/* Caso 1: Hay campos obligatorios no rellenados */
+				if(!camposValidos) {
+					return; // TODO: PopUp con mensaje
+					
+				/* Caso 2: Las contraseñas no coinciden */
+				} else if( ! campoContrasena.getTexto().equals(campoRepetirContrasena.getTexto())) {
+					return; // TODO: PopUp con mensaje
+				}
+				/* Controlador */
+
+			}
+		});
 	}
+	
+		
 	
 }
