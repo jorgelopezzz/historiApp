@@ -7,9 +7,13 @@ import gui.GestorGUI;
 
 public class CampoContrasena extends CampoPredeterminado {
 
-	
+
 	public CampoContrasena(String texto, int ancho, int alto) {
 		super(texto, ancho, alto);		
+	}
+	
+	public CampoContrasena(String texto, int ancho, int alto, int tamanoEtiqueta) {
+		super(texto, ancho, alto, tamanoEtiqueta);		
 	}
 	
 	@Override

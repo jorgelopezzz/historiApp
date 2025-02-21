@@ -9,9 +9,11 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.LayoutManager;
 import java.awt.Window;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -39,6 +41,9 @@ public class GestorGUI {
 	
 	/* Patrón Singleton */
 	private static GestorGUI instancia;
+	
+	/* Rutas de imágenes */
+	public static final String IMAGEN_PREDET_OSC = "/fotoPredeterminada.png";
 	
 	private GestorGUI() {
 		temaActual = ArchivoTemas.CIELO.getTema();
@@ -99,8 +104,12 @@ public class GestorGUI {
 		boton.setFont(fuente);
 		boton.setBackground(colorFondo);
 		boton.setForeground(colorLetra);
-		GestorGUI.fijarTamano(ancho, alto, boton);
-		
+		GestorGUI.fijarTamano(ancho, alto, boton);	
+	}
+	
+	public ImageIcon iconoDeRecursos(String ruta, int ancho, int alto) {
+		ImageIcon icono = new ImageIcon(getClass().getResource(ruta));
+		return new ImageIcon(icono.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH));
 	}
 	
 	public static JButton getBotonPredeterminado(String texto) {

@@ -4,6 +4,7 @@ import java.awt.FlowLayout;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.text.JTextComponent;
 
@@ -13,6 +14,8 @@ public abstract class CampoPredeterminado {
 	private JPanel panel;
 	private JLabel etiqueta;
 	protected JTextComponent campo;
+	private static final int ANCHO_PREDET = 70;
+	private static final int ALTO_PREDET = 30;
 	
 	public CampoPredeterminado(String texto, int ancho, int alto) {
 		
@@ -25,6 +28,8 @@ public abstract class CampoPredeterminado {
 		etiqueta = new JLabel(texto);
 		GestorGUI.configurarEtiqueta(etiqueta, false, GestorGUI.getInstancia().getColorOscuro(),
 				GestorGUI.getInstancia().getFuenteTexto());
+		GestorGUI.fijarTamano(ANCHO_PREDET, ALTO_PREDET, etiqueta);
+		etiqueta.setHorizontalAlignment(SwingConstants.RIGHT);
 		
 		/* Configuración del campo (en subclases) */
 		construirCampo(ancho, alto);
@@ -36,6 +41,11 @@ public abstract class CampoPredeterminado {
 		panel.add(etiqueta);
 		panel.add(campo);
 		
+	}
+	
+	public CampoPredeterminado(String texto, int ancho, int alto, int tamanoEtiqueta) {
+		this(texto, ancho, alto);
+		GestorGUI.fijarTamano(tamanoEtiqueta, ALTO_PREDET, etiqueta);
 	}
 	
 	protected abstract void construirCampo(int ancho, int alto);

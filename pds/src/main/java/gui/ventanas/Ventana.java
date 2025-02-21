@@ -3,6 +3,7 @@ package gui.ventanas;
 import java.awt.Color;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import gui.GestorGUI;
 
@@ -23,9 +24,7 @@ public abstract class Ventana extends JFrame {
 		setTitle(tituloVentana);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		getContentPane().setBackground(colorFondo);
-		
 		GestorGUI.fijarTamano(ANCHO_VENTANA, ALTO_VENTANA, this);
-		
 		
 	}
 

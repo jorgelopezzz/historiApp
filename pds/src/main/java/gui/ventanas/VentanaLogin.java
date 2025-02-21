@@ -17,11 +17,12 @@ import gui.GestorGUI;
 import gui.campos.CampoContrasena;
 import gui.campos.CampoPredeterminado;
 import gui.campos.CampoTexto;
+import gui.emergentes.EmergenteRegistro;
 
 public class VentanaLogin extends Ventana {
 
 	/* Componentes de organización */
-	private JPanel panelPrincipal; // Agrupa central y botones
+	private JPanel panelPrincipal;
 	private JPanel panelCentral;
 	private JPanel panelBotones;
 	
@@ -36,16 +37,14 @@ public class VentanaLogin extends Ventana {
 	
 	/* Etiquetas */
 	private JLabel etiquetaTitulo;
-	private JLabel etiquetaNombre;
-	private JLabel etiquetaContrasena;
 	
 	/* Atributos a recabar */
 	private String nombre;
 	private String contrasena;
 	
 	/* Dimensiones */
-	private static final int ANCHO_PANEL = (int) ANCHO_VENTANA / 2;
-	private static final int ALTO_PANEL = (int) ALTO_VENTANA / 2;
+	private static final int ANCHO_PANEL = (int) (ANCHO_VENTANA / 2);
+	private static final int ALTO_PANEL = (int) (ALTO_VENTANA / 2);
 	private static final double FRAC_PANEL_CENTRAL = 4.0/5.0;
 	private static final double FRAC_ANCHO_CAMPOS = 0.5;
 	private static final double FRAC_ALTO_CAMPOS = 0.1; 
@@ -87,7 +86,7 @@ public class VentanaLogin extends Ventana {
 		etiquetaTitulo.setAlignmentX(CENTER_ALIGNMENT);
 		
 		/* Campo nombre */
-		campoNombre = new CampoTexto("Usuario:     ", 
+		campoNombre = new CampoTexto("Usuario:", 
 				(int) (FRAC_ANCHO_CAMPOS*ANCHO_PANEL), (int) (FRAC_ALTO_CAMPOS*ALTO_PANEL));
 		campoNombre.getPanel().setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -102,7 +101,6 @@ public class VentanaLogin extends Ventana {
 		panelCentral.add(Box.createVerticalStrut((int) ALTO_VENTANA / 20));
 		panelCentral.add(campoNombre.getPanel());
 		
-		//panelCentral.add(Box.createVerticalStrut((int) ALTO_VENTANA / 20));
 		panelCentral.add(campoContrasena.getPanel());
 		
 		
@@ -167,7 +165,8 @@ public class VentanaLogin extends Ventana {
 		botonRegistrar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//selector.cambiarVentana(new VentanaRegistro(selector));
+				EmergenteRegistro emergente = new EmergenteRegistro(VentanaLogin.this);
+				emergente.mostrar();
 			}
 		});
 	}
