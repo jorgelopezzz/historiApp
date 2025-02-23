@@ -26,6 +26,7 @@ public abstract class Ventana extends JFrame {
 		getContentPane().setBackground(colorFondo);
 		GestorGUI.fijarTamano(ANCHO_VENTANA, ALTO_VENTANA, this);
 		
+		construir();
 	}
 
 	public void cerrar() {

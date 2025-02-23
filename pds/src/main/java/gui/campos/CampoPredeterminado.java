@@ -21,7 +21,7 @@ public abstract class CampoPredeterminado {
 		
 		/* Configuración del panel */
 		panel = new JPanel();
-		GestorGUI.configurarPanel(panel, false, new FlowLayout());
+		GestorGUI.configurarPanel(panel, new FlowLayout(), false);
 		panel.setAlignmentX(FlowLayout.LEFT);
 		
 		/* Configuración de la etiqueta */

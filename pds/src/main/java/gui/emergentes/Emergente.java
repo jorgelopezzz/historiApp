@@ -31,6 +31,7 @@ public abstract class Emergente extends JDialog {
 		
 		/* Para superposición de emergentes */
 		this.ventanaMadre = ventanaMadre;
+		construir();
 	}
 	
 	public Emergente(String tituloEmergente, Color colorFondo, JFrame ventanaMadre) {
@@ -40,7 +41,9 @@ public abstract class Emergente extends JDialog {
 	public void cerrar() {
 		super.dispose();
 	}
-
+	
+	protected abstract void construir();
+	
 	public void mostrar() {
 		super.setLocationRelativeTo(ventanaMadre);
 		super.setVisible(true);

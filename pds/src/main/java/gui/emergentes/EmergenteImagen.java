@@ -53,15 +53,17 @@ public class EmergenteImagen extends Emergente {
 	
 	public EmergenteImagen(JFrame ventanaMadre) {
 		super("Seleccionar Imagen", GestorGUI.getInstancia().getColorBlanco(), ventanaMadre);
-		rutaImagen = null;
-		construir();
 	}
 	
-	private void construir() {
+	@Override
+	protected void construir() {
 		/* Configuración de panel principal */
 		panelPrincipal = new JPanel();
 		panelPrincipal = new JPanel();
-		GestorGUI.configurarPanel(panelPrincipal, false, new BorderLayout());
+		GestorGUI.configurarPanel(panelPrincipal, new BorderLayout(), false);
+		
+		/* Imagen no cargada */
+		rutaImagen = null;
 		
 		/* Construccion de explorador y panel de arrastre */
 		construirPanelElector();
@@ -77,7 +79,7 @@ public class EmergenteImagen extends Emergente {
 	private void construirPanelElector() {
 		/* Configuración panel elector */
 		panelElector = new JPanel();
-		GestorGUI.configurarPanel(panelElector, false, new BoxLayout(panelElector, BoxLayout.X_AXIS));
+		GestorGUI.configurarPanel(panelElector, new BoxLayout(panelElector, BoxLayout.X_AXIS), false);
 		
 		/* Construcción */
 		construirPanelFichero();
@@ -91,7 +93,6 @@ public class EmergenteImagen extends Emergente {
 	}
 	
 	public Optional<String> obtenerImagen() {
-		System.out.println(rutaImagen);
 		return Optional.ofNullable(rutaImagen);
 	}
 	
@@ -163,7 +164,7 @@ public class EmergenteImagen extends Emergente {
 		
 		/* Configuración panel */
 		panelImagen = new JPanel();
-		GestorGUI.configurarPanel(panelImagen, false, new BoxLayout(panelImagen, BoxLayout.X_AXIS));
+		GestorGUI.configurarPanel(panelImagen, new BoxLayout(panelImagen, BoxLayout.X_AXIS), false);
 		
 		/* Vista previa */
 		etiquetaImagen = new JLabel();

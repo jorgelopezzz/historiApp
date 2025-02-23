@@ -17,6 +17,7 @@ import gui.GestorGUI;
 import gui.campos.CampoContrasena;
 import gui.campos.CampoPredeterminado;
 import gui.campos.CampoTexto;
+import gui.emergentes.EmergenteMensaje;
 import gui.emergentes.EmergenteRegistro;
 
 public class VentanaLogin extends Ventana {
@@ -51,13 +52,13 @@ public class VentanaLogin extends Ventana {
 	
 	public VentanaLogin(SelectorVentana selector) {
 		super(selector, GestorGUI.NOMBRE_APP + " Login", GestorGUI.getInstancia().getColorClaro());
-		construir();
 	}
 	
+	@Override
 	protected void construir() {
 		/* Configuración del panel principal */
 		panelPrincipal = new JPanel();
-		GestorGUI.configurarPanel(panelPrincipal, false , new BoxLayout(panelPrincipal, BoxLayout.Y_AXIS));
+		GestorGUI.configurarPanel(panelPrincipal, new BoxLayout(panelPrincipal, BoxLayout.Y_AXIS), false);
 		GestorGUI.fijarTamano(ANCHO_PANEL, ALTO_PANEL, panelPrincipal);
 		GestorGUI.centrarPanel(panelPrincipal, this);
 		
@@ -76,8 +77,8 @@ public class VentanaLogin extends Ventana {
 	private void construirPanelCentral() {
 		/* Configuración del panel central */
 		panelCentral = new JPanel();
-		GestorGUI.configurarPanel(panelCentral, true, GestorGUI.getInstancia().getColorBlanco(), 
-				new BoxLayout(panelCentral, BoxLayout.Y_AXIS), ANCHO_PANEL, (int) (ALTO_PANEL *FRAC_PANEL_CENTRAL));
+		GestorGUI.configurarPanel(panelCentral,  new BoxLayout(panelCentral, BoxLayout.Y_AXIS),
+				GestorGUI.getInstancia().getColorBlanco(), ANCHO_PANEL, (int) (ALTO_PANEL *FRAC_PANEL_CENTRAL));
 		
 		/* Etiqueta título */
 		etiquetaTitulo = new JLabel(GestorGUI.NOMBRE_APP);
@@ -109,7 +110,7 @@ public class VentanaLogin extends Ventana {
 	private void construirPanelBotones() {
 		/* Configuración del panel de botones */
 		panelBotones = new JPanel();
-		GestorGUI.configurarPanel(panelBotones, false, new BoxLayout(panelBotones, BoxLayout.X_AXIS));
+		GestorGUI.configurarPanel(panelBotones, new BoxLayout(panelBotones, BoxLayout.X_AXIS), false);
 		GestorGUI.fijarTamano(ANCHO_PANEL, (int) (ALTO_PANEL*(1-FRAC_PANEL_CENTRAL)), panelBotones);
 
 		/* Creación de botones y establecimiento de manejadores */
@@ -138,6 +139,8 @@ public class VentanaLogin extends Ventana {
 			public void actionPerformed(ActionEvent e) {
 				/* Comprobación de campos */
 				if( (!campoNombre.comprobarCampo()) | (!campoContrasena.comprobarCampo())) { // Sin cortocircuito para que muestre todo campo vacío en rojo
+					EmergenteMensaje emergente = new EmergenteMensaje(VentanaLogin.this, "Debe introducir su nombre de usuario y contraseña.");
+					emergente.mostrar();
 					return;
 				} 
 				
@@ -146,6 +149,10 @@ public class VentanaLogin extends Ventana {
 				contrasena = campoContrasena.getTexto();
 				
 				/* Controlador */
+
+				
+				/* Cambio de ventana */
+				//selector.cambiarVentana(new VentanaMenu());
 				
 			}
 		});

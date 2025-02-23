@@ -13,12 +13,15 @@ import java.awt.Image;
 import java.awt.LayoutManager;
 import java.awt.Window;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.RootPaneContainer;
+import javax.swing.border.TitledBorder;
 
 import gui.estilo.ArchivoTemas;
 
@@ -84,19 +87,20 @@ public class GestorGUI {
 		etiqueta.setFont(fuente);
 	}
 	
-	public static void configurarPanel(JPanel panel, boolean esOpaco, LayoutManager layout) {
+	public static void configurarPanel(JPanel panel, LayoutManager layout, boolean esOpaco) {
 		panel.setOpaque(esOpaco);
 		panel.setLayout(layout);
 	}
 	
-	public static void configurarPanel(JPanel panel, boolean esOpaco, LayoutManager layout, Color colorFondo) {
-		panel.setOpaque(esOpaco);
+	public static void configurarPanel(JPanel panel, LayoutManager layout, Color colorFondo) {
+		panel.setOpaque(true);
 		panel.setLayout(layout);
 		panel.setBackground(colorFondo);
 	}
 	
-	public static void configurarPanel(JPanel panel, boolean esOpaco, Color colorFondo, LayoutManager layout, int ancho, int alto) {
-		configurarPanel(panel, esOpaco, layout, colorFondo);
+	public static void configurarPanel(JPanel panel, LayoutManager layout, Color colorFondo, int ancho, int alto) {
+		panel.setOpaque(true);
+		configurarPanel(panel, layout, colorFondo);
 		fijarTamano(ancho, alto, panel);
 	}
 	
@@ -115,10 +119,43 @@ public class GestorGUI {
 		return escalarIcono(new ImageIcon(getClass().getResource(ruta)), ancho, alto);
 	}
 	
+	public static TitledBorder bordeTexto(String texto, Font fuente, Color colorFuente, Color colorBorde) {
+		TitledBorder bordeTexto = new TitledBorder(null, texto, TitledBorder.LEADING, TitledBorder.TOP,
+				fuente, colorFuente);
+		bordeTexto.setBorder(BorderFactory.createLineBorder(colorBorde));
+		return bordeTexto;
+	}
+	
 	
 	public ImageIcon iconoAbsoluto(String ruta, int ancho, int alto) {
 		return escalarIcono(new ImageIcon(ruta), ancho, alto);
 	}
+	
+	public static JTextArea crearAreaTexto(String texto) {
+		
+		JTextArea areaTexto = new JTextArea(texto);
+		areaTexto.setLineWrap(true);
+		areaTexto.setWrapStyleWord(true);
+		
+		areaTexto.setEditable(false);
+		areaTexto.setFocusable(false);
+		areaTexto.setOpaque(false);		
+		return areaTexto;
+		
+	}
+	
+	public static JTextArea crearAreaTexto(String texto, Font fuente, Color colorFuente) {
+		JTextArea areaTexto = crearAreaTexto(texto);
+		areaTexto.setFont(fuente);
+		areaTexto.setForeground(colorFuente);
+		return areaTexto;
+	}
+	
+	public static JTextArea crearAreaTexto(String texto, Font fuente, Color colorFuente, int numeroColumnas) {
+		JTextArea areaTexto = crearAreaTexto(texto, fuente, colorFuente);
+		areaTexto.setColumns(numeroColumnas);
+		return areaTexto;
+	}	
 	
 	public static JButton getBotonPredeterminado(String texto) {
 		

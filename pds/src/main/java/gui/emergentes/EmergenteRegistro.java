@@ -63,13 +63,13 @@ public class EmergenteRegistro extends Emergente {
 	
 	public EmergenteRegistro(JFrame ventanaMadre) {
 		super("Registro", GestorGUI.getInstancia().getColorClaro(), ventanaMadre);
-		construir();
 	}
 	
+	@Override
 	protected void construir() {
 		/* Configuración del panel principal */
 		panelPrincipal = new JPanel();
-		GestorGUI.configurarPanel(panelPrincipal, false, new BorderLayout());
+		GestorGUI.configurarPanel(panelPrincipal, new BorderLayout(), false);
 		GestorGUI.centrarPanel(panelPrincipal, this);
 		
 		/* Construcción */
@@ -88,20 +88,18 @@ public class EmergenteRegistro extends Emergente {
 		
 		/* Panel envolvente */
 		panelEnvolvente = new JPanel();
-		GestorGUI.configurarPanel(panelEnvolvente, true, new BorderLayout(), GestorGUI.getInstancia().getColorBlanco());
+		GestorGUI.configurarPanel(panelEnvolvente, new BorderLayout(), GestorGUI.getInstancia().getColorBlanco());
 		panelEnvolvente.setBorder(new EmptyBorder(MARGEN, MARGEN, MARGEN, MARGEN));
 		GestorGUI.fijarTamano(ANCHO_PANEL-MARGEN, ALTO_PANEL-MARGEN, panelEnvolvente);
 		
 		/* Panel de campos */
 		panelCampos = new JPanel();
-		GestorGUI.configurarPanel(panelCampos, false, new BoxLayout(panelCampos, BoxLayout.Y_AXIS));
+		GestorGUI.configurarPanel(panelCampos, new BoxLayout(panelCampos, BoxLayout.Y_AXIS), false);
 		panelEnvolvente.add(panelCampos, BorderLayout.CENTER);
 		
 		/* Borde con texto */
-		TitledBorder bordeTexto = new TitledBorder(null, "Datos de registro", TitledBorder.LEADING, TitledBorder.TOP,
-				GestorGUI.getInstancia().getFuenteTexto(), GestorGUI.getInstancia().getColorOscuro());
-		bordeTexto.setBorder(BorderFactory.createLineBorder(GestorGUI.getInstancia().getColorOscuro()));
-		panelCampos.setBorder(bordeTexto);
+		panelCampos.setBorder(GestorGUI.bordeTexto("Datos de registro", GestorGUI.getInstancia().getFuenteTexto(),
+				GestorGUI.getInstancia().getColorOscuro(), GestorGUI.getInstancia().getColorOscuro()));
 				
 		/* Construcción de campos */
 		campoNombre = new CampoTexto("Nombre:", ANCHO_CAMPOS, ALTO_CAMPOS, ANCHO_ETIQUETAS);
@@ -129,7 +127,7 @@ public class EmergenteRegistro extends Emergente {
 	private void construirPanelImagen(String ruta) {
 		/* Configuración panel */
 		panelImagen = new JPanel();
-		GestorGUI.configurarPanel(panelImagen, false, new BoxLayout(panelImagen, BoxLayout.X_AXIS));
+		GestorGUI.configurarPanel(panelImagen, new BoxLayout(panelImagen, BoxLayout.X_AXIS), false);
 		GestorGUI.fijarTamano(ANCHO_PANEL-60, 120, panelImagen);
 		
 		/* Vista previa */
@@ -190,7 +188,7 @@ public class EmergenteRegistro extends Emergente {
 	private void construirPanelBotones() {
 		/* Configuración del panel de botones */
 		panelBotones = new JPanel();
-		GestorGUI.configurarPanel(panelBotones, false, new BoxLayout(panelBotones, BoxLayout.X_AXIS));
+		GestorGUI.configurarPanel(panelBotones, new BoxLayout(panelBotones, BoxLayout.X_AXIS), false);
 		GestorGUI.fijarTamano(ANCHO_PANEL, GestorGUI.ALTO_BOTON_PREDET + GestorGUI.SEPARACION_BOTONES, panelBotones);
 		
 		/* Creación de botones y establecimiento de manejadores */
@@ -216,16 +214,20 @@ public class EmergenteRegistro extends Emergente {
 				
 				/* Comprobamos que todos los campos obligatorios tengan texto */
 				for( CampoPredeterminado campo : List.of(campoNombre, campoCorreo, campoContrasena, campoRepetirContrasena)) {
-					camposValidos = camposValidos || campo.comprobarCampo();
+					camposValidos = camposValidos & campo.comprobarCampo();
 				}
 					
 				/* Caso 1: Hay campos obligatorios no rellenados */
 				if(!camposValidos) {
-					return; // TODO: PopUp con mensaje
+					EmergenteMensaje emergente = new EmergenteMensaje(ventanaMadre, "Debe rellenar todos los campos en rojo.");
+					emergente.mostrar();
+					return;
 					
 				/* Caso 2: Las contraseñas no coinciden */
 				} else if( ! campoContrasena.getTexto().equals(campoRepetirContrasena.getTexto())) {
-					return; // TODO: PopUp con mensaje
+					EmergenteMensaje emergente = new EmergenteMensaje(ventanaMadre, "Las contraseñas no coinciden.");
+					emergente.mostrar();
+					return;
 				}
 				/* Controlador */
 
