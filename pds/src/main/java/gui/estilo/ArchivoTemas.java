@@ -15,6 +15,7 @@ public enum ArchivoTemas {
 						new Color(64, 81, 59),
 						new Color(255,119,119),
 						new Font("Helvetica", Font.PLAIN, GestorGUI.TAM_TEXTO),
+						new Font("Helvetica", Font.PLAIN, GestorGUI.TAM_TEXTO_GRANDE),
 						new Font("Helvetica", Font.PLAIN, GestorGUI.TAM_TITULO)
 						)),
 	GRANATE(new Tema(
@@ -24,15 +25,17 @@ public enum ArchivoTemas {
 			new Color(27,23,23),
 			new Color(255,119,119),
 			new Font("Helvetica", Font.PLAIN, GestorGUI.TAM_TEXTO),
+			new Font("Helvetica", Font.PLAIN, GestorGUI.TAM_TEXTO_GRANDE),
 			new Font("Helvetica", Font.PLAIN, GestorGUI.TAM_TITULO)
 			)),
 	CIELO(new Tema(
 			new Color(250,245,242),
 			new Color(175,211,226),
-			new Color(25,167,206),
+			new Color(24, 149, 184),
 			new Color(20,108,148),
 			new Color(255,119,119),
 			new Font("Helvetica", Font.PLAIN, GestorGUI.TAM_TEXTO),
+			new Font("Helvetica", Font.PLAIN, GestorGUI.TAM_TEXTO_GRANDE),
 			new Font("Helvetica", Font.PLAIN, GestorGUI.TAM_TITULO)
 			));
 						

@@ -17,7 +17,7 @@ public abstract class CampoPredeterminado {
 	private static final int ANCHO_PREDET = 70;
 	private static final int ALTO_PREDET = 30;
 	
-	public CampoPredeterminado(String texto, int ancho, int alto) {
+	protected CampoPredeterminado(String texto, int ancho, int alto) {
 		
 		/* Configuración del panel */
 		panel = new JPanel();

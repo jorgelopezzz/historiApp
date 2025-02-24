@@ -32,6 +32,7 @@ public class GestorGUI {
 	
 	/* Fuentes y temas */
 	public static final int TAM_TEXTO = 12;
+	public static final int TAM_TEXTO_GRANDE = 16;
 	public static final int TAM_TITULO = 40;
 	
 	/* Dimensiones de componentes por defecto */
@@ -62,12 +63,16 @@ public class GestorGUI {
 		temaActual = nuevoTema;
 	}
 	
-	public static void fijarTamano(int ancho, int alto, Component componente) {
-		Dimension dimension = new Dimension(ancho, alto);
+	public static void fijarTamano(Dimension dimension, Component componente) {
 		componente.setMaximumSize(dimension);
 		componente.setMinimumSize(dimension);
 		componente.setPreferredSize(dimension);
 	}
+	
+	public static void fijarTamano(int ancho, int alto, Component componente) {
+		fijarTamano(new Dimension(ancho, alto), componente);
+	}
+	
 		
 	public static void centrarPanel(JPanel panel, RootPaneContainer marco) {
 		Container contenedor = marco.getContentPane();
@@ -204,6 +209,12 @@ public class GestorGUI {
 		return temaActual.getFuenteTitulo();
 	}
 	
+	public static Font hacerNegrita(Font fuente) {
+		return new Font(fuente.getName(), Font.BOLD, fuente.getSize());
+	}
 	
+	public Font getFuenteGrande() {
+		return temaActual.getFuenteGrande();
+	}
 	
 }

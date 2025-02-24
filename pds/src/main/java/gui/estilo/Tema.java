@@ -12,18 +12,24 @@ public class Tema {
 	private final Color colorError;
 	
 	private final Font fuenteTexto;
+	private final Font fuenteGrande;
 	private final Font fuenteTitulo;
 	
-	public Tema(Color colorBlanco, Color colorClaro, Color colorMedio, Color colorOscuro, Color colorError, Font fuenteTexto, Font fuenteTitulo) {
+	public Tema(Color colorBlanco, Color colorClaro, Color colorMedio, Color colorOscuro, Color colorError, Font fuenteTexto, Font fuenteGrande, Font fuenteTitulo) {
 		this.colorBlanco = colorBlanco;
 		this.colorClaro = colorClaro;
 		this.colorMedio = colorMedio;
 		this.colorOscuro = colorOscuro;
 		this.colorError = colorError;
 		this.fuenteTexto = fuenteTexto;
+		this.fuenteGrande = fuenteGrande;
 		this.fuenteTitulo = fuenteTitulo;
 	}
 
+	public Font getFuenteGrande() {
+		return fuenteGrande;
+	}
+	
 	public Color getColorError() {
 		return colorError;
 	}
