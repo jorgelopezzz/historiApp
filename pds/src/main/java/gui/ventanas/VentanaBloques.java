@@ -7,9 +7,9 @@ import javax.swing.JPanel;
 import gui.GestorGUI;
 
 @SuppressWarnings("serial")
-public class VentanaCursos extends VentanaMenu {
+public class VentanaBloques extends VentanaMenu {
 
-	 public VentanaCursos(SelectorVentana selector) {
+	 public VentanaBloques(SelectorVentana selector) {
 	        super(selector);
 	    }
 

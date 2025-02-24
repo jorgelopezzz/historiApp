@@ -1,0 +1,21 @@
+package gui.emergentes;
+
+import java.awt.Color;
+
+import javax.swing.JFrame;
+
+@SuppressWarnings("serial")
+public class EmergenteEstadisticas extends Emergente {
+
+	public EmergenteEstadisticas(JFrame ventanaMadre) {
+		super("Estadísticas", Color.red, ventanaMadre);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	protected void construir() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

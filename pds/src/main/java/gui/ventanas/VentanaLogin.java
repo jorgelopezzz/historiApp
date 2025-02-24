@@ -20,6 +20,7 @@ import gui.campos.CampoTexto;
 import gui.emergentes.EmergenteMensaje;
 import gui.emergentes.EmergenteRegistro;
 
+@SuppressWarnings("serial")
 public class VentanaLogin extends Ventana {
 
 	/* Componentes de organización */

@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 
 import gui.GestorGUI;
 
+@SuppressWarnings("serial")
 public abstract class Ventana extends JFrame {
 	
 	/* Gestión de comportamiento */

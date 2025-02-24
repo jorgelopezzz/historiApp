@@ -23,6 +23,7 @@ import javax.swing.JPanel;
 
 import gui.GestorGUI;
 
+@SuppressWarnings("serial")
 public class EmergenteImagen extends Emergente {
 	
 	/* Componentes de organización */

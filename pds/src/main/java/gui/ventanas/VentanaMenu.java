@@ -2,6 +2,8 @@ package gui.ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -11,13 +13,18 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import gui.GestorGUI;
+import gui.emergentes.EmergenteClasificacion;
+import gui.emergentes.EmergenteEstadisticas;
+import gui.emergentes.EmergentePerfil;
+import gui.emergentes.EmergenteRegistro;
 
+@SuppressWarnings("serial")
 public abstract class VentanaMenu extends Ventana {
 	
 	/* Componentes de organización */
 	private JPanel panelPrincipal;
 	private JPanel barraSuperior;
-	private JPanel panelMenu;
+	protected JPanel panelMenu;
 	
 	/* Botones */
 	private JButton botonClasificacion;
@@ -32,7 +39,7 @@ public abstract class VentanaMenu extends Ventana {
 	
 	/* Dimensiones */
 	private static final int ALTO_BARRA = (int) (ALTO_VENTANA / 10);
-	private static final int ALTO_MENU = (int) (ALTO_VENTANA - ALTO_BARRA);
+	protected static final int ALTO_MENU = (int) (ALTO_VENTANA - ALTO_BARRA);
 	private static final int ANCHO_IMAGEN = 30;
 	private static final int ALTO_IMAGEN = 30;
 	private static final int ESPACIO_HORIZONTAL_PEQUENO = 15;
@@ -104,9 +111,11 @@ public abstract class VentanaMenu extends Ventana {
 				
 		botonClasificacion = GestorGUI.getBotonPredeterminado("Clasificación");
 		barraSuperior.add(botonClasificacion);
+		manejadorClasificacion();
 		
 		botonEstadisticas = GestorGUI.getBotonPredeterminado("Estadísticas");
 		barraSuperior.add(botonEstadisticas);
+		manejadorEstadisticas();
 		
 		///
 		barraSuperior.add(Box.createHorizontalStrut(ESPACIO_HORIZONTAL_GRANDE));
@@ -124,25 +133,40 @@ public abstract class VentanaMenu extends Ventana {
 				
 		botonPerfil = GestorGUI.getBotonPredeterminadoImagen(rutaPerfil);
 		barraSuperior.add(botonPerfil);
+		manejadorPerfil();
 	}
 	
 	
-	private void construirPanelMenu() {
-		panelMenu = new JPanel();
-		GestorGUI.configurarPanel(panelMenu, new GridLayout(0,3),
-				GestorGUI.getInstancia().getColorClaro(), ANCHO_VENTANA, ALTO_MENU);
-	}
+	protected abstract void construirPanelMenu();
 	
-	private void manejadorRanking() {
-		
+	private void manejadorClasificacion() {
+		botonClasificacion.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				EmergenteClasificacion emergente = new EmergenteClasificacion(VentanaMenu.this);
+				emergente.mostrar();
+			}
+		});
 	}
 	
 	private void manejadorEstadisticas() {
-		
+		botonEstadisticas.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				EmergenteEstadisticas emergente = new EmergenteEstadisticas(VentanaMenu.this);
+				emergente.mostrar();
+			}
+		});
 	}
 	
 	private void manejadorPerfil() {
-		
+		botonPerfil.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				EmergentePerfil emergente = new EmergentePerfil(VentanaMenu.this);
+				emergente.mostrar();
+			}
+		});
 	}
 	
 	
