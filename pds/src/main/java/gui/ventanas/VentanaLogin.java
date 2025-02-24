@@ -152,8 +152,7 @@ public class VentanaLogin extends Ventana {
 
 				
 				/* Cambio de ventana */
-				//selector.cambiarVentana(new VentanaMenu());
-				
+				selector.cambiarVentana(new VentanaCursos(selector));
 			}
 		});
 	}
