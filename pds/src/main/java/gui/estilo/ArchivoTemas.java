@@ -6,8 +6,7 @@ import java.util.Optional;
 
 import gui.GestorGUI;
 
-public enum ArchivoTemas {
-	
+public enum ArchivoTemas {	
 	NATURALEZA(new Tema(
 						new Color(237, 241, 214),
 						new Color(157, 192, 139),
@@ -45,7 +44,7 @@ public enum ArchivoTemas {
 	private ArchivoTemas(Tema tema) {
 		this.tema = tema;
 	}	
-	
+
 	public Tema getTema() {
 		return tema;
 	}
