@@ -17,7 +17,7 @@ public abstract class Ventana extends JFrame {
 	protected static final int ANCHO_VENTANA = 800;
 	protected static final int ALTO_VENTANA = 600;
 	
-	public Ventana(SelectorVentana selector, String tituloVentana, Color colorFondo) {
+	protected Ventana(SelectorVentana selector, String tituloVentana, Color colorFondo) {
 		super(); 
 		this.selector = selector; 
 		

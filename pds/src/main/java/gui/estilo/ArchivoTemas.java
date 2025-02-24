@@ -2,12 +2,11 @@ package gui.estilo;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.util.Optional;
+import gui.estilo.Tema;
 
 import gui.GestorGUI;
 
-public enum ArchivoTemas {
-	
+public enum ArchivoTemas {	
 	NATURALEZA(new Tema(
 						new Color(237, 241, 214),
 						new Color(157, 192, 139),
@@ -15,6 +14,7 @@ public enum ArchivoTemas {
 						new Color(64, 81, 59),
 						new Color(255,119,119),
 						new Font("Helvetica", Font.PLAIN, GestorGUI.TAM_TEXTO),
+						new Font("Helvetica", Font.PLAIN, GestorGUI.TAM_TEXTO_GRANDE),
 						new Font("Helvetica", Font.PLAIN, GestorGUI.TAM_TITULO)
 						)),
 	GRANATE(new Tema(
@@ -24,15 +24,17 @@ public enum ArchivoTemas {
 			new Color(27,23,23),
 			new Color(255,119,119),
 			new Font("Helvetica", Font.PLAIN, GestorGUI.TAM_TEXTO),
+			new Font("Helvetica", Font.PLAIN, GestorGUI.TAM_TEXTO_GRANDE),
 			new Font("Helvetica", Font.PLAIN, GestorGUI.TAM_TITULO)
 			)),
 	CIELO(new Tema(
 			new Color(250,245,242),
 			new Color(175,211,226),
-			new Color(25,167,206),
+			new Color(24, 149, 184),
 			new Color(20,108,148),
 			new Color(255,119,119),
 			new Font("Helvetica", Font.PLAIN, GestorGUI.TAM_TEXTO),
+			new Font("Helvetica", Font.PLAIN, GestorGUI.TAM_TEXTO_GRANDE),
 			new Font("Helvetica", Font.PLAIN, GestorGUI.TAM_TITULO)
 			));
 						
@@ -42,7 +44,7 @@ public enum ArchivoTemas {
 	private ArchivoTemas(Tema tema) {
 		this.tema = tema;
 	}	
-	
+
 	public Tema getTema() {
 		return tema;
 	}

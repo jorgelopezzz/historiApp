@@ -1,6 +1,5 @@
 package gui.ventanas;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
