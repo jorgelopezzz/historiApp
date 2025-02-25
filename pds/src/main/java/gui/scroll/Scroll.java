@@ -4,12 +4,14 @@ import javax.swing.*;
 import java.awt.*;
 import javax.swing.border.EmptyBorder;
 
+import gui.componentes.ComponenteCurso;
+
 @SuppressWarnings("serial")
-public abstract class Scroll extends JScrollPane {
-
+public abstract class Scroll extends JScrollPane { 
+	
     public Scroll(JPanel panelMenu) {
-        super(panelMenu, VERTICAL_SCROLLBAR_ALWAYS, HORIZONTAL_SCROLLBAR_NEVER);
-
+        super(panelMenu, VERTICAL_SCROLLBAR_AS_NEEDED, HORIZONTAL_SCROLLBAR_NEVER);
+    
         // Personalizar el JScrollPane
         setBackground(new Color(240, 240, 240));
         setBorder(BorderFactory.createLineBorder(new Color(220, 220, 220), 1));
@@ -29,6 +31,7 @@ public abstract class Scroll extends JScrollPane {
                 return createArrowButton(orientation);
             }
         });
+        
     }
 
     private JButton createArrowButton(int orientation) {

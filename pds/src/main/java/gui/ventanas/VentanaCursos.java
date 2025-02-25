@@ -5,6 +5,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -31,19 +33,41 @@ public class VentanaCursos extends VentanaMenu {
     protected void construirPanelMenu() {
     	
     	int columnas = 3;
-    	int numElementos = 30;
+    	int numElementos = 14;
     	
-    	int ALTO_MENU = Componente.ALTO_COMPONENTE*(numElementos/columnas);
+    	int ANCHO_MENU = ANCHO_VENTANA - 50; // Tamaño estimado de scroll
+    	int ALTO_MENU = Componente.ALTO_COMPONENTE*((numElementos+columnas-1)/columnas);
     	
 		panelMenu = new JPanel();
 		GestorGUI.configurarPanel(panelMenu, new GridLayout(0, columnas, 5, 5),
-				GestorGUI.getInstancia().getColorClaro(), ANCHO_VENTANA, ALTO_MENU);
+				GestorGUI.getInstancia().getColorClaro(), ANCHO_MENU, ALTO_MENU);
 		
 		for (int i = 0; i < numElementos; i++) {
-		    panelMenu.add(new ComponenteCurso(new InfoCurso("Titulico", "Descripcioncica", "C:\\Users\\aleja\\git\\historiApp\\pds\\resources\\racha.png", true)));
-		}
+	        ComponenteCurso curso = new ComponenteCurso(new InfoCurso(
+	                "Titulico", "Descripcioncica", 
+	                "C:\\Users\\aleja\\git\\historiApp\\pds\\resources\\racha.png", true));
+
+	        // Agregar evento de clic
+	        manejadorCurso(curso);
+
+	        panelMenu.add(curso);
+	    }
 		
         
+    }
+    
+    private void manejadorCurso(ComponenteCurso curso) {
+    	 curso.addMouseListener(new MouseAdapter() {
+	            private boolean seleccionado = false;
+
+	            @Override
+	            public void mouseClicked(MouseEvent e) {
+	                if(seleccionado)
+	                	curso.deseleccionar();
+	                else
+	                	curso.seleccionar();
+	            }
+	        });
     }
 
 	@Override
