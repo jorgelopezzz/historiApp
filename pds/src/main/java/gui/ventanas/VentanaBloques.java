@@ -24,5 +24,11 @@ public class VentanaBloques extends VentanaMenu {
 		GestorGUI.configurarPanel(panelMenu, new GridLayout(0,3),
 				GestorGUI.getInstancia().getColorClaro(), ANCHO_VENTANA, ALTO_MENU);
     }
+
+	@Override
+	protected void construirScrollMenu() {
+		// TODO Auto-generated method stub
+		
+	}
     
 }

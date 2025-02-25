@@ -11,8 +11,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import gui.GestorGUI;
+import gui.componentes.Componente;
 import gui.emergentes.EmergenteClasificacion;
 import gui.emergentes.EmergenteEstadisticas;
 import gui.emergentes.EmergentePerfil;
@@ -25,6 +27,10 @@ public abstract class VentanaMenu extends Ventana {
 	private JPanel panelPrincipal;
 	private JPanel barraSuperior;
 	protected JPanel panelMenu;
+	
+	/* Componentes scrolleables */
+	
+	protected JScrollPane scrollMenu;
 	
 	/* Botones */
 	private JButton botonClasificacion;
@@ -39,7 +45,6 @@ public abstract class VentanaMenu extends Ventana {
 	
 	/* Dimensiones */
 	private static final int ALTO_BARRA = (int) (ALTO_VENTANA / 10);
-	protected static final int ALTO_MENU = (int) (ALTO_VENTANA - ALTO_BARRA);
 	private static final int ANCHO_IMAGEN = 30;
 	private static final int ALTO_IMAGEN = 30;
 	private static final int ESPACIO_HORIZONTAL_PEQUENO = 15;
@@ -64,10 +69,11 @@ public abstract class VentanaMenu extends Ventana {
 		/* Construcción de subpaneles */
 		construirBarraSuperior();
 		construirPanelMenu();
+		construirScrollMenu();
 		
 		/* Montaje */
 		panelPrincipal.add(barraSuperior, BorderLayout.NORTH);
-		panelPrincipal.add(panelMenu, BorderLayout.CENTER);
+		panelPrincipal.add(scrollMenu, BorderLayout.CENTER);
 		
 		
 		
@@ -138,6 +144,8 @@ public abstract class VentanaMenu extends Ventana {
 	
 	
 	protected abstract void construirPanelMenu();
+	
+	protected abstract void construirScrollMenu();
 	
 	private void manejadorClasificacion() {
 		botonClasificacion.addActionListener(new ActionListener() {
