@@ -100,5 +100,12 @@ public class PruebaScroll extends JScrollPane {
 		
 	}
 	
+	/*
+	    li.addListSelectionListener(event -> {
+	        // por si no funciona el mouseListener
+	    });
+	 * 
+	 */
+	
 	
 }
