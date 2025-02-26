@@ -34,8 +34,8 @@ public abstract class Componente extends JPanel {
 	private JPanel panelInformacion;
 	
 	/* Dimensiones */
-	private static final int ANCHO_COMPONENTE = 300;
-	private static final int ALTO_COMPONENTE = 320;
+	public static final int ANCHO_COMPONENTE = 200;
+	public static final int ALTO_COMPONENTE = 320;
 	
 	private static final int ANCHO_IMAGEN = 240;
 	private static final int ALTO_IMAGEN = 120;
