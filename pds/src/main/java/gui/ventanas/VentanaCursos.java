@@ -15,7 +15,7 @@ import gui.GestorGUI;
 import gui.componentes.Componente;
 import gui.componentes.ComponenteCurso;
 import gui.info.InfoCurso;
-import gui.scroll.ScrollCursos;
+import gui.scroll.Scroll;
 
 @SuppressWarnings("serial")
 public class VentanaCursos extends VentanaMenu {
@@ -29,7 +29,7 @@ public class VentanaCursos extends VentanaMenu {
         super.construir();
     }
     
-    @Override
+    /*@Override
     protected void construirPanelMenu() {
     	
     	int columnas = 3;
@@ -54,7 +54,7 @@ public class VentanaCursos extends VentanaMenu {
 	    }
 		
         
-    }
+    }*/
     
     private void manejadorCurso(ComponenteCurso curso) {
     	 curso.addMouseListener(new MouseAdapter() {
@@ -73,8 +73,17 @@ public class VentanaCursos extends VentanaMenu {
 
 	@Override
 	protected void construirScrollMenu() {
-		scrollMenu = new ScrollCursos(panelMenu);
+		
+		//controlador
+		
+		ComponenteCurso[] componentes = new ComponenteCurso[5];
+		for (int i = 0; i < 5; i++) {
+	        componentes[i] = new ComponenteCurso(new InfoCurso(
+	                "Titulico", "Descripcioncica", 
+	                "C:\\Users\\aleja\\Escritorio\\Screenshot_1.png", true));
+	    }
+		scroll = new Scroll(componentes);
 		
 	}
-    
+		
 }

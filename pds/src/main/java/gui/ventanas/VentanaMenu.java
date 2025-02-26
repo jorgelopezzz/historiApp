@@ -21,7 +21,7 @@ import gui.emergentes.EmergenteEstadisticas;
 import gui.emergentes.EmergentePerfil;
 import gui.emergentes.EmergenteRegistro;
 import gui.info.InfoCurso;
-import gui.scroll.PruebaScroll;
+import gui.scroll.Scroll;
 
 @SuppressWarnings("serial")
 public abstract class VentanaMenu extends Ventana {
@@ -33,7 +33,7 @@ public abstract class VentanaMenu extends Ventana {
 	
 	/* Componentes scrolleables */
 	
-	protected JScrollPane scrollMenu;
+	protected Scroll scroll;
 	
 	/* Botones */
 	private JButton botonClasificacion;
@@ -71,23 +71,11 @@ public abstract class VentanaMenu extends Ventana {
 		
 		/* Construcción de subpaneles */
 		construirBarraSuperior();
-		construirPanelMenu();
-		construirScrollMenu(); // TO
+		construirScrollMenu();
 		
 		/* Montaje */
 		panelPrincipal.add(barraSuperior, BorderLayout.NORTH);
-		
-		/* Llamada a controlador */
-		///////
-		ComponenteCurso[] componentes = new ComponenteCurso[5];
-		for (int i = 0; i < 5; i++) {
-	        componentes[i] = new ComponenteCurso(new InfoCurso(
-	                "Titulico", "Descripcioncica", 
-	                "C://Users//jorge//Downloads//a.png", true));
-	    }
-		
-		///////
-		panelPrincipal.add(new PruebaScroll(componentes), BorderLayout.CENTER);
+		panelPrincipal.add(scroll, BorderLayout.CENTER);
 		
 		this.add(panelPrincipal);
 	}
@@ -153,9 +141,6 @@ public abstract class VentanaMenu extends Ventana {
 		barraSuperior.add(botonPerfil);
 		manejadorPerfil();
 	}
-	
-	
-	protected abstract void construirPanelMenu();
 	
 	protected abstract void construirScrollMenu();
 	
