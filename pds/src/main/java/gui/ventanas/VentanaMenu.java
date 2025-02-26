@@ -72,27 +72,22 @@ public abstract class VentanaMenu extends Ventana {
 		/* Construcción de subpaneles */
 		construirBarraSuperior();
 		construirPanelMenu();
-		construirScrollMenu();
+		construirScrollMenu(); // TO
 		
 		/* Montaje */
 		panelPrincipal.add(barraSuperior, BorderLayout.NORTH);
 		
-		
-		/* PRUEBA */
-		
-		ComponenteCurso[] componentes = new ComponenteCurso[12];
-		for (int i = 0; i < 12; i++) {
+		/* Llamada a controlador */
+		///////
+		ComponenteCurso[] componentes = new ComponenteCurso[5];
+		for (int i = 0; i < 5; i++) {
 	        componentes[i] = new ComponenteCurso(new InfoCurso(
 	                "Titulico", "Descripcioncica", 
-	                "C:\\Users\\aleja\\git\\historiApp\\pds\\resources\\racha.png", true));
+	                "C://Users//jorge//Downloads//a.png", true));
 	    }
 		
+		///////
 		panelPrincipal.add(new PruebaScroll(componentes), BorderLayout.CENTER);
-		
-		
-		//panelPrincipal.add(scrollMenu, BorderLayout.CENTER);
-		
-		
 		
 		this.add(panelPrincipal);
 	}

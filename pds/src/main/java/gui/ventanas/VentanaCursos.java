@@ -42,13 +42,6 @@ public class VentanaCursos extends VentanaMenu {
 		GestorGUI.configurarPanel(panelMenu, new GridLayout(0, columnas, 5, 5),
 				GestorGUI.getInstancia().getColorClaro(), ANCHO_MENU, ALTO_MENU);
 		
-		panelMenu.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                System.out.println("Clic en el panel: " + e.getSource().toString());
-            }
-        });
-		
 		for (int i = 0; i < numElementos; i++) {
 	        ComponenteCurso curso = new ComponenteCurso(new InfoCurso(
 	                "Titulico", "Descripcioncica", 

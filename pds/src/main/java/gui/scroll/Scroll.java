@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import javax.swing.border.EmptyBorder;
 
+import gui.GestorGUI;
 import gui.componentes.ComponenteCurso;
 
 @SuppressWarnings("serial")
@@ -13,7 +14,7 @@ public abstract class Scroll extends JScrollPane {
         super(panelMenu, VERTICAL_SCROLLBAR_AS_NEEDED, HORIZONTAL_SCROLLBAR_NEVER);
     
         // Personalizar el JScrollPane
-        setBackground(new Color(240, 240, 240));
+        setBackground(GestorGUI.getInstancia().getColorBlanco());
         setBorder(BorderFactory.createLineBorder(new Color(220, 220, 220), 1));
         setViewportBorder(new EmptyBorder(5, 5, 5, 5));
 
