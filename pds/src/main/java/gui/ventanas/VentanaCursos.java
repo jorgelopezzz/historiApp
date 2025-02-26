@@ -82,7 +82,7 @@ public class VentanaCursos extends VentanaMenu {
 	                "Titulico", "Descripcioncica", 
 	                "C:\\Users\\aleja\\Escritorio\\Screenshot_1.png", true));
 	    }
-		scroll = new Scroll(componentes);
+		scroll = new Scroll(VentanaCursos.this, selector, componentes);
 		
 	}
 		
