@@ -15,10 +15,13 @@ import javax.swing.JScrollPane;
 
 import gui.GestorGUI;
 import gui.componentes.Componente;
+import gui.componentes.ComponenteCurso;
 import gui.emergentes.EmergenteClasificacion;
 import gui.emergentes.EmergenteEstadisticas;
 import gui.emergentes.EmergentePerfil;
 import gui.emergentes.EmergenteRegistro;
+import gui.info.InfoCurso;
+import gui.scroll.PruebaScroll;
 
 @SuppressWarnings("serial")
 public abstract class VentanaMenu extends Ventana {
@@ -69,13 +72,22 @@ public abstract class VentanaMenu extends Ventana {
 		/* Construcción de subpaneles */
 		construirBarraSuperior();
 		construirPanelMenu();
-		construirScrollMenu();
+		construirScrollMenu(); // TO
 		
 		/* Montaje */
 		panelPrincipal.add(barraSuperior, BorderLayout.NORTH);
-		panelPrincipal.add(scrollMenu, BorderLayout.CENTER);
 		
+		/* Llamada a controlador */
+		///////
+		ComponenteCurso[] componentes = new ComponenteCurso[5];
+		for (int i = 0; i < 5; i++) {
+	        componentes[i] = new ComponenteCurso(new InfoCurso(
+	                "Titulico", "Descripcioncica", 
+	                "C://Users//jorge//Downloads//a.png", true));
+	    }
 		
+		///////
+		panelPrincipal.add(new PruebaScroll(componentes), BorderLayout.CENTER);
 		
 		this.add(panelPrincipal);
 	}

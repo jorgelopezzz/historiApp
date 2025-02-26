@@ -62,8 +62,9 @@ public class VentanaCursos extends VentanaMenu {
 
 	            @Override
 	            public void mouseClicked(MouseEvent e) {
-	                if(seleccionado)
+	                if(seleccionado) {
 	                	curso.deseleccionar();
+	                }
 	                else
 	                	curso.seleccionar();
 	            }
