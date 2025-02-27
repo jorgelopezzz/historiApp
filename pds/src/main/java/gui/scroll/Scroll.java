@@ -27,17 +27,17 @@ import gui.ventanas.VentanaCursos;
 import gui.ventanas.VentanaMenu;
 
 @SuppressWarnings("serial")
-public class Scroll extends JScrollPane {
+public abstract class Scroll extends JScrollPane {
 	
 	/* Selector */
 	
-	SelectorVentana selector;
+	protected SelectorVentana selector;
 	
 	/* Lista de componentes */
-	private JList<Componente> listaComponentes;
-	private JFrame ventanaMadre;
+	protected JList<Componente> listaComponentes;
+	protected JFrame ventanaMadre;
 	
-	public Scroll(JFrame ventanaMadre, SelectorVentana selector, ComponenteCurso[] componentes) {
+	public Scroll(JFrame ventanaMadre, SelectorVentana selector, Componente[] componentes) {
 		super();
 		
 		this.selector = selector;
@@ -86,7 +86,7 @@ public class Scroll extends JScrollPane {
         return arrowButton;
     }
 
-	private void configurarLista(ComponenteCurso[] componentes) {
+	private void configurarLista(Componente[] componentes) {
 		/* Aspectos básicos */
 		listaComponentes = new JList<Componente>(componentes);
 		listaComponentes.setLayoutOrientation(JList.HORIZONTAL_WRAP);
@@ -117,30 +117,6 @@ public class Scroll extends JScrollPane {
 		
 	}
 	
-	private void detectarDobleClick() {
-	    listaComponentes.addMouseListener(new java.awt.event.MouseAdapter() {
-	        @Override
-	        public void mouseClicked(java.awt.event.MouseEvent evt) {
-	            if (evt.getClickCount() == 2) {
-	                int index = listaComponentes.locationToIndex(evt.getPoint());
-	                if (index != -1) {
-	                    ComponenteCurso seleccionado = (ComponenteCurso) listaComponentes.getModel().getElementAt(index);
-	                    EmergenteSiNo emergente = new EmergenteSiNo(ventanaMadre, "ey");
-	    				emergente.mostrar();
-	    				if(emergente.obtenerRespuesta())
-	    					selector.cambiarVentana(new VentanaBloques(selector,seleccionado));
-	                }
-	            }
-	        }
-	    });
-	}
-	
-	/*
-	    li.addListSelectionListener(event -> {
-	        // por si no funciona el mouseListener
-	    });
-	 * 
-	 */
-	
+	protected abstract void detectarDobleClick();
 	
 }

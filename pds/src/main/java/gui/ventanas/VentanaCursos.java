@@ -7,6 +7,7 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Random;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -16,6 +17,7 @@ import gui.componentes.Componente;
 import gui.componentes.ComponenteCurso;
 import gui.info.InfoCurso;
 import gui.scroll.Scroll;
+import gui.scroll.ScrollCursos;
 
 @SuppressWarnings("serial")
 public class VentanaCursos extends VentanaMenu {
@@ -28,33 +30,6 @@ public class VentanaCursos extends VentanaMenu {
     protected void construir() {
         super.construir();
     }
-    
-    /*@Override
-    protected void construirPanelMenu() {
-    	
-    	int columnas = 3;
-    	int numElementos = 14;
-    	
-    	int ANCHO_MENU = ANCHO_VENTANA - 50; // Tamaño estimado de scroll
-    	int ALTO_MENU = Componente.ALTO_COMPONENTE*((numElementos+columnas-1)/columnas);
-    	
-		panelMenu = new JPanel();
-		GestorGUI.configurarPanel(panelMenu, new GridLayout(0, columnas, 5, 5),
-				GestorGUI.getInstancia().getColorClaro(), ANCHO_MENU, ALTO_MENU);
-		
-		for (int i = 0; i < numElementos; i++) {
-	        ComponenteCurso curso = new ComponenteCurso(new InfoCurso(
-	                "Titulico", "Descripcioncica", 
-	                "C:\\Users\\aleja\\git\\historiApp\\pds\\resources\\racha.png", true));
-
-	        // Agregar evento de clic
-	        manejadorCurso(curso);
-
-	        panelMenu.add(curso);
-	    }
-		
-        
-    }*/
     
     private void manejadorCurso(ComponenteCurso curso) {
     	 curso.addMouseListener(new MouseAdapter() {
@@ -71,18 +46,18 @@ public class VentanaCursos extends VentanaMenu {
 	        });
     }
 
-	@Override
+    @Override
 	protected void construirScrollMenu() {
 		
 		//controlador
 		
-		ComponenteCurso[] componentes = new ComponenteCurso[5];
+    	ComponenteCurso[] componentes = new ComponenteCurso[5];
 		for (int i = 0; i < 5; i++) {
 	        componentes[i] = new ComponenteCurso(new InfoCurso(
 	                "Titulico", "Descripcioncica", 
-	                "C:\\Users\\aleja\\Escritorio\\Screenshot_1.png", true));
+	                "C:/Users/aleja/git/historiApp/pds/resources/" + (new Random().nextInt(5)+1) + ".png", true));
 	    }
-		scroll = new Scroll(VentanaCursos.this, selector, componentes);
+		scroll = new ScrollCursos(VentanaCursos.this, selector, componentes);
 		
 	}
 		
