@@ -7,7 +7,7 @@ public class SelectorVentana {
 	
 	public SelectorVentana() {
 		//ventanaActual = new VentanaLogin(this);
-		ventanaActual = new VentanaCursos(this);
+		ventanaActual = new VentanaLogin(this);
 		ventanaActual.mostrar();
 	}
 	
