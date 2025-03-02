@@ -9,7 +9,7 @@ El archivo **`memoria.pdf`** contiene la documentación principal del proyecto, 
 - **Casos de uso**: Se describen los diferentes escenarios en los que los usuarios interactúan con la aplicación, incluyendo sus objetivos y los flujos de trabajo asociados.
 - **Modelo del dominio**: Se presenta una representación conceptual de los elementos clave del sistema y sus relaciones, proporcionando una base estructurada para el desarrollo del software.
 
-> 📄 [Visualizar `memoria.pdf`](./memoria.pdf)
+> 📄 [memoria.pdf](./memoria.pdf)
 
 ## Diagrama de Estados
 
@@ -29,8 +29,3 @@ Estos ejemplos incluyen:
 - Disposición de los elementos visuales en la aplicación.
 - Relación entre las diferentes ventanas y componentes interactivos.
 - Aplicación de patrones de diseño concretos.
-
-## Acceso a los Archivos
-
-Para acceder a los archivos mencionados, puedes navegar directamente en esta carpeta y abrir el fichero **memoria.pdf**.
-
