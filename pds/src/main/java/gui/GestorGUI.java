@@ -49,7 +49,7 @@ public class GestorGUI {
 	private static GestorGUI instancia;
 	
 	/* Rutas de imágenes */
-	public static final String IMAGEN_PREDET_OSC = "/fotoPredeterminada.png";
+	public static final String IMAGEN_PREDET_OSC = "/perfilOscura.png";
 	
 	private GestorGUI() {
 		temaActual = ArchivoTemas.CIELO.getTema();
