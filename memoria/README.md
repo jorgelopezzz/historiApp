@@ -1,15 +1,13 @@
 # Documentación de la Aplicación
 
-Este directorio contiene la documentación detallada sobre los aspectos fundamentales del diseño y funcionamiento de la aplicación. A continuación, se describen los elementos disponibles en esta carpeta y su propósito.
+Este directorio contiene la documentación detallada sobre los aspectos fundamentales del diseño y funcionamiento de la aplicación. 
 
 ## Memoria del Proyecto
 
-El archivo **`memoria.pdf`** contiene la documentación principal del proyecto, donde se detallan:
+Este archivo **`README.md`** contiene la documentación principal del proyecto, donde se detallan:
 
 - **Casos de uso**: Se describen los diferentes escenarios en los que los usuarios interactúan con la aplicación, incluyendo sus objetivos y los flujos de trabajo asociados.
 - **Modelo del dominio**: Se presenta una representación conceptual de los elementos clave del sistema y sus relaciones, proporcionando una base estructurada para el desarrollo del software.
-
-> 📄 [memoria.pdf](./memoria.pdf)
 
 ## Casos de uso
 
