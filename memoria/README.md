@@ -94,7 +94,34 @@ El archivo **`memoria.pdf`** contiene la documentación principal del proyecto, 
 
 ### 2. Vista de ranking general
 
-#### 2.1 Visualizar ranking general de puntuación
+#### 2.1 Visualizar estadísticas
+
+**Resumen:** El usuario puede ver sus estadísticas de uso de la aplicación y de rendimiento en cursos y bloques de contenido.
+
+**Actores:**  
+- Usuario.
+
+**Precondiciones:**  
+- El usuario debe estar registrado e identificado en el sistema.
+
+**Flujo principal:**  
+1. El usuario accede a la sección de estadísticas.  
+2. El sistema muestra las estadísticas del usuario:  
+   - Cursos completados.  
+   - Bloques completados.  
+   - Puntuación obtenida en preguntas.  
+   - Tiempo de uso de la aplicación.  
+   - Tiempo medio de uso diario de la aplicación.  
+   - Mejor racha.  
+
+**Postcondiciones:**  
+- El usuario visualiza sus estadísticas.
+
+#### 2.2 Visualizar ranking general de puntuación
+
+>[!NOTE]
+>El caso de uso 2.2 representa la funcionalidad adicional a desarrollar en el proyecto.
+
 **Resumen:** El usuario consulta el ranking de puntuaciones de cursos y bloques.
 
 **Actores:** Usuario.
@@ -150,37 +177,9 @@ El archivo **`memoria.pdf`** contiene la documentación principal del proyecto, 
 **Postcondiciones:**
 - El bloque de contenidos se marca como completado.
 
-### 5. Vista de estadísticas de usuario
+### 5. Administración de cursos
 
->[!NOTE]
->Este apartado cubre la funcionalidad adicional a desarrollar en el proyecto.
-
-#### 5.1 Visualizar estadísticas
-
-**Resumen:** El usuario puede ver sus estadísticas de uso de la aplicación y de rendimiento en cursos y bloques de contenido.
-
-**Actores:**  
-- Usuario.
-
-**Precondiciones:**  
-- El usuario debe estar registrado e identificado en el sistema.
-
-**Flujo principal:**  
-1. El usuario accede a la sección de estadísticas.  
-2. El sistema muestra las estadísticas del usuario:  
-   - Cursos completados.  
-   - Bloques completados.  
-   - Puntuación obtenida en preguntas.  
-   - Tiempo de uso de la aplicación.  
-   - Tiempo medio de uso diario de la aplicación.  
-   - Mejor racha.  
-
-**Postcondiciones:**  
-- El usuario visualiza sus estadísticas.
-
-### 6. Administración de cursos
-
-## 6.1 Crear o actualizar curso
+#### 5.1 Crear o actualizar curso
 
 **Resumen:** El usuario sube un nuevo curso o actualiza uno existente.
 
