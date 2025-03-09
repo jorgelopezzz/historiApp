@@ -112,7 +112,7 @@ El archivo **`memoria.pdf`** contiene la documentación principal del proyecto, 
 ### 3. Gestión de contenidos
 
 #### 3.1 Realizar un curso
-**Resumen:** El usuario selecciona un curso y elige una estrategia de aprendizaje para completarlo.
+**Resumen:** El usuario selecciona un curso y elige una estrategia de aprendizaje para completarlo. Una vez cursados los contenidos que crea conveniente, el usuario puede salir del curso.
 
 **Actores:** Usuario.
 
@@ -125,11 +125,13 @@ El archivo **`memoria.pdf`** contiene la documentación principal del proyecto, 
 3. El sistema muestra las estrategias de aprendizaje disponibles (secuencial, espaciada, aleatoria, etc.).
 4. El usuario selecciona una estrategia.
 5. El sistema muestra los bloques de contenido del curso.
+6. El usuario cursa los bloques de contenidos que cree conveniente.
+7. El usuario sale del curso.
 
 **Postcondiciones:**
-- El curso queda registrado como "en progreso".
+- Se guarda el progreso del usuario en el curso.
 
-#### 3.3 Realizar bloque de contenidos
+#### 3.2 Realizar bloque de contenidos
 **Resumen:** El usuario accede a un bloque de contenido dentro de un curso y comienza a realizar tareas.
 
 **Actores:** Usuario.
@@ -139,93 +141,19 @@ El archivo **`memoria.pdf`** contiene la documentación principal del proyecto, 
 
 **Flujo principal:**
 1. El usuario selecciona un bloque de contenidos.
-
-**Postcondiciones:**
-- El sistema comienza a mostrar las tareas del bloque.
-
-#### 3.4 Salir de bloque de contenidos
-**Resumen:** El usuario sale de un bloque de contenidos en curso.
-
-**Actores:** Usuario.
-
-**Precondiciones:**
-- El usuario debe estar cursando un bloque de contenidos.
-- El usuario no ha terminado el bloque de contenidos.
-
-**Flujo principal:**
-1. El usuario cierra el bloque.
-2. El sistema muestra una petición de confirmación de cierre del bloque. Se avisa al usuario de que, en caso de confirmar el cierre, se perderá el progreso del bloque de contenidos.
-3. El sistema muestra los bloques de contenido del curso.
+2. El usuario completa todas las tareas del curso.
+3. El usuario sale del bloque de contenidos.
 
 **Flujo alternativo:**
-- 2b. Si el usuario rechaza la confirmación de cierre, el sistema retorna al bloque de contenido.
-
-#### 3.5 Completar bloque de contenidos
-**Resumen:** El usuario completa un bloque de contenidos.
-
-**Actores:** Usuario.
-
-**Precondiciones:**
-- El usuario debe estar cursando un bloque de contenidos.
-- El usuario ha terminado el bloque de contenidos.
-
-**Flujo principal:**
-1. El usuario completa la última tarea del bloque.
-2. El sistema muestra un mensaje para notificar al usuario de que ha completado el bloque.
-3. El sistema vuelve a la pantalla de bloques de contenido del curso.
-
-#### 3.6 Cerrar curso
-**Resumen:** El usuario cierra un curso en progreso, registrando su estado actual.
-
-**Actores:** Usuario.
-
-**Precondiciones:**
-- El usuario debe estar realizando un curso.
-
-**Flujo principal:**
-1. El usuario selecciona la opción de cerrar curso.
-2. El sistema guarda el estado actual del curso.
+- 2b. Si el usuario no completa el bloque de contenidos, el progreso en dicho bloque se perderá.
 
 **Postcondiciones:**
-- El sistema almacena el estado del curso.
-- Se actualizan las estadísticas del usuario.
-
-### 4. Interacción de tareas
-
-#### 4.1 Realizar tarea
-**Resumen:** El usuario realiza una tarea dentro de un bloque de contenidos. En el caso de las preguntas, el usuario responde y, en el caso de las flashcards, el usuario las voltea.
-
-**Actores:** Usuario.
-
-**Precondiciones:**
-- El usuario debe estar realizando un bloque de contenidos.
-
-**Flujo principal:**
-1. El sistema muestra una tarea.
-2. El usuario introduce una respuesta o interactúa con una flashcard.
-
-**Flujo alternativo:**
-- 2a En caso de ser una pregunta, el sistema verifica la respuesta y muestra retroalimentación al usuario.
-- 2b En caso de ser una flashcard, la voltea.
-
-#### 4.2 Avanzar a la siguiente tarea
-
-**Resumen:** El usuario pasa a la siguiente tarea dentro de un curso.
-
-**Actores**
-- Usuario.
-
-**Precondiciones**
-- El usuario debe estar en un bloque de contenido.
-
-**Flujo principal**
-1. El usuario avanza a la siguiente tarea.
-
-**Postcondiciones**
-- El usuario continúa con la siguiente tarea en la secuencia.
-- Si se avanza en la última tarea, el sistema termina el bloque y muestra la lista de bloques de contenidos del curso.
+- El bloque de contenidos se marca como completado.
 
 ### 5. Vista de estadísticas de usuario
+
+>[!NOTE]
+>Este apartado cubre la funcionalidad adicional a desarrollar en el proyecto.
 
 #### 5.1 Visualizar estadísticas
 
