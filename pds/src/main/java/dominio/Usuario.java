@@ -2,7 +2,7 @@ package dominio;
 
 import java.time.LocalDateTime;
 
-public class Usuario {
+public abstract class Usuario {
 
     private int id;
     private String nombre;
@@ -77,5 +77,9 @@ public class Usuario {
 	/////////////////////////////////////////////////////////
 	// 0.- NO HISTORIAS DE USUARIO //////////////////////////
 	/////////////////////////////////////////////////////////
+    
+    public boolean realizarCurso() {
+    	return true;
+    }
     
 }
