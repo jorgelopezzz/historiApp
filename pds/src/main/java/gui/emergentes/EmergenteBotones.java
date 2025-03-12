@@ -21,7 +21,7 @@ public abstract class EmergenteBotones extends Emergente{
 	
 	/* Componentes de organización */
 	private JPanel panelEnvolvente;
-	private JPanel panelTexto;
+	protected JPanel panelTexto;
 	
 	/* Componentes de información */
 	private JLabel etiquetaImagen;
@@ -75,6 +75,12 @@ public abstract class EmergenteBotones extends Emergente{
 		areaTexto = GestorGUI.crearAreaTexto("", GestorGUI.getInstancia().getFuenteTexto(),
 				GestorGUI.getInstancia().getColorOscuro(), NUMERO_COLUMNAS_TEXTO);	
 		
+		/* Montaje */
+		panelTexto.add(etiquetaImagen);
+		panelTexto.add(Box.createVerticalStrut(3*MARGEN));
+		panelTexto.add(areaTexto);
+		panelTexto.add(Box.createVerticalStrut(15));
+
 		botones_montaje();
 		
 		panelEnvolvente.add(panelTexto);
