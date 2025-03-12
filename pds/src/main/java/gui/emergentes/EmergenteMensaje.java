@@ -1,9 +1,5 @@
 package gui.emergentes;
 
-import static gui.emergentes.EmergenteBotones.ALTO_EMERGENTE;
-import static gui.emergentes.EmergenteBotones.ANCHO_EMERGENTE;
-import static gui.emergentes.EmergenteBotones.MARGEN;
-
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
