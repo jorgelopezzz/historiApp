@@ -177,6 +177,19 @@ public class GestorGUI {
 		return boton;
 	}
 	
+public static JButton getBotonPredeterminadoLargo(String texto) {
+		
+		JButton boton = new JButton(texto);
+		GestorGUI.configurarBoton(boton, GestorGUI.getInstancia().getColorOscuro(), 
+				GestorGUI.getInstancia().getColorBlanco(), GestorGUI.getInstancia().getFuenteTexto(), 
+				ANCHO_BOTON_PREDET*2, ALTO_BOTON_PREDET);
+		
+		boton.setFocusPainted(false); 
+		boton.setBorderPainted(false);
+		
+		return boton;
+	}
+	
 	public static JButton getBotonPredeterminadoImagen(String rutaImagen) {
 		
 		JButton boton = new JButton();

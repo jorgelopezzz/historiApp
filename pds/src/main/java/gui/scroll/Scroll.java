@@ -47,7 +47,7 @@ public abstract class Scroll extends JScrollPane {
 		this.ventanaMadre = ventanaMadre;
 		
 		/* Aspectos gráficos */
-		GestorGUI.fijarTamano(800,600, this);
+		GestorGUI.fijarTamano(800,450, this);
 		setBackground(GestorGUI.getInstancia().getColorBlanco());
         setBorder(BorderFactory.createLineBorder(GestorGUI.getInstancia().getColorClaro()));
         setViewportBorder(new EmptyBorder(5, 5, 5, 5));

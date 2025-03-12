@@ -152,7 +152,9 @@ public class VentanaLogin extends Ventana {
 
 				
 				/* Cambio de ventana */
-				selector.cambiarVentana(new VentanaCursos(selector));
+				// controlador.getRolUsuarioActual
+				int rol = 1;
+				selector.cambiarVentana(new VentanaCursos(selector, rol));
 			}
 		});
 	}

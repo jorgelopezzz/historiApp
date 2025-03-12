@@ -28,7 +28,8 @@ public class ScrollBloques extends Scroll {
 	                    //EmergenteSiNo emergente = new EmergenteSiNo(ventanaMadre, "ey");
 	    				//emergente.mostrar();
 	    				//if(emergente.obtenerRespuesta().orElse(false))
-	    					selector.cambiarVentana(new VentanaCursos(selector)); // ESTO ES SOLO POR QUE SE VEA ALGO
+	                		int rol = 0;
+	    					selector.cambiarVentana(new VentanaCursos(selector, rol)); // ESTO ES SOLO POR QUE SE VEA ALGO
 	    				// AHORA BIEN, A LO MEJOR ES INCORRECTO QUE SE CREE UNA NUEVA VENTANA CURSOS SIEMPRE
 	                }
 	            }

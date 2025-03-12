@@ -30,6 +30,7 @@ public abstract class VentanaMenu extends Ventana {
 	private JPanel panelPrincipal;
 	private JPanel barraSuperior;
 	protected JPanel panelMenu;
+	protected JPanel panelBienvenida;
 	
 	/* Componentes scrolleables */
 	
@@ -47,11 +48,11 @@ public abstract class VentanaMenu extends Ventana {
 	private JLabel etiquetaPerfil;
 	
 	/* Dimensiones */
-	private static final int ALTO_BARRA = (int) (ALTO_VENTANA / 10);
+	protected static final int ALTO_BARRA = (int) (ALTO_VENTANA / 10);
 	private static final int ANCHO_IMAGEN = 30;
 	private static final int ALTO_IMAGEN = 30;
-	private static final int ESPACIO_HORIZONTAL_PEQUENO = 15;
-	private static final int ESPACIO_HORIZONTAL_GRANDE = ESPACIO_HORIZONTAL_PEQUENO * 7;
+	protected static final int ESPACIO_HORIZONTAL_PEQUENO = 15;
+	protected static final int ESPACIO_HORIZONTAL_GRANDE = ESPACIO_HORIZONTAL_PEQUENO * 7;
 	
 	/* Rutas */
 	private static final String RUTA_PUNTUACION = "/puntuacion.png";
@@ -71,11 +72,13 @@ public abstract class VentanaMenu extends Ventana {
 		
 		/* Construcción de subpaneles */
 		construirBarraSuperior();
+		construirBienvenida();
 		construirScrollMenu();
 		
 		/* Montaje */
 		panelPrincipal.add(barraSuperior, BorderLayout.NORTH);
-		panelPrincipal.add(scroll, BorderLayout.CENTER);
+		panelPrincipal.add(panelBienvenida, BorderLayout.CENTER);
+		panelPrincipal.add(scroll, BorderLayout.SOUTH);
 		
 		this.add(panelPrincipal);
 	}
@@ -141,6 +144,8 @@ public abstract class VentanaMenu extends Ventana {
 		barraSuperior.add(botonPerfil);
 		manejadorPerfil();
 	}
+	
+	protected abstract void construirBienvenida();
 	
 	protected abstract void construirScrollMenu();
 	
