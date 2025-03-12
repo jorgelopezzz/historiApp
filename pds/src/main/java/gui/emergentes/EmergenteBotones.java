@@ -27,9 +27,6 @@ public abstract class EmergenteBotones extends Emergente{
 	private JLabel etiquetaImagen;
 	private JTextArea areaTexto;
 	
-	/* Botones */
-	private JButton botonAceptar;
-	
 	/* Dimensiones */
 	private static final int ANCHO_EMERGENTE = 400;
 	private static final int ALTO_EMERGENTE = 300;
