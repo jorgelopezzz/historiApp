@@ -179,18 +179,18 @@ Este archivo **`README.md`** contiene la documentación principal del proyecto, 
 
 #### 5.1 Crear o actualizar curso
 
-**Resumen:** El usuario sube un nuevo curso o actualiza uno existente.
+**Resumen:** El profesor sube un nuevo curso o actualiza uno existente.
 
 **Actores:**  
-- Usuario.
+- Profesor.
 
 **Precondiciones:**  
-- El usuario debe estar registrado e identificado en el sistema.  
+- El profesor debe estar registrado e identificado en el sistema.  
 - Para actualizar un curso, debe existir previamente en el sistema.  
 
 **Flujo principal:**  
-1. El usuario accede a la sección de creación de cursos.  
-2. El usuario sube un archivo `.json` del curso.  
+1. El profesor accede a la sección de creación de cursos.  
+2. El profesor sube un archivo `.json` del curso.  
 3. El sistema almacena el curso.  
 
 **Flujos alternativos:**  
