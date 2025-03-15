@@ -21,7 +21,7 @@ import javax.swing.JScrollPane;
 import gui.GestorGUI;
 import gui.componentes.Componente;
 import gui.componentes.ComponenteCurso;
-import gui.emergentes.EmergenteImagen;
+import gui.emergentes.EmergenteFichero;
 import gui.info.InfoCurso;
 import gui.scroll.Scroll;
 import gui.scroll.ScrollCursos;
@@ -32,6 +32,9 @@ public class VentanaCursos extends VentanaMenu {
 	/* Componentes de organización */
 	JLabel etiquetaBienvenida;
 	JButton botonCrearCurso;
+	
+	/* Atributos a recabar */
+	private String rutaJSON;
 	
 	/* Tipo de rol */
 	protected int rol;
@@ -44,21 +47,6 @@ public class VentanaCursos extends VentanaMenu {
     @Override
     protected void construir() {
         super.construir();
-    }
-    
-    private void manejadorCurso(ComponenteCurso curso) {
-    	 curso.addMouseListener(new MouseAdapter() {
-	            private boolean seleccionado = false;
-
-	            @Override
-	            public void mouseClicked(MouseEvent e) {
-	                if(seleccionado) {
-	                	curso.deseleccionar();
-	                }
-	                else
-	                	curso.seleccionar();
-	            }
-	        });
     }
 
     @Override
@@ -109,23 +97,24 @@ public class VentanaCursos extends VentanaMenu {
 		
 	}
     
-	private void manejadorCrearCurso() {/*
+	private void manejadorCrearCurso() {
 			botonCrearCurso.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e) {		
 					// Lanzar la ventana emergente
-					EmergenteImagen emergente = new EmergenteImagen(ventanaMadre);
+					EmergenteFichero emergente = new EmergenteFichero(VentanaCursos.this);
 					emergente.mostrar();
 
 					// Obtener resultado
-					emergente.obtenerImagen().ifPresentOrElse( (ruta) -> {
-						rutaImagen = ruta;
-						etiquetaImagen.setIcon(GestorGUI.getInstancia().iconoAbsoluto(rutaImagen, LADO_IMAGEN, LADO_IMAGEN));
+					emergente.obtenerFichero().ifPresentOrElse( (ruta) -> {
+						rutaJSON = ruta;
+///////////////////// AQUÍ TENGO QUE AÑADIR CURSO POR EL CONTROLADOR ///////////////////////
+						//Controlador.crearCurso(rutaJSON);
 					},
 							() ->  {return;} 
 					);
 				}
-			});*/
+			});
 	}
 		
 }

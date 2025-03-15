@@ -1,6 +1,7 @@
 package gui.emergentes;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.dnd.DnDConstants;
@@ -12,19 +13,22 @@ import java.io.File;
 import java.util.List;
 import java.util.Optional;
 
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import gui.GestorGUI;
 
 @SuppressWarnings("serial")
-public class EmergenteImagen extends Emergente {
+public class EmergenteFichero extends Emergente {
 	
 	/* Componentes de organización */
 	private JPanel panelPrincipal;
@@ -43,7 +47,7 @@ public class EmergenteImagen extends Emergente {
 	private JButton botonSalir;
 	
 	/* Atributos a obtener */
-	private String rutaImagen;
+	private String rutaFichero;
 	
 	/* Dimensiones */
 	private static final int LADO_IMAGEN = 150;
@@ -52,8 +56,8 @@ public class EmergenteImagen extends Emergente {
 	private static final int ANCHO_ARRASTRE = 200;
 	private static final int ALTO_ARRASTRE = ALTO_FICHERO;
 	
-	public EmergenteImagen(JFrame ventanaMadre) {
-		super("Seleccionar Imagen", GestorGUI.getInstancia().getColorBlanco(), ventanaMadre);
+	public EmergenteFichero(JFrame ventanaMadre) {
+		super("Seleccionar Fichero", GestorGUI.getInstancia().getColorBlanco(), ventanaMadre);
 	}
 	
 	@Override
@@ -64,7 +68,7 @@ public class EmergenteImagen extends Emergente {
 		GestorGUI.configurarPanel(panelPrincipal, new BorderLayout(), false);
 		
 		/* Imagen no cargada */
-		rutaImagen = null;
+		rutaFichero = null;
 		
 		/* Construccion de explorador y panel de arrastre */
 		construirPanelElector();
@@ -93,8 +97,8 @@ public class EmergenteImagen extends Emergente {
 		
 	}
 	
-	public Optional<String> obtenerImagen() {
-		return Optional.ofNullable(rutaImagen);
+	public Optional<String> obtenerFichero() {
+		return Optional.ofNullable(rutaFichero);
 	}
 	
 	private void construirPanelFichero() {
@@ -108,16 +112,36 @@ public class EmergenteImagen extends Emergente {
             public void actionPerformed(ActionEvent e) {
                 String accion = e.getActionCommand();
                 if (accion.equals(JFileChooser.APPROVE_SELECTION)) {
-                    rutaImagen = panelFichero.getSelectedFile().getAbsolutePath();
-                    establecerImagen(rutaImagen);
+                	rutaFichero = panelFichero.getSelectedFile().getAbsolutePath();
+                    establecerImagen(rutaFichero);
                 }
             }
         });
 	}
 	
 	private void establecerImagen(String ruta) {
-		etiquetaImagen.setIcon(GestorGUI.getInstancia().iconoAbsoluto(ruta, 
-        		LADO_IMAGEN, LADO_IMAGEN));
+		// Restaurar la etiqueta a su estado original
+	    etiquetaImagen.setIcon(null);
+	    etiquetaImagen.setText("");
+	    etiquetaImagen.setOpaque(false);
+	    etiquetaImagen.setBorder(null);
+	    
+		ImageIcon icono = GestorGUI.getInstancia().iconoAbsoluto(ruta, LADO_IMAGEN, LADO_IMAGEN);
+	    if (icono != null && icono.getIconWidth() > 0) {
+	        etiquetaImagen.setIcon(icono);
+	    } else {
+	    	etiquetaImagen.setIcon(null);
+	    	etiquetaImagen.setText(new File(ruta).getName());
+	        etiquetaImagen.setHorizontalAlignment(SwingConstants.CENTER);
+	        etiquetaImagen.setVerticalAlignment(SwingConstants.CENTER);
+	        etiquetaImagen.setForeground(GestorGUI.getInstancia().getColorBlanco());
+	        etiquetaImagen.setOpaque(true);
+	        etiquetaImagen.setBackground(GestorGUI.getInstancia().getColorOscuro());
+	        etiquetaImagen.setBorder(BorderFactory.createCompoundBorder(
+	            BorderFactory.createLineBorder(GestorGUI.getInstancia().getColorOscuro(), 2),
+	            BorderFactory.createEmptyBorder(10, 10, 10, 10)
+	        ));
+	    }
 	}
 	
 	private void construirPanelArrastre() {
@@ -150,8 +174,8 @@ public class EmergenteImagen extends Emergente {
 					List<File> ficheros = (List<File>) evt.getTransferable().
 					getTransferData(DataFlavor.javaFileListFlavor);
 					if (!ficheros.isEmpty()) {
-						rutaImagen = ficheros.get(0).getAbsolutePath();
-						establecerImagen(rutaImagen);
+						rutaFichero = ficheros.get(0).getAbsolutePath();
+						establecerImagen(rutaFichero);
 					}
 				} catch (Exception ex){
 					ex.printStackTrace();
@@ -198,7 +222,7 @@ public class EmergenteImagen extends Emergente {
 		botonSalir.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				rutaImagen = null;
+				rutaFichero = null;
 				cerrar();
 			}
 		});

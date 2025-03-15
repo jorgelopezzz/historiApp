@@ -162,11 +162,11 @@ public class EmergenteRegistro extends Emergente {
 			@Override
 			public void actionPerformed(ActionEvent e) {		
 				/* Lanzar la ventana emergente */
-				EmergenteImagen emergente = new EmergenteImagen(ventanaMadre);
+				EmergenteFichero emergente = new EmergenteFichero(ventanaMadre);
 				emergente.mostrar();
 
 				/* Obtener resultado */
-				emergente.obtenerImagen().ifPresentOrElse( (ruta) -> {
+				emergente.obtenerFichero().ifPresentOrElse( (ruta) -> {
 					rutaImagen = ruta;
 					etiquetaImagen.setIcon(GestorGUI.getInstancia().iconoAbsoluto(rutaImagen, LADO_IMAGEN, LADO_IMAGEN));
 				},
