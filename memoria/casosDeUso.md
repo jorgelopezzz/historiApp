@@ -1,15 +1,4 @@
-# Documentación de la Aplicación
-
-Este directorio contiene la documentación detallada sobre los aspectos fundamentales del diseño y funcionamiento de la aplicación. 
-
-## Memoria del Proyecto
-
-Este archivo **`README.md`** contiene la documentación principal del proyecto, donde se detallan:
-
-- **Casos de uso**: Se describen los diferentes escenarios en los que los usuarios interactúan con la aplicación, incluyendo sus objetivos y los flujos de trabajo asociados.
-- **Modelo del dominio**: Se presenta una representación conceptual de los elementos clave del sistema y sus relaciones, proporcionando una base estructurada para el desarrollo del software.
-
-## Casos de uso
+# Casos de uso
 
 ### 1. Acceso de usuarios
 
@@ -201,21 +190,12 @@ Este archivo **`README.md`** contiene la documentación principal del proyecto, 
 - El sistema almacena el curso actualizado o nuevo.
 
 
-## Diagrama de Estados
+## Referencias de Arquitectura
 
-Como complemento a la memoria, se incluye un **diagrama de estados** que ilustra el comportamiento dinámico de la aplicación. Este diagrama representa:
+La arquitectura de HistoriApp está documentada en detalle en los siguientes archivos:
 
-- Los distintos estados de la aplicación en función de la interacción del usuario.
-- La transición entre pantallas y funcionalidades en respuesta a los diferentes eventos generados por el usuario o el sistema.
+- [Modelado de Dominio](modeladoDominio.md): Representa las entidades principales del sistema y sus relaciones.
+- [Estructuras y Patrones de Diseño de la Interfaz Gráfica](modeloVista.md): Detalla la organización de los componentes visuales y patrones implementados.
+- [Modelo de Estados y Transiciones](modeloEstados.md): Ilustra el flujo de navegación y las transiciones entre diferentes interfaces de la aplicación.
 
-El diagrama permite comprender mejor la lógica interna del software y su estructura de navegación.
-
-## Diseño de la Interfaz Gráfica
-
-Además, se presentan ejemplos de **estructuras escogidas para el diseño de la interfaz gráfica**, los cuales reflejan las decisiones tomadas en cuanto a usabilidad, patrones de diseño, distribución de componentes y experiencia del usuario.
-
-Estos ejemplos incluyen:
-
-- Disposición de los elementos visuales en la aplicación.
-- Relación entre las diferentes ventanas y componentes interactivos.
-- Aplicación de patrones de diseño concretos.
+Estos documentos proporcionan una visión completa de los aspectos estructurales y dinámicos de la aplicación HistoriApp.
