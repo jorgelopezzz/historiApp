@@ -11,3 +11,4 @@ Para más información sobre la arquitectura de la aplicación, consulte:
 - [Estructuras y Patrones de Diseño de la Interfaz Gráfica](modeloVista.md)
 - [Modelo de Estados y Transiciones](modeloEstados.md)
 - [Casos de Uso](casosDeUso.md)
+- [Documentación del Proyecto](README.md)

@@ -11,3 +11,4 @@ Para más información sobre la arquitectura de la aplicación, consulte:
 - [Modelo de Dominio](modeloDominio.md)
 - [Modelo de Estados y Transiciones](modeloEstados.md)
 - [Casos de Uso](casosDeUso.md)
+- [Documentación del Proyecto](README.md)
