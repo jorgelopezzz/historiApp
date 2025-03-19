@@ -197,5 +197,6 @@ La arquitectura de HistoriApp está documentada en detalle en los siguientes arc
 - [Modelado de Dominio](modeladoDominio.md): Representa las entidades principales del sistema y sus relaciones.
 - [Estructuras y Patrones de Diseño de la Interfaz Gráfica](modeloVista.md): Detalla la organización de los componentes visuales y patrones implementados.
 - [Modelo de Estados y Transiciones](modeloEstados.md): Ilustra el flujo de navegación y las transiciones entre diferentes interfaces de la aplicación.
+- [Casos de Uso](casosDeUso.md)
 
 Estos documentos proporcionan una visión completa de los aspectos estructurales y dinámicos de la aplicación HistoriApp.
