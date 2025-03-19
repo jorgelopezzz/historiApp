@@ -2,6 +2,7 @@ package gui.campos;
 
 import java.awt.FlowLayout;
 
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -13,7 +14,7 @@ import gui.GestorGUI;
 public abstract class CampoPredeterminado {
 	private JPanel panel;
 	private JLabel etiqueta;
-	protected JTextComponent campo;
+	protected JComponent campo;
 	private static final int ANCHO_PREDET = 70;
 	private static final int ALTO_PREDET = 30;
 	
@@ -54,7 +55,9 @@ public abstract class CampoPredeterminado {
 		return panel;
 	}
 	
-	protected abstract boolean campoValido();
+	private boolean campoValido() {
+		return ! getTexto().isEmpty();
+	}
 	
 	public boolean comprobarCampo() {
 		if(!campoValido()) {
@@ -66,8 +69,6 @@ public abstract class CampoPredeterminado {
 		
 	}
 	
-	public String getTexto() {
-		return campo.getText();
-	}
+	public abstract String getTexto();
 	
 }

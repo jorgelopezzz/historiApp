@@ -1,9 +1,6 @@
 package gui.campos;
 
 import javax.swing.JPasswordField;
-import javax.swing.border.LineBorder;
-
-import gui.GestorGUI;
 
 public class CampoContrasena extends CampoPredeterminado {
 
@@ -19,11 +16,6 @@ public class CampoContrasena extends CampoPredeterminado {
 	@Override
 	protected void construirCampo(int ancho, int alto) {
 		campo = new JPasswordField();
-	}
-	
-	@Override
-	protected boolean campoValido() {
-		return ((JPasswordField) campo).getPassword().length > 0;
 	}
 	
 	@Override 

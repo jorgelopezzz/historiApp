@@ -33,7 +33,7 @@ public abstract class EmergenteBotones extends Emergente{
 	
 	private static final int ANCHO_CUADRO = 300;
 	private static final int ALTO_CUADRO = 160;
-	private static final int MARGEN = 5;
+	protected static final int MARGEN = 5;
 	
 	private static final int LADO_IMAGEN = 50; 
 	private static final int NUMERO_COLUMNAS_TEXTO = 25;

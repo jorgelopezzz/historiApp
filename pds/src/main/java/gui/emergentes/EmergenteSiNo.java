@@ -58,6 +58,7 @@ public class EmergenteSiNo extends EmergenteBotones {
 
 		/* Montaje */
 		panelBotones.add(botonNo);
+		panelBotones.add(Box.createHorizontalStrut(MARGEN));
 		panelBotones.add(botonSi);
 
 		panelTexto.add(panelBotones);

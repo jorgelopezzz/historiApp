@@ -5,6 +5,7 @@ import java.awt.Component;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +22,7 @@ import javax.swing.border.TitledBorder;
 
 import gui.GestorGUI;
 import gui.campos.CampoContrasena;
+import gui.campos.CampoDesplegable;
 import gui.campos.CampoPredeterminado;
 import gui.campos.CampoTexto;
 
@@ -34,11 +36,13 @@ public class EmergenteRegistro extends Emergente {
 	private JPanel panelImagen;
 	
 	/* Campos de datos */
+	private List<CampoPredeterminado> campos;
 	private CampoPredeterminado campoNombre;
 	private CampoPredeterminado campoCorreo;
 	private CampoPredeterminado campoSaludo;
 	private CampoPredeterminado campoContrasena;
 	private CampoPredeterminado campoRepetirContrasena;
+	private CampoPredeterminado campoRol;
 	
 	private JLabel etiquetaImagen;
 	
@@ -108,16 +112,22 @@ public class EmergenteRegistro extends Emergente {
 		campoContrasena = new CampoContrasena("Contraseña:", ANCHO_CAMPOS, ALTO_CAMPOS, ANCHO_ETIQUETAS);
 		campoRepetirContrasena = new CampoContrasena("Repetir contraseña:", ANCHO_CAMPOS, ALTO_CAMPOS, ANCHO_ETIQUETAS);
 		
+		/* Campo roles */
+		campoRol = new CampoDesplegable("Rol:", ANCHO_CAMPOS, ALTO_CAMPOS, ANCHO_ETIQUETAS);
+		((CampoDesplegable)campoRol).addElementos("Alumno", "Profesor");
+		
+		/* Agrupación de campos */
+		campos = List.of(campoNombre, campoCorreo, campoSaludo, campoContrasena, campoRepetirContrasena, campoRol);
+		
+		
 		/* Imagen */
 		construirPanelImagen(GestorGUI.IMAGEN_PREDET_OSC);
 		
 		/* Montaje */
 		panelCampos.add(Box.createVerticalStrut(MARGEN));
-		panelCampos.add(campoNombre.getPanel());
-		panelCampos.add(campoCorreo.getPanel());
-		panelCampos.add(campoSaludo.getPanel());
-		panelCampos.add(campoContrasena.getPanel());
-		panelCampos.add(campoRepetirContrasena.getPanel());
+		for(CampoPredeterminado campo : campos) {
+			panelCampos.add(campo.getPanel());
+		}
 		panelCampos.add(Box.createVerticalStrut(MARGEN));
 		
 		panelEnvolvente.add(panelImagen, BorderLayout.SOUTH);
@@ -213,7 +223,7 @@ public class EmergenteRegistro extends Emergente {
 				boolean camposValidos = true;
 				
 				/* Comprobamos que todos los campos obligatorios tengan texto */
-				for( CampoPredeterminado campo : List.of(campoNombre, campoCorreo, campoContrasena, campoRepetirContrasena)) {
+				for( CampoPredeterminado campo : campos ) {
 					camposValidos = camposValidos & campo.comprobarCampo();
 				}
 					

@@ -19,7 +19,7 @@ public abstract class Emergente extends JDialog {
 	
 	/* Dimensiones */
 	protected static final int ANCHO_EMERGENTE_PREDET = 700;
-	protected static final int ALTO_EMERGENTE_PREDET = 550;
+	protected static final int ALTO_EMERGENTE_PREDET = 600;
 	
 	protected Emergente(String tituloEmergente, Color colorFondo, JFrame ventanaMadre, int ancho, int alto) {
 		super(ventanaMadre, GestorGUI.NOMBRE_APP + " " + tituloEmergente, true);

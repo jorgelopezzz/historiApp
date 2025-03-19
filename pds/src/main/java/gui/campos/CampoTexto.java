@@ -1,7 +1,9 @@
 package gui.campos;
 
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
+import javax.swing.text.JTextComponent;
 
 import gui.GestorGUI;
 
@@ -22,8 +24,9 @@ public class CampoTexto extends CampoPredeterminado {
 		
 	}
 	
-	protected boolean campoValido() {
-		return ! campo.getText().isEmpty();
+	@Override 
+	public String getTexto() {
+		return new String(((JTextComponent) campo).getText());
 	}
 	
 }
