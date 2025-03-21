@@ -50,28 +50,28 @@ public class VentanaCursos extends VentanaMenu {
     }
 
     @Override
-    protected void construirBienvenida() {
-	    panelBienvenida = new JPanel();
-	    GestorGUI.configurarPanel(panelBienvenida, new BoxLayout(panelBienvenida, BoxLayout.X_AXIS),
+    protected void construirInicio() {
+	    panelInicial = new JPanel();
+	    GestorGUI.configurarPanel(panelInicial, new BoxLayout(panelInicial, BoxLayout.X_AXIS),
 	    		GestorGUI.getInstancia().getColorClaro(), ANCHO_VENTANA, ALTO_BARRA);
 	    ///
-	    panelBienvenida.add(Box.createHorizontalStrut(ESPACIO_HORIZONTAL_PEQUENO));
+	    panelInicial.add(Box.createHorizontalStrut(ESPACIO_HORIZONTAL_PEQUENO));
 	    ///
 	    
 	    etiquetaBienvenida = new JLabel("Bienvenido, a continuación puedes elegir tu curso.");
 	    GestorGUI.configurarEtiqueta(etiquetaBienvenida, false, GestorGUI.getInstancia().getColorOscuro(), GestorGUI.getInstancia().getFuenteTexto());
-	    panelBienvenida.add(etiquetaBienvenida, BorderLayout.WEST);
+	    panelInicial.add(etiquetaBienvenida, BorderLayout.WEST);
 	    
 	    if(rol == 0) {
-		    panelBienvenida.add(Box.createHorizontalGlue());
+		    panelInicial.add(Box.createHorizontalGlue());
 		    
 		    botonCrearCurso = GestorGUI.getBotonPredeterminado("Crear curso");
 		    manejadorCrearCurso();
 		    
-		    panelBienvenida.add(botonCrearCurso, BorderLayout.EAST);
+		    panelInicial.add(botonCrearCurso, BorderLayout.EAST);
 		    
 		    ///
-		    panelBienvenida.add(Box.createHorizontalStrut(ESPACIO_HORIZONTAL_PEQUENO));
+		    panelInicial.add(Box.createHorizontalStrut(ESPACIO_HORIZONTAL_PEQUENO));
 		    ///
 	    }
     }

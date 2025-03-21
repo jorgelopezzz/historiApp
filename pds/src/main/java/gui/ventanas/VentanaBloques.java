@@ -48,28 +48,28 @@ public class VentanaBloques extends VentanaMenu {
     }
     
     @Override
-    protected void construirBienvenida() {
-	    panelBienvenida = new JPanel();
-	    GestorGUI.configurarPanel(panelBienvenida, new BoxLayout(panelBienvenida, BoxLayout.X_AXIS),
+    protected void construirInicio() {
+	    panelInicial = new JPanel();
+	    GestorGUI.configurarPanel(panelInicial, new BoxLayout(panelInicial, BoxLayout.X_AXIS),
 	    		GestorGUI.getInstancia().getColorClaro(), ANCHO_VENTANA, ALTO_BARRA);
 	    ///
-	    panelBienvenida.add(Box.createHorizontalStrut(ESPACIO_HORIZONTAL_PEQUENO));
+	    panelInicial.add(Box.createHorizontalStrut(ESPACIO_HORIZONTAL_PEQUENO));
 	    ///
 	    
 	    etiquetaBienvenida = new JLabel("A continuación, puedes elegir tu bloque de contenidos.");
 	    GestorGUI.configurarEtiqueta(etiquetaBienvenida, false, GestorGUI.getInstancia().getColorOscuro(), GestorGUI.getInstancia().getFuenteTexto());
-	    panelBienvenida.add(etiquetaBienvenida, BorderLayout.WEST);
+	    panelInicial.add(etiquetaBienvenida, BorderLayout.WEST);
 	    
 
-	    panelBienvenida.add(Box.createHorizontalGlue());
+	    panelInicial.add(Box.createHorizontalGlue());
 	    
 	    botonVolver = GestorGUI.getBotonPredeterminadoLargo("Volver a cursos");
 	    manejadorVolver();
 	    
-	    panelBienvenida.add(botonVolver, BorderLayout.EAST);
+	    panelInicial.add(botonVolver, BorderLayout.EAST);
 	    
 	    ///
-	    panelBienvenida.add(Box.createHorizontalStrut(ESPACIO_HORIZONTAL_PEQUENO));
+	    panelInicial.add(Box.createHorizontalStrut(ESPACIO_HORIZONTAL_PEQUENO));
 	    ///
 	}
     
