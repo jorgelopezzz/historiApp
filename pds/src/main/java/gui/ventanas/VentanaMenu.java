@@ -9,6 +9,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -30,11 +31,11 @@ public abstract class VentanaMenu extends Ventana {
 	private JPanel panelPrincipal;
 	private JPanel barraSuperior;
 	protected JPanel panelMenu;
-	protected JPanel panelBienvenida;
+	protected JPanel panelInicial;
 	
 	/* Componentes scrolleables */
 	
-	protected Scroll scroll;
+	protected JComponent scroll; // Será Scroll en VentanaCursos y VentanaBloques y será JPanel en VentanaTareas
 	
 	/* Botones */
 	private JButton botonClasificacion;
@@ -72,12 +73,12 @@ public abstract class VentanaMenu extends Ventana {
 		
 		/* Construcción de subpaneles */
 		construirBarraSuperior();
-		construirBienvenida();
+		construirInicio();
 		construirScrollMenu();
 		
 		/* Montaje */
 		panelPrincipal.add(barraSuperior, BorderLayout.NORTH);
-		panelPrincipal.add(panelBienvenida, BorderLayout.CENTER);
+		panelPrincipal.add(panelInicial, BorderLayout.CENTER);
 		panelPrincipal.add(scroll, BorderLayout.SOUTH);
 		
 		this.add(panelPrincipal);
@@ -145,7 +146,7 @@ public abstract class VentanaMenu extends Ventana {
 		manejadorPerfil();
 	}
 	
-	protected abstract void construirBienvenida();
+	protected abstract void construirInicio();
 	
 	protected abstract void construirScrollMenu();
 	

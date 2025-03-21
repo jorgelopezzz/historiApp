@@ -24,7 +24,7 @@ public class ScrollCursos extends Scroll {
 	                int index = listaComponentes.locationToIndex(evt.getPoint());
 	                if (index != -1) {
 	                    ComponenteCurso seleccionado = (ComponenteCurso) listaComponentes.getModel().getElementAt(index);
-	                    EmergenteSiNo emergente = new EmergenteSiNo(ventanaMadre, "ey");
+	                    EmergenteSiNo emergente = new EmergenteSiNo(ventanaMadre, "¿Deseas acceder a este curso?");
 	    				emergente.mostrar();
 	    				if(emergente.obtenerRespuesta().orElse(false))
 	    					selector.cambiarVentana(new VentanaBloques(selector, seleccionado));
