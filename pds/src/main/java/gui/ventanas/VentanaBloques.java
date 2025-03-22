@@ -36,10 +36,14 @@ public class VentanaBloques extends VentanaMenu {
 	private JLabel etiquetaBienvenida;
 	private JButton botonVolver;
 		
-	public VentanaBloques(SelectorVentana selector, ComponenteCurso cursoSeleccionado) {
+	/* Método de aprendizaje */
+	private String metodoAprendizaje;
+	
+	public VentanaBloques(SelectorVentana selector, ComponenteCurso cursoSeleccionado, String metodoAprendizaje) {
 	        super(selector);
 	        
 	        this.cursoSeleccionado = cursoSeleccionado;
+	        this.metodoAprendizaje = metodoAprendizaje;
 	}
 
     @Override
