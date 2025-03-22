@@ -1,0 +1,26 @@
+{
+  "nombre": "Curso de Programación",
+  "bloquesContenidos": [
+    {
+      "nombre": "Introducción a Java",
+      "tareas": [
+        {
+          "tipo": "Tip",
+          "contenido": "Java es un lenguaje de programación de alto nivel.",
+          "imagen": "java_intro.png"
+        },
+        {
+          "tipo": "PreguntaVF",
+          "enunciado": "Java es un lenguaje compilado.",
+          "esVerdadero": true
+        },
+        {
+          "tipo": "PreguntaTipoTest",
+          "enunciado": "¿Cuál de los siguientes es un tipo de dato en Java?",
+          "opciones": ["int", "void", "label", "block"],
+          "correcta": 0
+        }
+      ]
+    }
+  ]
+}
