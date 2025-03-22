@@ -93,7 +93,7 @@ public class VentanaBloques extends VentanaMenu {
                 "Arte moderno", "Explora las revoluciones artísticas desde finales del siglo XIX hasta el siglo XX, con movimientos como el impresionismo, cubismo, surrealismo y expresionismo. Analizaremos las obras de artistas como Van Gogh, Picasso y Dalí, comprendiendo su impacto en la evolución del arte. Ideal para quienes desean adentrarse en la creatividad y las vanguardias modernas.", 
                 //"C:/Users/aleja/git/historiApp/pds/resources/" + (new Random().nextInt(5)+1) + ".png", true));
                 "C:\\Users\\jorge\\git\\repository\\proyectoPDS\\historiApp\\pds\\resources\\" + (new Random().nextInt(5)+1) + ".png", true));
-		scroll = new ScrollBloques(VentanaBloques.this, selector, componentes);
+		scroll = new ScrollBloques(VentanaBloques.this, selector, componentes, cursoSeleccionado);
 		
 	}
 	

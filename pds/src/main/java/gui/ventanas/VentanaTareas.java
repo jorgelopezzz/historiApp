@@ -41,11 +41,13 @@ public class VentanaTareas extends VentanaMenu {
 	private String rutaJSON;
 	
 	/* Bloque de contenidos seleccionado */
-	private ComponenteBloque seleccionado;
+	private ComponenteBloque bloqueSeleccionado; // Para botón SIGUIENTE
+	private ComponenteCurso cursoSeleccionado; // Para botón SALIR
 	
-	public VentanaTareas(SelectorVentana selector, ComponenteBloque seleccionado) {
+	public VentanaTareas(SelectorVentana selector, ComponenteBloque bloqueSeleccionado, ComponenteCurso cursoSeleccionado) {
 	       super(selector);
-	       this.seleccionado = seleccionado;
+	       this.bloqueSeleccionado = bloqueSeleccionado;
+	       this.cursoSeleccionado = cursoSeleccionado;
 	}
 
     @Override
@@ -121,7 +123,7 @@ public class VentanaTareas extends VentanaMenu {
 				EmergenteSiNo emergente = new EmergenteSiNo(VentanaTareas.this, "¿Estás seguro de que quieres salir?\nNo se guardará tu progreso.");
 				emergente.mostrar();
 				if(emergente.obtenerRespuesta().orElse(false))
-					System.out.println("holi");//selector.cambiarVentana(new VentanaBloques(selector, seleccionado.getCurso()));
+					selector.cambiarVentana(new VentanaBloques(selector, cursoSeleccionado, "Método de aprendizaje"));
 			}
 		});
 	}
