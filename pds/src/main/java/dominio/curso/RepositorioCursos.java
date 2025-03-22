@@ -1,4 +1,4 @@
-package dominio;
+package dominio.curso;
 
 public enum RepositorioCursos {
 	INSTANCE;
