@@ -1,4 +1,4 @@
-package controlador;
+package dominio;
 
 public enum HistoriApp {
 	INSTANCE;

@@ -1,9 +1,22 @@
 package dominio.curso;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public enum RepositorioCursos {
 	INSTANCE;
-	
-	private RepositorioCursos () {
-		
-	}
+
+    private static List<Curso> cursos = new ArrayList<>();
+
+    public static void inicializar(String rutaArchivo) {
+        try {
+            cursos.add(ServicioJSON.cargarCurso(rutaArchivo));
+        } catch (Exception e) {
+            System.err.println("Error al cargar el curso: " + e.getMessage());
+        }
+    }
+
+    public static List<Curso> getCursos() {
+        return cursos;
+    }
 }
