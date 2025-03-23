@@ -8,7 +8,9 @@ public class BloqueContenidos {
     private String nombre;
     private CertificadoBloque certBloque;
     private List<Tarea> tareas;
-
+    
+    public BloqueContenidos() {} // Constructor vacío para Jackson (servicioJSON)
+    
     public BloqueContenidos(String nombre, CertificadoBloque certBloque, List<Tarea> tareas) {
         this.nombre = nombre;
         this.certBloque = certBloque;

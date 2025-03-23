@@ -5,7 +5,9 @@ import java.util.List;
 public class Curso {
     private String nombre;
     private List<BloqueContenidos> bloquesContenidos;
-
+    
+    public Curso() {} // Constructor vacío para Jackson (servicioJSON)
+    
     public Curso(String nombre, List<BloqueContenidos> bloquesContenidos) {
         this.nombre = nombre;
         this.bloquesContenidos = bloquesContenidos;
