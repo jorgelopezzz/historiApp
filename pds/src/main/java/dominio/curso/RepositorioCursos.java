@@ -3,6 +3,8 @@ package dominio.curso;
 import java.util.ArrayList;
 import java.util.List;
 
+import dominio.ServicioJSON;
+
 public enum RepositorioCursos {
 	INSTANCE;
 
