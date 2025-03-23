@@ -10,7 +10,8 @@ public class Lanzador {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SelectorVentana selector = new SelectorVentana();
+					// SelectorVentana selector = new SelectorVentana();
+					new SelectorVentana();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

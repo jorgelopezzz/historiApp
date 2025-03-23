@@ -4,7 +4,6 @@ import javax.swing.JFrame;
 
 import gui.componentes.Componente;
 import gui.componentes.ComponenteCurso;
-import gui.emergentes.EmergenteMetodoAprendizaje;
 import gui.emergentes.EmergenteSiNo;
 import gui.ventanas.SelectorVentana;
 import gui.ventanas.VentanaBloques;

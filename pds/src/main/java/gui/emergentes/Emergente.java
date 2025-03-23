@@ -1,18 +1,16 @@
 package gui.emergentes;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 import gui.GestorGUI;
 
+@SuppressWarnings("serial")
 public abstract class Emergente extends JDialog {
 	
 	protected JFrame ventanaMadre;

@@ -2,7 +2,6 @@ package gui.componentes;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
-import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -15,6 +14,7 @@ import javax.swing.border.LineBorder;
 
 import gui.GestorGUI;
 
+@SuppressWarnings("serial")
 public abstract class Componente extends JPanel {
 	
 	/* Componentes de información */

@@ -1,10 +1,10 @@
 package gui.emergentes;
 
-import java.awt.Color;
 import java.util.Optional;
 
 import javax.swing.JFrame;
 
+@SuppressWarnings("serial")
 public class EmergenteMetodoAprendizaje extends EmergenteBotones {
 
 	public EmergenteMetodoAprendizaje(JFrame ventanaMadre, String mensaje) {

@@ -7,8 +7,6 @@ import gui.componentes.ComponenteBloque;
 import gui.componentes.ComponenteCurso;
 import gui.emergentes.EmergenteSiNo;
 import gui.ventanas.SelectorVentana;
-import gui.ventanas.VentanaBloques;
-import gui.ventanas.VentanaCursos;
 import gui.ventanas.VentanaTareas;
 
 @SuppressWarnings("serial")

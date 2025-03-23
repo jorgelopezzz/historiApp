@@ -1,7 +1,5 @@
 package gui.ventanas;
 
-import java.awt.EventQueue;
-
 public class SelectorVentana {
 	private Ventana ventanaActual;
 	

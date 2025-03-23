@@ -3,7 +3,6 @@ package gui.ventanas;
 import java.awt.Color;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 import gui.GestorGUI;
 

@@ -1,14 +1,8 @@
 package gui.ventanas;
 
 import java.awt.BorderLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.Random;
 
 import javax.swing.Box;
@@ -16,16 +10,11 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 import gui.GestorGUI;
-import gui.componentes.Componente;
 import gui.componentes.ComponenteBloque;
 import gui.componentes.ComponenteCurso;
-import gui.emergentes.EmergenteClasificacion;
 import gui.info.InfoBloque;
-import gui.info.InfoCurso;
-import gui.scroll.Scroll;
 import gui.scroll.ScrollBloques;
 
 @SuppressWarnings("serial")
