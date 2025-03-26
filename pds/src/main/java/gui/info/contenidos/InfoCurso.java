@@ -1,6 +1,6 @@
-package gui.info;
+package gui.info.contenidos;
 
-public final class InfoCurso extends Info {
+public final class InfoCurso extends InfoContenidos {
 	
 	/* Atributos específicos de curso */
 	private final boolean estaMatriculado;

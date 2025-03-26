@@ -1,27 +1,15 @@
 package gui.info;
 
-public abstract class Info {
-
-	private final String titulo;
-	private final String descripcion;
-	private final String rutaImagen;
+public class Info {
 	
-	protected Info(String titulo, String descripcion, String rutaImagen) {
+	private final String titulo;
+	
+	public Info(String titulo) {
 		this.titulo = titulo;
-		this.descripcion = descripcion;
-		this.rutaImagen = rutaImagen;
 	}
 
 	public String getTitulo() {
 		return titulo;
-	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-	
-	public String getRutaImagen() {
-		return rutaImagen;
 	}
 
 }

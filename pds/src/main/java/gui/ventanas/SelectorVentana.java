@@ -4,7 +4,6 @@ public class SelectorVentana {
 	private Ventana ventanaActual;
 	
 	public SelectorVentana() {
-		//ventanaActual = new VentanaLogin(this);
 		ventanaActual = new VentanaLogin(this);
 		ventanaActual.mostrar();
 	}

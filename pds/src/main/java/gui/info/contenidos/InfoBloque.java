@@ -1,6 +1,6 @@
-package gui.info;
+package gui.info.contenidos;
 
-public class InfoBloque extends Info {
+public class InfoBloque extends InfoContenidos {
 
 	/* Atributos específicos de curso */
 	private final boolean estaCompletado;
