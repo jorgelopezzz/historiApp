@@ -11,4 +11,8 @@ public class InfoRellenar extends Info {
 		this.respuesta = respuesta;
 	}
 
+	public String getRespuesta() {
+		return respuesta;
+	}
+
 }

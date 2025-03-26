@@ -18,7 +18,7 @@ public enum RepositorioCursos {
                     .map(File::getPath)
                     .map(ruta -> {
                         try {
-                            return ServicioJSON.cargarCurso(ruta);
+                            return ServicioJSON.INSTANCE.cargarCurso(ruta);
                         } catch (Exception e) {
                             System.err.println("Error al cargar el curso desde " + ruta + ": " + e.getMessage());
                             return null;
@@ -27,10 +27,15 @@ public enum RepositorioCursos {
                     .filter(curso -> curso != null)
                     .collect(Collectors.toList());
         
+        ///
         for(Curso curso: cursos) {
-        	System.out.println(curso.getNombre());
+        	System.out.println("\n"+curso.getTitulo()
+        			+","+curso.getDescripcion()
+        			+","+curso.getRutaImagen()
+        			+",");
+        	curso.getBloquesContenidos().stream().forEach(b -> System.out.print(b.getTitulo()+","));
         }
-        System.out.println("hola");
+        ///
     }
 
     public List<Curso> getCursos() {

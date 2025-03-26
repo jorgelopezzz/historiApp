@@ -8,10 +8,17 @@ import dominio.curso.Curso;
 import java.io.File;
 import java.io.IOException;
 
-public class ServicioJSON {
-    private static ObjectMapper objectMapper = new ObjectMapper();
-
-    public static Curso cargarCurso(String rutaArchivo) throws IOException {
+public enum ServicioJSON {
+	INSTANCE;
+	
+    private ObjectMapper objectMapper;
+    
+    private ServicioJSON() {
+    	objectMapper = new ObjectMapper();
+    	objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+    }
+    
+    public Curso cargarCurso(String rutaArchivo) throws IOException {
         return objectMapper.readValue(new File(rutaArchivo), Curso.class);
     }
 }

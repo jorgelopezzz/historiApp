@@ -2,6 +2,7 @@ package gui.componentes.contenidos;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.util.Optional;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -35,14 +36,11 @@ public abstract class ComponenteContenido extends Componente {
 	private JPanel panelInformacion;
 	
 	/* Dimensiones */
-	private static final int ANCHO_IMAGEN = 300;
-	private static final int ALTO_IMAGEN = 150;
-	
 	private static final int SEPARACION = 10;
 	private static final int NUM_COLUMNAS = 40;
 	
 	public ComponenteContenido(String cabeceraTitulo, String titulo, String descripcion, String rutaImagen, String estado) {
-		super();
+		super(new BorderLayout());
 		
 		/* Configuración panel imagen */
 		panelImagen = new JPanel();
