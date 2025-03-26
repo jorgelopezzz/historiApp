@@ -13,8 +13,8 @@ public class InfoTip extends Info {
 		this.rutaImagen = rutaImagen.orElse(null);
 	}
 
-	public String getRutaImagen() {
-		return rutaImagen;
+	public Optional<String> getRutaImagen() {
+		return Optional.ofNullable(rutaImagen);
 	}
 
 }

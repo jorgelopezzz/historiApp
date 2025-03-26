@@ -1,8 +1,10 @@
 package gui.ventanas;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Optional;
 import java.util.Random;
 
 import javax.swing.Box;
@@ -11,19 +13,25 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import gui.GestorGUI;
+import gui.componentes.Componente;
 import gui.componentes.contenidos.ComponenteBloque;
 import gui.componentes.contenidos.ComponenteCurso;
 import gui.componentes.tarea.ComponenteTarea;
+import gui.componentes.tarea.ComponenteTip;
 import gui.emergentes.EmergenteSiNo;
 import gui.info.contenidos.InfoCurso;
+import gui.info.tarea.InfoTip;
 
 @SuppressWarnings("serial")
 public class VentanaTareas extends VentanaMenu {
 	
+	/* Dimensiones */
+	private static final int MARGEN = 15;
+	
 	/* Componentes de organización */
-	JButton botonSalir;
-	JButton botonSiguiente;
-	JPanel panelSiguiente;
+	private JButton botonSalir;
+	private JButton botonSiguiente;
+	private JPanel panelSiguiente;
 	
 	/* Atributos a recabar */
 	private String rutaJSON;
@@ -66,11 +74,16 @@ public class VentanaTareas extends VentanaMenu {
     
     private void construirPanelSiguiente() {
     	panelSiguiente = new JPanel();
+    	GestorGUI.configurarPanel(panelSiguiente, new BoxLayout(panelSiguiente, BoxLayout.Y_AXIS), GestorGUI.getInstancia().getColorClaro());
                      
         botonSiguiente = GestorGUI.getBotonPredeterminado("Siguiente");
+        botonSiguiente.setAlignmentX(Component.CENTER_ALIGNMENT);
+        
         manejadorSalir();
         
-        panelSiguiente.add(botonSiguiente);        
+        panelSiguiente.add(Box.createVerticalStrut(MARGEN));
+        panelSiguiente.add(botonSiguiente);
+        panelSiguiente.add(Box.createVerticalStrut(MARGEN));
      
     }
     
@@ -82,11 +95,9 @@ public class VentanaTareas extends VentanaMenu {
         panelGeneral.setBackground(GestorGUI.getInstancia().getColorClaro());
 
         // Crear el componente del curso
-        ComponenteTarea componente = new ComponenteTarea(new InfoCurso(
-                "Historia de España",
-                "Un recorrido por los acontecimientos clave que han marcado la historia de España, desde la antigüedad hasta la actualidad. Analizaremos sus civilizaciones, monarquías, conflictos y transformaciones sociales para comprender su impacto en el mundo. Ideal para quienes desean profundizar en el pasado y presente de España.",
-                "C:\\Users\\jorge\\git\\repository\\proyectoPDS\\historiApp\\pds\\resources\\" + (new Random().nextInt(5) + 1) + ".png",
-                true));
+        Componente componente = new ComponenteTip(new InfoTip("Sabías que los leones duermen en torno a 20 horas al día?",
+                Optional.empty()));
+        componente.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         // Agregar el componente al centro del panel general
         panelGeneral.add(componente);
