@@ -18,7 +18,7 @@ public abstract class ComponenteTarea extends Componente {
 	
 	/* Dimensiones */
 	private static final int NUM_COLUMNAS = 40;
-	private static final int MARGEN = 15;
+	protected static final int MARGEN = 15;
 	
 	/* Atributos de información */
 	private final String enunciado;

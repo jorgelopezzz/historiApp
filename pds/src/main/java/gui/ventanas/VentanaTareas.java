@@ -18,12 +18,14 @@ import gui.componentes.Componente;
 import gui.componentes.contenidos.ComponenteBloque;
 import gui.componentes.contenidos.ComponenteCurso;
 import gui.componentes.tarea.ComponentePregunta;
+import gui.componentes.tarea.ComponenteRellenar;
 import gui.componentes.tarea.ComponenteTarea;
 import gui.componentes.tarea.ComponenteTip;
 import gui.componentes.tarea.ComponenteTipoTest;
 import gui.componentes.tarea.ComponenteVF;
 import gui.emergentes.EmergenteSiNo;
 import gui.info.contenidos.InfoCurso;
+import gui.info.tarea.InfoRellenar;
 import gui.info.tarea.InfoTip;
 import gui.info.tarea.InfoTipoTest;
 import gui.info.tarea.InfoVF;
@@ -103,7 +105,7 @@ public class VentanaTareas extends VentanaMenu {
         panelGeneral.setBackground(GestorGUI.getInstancia().getColorClaro());
 
         // Crear el componente del curso
-        tareaActual = new ComponenteVF(new InfoVF("Amas España?", true)); 
+        tareaActual = new ComponenteRellenar( new InfoRellenar("Cuál es el mejor país del mundo", "España") ); 
         tareaActual.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         // Agregar el componente al centro del panel general
