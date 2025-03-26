@@ -1,8 +1,11 @@
 package gui.componentes.tarea;
 
 import java.awt.Component;
+import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 
+import javax.swing.AbstractButton;
 import javax.swing.Box;
 import javax.swing.ButtonGroup;
 import javax.swing.ButtonModel;
@@ -28,11 +31,13 @@ public class ComponenteTipoTest extends ComponentePregunta {
 	private ButtonGroup grupoOpciones;
 	private JLabel cabeceraOpciones;
 	private List<String> opciones;
+	private List<JRadioButton> botones;
 	
 	public ComponenteTipoTest(InfoTipoTest info) {
 		super(info);
 		this.indiceCorrecta = info.getCorrecta();
 		this.opciones = List.copyOf(info.getOpciones());
+		this.botones = new ArrayList<JRadioButton>();
 		
 		/* Construcción de etiquetas */
 		super.construir(CABECERA);
@@ -44,36 +49,27 @@ public class ComponenteTipoTest extends ComponentePregunta {
 		grupoOpciones = new ButtonGroup();
 		opciones.stream()
 			.map( op -> new JRadioButton(op))
-			.forEach( button -> {
+			.forEach( b -> {
 				
 				/* Agrupación */
-				grupoOpciones.add(button); // Nos aseguramos de que sólo se pueda elegir uno
+				grupoOpciones.add(b); // Nos aseguramos de que sólo se pueda elegir uno
+				botones.add(b);
 				
 				/* Estilo */
-				button.setOpaque(false);
-				button.setFont(GestorGUI.getInstancia().getFuenteGrande());
-				button.setForeground(GestorGUI.getInstancia().getColorBlanco());	
+				b.setOpaque(false);
+				b.setFont(GestorGUI.getInstancia().getFuenteGrande());
+				b.setForeground(GestorGUI.getInstancia().getColorBlanco());	
 				
 				/* Montaje */
-				button.setAlignmentX(Component.LEFT_ALIGNMENT);
-				add(button);
+				b.setAlignmentX(Component.LEFT_ALIGNMENT);
+				add(b);
 			});
 		
 	}
 	
-	private int getRespuesta() {
-		ButtonModel botonSeleccionado = grupoOpciones.getSelection();
-		if(botonSeleccionado == null) {
-			return SIN_RESPUESTA;
-		} else {
-			String respuesta = ((JRadioButton) botonSeleccionado.getGroup().getElements().nextElement()).getText();
-			return opciones.indexOf(respuesta);
-		}
-	}
-	
 	@Override
 	public boolean evaluar() {
-		return getRespuesta() == indiceCorrecta;
+		return botones.get(indiceCorrecta).isSelected();
 	}
 
 }

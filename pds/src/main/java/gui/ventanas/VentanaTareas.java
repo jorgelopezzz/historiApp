@@ -17,6 +17,7 @@ import gui.GestorGUI;
 import gui.componentes.Componente;
 import gui.componentes.contenidos.ComponenteBloque;
 import gui.componentes.contenidos.ComponenteCurso;
+import gui.componentes.tarea.ComponentePregunta;
 import gui.componentes.tarea.ComponenteTarea;
 import gui.componentes.tarea.ComponenteTip;
 import gui.componentes.tarea.ComponenteTipoTest;
@@ -35,6 +36,8 @@ public class VentanaTareas extends VentanaMenu {
 	private JButton botonSalir;
 	private JButton botonSiguiente;
 	private JPanel panelSiguiente;
+	
+	private ComponenteTarea tareaActual;
 	
 	/* Atributos a recabar */
 	private String rutaJSON;
@@ -82,7 +85,7 @@ public class VentanaTareas extends VentanaMenu {
         botonSiguiente = GestorGUI.getBotonPredeterminado("Siguiente");
         botonSiguiente.setAlignmentX(Component.CENTER_ALIGNMENT);
         
-        manejadorSalir();
+        manejadorSiguiente();
         
         panelSiguiente.add(Box.createVerticalStrut(MARGEN));
         panelSiguiente.add(botonSiguiente);
@@ -98,11 +101,11 @@ public class VentanaTareas extends VentanaMenu {
         panelGeneral.setBackground(GestorGUI.getInstancia().getColorClaro());
 
         // Crear el componente del curso
-        Componente componente = new ComponenteTipoTest(new InfoTipoTest("Selecciona la opción que más representa a España", List.of("Jamón", "Tortilla", "Asturias", "Chorizo", "Cocido"), 4)); 
-        componente.setAlignmentX(Component.CENTER_ALIGNMENT);
+        tareaActual = new ComponenteTipoTest(new InfoTipoTest("Selecciona la opción que más representa a España", List.of("Jamón", "Tortilla", "Asturias", "Chorizo", "Cocido"), 4)); 
+        tareaActual.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         // Agregar el componente al centro del panel general
-        panelGeneral.add(componente);
+        panelGeneral.add(tareaActual);
         panelGeneral.add(Box.createVerticalGlue());
         
         // Crear panelSiguiente y configurarlo
@@ -125,6 +128,18 @@ public class VentanaTareas extends VentanaMenu {
 				emergente.mostrar();
 				if(emergente.obtenerRespuesta().orElse(false))
 					selector.cambiarVentana(new VentanaBloques(selector, cursoSeleccionado, "Método de aprendizaje"));
+			}
+		});
+	}
+	
+	private void manejadorSiguiente() {
+		botonSiguiente.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {		
+				// Lanzar la ventana emergente
+				if(tareaActual instanceof ComponentePregunta) {
+					System.out.println(((ComponentePregunta) tareaActual).evaluar());
+				}
 			}
 		});
 	}
