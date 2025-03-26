@@ -26,7 +26,7 @@
 **Postcondiciones:**
 - El usuario queda registrado en el sistema y puede iniciar sesión.
 
-#### 1.2 Iniciar sesión de usuario
+#### 1.2 Iniciar y cerrar sesión de usuario
 **Resumen:** El usuario ingresa sus credenciales para acceder al sistema.
 
 **Actores:** 
@@ -40,6 +40,9 @@
 2. El usuario introduce su nombre de usuario y contraseña.
 3. El sistema valida las credenciales.
 4. El sistema permite el acceso y redirige al usuario a la pantalla principal.
+5. El sistema comienza a contar el tiempo de sesión del usuario.
+6. El usuario cierra la sesión
+7. El sistema actualiza las estadísticas de tiempo de uso de la apliación, tiempo medio de uso diario de la apliación y mejor racha.
 
 **Flujos alternativos:**
 - 4a. Si las credenciales son incorrectas, el sistema muestra un mensaje de error y solicita reintentar.
@@ -67,30 +70,9 @@
 - La imagen de perfil del usuario se actualiza correctamente.
 - El saludo del usuario se actualiza correctamente.
 
-### 2. Trackeo de estadísticas
+### 2. Gestión de contenidos
 
-#### 2.1 Guardar estadísticas
-**Resumen:** El sistema guarda las estadísticas de uso de la aplicación y de rendimiento en cursos y bloques de contenido.
-
-**Actores:**  
-- Sistema.
-
-**Precondiciones:**  
-- El usuario debe estar registrado e identificado en el sistema.
-
-**Flujo principal:**  
-1. El usuario accede a la sección de estadísticas.  
-2. El sistema muestra las estadísticas del usuario:   
-   - Tiempo de uso de la aplicación.  
-   - Tiempo medio de uso diario de la aplicación.  
-   - Mejor racha.  
-
-**Postcondiciones:**  
-- El usuario visualiza sus estadísticas.
-
-### 3. Gestión de contenidos
-
-#### 3.1 Realizar un curso
+#### 2.1 Realizar un curso
 **Resumen:** El estudiante selecciona un curso y elige una estrategia de aprendizaje para completarlo. Una vez cursados los contenidos que crea conveniente, el estudiante puede salir del curso.
 
 **Actores:** 
@@ -114,7 +96,7 @@
 **Postcondiciones:**
 - Se guarda el progreso del estudiante en el curso.
 
-#### 3.2 Realizar bloque de contenidos
+#### 2.2 Realizar bloque de contenidos
 **Resumen:** El estudiante accede a un bloque de contenido dentro de un curso y comienza a realizar tareas.
 
 **Actores:** 
@@ -135,9 +117,9 @@
 **Postcondiciones:**
 - El sistema actualiza las estadísticas de bloques completados y puntuación obtenida en preguntas.
 
-### 4. Administración de cursos
+### 3. Administración de cursos
 
-#### 4.1 Importar un curso
+#### 3.1 Importar un curso
 
 **Resumen:** El profesor sube un nuevo curso.
 
