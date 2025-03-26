@@ -46,6 +46,8 @@
 - El usuario accede correctamente a su cuenta.
 
 #### 1.3 Cambiar imagen de usuario
+
+#### 1.3 Cambiar imagen de usuario
 **Resumen:** El usuario actualiza su imagen de perfil.
 
 **Actores:** Usuario.
@@ -79,87 +81,43 @@
 **Postcondiciones:**
 - El saludo del usuario se actualiza correctamente.
 
-### 2. Vista de ranking general
-
-#### 2.1 Visualizar estadísticas
-
-**Resumen:** El usuario puede ver sus estadísticas de uso de la aplicación y de rendimiento en cursos y bloques de contenido.
-
-**Actores:**  
-- Usuario.
-
-**Precondiciones:**  
-- El usuario debe estar registrado e identificado en el sistema.
-
-**Flujo principal:**  
-1. El usuario accede a la sección de estadísticas.  
-2. El sistema muestra las estadísticas del usuario:  
-   - Cursos completados.  
-   - Bloques completados.  
-   - Puntuación obtenida en preguntas.  
-   - Tiempo de uso de la aplicación.  
-   - Tiempo medio de uso diario de la aplicación.  
-   - Mejor racha.  
-
-**Postcondiciones:**  
-- El usuario visualiza sus estadísticas.
-
-#### 2.2 Visualizar ranking general de puntuación
-
->[!NOTE]
->El caso de uso 2.2 representa la funcionalidad adicional a desarrollar en el proyecto.
-
-**Resumen:** El usuario consulta el ranking de puntuaciones de cursos y bloques.
-
-**Actores:** Usuario.
-
-**Precondiciones:**
-- El usuario debe estar identificado en el sistema.
-
-**Flujo principal:**
-1. El usuario accede a la sección de ranking.
-2. El sistema muestra la lista de puntuaciones organizadas.
-
-**Postcondiciones:**
-- El usuario visualiza las posiciones generales.
-
 ### 3. Gestión de contenidos
 
 #### 3.1 Realizar un curso
-**Resumen:** El usuario selecciona un curso y elige una estrategia de aprendizaje para completarlo. Una vez cursados los contenidos que crea conveniente, el usuario puede salir del curso.
+**Resumen:** El estudiante selecciona un curso y elige una estrategia de aprendizaje para completarlo. Una vez cursados los contenidos que crea conveniente, el estudiante puede salir del curso.
 
-**Actores:** Usuario.
+**Actores:** Estudiante.
 
 **Precondiciones:**
-- El usuario debe estar identificado en el sistema.
+- El estudiante debe estar identificado en el sistema.
 
 **Flujo principal:**
 1. El sistema muestra la lista de cursos disponibles.
-2. El usuario selecciona un curso.
+2. El estudiante selecciona un curso.
 3. El sistema muestra las estrategias de aprendizaje disponibles (secuencial, espaciada, aleatoria, etc.).
-4. El usuario selecciona una estrategia.
+4. El estudiante selecciona una estrategia.
 5. El sistema muestra los bloques de contenido del curso.
-6. El usuario cursa los bloques de contenidos que cree conveniente.
-7. El usuario sale del curso.
+6. El estudiante cursa los bloques de contenidos que cree conveniente.
+7. El estudiante sale del curso.
 
 **Postcondiciones:**
-- Se guarda el progreso del usuario en el curso.
+- Se guarda el progreso del usuestudianteario en el curso.
 
 #### 3.2 Realizar bloque de contenidos
-**Resumen:** El usuario accede a un bloque de contenido dentro de un curso y comienza a realizar tareas.
+**Resumen:** El estudiante accede a un bloque de contenido dentro de un curso y comienza a realizar tareas.
 
-**Actores:** Usuario.
+**Actores:** estudiante.
 
 **Precondiciones:**
 - El usuario debe estar realizando un curso.
 
 **Flujo principal:**
-1. El usuario selecciona un bloque de contenidos.
-2. El usuario completa todas las tareas del curso.
-3. El usuario sale del bloque de contenidos.
+1. El estudiante selecciona un bloque de contenidos.
+2. El estudiante completa todas las tareas del curso.
+3. El estudiante sale del bloque de contenidos.
 
 **Flujo alternativo:**
-- 2b. Si el usuario no completa el bloque de contenidos, el progreso en dicho bloque se perderá.
+- 2b. Si el estudiante no completa el bloque de contenidos, el progreso en dicho bloque se perderá.
 
 **Postcondiciones:**
 - El bloque de contenidos se marca como completado.
@@ -188,7 +146,6 @@
 
 **Postcondiciones:**  
 - El sistema almacena el curso actualizado o nuevo.
-
 
 ## Referencias de Arquitectura
 
