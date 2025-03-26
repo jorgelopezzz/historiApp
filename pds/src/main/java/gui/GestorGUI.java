@@ -12,6 +12,7 @@ import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.LayoutManager;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
@@ -125,13 +126,7 @@ public class GestorGUI {
 	}
 	
 	public ImageIcon iconoDeRecursos(String ruta, int ancho, int alto) {
-		try {
-			URL url = new URL(ruta);
-			BufferedImage img = ImageIO.read(url);
-			return escalarIcono(new ImageIcon(img), ancho, alto);
-		} catch (IOException e) {
-			return escalarIcono(new ImageIcon(getClass().getResource(ruta)), ancho, alto);			
-		}
+		return escalarIcono(new ImageIcon(getClass().getResource(ruta)), ancho, alto);			
 	}
 	
 	public static TitledBorder bordeTexto(String texto, Font fuente, Color colorFuente, Color colorBorde) {
@@ -143,7 +138,18 @@ public class GestorGUI {
 	
 	
 	public ImageIcon iconoAbsoluto(String ruta, int ancho, int alto) {
-		return escalarIcono(new ImageIcon(ruta), ancho, alto);
+		File archivo = new File(ruta);
+        if (archivo.exists() && archivo.isFile())
+            return escalarIcono(new ImageIcon(getClass().getResource(ruta)), ancho, alto);
+
+        try {
+            URL url = new URL(ruta);
+            BufferedImage img = ImageIO.read(url);
+            return escalarIcono(new ImageIcon(img), ancho, alto);
+        } catch (IOException e) {
+            System.err.println("No se pudo cargar la imagen desde la ruta: " + ruta);
+            return null;
+        }
 	}
 	
 	public static JTextArea crearAreaTexto(String texto) {
