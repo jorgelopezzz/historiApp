@@ -7,7 +7,6 @@
 
 **Actores:** 
 -Usuario.
--Sistema
 
 **Precondiciones:**
 - El usuario no debe estar registrado previamente.
@@ -32,7 +31,6 @@
 
 **Actores:** 
 -Usuario.
--Sistema.
 
 **Precondiciones:**
 - El usuario debe estar registrado.
@@ -54,7 +52,6 @@
 
 **Actores:** 
 -Usuario.
--Sistema.
 
 **Precondiciones:**
 - El usuario debe estar registrado en el sistema.
@@ -70,6 +67,27 @@
 - La imagen de perfil del usuario se actualiza correctamente.
 - El saludo del usuario se actualiza correctamente.
 
+### 2. Trackeo de estadísticas
+
+#### 2.1 Guardar estadísticas
+**Resumen:** El sistema guarda las estadísticas de uso de la aplicación y de rendimiento en cursos y bloques de contenido.
+
+**Actores:**  
+- Sistema.
+
+**Precondiciones:**  
+- El usuario debe estar registrado e identificado en el sistema.
+
+**Flujo principal:**  
+1. El usuario accede a la sección de estadísticas.  
+2. El sistema muestra las estadísticas del usuario:   
+   - Tiempo de uso de la aplicación.  
+   - Tiempo medio de uso diario de la aplicación.  
+   - Mejor racha.  
+
+**Postcondiciones:**  
+- El usuario visualiza sus estadísticas.
+
 ### 3. Gestión de contenidos
 
 #### 3.1 Realizar un curso
@@ -77,7 +95,6 @@
 
 **Actores:** 
 - Estudiante.
-- Sistema
 
 **Precondiciones:**
 - El estudiante debe estar identificado en el sistema.
@@ -91,15 +108,17 @@
 6. El estudiante cursa los bloques de contenidos que cree conveniente.
 7. El estudiante sale del curso.
 
+**Flujo alternativo:**
+- 6a. Si se han completado todos los bloques del curso, el sistema actualiza la estadística de cursos completados.
+
 **Postcondiciones:**
-- Se guarda el progreso del usuestudianteario en el curso.
+- Se guarda el progreso del estudiante en el curso.
 
 #### 3.2 Realizar bloque de contenidos
 **Resumen:** El estudiante accede a un bloque de contenido dentro de un curso y comienza a realizar tareas.
 
 **Actores:** 
 - Estudiante.
-- Sistema
 
 **Precondiciones:**
 - El usuario debe estar realizando un curso.
@@ -107,23 +126,23 @@
 **Flujo principal:**
 1. El estudiante selecciona un bloque de contenidos.
 2. El estudiante completa todas las tareas del curso.
-3. El estudiante sale del bloque de contenidos.
+3. El sistema marca el bloque de contenidos como completado.
+4. El estudiante sale del bloque de contenidos.
 
 **Flujo alternativo:**
 - 2b. Si el estudiante no completa el bloque de contenidos, el progreso en dicho bloque se perderá.
 
 **Postcondiciones:**
-- El sistema marca el bloque de contenidos como completado.
+- El sistema actualiza las estadísticas de bloques completados y puntuación obtenida en preguntas.
 
-### 5. Administración de cursos
+### 4. Administración de cursos
 
-#### 5.1 Importar un curso
+#### 4.1 Importar un curso
 
 **Resumen:** El profesor sube un nuevo curso.
 
 **Actores:**  
 - Profesor.
-- Sistema
 
 **Precondiciones:**  
 - El profesor debe estar registrado e identificado en el sistema.  
