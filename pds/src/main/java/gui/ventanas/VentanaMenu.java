@@ -1,7 +1,6 @@
 package gui.ventanas;
 
 import java.awt.BorderLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,17 +11,11 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 import gui.GestorGUI;
-import gui.componentes.Componente;
-import gui.componentes.ComponenteCurso;
 import gui.emergentes.EmergenteClasificacion;
 import gui.emergentes.EmergenteEstadisticas;
 import gui.emergentes.EmergentePerfil;
-import gui.emergentes.EmergenteRegistro;
-import gui.info.InfoCurso;
-import gui.scroll.Scroll;
 
 @SuppressWarnings("serial")
 public abstract class VentanaMenu extends Ventana {

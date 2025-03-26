@@ -1,33 +1,21 @@
 package gui.ventanas;
 
 import java.awt.BorderLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.Random;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 import gui.GestorGUI;
-import gui.componentes.Componente;
 import gui.componentes.ComponenteBloque;
 import gui.componentes.ComponenteCurso;
 import gui.componentes.ComponenteTarea;
-import gui.emergentes.EmergenteFichero;
 import gui.emergentes.EmergenteSiNo;
 import gui.info.InfoCurso;
-import gui.scroll.Scroll;
-import gui.scroll.ScrollCursos;
 
 @SuppressWarnings("serial")
 public class VentanaTareas extends VentanaMenu {
@@ -41,11 +29,13 @@ public class VentanaTareas extends VentanaMenu {
 	private String rutaJSON;
 	
 	/* Bloque de contenidos seleccionado */
-	private ComponenteBloque seleccionado;
+	private ComponenteBloque bloqueSeleccionado; // Para botón SIGUIENTE
+	private ComponenteCurso cursoSeleccionado; // Para botón SALIR
 	
-	public VentanaTareas(SelectorVentana selector, ComponenteBloque seleccionado) {
+	public VentanaTareas(SelectorVentana selector, ComponenteBloque bloqueSeleccionado, ComponenteCurso cursoSeleccionado) {
 	       super(selector);
-	       this.seleccionado = seleccionado;
+	       this.bloqueSeleccionado = bloqueSeleccionado;
+	       this.cursoSeleccionado = cursoSeleccionado;
 	}
 
     @Override
@@ -121,7 +111,7 @@ public class VentanaTareas extends VentanaMenu {
 				EmergenteSiNo emergente = new EmergenteSiNo(VentanaTareas.this, "¿Estás seguro de que quieres salir?\nNo se guardará tu progreso.");
 				emergente.mostrar();
 				if(emergente.obtenerRespuesta().orElse(false))
-					System.out.println("holi");//selector.cambiarVentana(new VentanaBloques(selector, seleccionado.getCurso()));
+					selector.cambiarVentana(new VentanaBloques(selector, cursoSeleccionado, "Método de aprendizaje"));
 			}
 		});
 	}

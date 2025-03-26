@@ -3,7 +3,6 @@ package gui.scroll;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -16,15 +15,7 @@ import javax.swing.border.EmptyBorder;
 
 import gui.GestorGUI;
 import gui.componentes.Componente;
-import gui.componentes.ComponenteCurso;
-import gui.emergentes.EmergenteClasificacion;
-import gui.emergentes.EmergenteMensaje;
-import gui.emergentes.EmergenteSiNo;
-import gui.info.InfoCurso;
 import gui.ventanas.SelectorVentana;
-import gui.ventanas.VentanaBloques;
-import gui.ventanas.VentanaCursos;
-import gui.ventanas.VentanaMenu;
 
 @SuppressWarnings("serial")
 public abstract class Scroll extends JScrollPane {

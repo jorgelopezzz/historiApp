@@ -4,7 +4,6 @@ import java.awt.Component;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -13,6 +12,7 @@ import javax.swing.border.EmptyBorder;
 
 import gui.GestorGUI;
 
+@SuppressWarnings("serial")
 public abstract class EmergenteBotones extends Emergente{
 	// esta es la clase padre de emergenteMensaje y emergenteSiNo
 	// hay que adaptarlas (emergenteMensaje ya está hecha y emergenteSiNo le falta añadir un Jpanel para meter los botones

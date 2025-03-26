@@ -41,6 +41,27 @@
       <artifactId>junit-jupiter-params</artifactId>
       <scope>test</scope>
     </dependency>
+    
+    <!-- Jackson Core (necesario para la manipulación JSON) -->
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-core</artifactId>
+        <version>2.15.0</version>
+    </dependency>
+
+    <!-- Jackson Databind (para convertir JSON a objetos Java y viceversa) -->
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>2.15.0</version>
+    </dependency>
+
+    <!-- Jackson Annotations (para anotaciones como @JsonProperty si las necesitas) -->
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-annotations</artifactId>
+        <version>2.15.0</version>
+    </dependency>
   </dependencies>
 
   <build>

@@ -1,11 +1,8 @@
 package gui.componentes;
 
-import javax.swing.JLabel;
-
-import gui.GestorGUI;
 import gui.info.InfoBloque;
-import gui.info.InfoCurso;
 
+@SuppressWarnings("serial")
 public class ComponenteBloque extends Componente {
 
 	/* Cadenas estándar */

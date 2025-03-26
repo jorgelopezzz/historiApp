@@ -2,7 +2,6 @@ package gui.estilo;
 
 import java.awt.Color;
 import java.awt.Font;
-import gui.estilo.Tema;
 
 import gui.GestorGUI;
 

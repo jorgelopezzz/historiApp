@@ -1,7 +1,5 @@
 package gui.emergentes;
 
-import java.awt.Color;
-
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
@@ -10,7 +8,7 @@ import javax.swing.JTextArea;
 
 import gui.GestorGUI;
 
-//@SuppressWarnings("serial")
+@SuppressWarnings("serial")
 public class EmergenteEstadisticas extends Emergente { 
 
 	/* Componentes de organización */

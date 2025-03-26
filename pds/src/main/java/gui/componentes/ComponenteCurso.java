@@ -2,6 +2,7 @@ package gui.componentes;
 
 import gui.info.InfoCurso;
 
+@SuppressWarnings("serial")
 public class ComponenteCurso extends Componente {
 	
 	/* Cadenas estándar */

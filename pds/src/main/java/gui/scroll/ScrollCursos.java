@@ -23,11 +23,16 @@ public class ScrollCursos extends Scroll {
 	            if (evt.getClickCount() == 2) {
 	                int index = listaComponentes.locationToIndex(evt.getPoint());
 	                if (index != -1) {
-	                    ComponenteCurso seleccionado = (ComponenteCurso) listaComponentes.getModel().getElementAt(index);
-	                    EmergenteSiNo emergente = new EmergenteSiNo(ventanaMadre, "¿Deseas acceder a este curso?");
-	    				emergente.mostrar();
-	    				if(emergente.obtenerRespuesta().orElse(false))
-	    					selector.cambiarVentana(new VentanaBloques(selector, seleccionado));
+	                    ComponenteCurso cursoSeleccionado = (ComponenteCurso) listaComponentes.getModel().getElementAt(index);
+	                    EmergenteSiNo emergente1 = new EmergenteSiNo(ventanaMadre, "¿Deseas acceder a este curso?");
+	    				emergente1.mostrar();
+	    				if(emergente1.obtenerRespuesta().orElse(false)) {
+	    					//EmergenteMetodoAprendizaje emergente2 = new EmergenteMetodoAprendizaje(ventanaMadre, "¿Qué método de aprendizaje deseas selccionar?");
+		    				//emergente2.mostrar();
+		    				//if(emergente2.obtenerRespuesta().orElse(false)) {
+		    				String metodoAprendizaje = "hola";
+	    					selector.cambiarVentana(new VentanaBloques(selector, cursoSeleccionado, metodoAprendizaje));
+	    				}
 	                }
 	            }
 	        }

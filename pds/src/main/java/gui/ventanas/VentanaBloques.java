@@ -1,14 +1,8 @@
 package gui.ventanas;
 
 import java.awt.BorderLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.Random;
 
 import javax.swing.Box;
@@ -16,16 +10,11 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 import gui.GestorGUI;
-import gui.componentes.Componente;
 import gui.componentes.ComponenteBloque;
 import gui.componentes.ComponenteCurso;
-import gui.emergentes.EmergenteClasificacion;
 import gui.info.InfoBloque;
-import gui.info.InfoCurso;
-import gui.scroll.Scroll;
 import gui.scroll.ScrollBloques;
 
 @SuppressWarnings("serial")
@@ -36,10 +25,14 @@ public class VentanaBloques extends VentanaMenu {
 	private JLabel etiquetaBienvenida;
 	private JButton botonVolver;
 		
-	public VentanaBloques(SelectorVentana selector, ComponenteCurso cursoSeleccionado) {
+	/* Método de aprendizaje */
+	private String metodoAprendizaje;
+	
+	public VentanaBloques(SelectorVentana selector, ComponenteCurso cursoSeleccionado, String metodoAprendizaje) {
 	        super(selector);
 	        
 	        this.cursoSeleccionado = cursoSeleccionado;
+	        this.metodoAprendizaje = metodoAprendizaje;
 	}
 
     @Override
@@ -89,7 +82,7 @@ public class VentanaBloques extends VentanaMenu {
                 "Arte moderno", "Explora las revoluciones artísticas desde finales del siglo XIX hasta el siglo XX, con movimientos como el impresionismo, cubismo, surrealismo y expresionismo. Analizaremos las obras de artistas como Van Gogh, Picasso y Dalí, comprendiendo su impacto en la evolución del arte. Ideal para quienes desean adentrarse en la creatividad y las vanguardias modernas.", 
                 //"C:/Users/aleja/git/historiApp/pds/resources/" + (new Random().nextInt(5)+1) + ".png", true));
                 "C:\\Users\\jorge\\git\\repository\\proyectoPDS\\historiApp\\pds\\resources\\" + (new Random().nextInt(5)+1) + ".png", true));
-		scroll = new ScrollBloques(VentanaBloques.this, selector, componentes);
+		scroll = new ScrollBloques(VentanaBloques.this, selector, componentes, cursoSeleccionado);
 		
 	}
 	
