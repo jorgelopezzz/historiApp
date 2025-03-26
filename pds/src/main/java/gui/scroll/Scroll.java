@@ -14,7 +14,7 @@ import javax.swing.ListCellRenderer;
 import javax.swing.border.EmptyBorder;
 
 import gui.GestorGUI;
-import gui.componentes.Componente;
+import gui.componentes.contenidos.ComponenteContenido;
 import gui.ventanas.SelectorVentana;
 
 @SuppressWarnings("serial")
@@ -25,10 +25,10 @@ public abstract class Scroll extends JScrollPane {
 	protected SelectorVentana selector;
 	
 	/* Lista de componentes */
-	protected JList<Componente> listaComponentes;
+	protected JList<ComponenteContenido> listaComponentes;
 	protected JFrame ventanaMadre;
 	
-	public Scroll(JFrame ventanaMadre, SelectorVentana selector, Componente[] componentes) {
+	public Scroll(JFrame ventanaMadre, SelectorVentana selector, ComponenteContenido[] componentes) {
 		super();
 		
 		this.selector = selector;
@@ -77,14 +77,14 @@ public abstract class Scroll extends JScrollPane {
         return arrowButton;
     }
 
-	private void configurarLista(Componente[] componentes) {
+	private void configurarLista(ComponenteContenido[] componentes) {
 		/* Aspectos básicos */
-		listaComponentes = new JList<Componente>(componentes);
+		listaComponentes = new JList<ComponenteContenido>(componentes);
 		listaComponentes.setLayoutOrientation(JList.HORIZONTAL_WRAP);
 		
 		/* Dimensiones de celda */
-		listaComponentes.setFixedCellHeight(Componente.ALTO_COMPONENTE);
-		listaComponentes.setFixedCellWidth(Componente.ANCHO_COMPONENTE);
+		listaComponentes.setFixedCellHeight(ComponenteContenido.ALTO_COMPONENTE);
+		listaComponentes.setFixedCellWidth(ComponenteContenido.ANCHO_COMPONENTE);
 		listaComponentes.setVisibleRowCount(-1);
 		
 		/* Comportamiento */
@@ -94,9 +94,9 @@ public abstract class Scroll extends JScrollPane {
 	}
 	
 	private void dibujarLista() {
-		listaComponentes.setCellRenderer(new ListCellRenderer<Componente>() {
+		listaComponentes.setCellRenderer(new ListCellRenderer<ComponenteContenido>() {
 	        @Override
-	        public Component getListCellRendererComponent(JList<? extends Componente> list, Componente co, int index,
+	        public Component getListCellRendererComponent(JList<? extends ComponenteContenido> list, ComponenteContenido co, int index,
 	                                                      boolean isSelected, boolean cellHasFocus) {
 	            if(isSelected)
 	            	co.seleccionar();

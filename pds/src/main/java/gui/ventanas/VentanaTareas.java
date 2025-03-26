@@ -11,11 +11,11 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import gui.GestorGUI;
-import gui.componentes.ComponenteBloque;
-import gui.componentes.ComponenteCurso;
-import gui.componentes.ComponenteTarea;
+import gui.componentes.contenidos.ComponenteBloque;
+import gui.componentes.contenidos.ComponenteCurso;
+import gui.componentes.tarea.ComponenteTarea;
 import gui.emergentes.EmergenteSiNo;
-import gui.info.InfoCurso;
+import gui.info.contenidos.InfoCurso;
 
 @SuppressWarnings("serial")
 public class VentanaTareas extends VentanaMenu {

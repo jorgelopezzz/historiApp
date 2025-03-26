@@ -1,9 +1,9 @@
-package gui.componentes;
+package gui.componentes.contenidos;
 
-import gui.info.InfoBloque;
+import gui.info.contenidos.InfoBloque;
 
 @SuppressWarnings("serial")
-public class ComponenteBloque extends Componente {
+public class ComponenteBloque extends ComponenteContenido {
 
 	/* Cadenas estándar */
 	private static final String CABECERA_TITULO = "Bloque de contenidos:"; 
