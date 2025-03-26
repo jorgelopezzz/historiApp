@@ -1,5 +1,6 @@
 package gui.componentes.tarea;
 
+import java.awt.Dimension;
 import java.util.Optional;
 
 import javax.swing.BoxLayout;
@@ -40,27 +41,36 @@ public abstract class ComponenteTarea extends Componente {
 	}
 
 	protected void construir(String cabecera) {
-		construirEtiquetaCabecera(cabecera);
-		construirEtiquetaContenido(getEnunciado());
+		/* Construcción */
+		etiquetaCabecera = construirEtiquetaCabecera(cabecera);
+		areaContenido = construirEtiquetaContenido(getEnunciado());
+		
+		/* Montaje */
+		add(etiquetaCabecera);
+		add(areaContenido);
+	
 	}
 	
 	protected JLabel getEtiquetaCabecera() {
 		return etiquetaCabecera;
 	}
 
-	protected void construirEtiquetaCabecera(String cabecera) {
-		etiquetaCabecera = new JLabel(cabecera);
-		GestorGUI.configurarEtiqueta(etiquetaCabecera, false, GestorGUI.getInstancia().getColorClaro(), 
+	protected JLabel construirEtiquetaCabecera(String cabecera) {
+		JLabel etiqueta = new JLabel(cabecera);
+		GestorGUI.configurarEtiqueta(etiqueta, false, GestorGUI.getInstancia().getColorClaro(), 
 				GestorGUI.hacerNegrita(GestorGUI.getInstancia().getFuenteGrande()));
+		return etiqueta;
 	}
 
 	protected JTextArea getEtiquetaContenido() {
 		return areaContenido;
 	}
 
-	protected void construirEtiquetaContenido(String contenido) {
-		areaContenido = GestorGUI.crearAreaTexto(contenido, GestorGUI.getInstancia().getFuenteGrande(), GestorGUI.getInstancia().getColorBlanco());
+	protected JTextArea construirEtiquetaContenido(String contenido) {
+		JTextArea areaContenido = GestorGUI.crearAreaTexto(contenido, GestorGUI.getInstancia().getFuenteGrande(), GestorGUI.getInstancia().getColorBlanco());
 		areaContenido.setColumns(NUM_COLUMNAS);
 		areaContenido.setAlignmentX(ComponenteContenido.LEFT_ALIGNMENT);
+		GestorGUI.fijarTamano(ANCHO_COMPONENTE -2*MARGEN, areaContenido.getPreferredSize().height+areaContenido.getFont().getSize() + MARGEN, areaContenido);
+		return areaContenido;
 	}
 }

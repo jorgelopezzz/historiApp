@@ -27,10 +27,6 @@ public class ComponenteTip extends ComponenteTarea {
 		
 		/* Construcción de etiquetas */
 		super.construir(CABECERA);
-		
-		/* Montaje de etiquetas */
-		add(getEtiquetaCabecera());
-		add(getEtiquetaContenido());
 	}
 	
 		

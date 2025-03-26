@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
@@ -18,9 +19,11 @@ import gui.componentes.contenidos.ComponenteBloque;
 import gui.componentes.contenidos.ComponenteCurso;
 import gui.componentes.tarea.ComponenteTarea;
 import gui.componentes.tarea.ComponenteTip;
+import gui.componentes.tarea.ComponenteTipoTest;
 import gui.emergentes.EmergenteSiNo;
 import gui.info.contenidos.InfoCurso;
 import gui.info.tarea.InfoTip;
+import gui.info.tarea.InfoTipoTest;
 
 @SuppressWarnings("serial")
 public class VentanaTareas extends VentanaMenu {
@@ -95,8 +98,7 @@ public class VentanaTareas extends VentanaMenu {
         panelGeneral.setBackground(GestorGUI.getInstancia().getColorClaro());
 
         // Crear el componente del curso
-        Componente componente = new ComponenteTip(new InfoTip("Sabías que los leones duermen en torno a 20 horas al día?",
-                Optional.empty()));
+        Componente componente = new ComponenteTipoTest(new InfoTipoTest("Selecciona la opción que más representa a España", List.of("Jamón", "Tortilla", "Asturias", "Chorizo", "Cocido"), 4)); 
         componente.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         // Agregar el componente al centro del panel general

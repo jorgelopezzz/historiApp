@@ -36,8 +36,6 @@ public abstract class ComponenteContenido extends Componente {
 	private JPanel panelInformacion;
 	
 	/* Dimensiones */
-
-	
 	private static final int SEPARACION = 10;
 	private static final int NUM_COLUMNAS = 40;
 	
