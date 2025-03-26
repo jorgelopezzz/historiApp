@@ -5,7 +5,9 @@
 #### 1.1 Registrar un nuevo usuario
 **Resumen:** El usuario proporciona sus datos para registrarse en el sistema.
 
-**Actores:** Usuario.
+**Actores:** 
+-Usuario.
+-Sistema
 
 **Precondiciones:**
 - El usuario no debe estar registrado previamente.
@@ -13,7 +15,7 @@
 **Flujo principal:**
 1. En la pantalla de inicio el usuario accede a la opción de registro.
 2. El sistema muestra un formulario de registro.
-3. El usuario introduce sus datos requeridos (nombre, correo, contraseña, etc.).
+3. El usuario introduce sus datos requeridos (nombre, correo, contraseña, rol, etc.).
 4. El sistema valida la información proporcionada.
 5. El sistema crea la cuenta del usuario y lo redirige a la pantalla principal.
 
@@ -28,7 +30,9 @@
 #### 1.2 Iniciar sesión de usuario
 **Resumen:** El usuario ingresa sus credenciales para acceder al sistema.
 
-**Actores:** Usuario.
+**Actores:** 
+-Usuario.
+-Sistema.
 
 **Precondiciones:**
 - El usuario debe estar registrado.
@@ -45,40 +49,25 @@
 **Postcondiciones:**
 - El usuario accede correctamente a su cuenta.
 
-#### 1.3 Cambiar imagen de usuario
+#### 1.3 Cambiar información de perfil de usuario
+**Resumen:** El usuario proporciona sus datos para registrarse en el sistema.
 
-#### 1.3 Cambiar imagen de usuario
-**Resumen:** El usuario actualiza su imagen de perfil.
-
-**Actores:** Usuario.
+**Actores:** 
+-Usuario.
+-Sistema.
 
 **Precondiciones:**
-- El usuario debe estar identificado en el sistema.
+- El usuario debe estar registrado en el sistema.
 
 **Flujo principal:**
 1. El usuario accede a la configuración de perfil.
 2. El sistema muestra la pantalla de configuración de perfil.
-3. El usuario selecciona una imagen desde su dispositivo.
-4. El sistema actualiza la imagen de perfil.
+3. El usuario introduce sus datos requeridos (nombre, correo, contraseña, etc.).
+4. El usuario selecciona una imagen desde su dispositivo o introduce un nuevo saludo.
+5. El sistema guarda los cambios.
 
 **Postcondiciones:**
 - La imagen de perfil del usuario se actualiza correctamente.
-
-#### 1.4 Cambiar saludo de usuario
-**Resumen:** El usuario personaliza su saludo en el perfil.
-
-**Actores:** Usuario.
-
-**Precondiciones:**
-- El usuario debe estar identificado en el sistema.
-
-**Flujo principal:**
-1. El usuario accede a la configuración de perfil.
-2. El sistema muestra la opción de editar el saludo.
-3. El usuario introduce un nuevo saludo.
-4. El sistema guarda los cambios.
-
-**Postcondiciones:**
 - El saludo del usuario se actualiza correctamente.
 
 ### 3. Gestión de contenidos
@@ -86,7 +75,9 @@
 #### 3.1 Realizar un curso
 **Resumen:** El estudiante selecciona un curso y elige una estrategia de aprendizaje para completarlo. Una vez cursados los contenidos que crea conveniente, el estudiante puede salir del curso.
 
-**Actores:** Estudiante.
+**Actores:** 
+- Estudiante.
+- Sistema
 
 **Precondiciones:**
 - El estudiante debe estar identificado en el sistema.
@@ -106,7 +97,9 @@
 #### 3.2 Realizar bloque de contenidos
 **Resumen:** El estudiante accede a un bloque de contenido dentro de un curso y comienza a realizar tareas.
 
-**Actores:** estudiante.
+**Actores:** 
+- Estudiante.
+- Sistema
 
 **Precondiciones:**
 - El usuario debe estar realizando un curso.
@@ -120,32 +113,31 @@
 - 2b. Si el estudiante no completa el bloque de contenidos, el progreso en dicho bloque se perderá.
 
 **Postcondiciones:**
-- El bloque de contenidos se marca como completado.
+- El sistema marca el bloque de contenidos como completado.
 
 ### 5. Administración de cursos
 
-#### 5.1 Crear o actualizar curso
+#### 5.1 Importar un curso
 
-**Resumen:** El profesor sube un nuevo curso o actualiza uno existente.
+**Resumen:** El profesor sube un nuevo curso.
 
 **Actores:**  
 - Profesor.
+- Sistema
 
 **Precondiciones:**  
 - El profesor debe estar registrado e identificado en el sistema.  
-- Para actualizar un curso, debe existir previamente en el sistema.  
 
 **Flujo principal:**  
 1. El profesor accede a la sección de creación de cursos.  
 2. El profesor sube un archivo `.json` del curso.  
-3. El sistema almacena el curso.  
 
 **Flujos alternativos:**  
 - 3a En caso de subirse un curso que ya existe, el sistema muestra una solicitud de confirmación al usuario.  
 - 4a Si se confirma la solicitud, se sobrescribe el curso.  
 
 **Postcondiciones:**  
-- El sistema almacena el curso actualizado o nuevo.
+- El sistema almacena el curso.
 
 ## Referencias de Arquitectura
 

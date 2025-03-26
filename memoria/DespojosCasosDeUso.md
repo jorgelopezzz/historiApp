@@ -1,11 +1,11 @@
 ### 2. Vista de ranking general
 
-#### 2.1 Visualizar estadísticas
+#### 2.1 Guardar estadísticas
 
-**Resumen:** El usuario puede ver sus estadísticas de uso de la aplicación y de rendimiento en cursos y bloques de contenido.
+**Resumen:** El sistema guarda las estadísticas de uso de la aplicación y de rendimiento en cursos y bloques de contenido.
 
 **Actores:**  
-- Usuario.
+- Sistema.
 
 **Precondiciones:**  
 - El usuario debe estar registrado e identificado en el sistema.
