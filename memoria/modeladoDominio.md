@@ -28,16 +28,14 @@ classDiagram
     }
 
     class Tarea {
-        - nombre : String
+        - enunciado : String
     }
 
     class Tip {
-        - contenido : String
         - imagen : Imagen
     }
 
     class Pregunta {
-        - enunciado : String
         - evaluar() : Boolean
     }
 
