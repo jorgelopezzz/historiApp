@@ -21,10 +21,12 @@ import gui.componentes.tarea.ComponentePregunta;
 import gui.componentes.tarea.ComponenteTarea;
 import gui.componentes.tarea.ComponenteTip;
 import gui.componentes.tarea.ComponenteTipoTest;
+import gui.componentes.tarea.ComponenteVF;
 import gui.emergentes.EmergenteSiNo;
 import gui.info.contenidos.InfoCurso;
 import gui.info.tarea.InfoTip;
 import gui.info.tarea.InfoTipoTest;
+import gui.info.tarea.InfoVF;
 
 @SuppressWarnings("serial")
 public class VentanaTareas extends VentanaMenu {
@@ -101,7 +103,7 @@ public class VentanaTareas extends VentanaMenu {
         panelGeneral.setBackground(GestorGUI.getInstancia().getColorClaro());
 
         // Crear el componente del curso
-        tareaActual = new ComponenteTipoTest(new InfoTipoTest("Selecciona la opción que más representa a España", List.of("Jamón", "Tortilla", "Asturias", "Chorizo", "Cocido"), 4)); 
+        tareaActual = new ComponenteVF(new InfoVF("Amas España?", true)); 
         tareaActual.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         // Agregar el componente al centro del panel general

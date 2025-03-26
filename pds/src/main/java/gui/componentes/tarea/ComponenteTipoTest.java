@@ -2,27 +2,19 @@ package gui.componentes.tarea;
 
 import java.awt.Component;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
 
-import javax.swing.AbstractButton;
-import javax.swing.Box;
 import javax.swing.ButtonGroup;
-import javax.swing.ButtonModel;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 
 import gui.GestorGUI;
-import gui.campos.CampoDesplegable;
 import gui.info.tarea.InfoTipoTest;
 
 public class ComponenteTipoTest extends ComponentePregunta {
 
 	/* Cadenas por defecto */
 	private static final String CABECERA_OPCIONES = "Selecciona una respuesta:";
-	
-	/* Códigos para información */
-	private static final int SIN_RESPUESTA = -1;
 	
 	/* Atributos de información */
 	private final int indiceCorrecta;
