@@ -1,0 +1,31 @@
+{
+    "titulo": "Curso de Programación NUMERO 2",
+    "descripcion": "El mejor curso de programación del mercado.",
+    "rutaImagen": "caracola",
+    "bloquesContenidos": [
+      {
+        "titulo": "Avanzado a Java",
+        "descripcion": "EL mejor bloque del mejor curso.",
+        "rutaImagen": "laotrarutica",
+        "tareas": [
+          {
+            "tipo": "Tip",
+            "contenido": "Java es un lenguaje de programación de alto nivel.",
+            "imagen": "java_intro.png"
+          },
+          {
+            "tipo": "PreguntaVF",
+            "enunciado": "Java es un lenguaje compilado.",
+            "esVerdadero": true
+          },
+          {
+            "tipo": "PreguntaTipoTest",
+            "enunciado": "¿Cuál de los siguientes es un tipo de dato en Java?",
+            "opciones": ["int", "void", "label", "block"],
+            "correcta": 0
+          }
+        ]
+      }
+    ]
+  }
+  

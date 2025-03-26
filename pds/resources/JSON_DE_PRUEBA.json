@@ -1,8 +1,12 @@
 {
-  "nombre": "Curso de Programación",
+  "titulo": "Curso de Programación",
+  "descripcion": "El mejor curso de programación del mercado.",
+  "rutaImagen": "caracola",
   "bloquesContenidos": [
     {
-      "nombre": "Introducción a Java",
+      "titulo": "Introducción a Java",
+      "descripcion": "EL mejor bloque del mejor curso.",
+      "rutaImagen": "laotrarutica",
       "tareas": [
         {
           "tipo": "Tip",

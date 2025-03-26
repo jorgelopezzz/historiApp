@@ -11,7 +11,11 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.LayoutManager;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URL;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -121,7 +125,13 @@ public class GestorGUI {
 	}
 	
 	public ImageIcon iconoDeRecursos(String ruta, int ancho, int alto) {
-		return escalarIcono(new ImageIcon(getClass().getResource(ruta)), ancho, alto);
+		try {
+			URL url = new URL(ruta);
+			BufferedImage img = ImageIO.read(url);
+			return escalarIcono(new ImageIcon(img), ancho, alto);
+		} catch (IOException e) {
+			return escalarIcono(new ImageIcon(getClass().getResource(ruta)), ancho, alto);			
+		}
 	}
 	
 	public static TitledBorder bordeTexto(String texto, Font fuente, Color colorFuente, Color colorBorde) {
