@@ -2,9 +2,9 @@ package gui.scroll;
 
 import javax.swing.JFrame;
 
-import gui.componentes.Componente;
-import gui.componentes.ComponenteBloque;
-import gui.componentes.ComponenteCurso;
+import gui.componentes.contenidos.ComponenteBloque;
+import gui.componentes.contenidos.ComponenteContenido;
+import gui.componentes.contenidos.ComponenteCurso;
 import gui.emergentes.EmergenteSiNo;
 import gui.ventanas.SelectorVentana;
 import gui.ventanas.VentanaTareas;
@@ -14,7 +14,7 @@ public class ScrollBloques extends Scroll {
 	
 	private ComponenteCurso cursoSeleccionado;
 
-	public ScrollBloques(JFrame ventanaMadre, SelectorVentana selector, Componente[] componentes, ComponenteCurso cursoSeleccionado) {
+	public ScrollBloques(JFrame ventanaMadre, SelectorVentana selector, ComponenteContenido[] componentes, ComponenteCurso cursoSeleccionado) {
 		super(ventanaMadre, selector, componentes);
 		
 		this.cursoSeleccionado = cursoSeleccionado;

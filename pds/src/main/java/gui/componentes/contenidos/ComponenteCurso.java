@@ -1,9 +1,9 @@
-package gui.componentes;
+package gui.componentes.contenidos;
 
-import gui.info.InfoCurso;
+import gui.info.contenidos.InfoCurso;
 
 @SuppressWarnings("serial")
-public class ComponenteCurso extends Componente {
+public class ComponenteCurso extends ComponenteContenido {
 	
 	/* Cadenas estándar */
 	private static final String CABECERA_TITULO = "Curso:"; 

@@ -1,8 +1,11 @@
 package gui.ventanas;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 import javax.swing.Box;
@@ -11,19 +14,34 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import gui.GestorGUI;
-import gui.componentes.ComponenteBloque;
-import gui.componentes.ComponenteCurso;
-import gui.componentes.ComponenteTarea;
+import gui.componentes.Componente;
+import gui.componentes.contenidos.ComponenteBloque;
+import gui.componentes.contenidos.ComponenteCurso;
+import gui.componentes.tarea.ComponentePregunta;
+import gui.componentes.tarea.ComponenteRellenar;
+import gui.componentes.tarea.ComponenteTarea;
+import gui.componentes.tarea.ComponenteTip;
+import gui.componentes.tarea.ComponenteTipoTest;
+import gui.componentes.tarea.ComponenteVF;
 import gui.emergentes.EmergenteSiNo;
-import gui.info.InfoCurso;
+import gui.info.contenidos.InfoCurso;
+import gui.info.tarea.InfoRellenar;
+import gui.info.tarea.InfoTip;
+import gui.info.tarea.InfoTipoTest;
+import gui.info.tarea.InfoVF;
 
 @SuppressWarnings("serial")
 public class VentanaTareas extends VentanaMenu {
 	
+	/* Dimensiones */
+	private static final int MARGEN = 15;
+	
 	/* Componentes de organización */
-	JButton botonSalir;
-	JButton botonSiguiente;
-	JPanel panelSiguiente;
+	private JButton botonSalir;
+	private JButton botonSiguiente;
+	private JPanel panelSiguiente;
+	
+	private ComponenteTarea tareaActual;
 	
 	/* Atributos a recabar */
 	private String rutaJSON;
@@ -66,11 +84,16 @@ public class VentanaTareas extends VentanaMenu {
     
     private void construirPanelSiguiente() {
     	panelSiguiente = new JPanel();
+    	GestorGUI.configurarPanel(panelSiguiente, new BoxLayout(panelSiguiente, BoxLayout.Y_AXIS), GestorGUI.getInstancia().getColorClaro());
                      
         botonSiguiente = GestorGUI.getBotonPredeterminado("Siguiente");
-        manejadorSalir();
+        botonSiguiente.setAlignmentX(Component.CENTER_ALIGNMENT);
         
-        panelSiguiente.add(botonSiguiente);        
+        manejadorSiguiente();
+        
+        panelSiguiente.add(Box.createVerticalStrut(MARGEN));
+        panelSiguiente.add(botonSiguiente);
+        panelSiguiente.add(Box.createVerticalStrut(MARGEN));
      
     }
     
@@ -82,14 +105,11 @@ public class VentanaTareas extends VentanaMenu {
         panelGeneral.setBackground(GestorGUI.getInstancia().getColorClaro());
 
         // Crear el componente del curso
-        ComponenteTarea componente = new ComponenteTarea(new InfoCurso(
-                "Historia de España",
-                "Un recorrido por los acontecimientos clave que han marcado la historia de España, desde la antigüedad hasta la actualidad. Analizaremos sus civilizaciones, monarquías, conflictos y transformaciones sociales para comprender su impacto en el mundo. Ideal para quienes desean profundizar en el pasado y presente de España.",
-                "C:\\Users\\jorge\\git\\repository\\proyectoPDS\\historiApp\\pds\\resources\\" + (new Random().nextInt(5) + 1) + ".png",
-                true));
+        tareaActual = new ComponenteRellenar( new InfoRellenar("Cuál es el mejor país del mundo", "España") ); 
+        tareaActual.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         // Agregar el componente al centro del panel general
-        panelGeneral.add(componente);
+        panelGeneral.add(tareaActual);
         panelGeneral.add(Box.createVerticalGlue());
         
         // Crear panelSiguiente y configurarlo
@@ -112,6 +132,18 @@ public class VentanaTareas extends VentanaMenu {
 				emergente.mostrar();
 				if(emergente.obtenerRespuesta().orElse(false))
 					selector.cambiarVentana(new VentanaBloques(selector, cursoSeleccionado, "Método de aprendizaje"));
+			}
+		});
+	}
+	
+	private void manejadorSiguiente() {
+		botonSiguiente.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {		
+				// Lanzar la ventana emergente
+				if(tareaActual instanceof ComponentePregunta) {
+					System.out.println(((ComponentePregunta) tareaActual).evaluar());
+				}
 			}
 		});
 	}

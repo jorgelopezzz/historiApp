@@ -12,9 +12,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import gui.GestorGUI;
-import gui.componentes.ComponenteBloque;
-import gui.componentes.ComponenteCurso;
-import gui.info.InfoBloque;
+import gui.componentes.contenidos.ComponenteBloque;
+import gui.componentes.contenidos.ComponenteCurso;
+import gui.info.contenidos.InfoBloque;
 import gui.scroll.ScrollBloques;
 
 @SuppressWarnings("serial")
