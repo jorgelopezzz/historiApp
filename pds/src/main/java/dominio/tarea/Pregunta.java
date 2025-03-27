@@ -1,5 +1,11 @@
 package dominio.tarea;
 
-public class Pregunta extends Tarea {
-
+public abstract class Pregunta extends Tarea {
+	
+	public Pregunta(String enunciado) {
+		super(enunciado);
+	}
+	
+	public abstract boolean evaluar();
+	
 }
