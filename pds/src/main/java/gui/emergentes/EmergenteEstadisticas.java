@@ -14,7 +14,7 @@ public class EmergenteEstadisticas extends Emergente {
     private static final int ALTO_VENTANA = 480;
 
     private static final int ANCHO_PANEL = 486;
-    private static final int ALTO_PANEL = 370; // Ajustado para excluir el botón
+    private static final int ALTO_PANEL = 370;
     private static final int MARGEN = 10;
     private static final int MARGEN_INTERNO = 5;
 
@@ -26,7 +26,7 @@ public class EmergenteEstadisticas extends Emergente {
     // Componentes
     private JPanel panelPrincipal;
     private JPanel panelEnvolvente;
-    private JButton btnCerrar;
+    private JButton botonCerrar;
 
     public EmergenteEstadisticas(JFrame ventanaMadre) {
         super("Estadísticas de Uso", GestorGUI.getInstancia().getColorBlanco(), ventanaMadre);
@@ -34,34 +34,32 @@ public class EmergenteEstadisticas extends Emergente {
 
     @Override
     protected void construir() {
-        // Panel principal
+        // Panel Principal
         panelPrincipal = new JPanel();
         GestorGUI.configurarPanel(panelPrincipal, new BorderLayout(), false);
         GestorGUI.centrarPanel(panelPrincipal, this);
 
-        // Construcción del panel envolvente
+        // Panel Envolvente
         construirPanelEnvolvente();
 
-        // Construcción del panel del botón
+        // Panel Boton
         JPanel panelBoton = new JPanel();
         GestorGUI.configurarPanel(panelBoton, new BoxLayout(panelBoton, BoxLayout.Y_AXIS), false);
-        panelBoton.add(Box.createVerticalStrut(MARGEN)); // Espaciador antes del botón
+        panelBoton.add(Box.createVerticalStrut(MARGEN));
 
         JPanel panelBotonCentrado = new JPanel();
         GestorGUI.configurarPanel(panelBotonCentrado, new BoxLayout(panelBotonCentrado, BoxLayout.X_AXIS), false);
-        btnCerrar = GestorGUI.getBotonPredeterminado("Cerrar");
-        btnCerrar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose(); // Cierra la ventana
-            }
-        });
+        botonCerrar = GestorGUI.getBotonPredeterminado("Cerrar");
+
+		manejadorCerrar();
+
+        
         panelBotonCentrado.add(Box.createHorizontalGlue());
-        panelBotonCentrado.add(btnCerrar);
+        panelBotonCentrado.add(botonCerrar);
         panelBotonCentrado.add(Box.createHorizontalGlue());
         panelBoton.add(panelBotonCentrado);
 
-        panelBoton.add(Box.createVerticalStrut(MARGEN)); // Espaciador después del botón
+        panelBoton.add(Box.createVerticalStrut(MARGEN));
 
         // Montaje
         panelPrincipal.add(panelEnvolvente, BorderLayout.CENTER);
@@ -71,7 +69,7 @@ public class EmergenteEstadisticas extends Emergente {
     }
 
     private void construirPanelEnvolvente() {
-        // panelEnvolvente
+        // Panel Envolvente
         panelEnvolvente = new JPanel();
         GestorGUI.configurarPanel(panelEnvolvente, new BoxLayout(panelEnvolvente, BoxLayout.Y_AXIS), 
                 GestorGUI.getInstancia().getColorBlanco());
@@ -116,7 +114,7 @@ public class EmergenteEstadisticas extends Emergente {
         GestorGUI.fijarTamano(ANCHO_ETIQUETAS, ALTO_ESTATISTICA, lblNombre);
         panel.add(lblNombre);
 
-        panel.add(Box.createHorizontalGlue()); // Espacio
+        panel.add(Box.createHorizontalGlue());
 
         JLabel lblDato = new JLabel(dato);
         GestorGUI.configurarEtiqueta(lblDato, false, GestorGUI.getInstancia().getColorOscuro(),
@@ -134,4 +132,17 @@ public class EmergenteEstadisticas extends Emergente {
 
         return panelContenedor;
     }
+
+	private JButton manejadorCerrar(){
+		botonCerrar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		return botonCerrar;
+	}
+
+	
 }
+
