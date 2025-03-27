@@ -1,6 +1,6 @@
 package dominio.tarea;
 
-public class Tarea {
+public abstract class Tarea {
 
 	private String tipo;
 	
@@ -9,5 +9,7 @@ public class Tarea {
 	public Tarea(String tipo) {
 		this.tipo = tipo;
 	}
+	
+	
 
 }
