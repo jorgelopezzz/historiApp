@@ -6,6 +6,8 @@ public abstract class Pregunta extends Tarea {
 		super(enunciado);
 	}
 	
-	public abstract String getRespuesta();
+	public abstract boolean evaluar(String respuesta);
+	
+
 	
 }
