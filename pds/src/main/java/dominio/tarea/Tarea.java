@@ -1,13 +1,14 @@
 package dominio.tarea;
 
 public abstract class Tarea {
-
-	private String tipo;
+	
+	/* Atributos de información */
+	private String enunciado;
 	
 	public Tarea() {} // Constructor vacío para Jackson (servicioJSON)
 	
-	public Tarea(String tipo) {
-		this.tipo = tipo;
+	public Tarea(String enunciado) {
+		this.enunciado = enunciado;
 	}
 	
 	
