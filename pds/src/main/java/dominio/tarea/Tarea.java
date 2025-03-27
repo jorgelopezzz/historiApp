@@ -1,13 +1,18 @@
 package dominio.tarea;
 
-public abstract class Tarea {
-	
-	/* Anotación para herencia JSON:
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
+
+@JsonTypeInfo(
+	    use = JsonTypeInfo.Id.NAME,
+	    include = JsonTypeInfo.As.PROPERTY,
+	    property = "tipo"
+	)
 	@JsonSubTypes({
-    @JsonSubTypes.Type(value = TareaEscribir.class, name = "escribir"),
-    @JsonSubTypes.Type(value = TareaLeer.class, name = "leer")
+	    @JsonSubTypes.Type(value = Tip.class, name = "Tip")
 	})
-	 */
+public abstract class Tarea {
 	
 	/* Atributos de información */
 	private String enunciado;

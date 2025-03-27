@@ -1,0 +1,20 @@
+{
+    "titulo": "Curso de Programación",
+    "descripcion": "El mejor curso de programación del mercado.",
+    "rutaImagen": "caracola",
+    "bloquesContenidos": [
+      {
+        "titulo": "Avanzado a Java",
+        "descripcion": "EL mejor bloque del mejor curso.",
+        "rutaImagen": "laotrarutica",
+        "tareas": [
+          {
+            "tipo": "Tip",
+            "enunciado": "Java es un lenguaje de programación de alto nivel.",
+            "imagen": "java_intro.png"
+          }
+        ]
+      }
+    ]
+  }
+  
