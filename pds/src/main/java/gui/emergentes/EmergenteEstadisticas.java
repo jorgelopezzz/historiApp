@@ -2,6 +2,8 @@ package gui.emergentes;
 
 import gui.GestorGUI;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
@@ -9,11 +11,10 @@ public class EmergenteEstadisticas extends Emergente {
 
     // Dimensiones
     private static final int ANCHO_VENTANA = 526;
-    private static final int ALTO_VENTANA = 440;
+    private static final int ALTO_VENTANA = 480;
 
     private static final int ANCHO_PANEL = 486;
-    private static final int ALTO_PANEL = 370;
-
+    private static final int ALTO_PANEL = 370; // Ajustado para excluir el botón
     private static final int MARGEN = 10;
     private static final int MARGEN_INTERNO = 5;
 
@@ -25,9 +26,10 @@ public class EmergenteEstadisticas extends Emergente {
     // Componentes
     private JPanel panelPrincipal;
     private JPanel panelEnvolvente;
+    private JButton btnCerrar;
 
     public EmergenteEstadisticas(JFrame ventanaMadre) {
-        super("Estadísticas de Uso", GestorGUI.getInstancia().getColorBlanco(), ventanaMadre, ANCHO_VENTANA, ALTO_VENTANA);
+        super("Estadísticas de Uso", GestorGUI.getInstancia().getColorBlanco(), ventanaMadre);
     }
 
     @Override
@@ -40,8 +42,30 @@ public class EmergenteEstadisticas extends Emergente {
         // Construcción del panel envolvente
         construirPanelEnvolvente();
 
+        // Construcción del panel del botón
+        JPanel panelBoton = new JPanel();
+        GestorGUI.configurarPanel(panelBoton, new BoxLayout(panelBoton, BoxLayout.Y_AXIS), false);
+        panelBoton.add(Box.createVerticalStrut(MARGEN)); // Espaciador antes del botón
+
+        JPanel panelBotonCentrado = new JPanel();
+        GestorGUI.configurarPanel(panelBotonCentrado, new BoxLayout(panelBotonCentrado, BoxLayout.X_AXIS), false);
+        btnCerrar = GestorGUI.getBotonPredeterminado("Cerrar");
+        btnCerrar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose(); // Cierra la ventana
+            }
+        });
+        panelBotonCentrado.add(Box.createHorizontalGlue());
+        panelBotonCentrado.add(btnCerrar);
+        panelBotonCentrado.add(Box.createHorizontalGlue());
+        panelBoton.add(panelBotonCentrado);
+
+        panelBoton.add(Box.createVerticalStrut(MARGEN)); // Espaciador después del botón
+
         // Montaje
         panelPrincipal.add(panelEnvolvente, BorderLayout.CENTER);
+        panelPrincipal.add(panelBoton, BorderLayout.SOUTH);
 
         this.add(panelPrincipal);
     }
