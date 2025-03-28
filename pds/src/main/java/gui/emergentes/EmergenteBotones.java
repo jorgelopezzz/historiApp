@@ -31,15 +31,15 @@ public abstract class EmergenteBotones extends Emergente{
 	private static final int ANCHO_EMERGENTE = 400;
 	private static final int ALTO_EMERGENTE = 300;
 	
-	private static final int ANCHO_CUADRO = 300;
-	private static final int ALTO_CUADRO = 160;
+	protected static final int ANCHO_CUADRO = 300;
+	protected static final int ALTO_CUADRO = 160;
 	protected static final int MARGEN = 5;
 	
-	private static final int LADO_IMAGEN = 50; 
+	protected static final int LADO_IMAGEN = 50; 
 	private static final int NUMERO_COLUMNAS_TEXTO = 25;
 	
 	/* Rutas imágenes */
-	private static final String RUTA_ALERTA = "/alerta.png";
+	protected static final String RUTA_ALERTA = "/alerta.png";
 	
 	/* Constructor */
 	public EmergenteBotones(JFrame ventanaMadre, String mensaje) {
