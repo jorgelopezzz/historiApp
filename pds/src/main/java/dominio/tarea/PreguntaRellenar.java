@@ -15,5 +15,9 @@ public class PreguntaRellenar extends Pregunta {
 	public boolean evaluar(String respuesta) {
 		return this.respuesta.equals(respuesta);
 	}
+
+	public String getRespuesta() {
+		return respuesta;
+	}
 	
 }

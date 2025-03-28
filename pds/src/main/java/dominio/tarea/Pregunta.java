@@ -8,6 +8,4 @@ public abstract class Pregunta extends Tarea {
 	
 	public abstract boolean evaluar(String respuesta);
 	
-
-	
 }
