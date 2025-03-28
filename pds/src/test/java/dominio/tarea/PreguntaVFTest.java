@@ -44,6 +44,14 @@ class PreguntaVFTest {
     
     @ParameterizedTest
     @MethodSource("argumentosValidos")
+    void testEnunciado(String enunciado, boolean esVerdadero) {
+        PreguntaVF p = new PreguntaVF(enunciado, esVerdadero); 
+    	assertNotEquals(p.getEnunciado(), null);
+    	assertFalse(p.getEnunciado().length() == 0);
+    }
+    
+    @ParameterizedTest
+    @MethodSource("argumentosValidos")
     void testEvaluar(String enunciado, boolean esVerdadero) {
         PreguntaVF p = new PreguntaVF(enunciado, esVerdadero);
     	assertTrue(p.evaluar( esVerdadero ? PreguntaVF.CADENA_VERDADERO : PreguntaVF.CADENA_FALSO ));

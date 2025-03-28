@@ -17,19 +17,25 @@ public abstract class Tarea {
 	/* Atributos de información */
 	private String enunciado;
 	
-	public Tarea() {} // Constructor vacío para Jackson (servicioJSON)
+	/* Constructor para serialización JSON */
+	public Tarea() {} 
 	
+	/* Constructor predeterminado */
 	public Tarea(String enunciado) {
 		cadenaValida(enunciado);
 		this.enunciado = enunciado;
 	}
 	
+	/* Lanzamiento de excepción para argumentos inválidos */
 	protected void cadenaValida(String cadena) {
 		if(cadena == null || cadena.length() == 0) {
 			throw new IllegalArgumentException(getClass().toString() + ": la cadena '" + cadena +"' no es válida.");
 		}
 	}
-	
+
+	public String getEnunciado() {
+		return enunciado;
+	}
 	
 
 }
