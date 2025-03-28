@@ -2,12 +2,20 @@ package dominio.tarea;
 
 import java.util.List;
 
-public class PreguntaVF extends Pregunta {
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+public class PreguntaVF extends Pregunta {
+	
+	/* Serialización y herencia */
+	@JsonProperty
+	public static final String tipoPregunta = "VF";
+	
+	/* Cadenas predeterminadas */
 	public static final String CADENA_VERDADERO = "Verdadero";
 	public static final String CADENA_FALSO = "Falso";
 	
 	/* Atributos de información */
+	@JsonProperty(required = true)
 	public boolean esVerdadero;
 	
 	public PreguntaVF(String enunciado, boolean esVerdadero) {

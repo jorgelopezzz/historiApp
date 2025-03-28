@@ -2,11 +2,17 @@ package dominio.tarea;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class PreguntaTipoTest extends Pregunta {
 	
 	/* Atributos de información */
 	private List<String> opciones;
 	private int correcta;
+	
+	/* Serialización y herencia */
+	@JsonProperty
+	public static final String tipoPregunta = "TipoTest";
 	
 	public PreguntaTipoTest(String enunciado, List<String> opciones, int correcta) {
 		super(enunciado);
