@@ -17,7 +17,7 @@ public class PreguntaVF extends Pregunta {
 	
 	@Override
 	public boolean evaluar(String respuesta) {
-		if(respuesta == null)
+		if(respuesta == null || respuesta.length() == 0)
 			return false;
 		return (respuesta.equals(CADENA_VERDADERO) && esVerdadero) || (respuesta.equals(CADENA_FALSO) && (!esVerdadero));
 	}
