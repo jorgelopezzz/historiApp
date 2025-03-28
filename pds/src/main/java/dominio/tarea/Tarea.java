@@ -10,10 +10,12 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 	    include = JsonTypeInfo.As.PROPERTY,
 	    property = "tipo"
 	)
-	@JsonSubTypes({
-	    @JsonSubTypes.Type(value = Tip.class, name = Tip.tipo),
-	    @JsonSubTypes.Type(value = Pregunta.class, name = Pregunta.tipo)
-	})
+@JsonSubTypes({
+    @JsonSubTypes.Type(value = Tip.class, name = Tip.tipo),
+    @JsonSubTypes.Type(value = PreguntaRellenar.class, name = PreguntaTipoTest.tipoPregunta),
+    @JsonSubTypes.Type(value = PreguntaTipoTest.class, name = PreguntaTipoTest.tipoPregunta),
+    @JsonSubTypes.Type(value = PreguntaVF.class, name = PreguntaVF.tipoPregunta)
+})
 public abstract class Tarea {
 	
 	/* Atributos de información */

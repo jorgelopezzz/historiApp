@@ -17,6 +17,9 @@ public class PreguntaRellenar extends Pregunta {
         setRespuesta(respuesta);
 	}
 	
+	/* Constructor JSON */
+	public PreguntaRellenar() {}
+	
 	@Override
 	public boolean evaluar(String respuesta) {
 		return this.respuesta.equals(respuesta);

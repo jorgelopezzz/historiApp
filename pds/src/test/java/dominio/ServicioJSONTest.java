@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import com.fasterxml.jackson.databind.JsonMappingException;
 
@@ -21,14 +23,18 @@ import dominio.tarea.Tip;
 
 class ServicioJSONTest {
 
-	/* Rutas a JSON */
+	/* Rutas JSON Tareas */
+	
 	private static final String rutaTareas = "/tests/tareas.json";
 	private static final String rutaEnunciadoInvalido = "/tests/enunciadoInvalido.json";
 	private static final String rutaTipSinImagen = "/tests/tipSinImagen.json";
 	private static final String rutaVFValido = "/tests/VFValido.json";
 	private static final String rutaVFInvalido = "/tests/VFInvalido.json";
 	private static final String rutaRellenarInvalido = "/tests/rellenarInvalido.json";
+	private static final String rutaTipoTestInvalidoOpciones = "/tests/tipoTestInvalido.json";
+	private static final String rutaTipoTestInvalidoIndice = "/tests/tipoTestInvalido1.json";
 	
+	/* Tests de serialización de tareas */
 	
 	@Test
 	void testTarea() {
@@ -85,11 +91,24 @@ class ServicioJSONTest {
 		try {
 			List<Tarea> li = ServicioJSON.INSTANCE.cargarCurso(path).getBloquesContenidos().get(0).getTareas();
 			assertTrue(((PreguntaVF)li.get(0)).evaluar(PreguntaVF.CADENA_VERDADERO));
-			assertFalse(((PreguntaVF)li.get(1)).evaluar(PreguntaVF.CADENA_FALSO));
+			assertTrue(((PreguntaVF)li.get(1)).evaluar(PreguntaVF.CADENA_FALSO));
 		} catch (IOException e) {
 			System.err.println(e.getMessage());
 		}
 		
+	}
+	
+	private static List<String> argumentosTipoTestInvalido(){
+		return List.of(rutaTipoTestInvalidoIndice, rutaTipoTestInvalidoOpciones);
+	}
+	
+	@ParameterizedTest
+	@MethodSource("argumentosTipoTestInvalido")
+	void testTipoTestInvalido(String ruta) {
+		String path = ServicioJSON.class.getResource(ruta).getPath(); 
+		assertThrows(JsonMappingException.class, () -> {
+			ServicioJSON.INSTANCE.cargarCurso(path);
+        });
 	}
 	
 	

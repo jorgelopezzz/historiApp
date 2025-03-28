@@ -9,14 +9,15 @@
         "rutaImagen": "laotrarutica",
         "tareas": [
           {
-            "tipo": "PreguntaVF",
+            "tipo": "PreguntaRellenar",
             "enunciado": "Hola",
-            "esVerdadero": true
+            "respuesta": null
           },
           {
-            "tipo": "PreguntaVF",
+            "tipo": "PreguntaTipoTest",
             "enunciado": "Hola",
-            "esVerdadero": false
+            "opciones": null,
+            "correcta": 0
           }
         ]
       }

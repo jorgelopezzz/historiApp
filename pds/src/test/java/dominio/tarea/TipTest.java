@@ -3,7 +3,6 @@ package dominio.tarea;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -16,38 +15,35 @@ class TipTest {
 	static List<Arguments> argumentosInvalidos() {
 		String rutaImagen = "unaRuta";
         return List.of(
-        	Arguments.of((Object)null, Optional.of(rutaImagen)),
-        	Arguments.of("", Optional.of(rutaImagen)),
-        	Arguments.of("Enunciado", null)
+        	Arguments.of((Object)null, rutaImagen),
+        	Arguments.of("", rutaImagen)
         );
     }
 
     @ParameterizedTest
     @MethodSource("argumentosInvalidos")
-    void testArgumentosInvalidos(String enunciado, Optional<String> rutaImagen) {
+    void testArgumentosInvalidos(String enunciado, String rutaImagen) {
         assertThrows(IllegalArgumentException.class, () -> {
             new Tip(enunciado, rutaImagen);
         });
     }
     
 	static List<Arguments> argumentosValidos() {
-		List<String> enunciados = List.of("Murcia es la capital de la región de Murcia", "Naipyidó es la capital de Myanmar");
-		List<Optional<String>> rutas = List.of(Optional.empty(), Optional.of("unaRuta"));
-        return IntStream.range(0, 2)
-        		.mapToObj( i -> Arguments.of(enunciados.get(i), rutas.get(i)))
-        		.collect(Collectors.toList());
+		return List.of( 
+				Arguments.of("Murcia es la capital de la región de Murcia", (Object)null),
+				Arguments.of("Naipyidó es la capital de Myanmar", "unaRuta"));
     }
 	
     @ParameterizedTest
     @MethodSource("argumentosValidos")
-    void testArgumentosValidos(String enunciado, Optional<String> rutaImagen) {
+    void testArgumentosValidos(String enunciado, String rutaImagen) {
         assertDoesNotThrow(() -> new Tip(enunciado, rutaImagen));
     }
     
     @Test
     void testImagen() {
         String enunciado = "Murcia es una ciudad calurosa."; 
-    	Tip t = new Tip(enunciado, Optional.empty());
+    	Tip t = new Tip(enunciado, null);
         assertTrue(t.getRutaImagen().isEmpty());
     }
 

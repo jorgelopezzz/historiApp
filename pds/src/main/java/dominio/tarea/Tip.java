@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 public class Tip extends Tarea {
 	
-	@JsonProperty
+	@JsonProperty("tipo")
 	public static final String tipo = "Tip";
 	
 	

@@ -12,6 +12,24 @@
             "tipo": "Tip",
             "enunciado": "Java es un lenguaje de programación de alto nivel.",
             "imagen": "java_intro.png"
+          },
+          {
+            "tipo": "PreguntaTipoTest",
+            "enunciado": "Hola",
+            "opciones": [
+              "op1", "op2", "op3"
+            ],
+            "correcta": 0
+          },
+          {
+            "tipo": "PreguntaRellenar",
+            "enunciado": "enunciado",
+            "respuesta": "respuesta"
+          },
+          {
+            "tipo": "PreguntaVF",
+            "enunciado": "enunciado",
+            "esVerdadero": true
           }
         ]
       }

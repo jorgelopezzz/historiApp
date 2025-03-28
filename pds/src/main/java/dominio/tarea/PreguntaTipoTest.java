@@ -2,17 +2,24 @@ package dominio.tarea;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class PreguntaTipoTest extends Pregunta {
 	
 	/* Atributos de información */
+	@JsonProperty(required = true)
 	private List<String> opciones;
+	
+	@JsonProperty(required = true)
 	private int correcta;
 	
 	/* Serialización y herencia */
-	@JsonProperty
-	public static final String tipoPregunta = "TipoTest";
+	@JsonProperty("tipo")
+	public static final String tipoPregunta = "PreguntaTipoTest";
+	
+	/* Constructor JSON*/
+	public PreguntaTipoTest() {}
 	
 	public PreguntaTipoTest(String enunciado, List<String> opciones, int correcta) {
 		super(enunciado);
@@ -21,17 +28,10 @@ public class PreguntaTipoTest extends Pregunta {
 		if( opciones == null || opciones.size() == 0 ) {
 			throw new IllegalArgumentException(getClass() + ": la lista de opciones debe ser no vacía.");
 		} 
-		
-		for(String opcion : opciones) {
-			cadenaValida(opcion);
-		}
-		this.opciones = List.copyOf(opciones);
+		setOpciones(opciones);
 		
 		/* Comprobaciones sobre índice de respuesta correcta */
-		if( correcta < 0 || correcta > opciones.size()) {
-			throw new IllegalArgumentException(getClass() + ": el índice debe ser válido respecto a la lista de opciones.");
-		}
-		this.correcta = correcta;
+		setCorrecta(correcta);
 		
 	}
 	
@@ -42,4 +42,25 @@ public class PreguntaTipoTest extends Pregunta {
 		return respuesta.equals(opciones.get(correcta));
 	}
 	
+    /* Métodos para validar la serialización */
+	
+    @JsonProperty("opciones")
+    public void setOpciones(List<String> opciones) {
+        if(opciones == null || opciones.size() == 0) {
+        	throw new IllegalArgumentException(getClass() + ": las preguntas tipo test deben tener al menos una opción.");
+        }
+        this.opciones = List.copyOf(opciones);
+    }
+    
+    @JsonProperty("correcta")
+    public void setCorrecta(int correcta) {
+    	if( correcta < 0 || correcta > opciones.size()) {
+    		throw new IllegalArgumentException(getClass() + ": el índice debe ser válido respecto a la lista de opciones.");
+    	}
+    	this.correcta = correcta;
+    }
+	
+	
+
+    
 }
