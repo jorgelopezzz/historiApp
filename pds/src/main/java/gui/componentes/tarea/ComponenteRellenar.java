@@ -1,25 +1,23 @@
 package gui.componentes.tarea;
 
+import java.util.Optional;
+
 import javax.swing.JLabel;
 
 import gui.campos.CampoTexto;
-import gui.info.tarea.InfoRellenar;
+import gui.info.Info;
 
 public class ComponenteRellenar extends ComponentePregunta {
 
 	/* Cadenas por defecto */
 	private static final String CABECERA_RELLENAR = "Introduce tu respuesta:";
 	
-	/* Atributos de información */
-	private final String solucion;
-	
 	/* Componentes gráficos */
 	private JLabel cabeceraRellenar;
 	private CampoTexto campoRespuesta;
 	
-	public ComponenteRellenar(InfoRellenar info) {
+	public ComponenteRellenar(Info info) {
 		super(info);
-		this.solucion = info.getRespuesta();
 		
 		/* Construcción de etiquetas */
 		super.construir(CABECERA);
@@ -35,8 +33,8 @@ public class ComponenteRellenar extends ComponentePregunta {
 	}
 
 	@Override
-	public boolean evaluar() {
-		return campoRespuesta.getTexto().equals(solucion);
+	public Optional<String> getRespuesta() {
+		return Optional.ofNullable(campoRespuesta.getTexto());
 	}
 	
 }

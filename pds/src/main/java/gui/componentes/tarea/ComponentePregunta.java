@@ -1,5 +1,7 @@
 package gui.componentes.tarea;
 
+import java.util.Optional;
+
 import gui.info.Info;
 
 public abstract class ComponentePregunta extends ComponenteTarea {
@@ -11,5 +13,6 @@ public abstract class ComponentePregunta extends ComponenteTarea {
 		super(info);
 	}
 
-	public abstract boolean evaluar();
+	public abstract Optional<String> getRespuesta();
+	
 }
