@@ -6,7 +6,7 @@ public class Curso {
     private String titulo;
     private String descripcion;
     private String rutaImagen;
-    //private Matricula matricula;
+    private Matricula matricula;
     private List<BloqueContenidos> bloquesContenidos;
     
     public Curso() {} // Constructor vacío para Jackson (servicioJSON)
@@ -30,9 +30,9 @@ public class Curso {
     	return rutaImagen;
     }
     
-    //public Matricula getMatricula() {
-    //	return matricula;
-    //}
+    public Matricula getMatricula() {
+    	return matricula;
+    }
     
     public List<BloqueContenidos> getBloquesContenidos() {
         return bloquesContenidos;
