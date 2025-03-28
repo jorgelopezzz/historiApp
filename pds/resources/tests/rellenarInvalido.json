@@ -9,26 +9,14 @@
         "rutaImagen": "laotrarutica",
         "tareas": [
           {
-            "tipo": "Tip",
-            "enunciado": "Java es un lenguaje de programación de alto nivel.",
-            "imagen": "java_intro.png"
-          },
-          {
-            "tipo": "PreguntaTipoTest",
+            "tipo": "PreguntaRellenar",
             "enunciado": "Hola",
-            "opciones": [
-              "op1", "op2", "op3"
-            ],
-            "correcta": 0
+            "respuesta": null
           },
           {
             "tipo": "PreguntaRellenar",
-            "enunciado": "enunciado",
-            "respuesta": "respuesta"
-          },
-          {
-            "tipo": "PreguntaVF",
-            "enunciado": "enunciado",
+            "tipoPregunta": "VF",
+            "enunciado": "Hola",
             "esVerdadero": true
           }
         ]

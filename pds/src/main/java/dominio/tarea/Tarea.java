@@ -1,5 +1,6 @@
 package dominio.tarea;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -9,13 +10,17 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 	    include = JsonTypeInfo.As.PROPERTY,
 	    property = "tipo"
 	)
-	@JsonSubTypes({
-	    @JsonSubTypes.Type(value = Tip.class, name = "Tip")
-	})
+@JsonSubTypes({
+    @JsonSubTypes.Type(value = Tip.class, name = Tip.tipo),
+    @JsonSubTypes.Type(value = PreguntaRellenar.class, name = PreguntaTipoTest.tipoPregunta),
+    @JsonSubTypes.Type(value = PreguntaTipoTest.class, name = PreguntaTipoTest.tipoPregunta),
+    @JsonSubTypes.Type(value = PreguntaVF.class, name = PreguntaVF.tipoPregunta)
+})
 public abstract class Tarea {
 	
 	/* Atributos de información */
-	private String enunciado;
+	@JsonProperty(required = true)
+    private String enunciado;
 	
 	/* Constructor para serialización JSON */
 	public Tarea() {}
@@ -36,6 +41,13 @@ public abstract class Tarea {
 	public String getEnunciado() {
 		return enunciado;
 	}
+	
+    /* Método para validar la serialización */
+    @JsonProperty("enunciado")
+    public void setEnunciado(String enunciado) {
+        cadenaValida(enunciado);
+        this.enunciado = enunciado;
+    }
 	
 
 }

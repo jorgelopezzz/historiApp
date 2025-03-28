@@ -7,8 +7,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 public class Tip extends Tarea {
 	
-	@JsonProperty
-	private static final String tipo = "Tip";
+	@JsonProperty("tipo")
+	public static final String tipo = "Tip";
+	
 	
 	private String rutaImagen;
 
@@ -16,14 +17,19 @@ public class Tip extends Tarea {
 	public Tip() {}
 	
 	/* Constructor por defecto */
-	public Tip(String enunciado, Optional<String> rutaImagen) {
+	public Tip(String enunciado, String rutaImagen) {
 		super(enunciado);
-		if(rutaImagen == null) {
-			throw new IllegalArgumentException(getClass().toString() + ": La ruta imagen no se ha recibido correctamente.");
-		}
-		this.rutaImagen = rutaImagen.orElse(null);
+		setRutaImagen(rutaImagen);
 	}
-
+	
+    @JsonProperty("imagen")
+    public void setRutaImagen(String rutaImagen) {
+    	if(rutaImagen == null || rutaImagen.length() == 0) {
+    		this.rutaImagen = null;
+    	} else {
+    		this.rutaImagen = rutaImagen;
+    	}
+    }
 	public Optional<String> getRutaImagen() {
 		return Optional.ofNullable(rutaImagen);
 	}

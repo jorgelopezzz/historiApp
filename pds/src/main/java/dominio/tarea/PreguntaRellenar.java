@@ -1,15 +1,24 @@
 package dominio.tarea;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class PreguntaRellenar extends Pregunta {
 	
 	/* Atributos de información */
+	@JsonProperty(required = true)
 	private String respuesta;
+	
+	/* Serialización y herencia */
+	@JsonProperty
+	public static final String tipoPregunta = "Rellenar";
 	
 	public PreguntaRellenar(String enunciado, String respuesta) {
 		super(enunciado);
-        cadenaValida(respuesta);
-		this.respuesta = respuesta;
+        setRespuesta(respuesta);
 	}
+	
+	/* Constructor JSON */
+	public PreguntaRellenar() {}
 	
 	@Override
 	public boolean evaluar(String respuesta) {
@@ -19,5 +28,12 @@ public class PreguntaRellenar extends Pregunta {
 	public String getRespuesta() {
 		return respuesta;
 	}
+	
+    /* Método para validar la serialización */
+    @JsonProperty("respuesta")
+    public void setRespuesta(String respuesta) {
+        cadenaValida(respuesta);
+        this.respuesta = respuesta;
+    }
 	
 }
