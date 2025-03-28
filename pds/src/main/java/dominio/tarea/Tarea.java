@@ -18,7 +18,7 @@ public abstract class Tarea {
 	private String enunciado;
 	
 	/* Constructor para serialización JSON */
-	public Tarea() {} 
+	public Tarea() {}
 	
 	/* Constructor predeterminado */
 	public Tarea(String enunciado) {
