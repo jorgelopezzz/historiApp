@@ -14,7 +14,12 @@ public enum RepositorioCursos {
 
     private RepositorioCursos() {
     	File carpeta = new File("resources");
-        cursos = Arrays.stream(carpeta.listFiles((dir, name) -> name.endsWith(".json")))
+        if(!carpeta.exists() || !carpeta.isDirectory()) {
+        	System.err.println("La carpeta 'resources' no existe o no es un directorio válido");
+            cursos = List.of();
+        }
+        	
+    	cursos = Arrays.stream(carpeta.listFiles((dir, name) -> name.endsWith(".json")))
                     .map(File::getPath)
                     .map(ruta -> {
                         try {
