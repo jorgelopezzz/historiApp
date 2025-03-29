@@ -8,6 +8,8 @@ public class CertificadoBloque {
     private BloqueContenidos bloque;
     
     public CertificadoBloque(LocalDate fechaCert, String usuario, BloqueContenidos bloque) {
+    	if(fechaCert == null || usuario == null || bloque == null)
+    		throw new IllegalArgumentException("Los atributos no pueden ser nulos");
         this.fechaCert = fechaCert;
         this.usuario = usuario;
         this.bloque = bloque;

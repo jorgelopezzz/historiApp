@@ -1,5 +1,6 @@
 package dominio.curso;
 
+import java.util.ArrayList;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -20,13 +21,15 @@ public class BloqueContenidos {
     
     public BloqueContenidos() {} // Constructor vacío para Jackson (servicioJSON)
     
-    public BloqueContenidos(String titulo, String descripcion, String rutaImagen, CertificadoBloque certBloque, MetodoAprendizaje metodoAprendizaje, List<Tarea> tareas) {
-        this.titulo = titulo;
+    public BloqueContenidos(String titulo, String descripcion, String rutaImagen, MetodoAprendizaje metodoAprendizaje, List<Tarea> tareas) {
+        if(titulo == null)
+        	throw new IllegalArgumentException("El título no puede ser nulo");
+    	this.titulo = titulo;
         this.descripcion = descripcion;
         this.rutaImagen = rutaImagen;
         this.certBloque = null;
-        this.metodoAprendizaje = metodoAprendizaje;
-        this.tareas = tareas;
+        this.metodoAprendizaje = metodoAprendizaje != null ? metodoAprendizaje : MetodoAprendizaje.SECUENCIAL;
+        this.tareas = new ArrayList<>(tareas);
         GestorEstrategiaAprendizaje gestor = new GestorEstrategiaAprendizaje(metodoAprendizaje);
         tareasMetodoAprendizaje = gestor.generarTareas(tareas);
         posicion = 0;
@@ -60,11 +63,12 @@ public class BloqueContenidos {
 
 
     public Tarea siguiente() {
-        if (!tieneSiguiente()) {
-        	String usuarioActual = "usuario"; //llamar controlador
-            certBloque = new CertificadoBloque(LocalDate.now(), usuarioActual, this);
-        }
-        return tareasMetodoAprendizaje.get(posicion++);
+        if (tieneSiguiente())
+        	return tareasMetodoAprendizaje.get(posicion++);
+
+        String usuarioActual = "usuario"; //llamar controlador
+        certBloque = new CertificadoBloque(LocalDate.now(), usuarioActual, this);
+        return null;
     }
     
     /*////////////////*/
