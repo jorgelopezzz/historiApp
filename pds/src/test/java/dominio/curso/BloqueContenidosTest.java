@@ -34,7 +34,7 @@ public class BloqueContenidosTest {
         assertEquals("ruta/imagen.png", bloque.getRutaImagen());
         assertNull(bloque.getCertBloque());
         assertNotNull(bloque.getTareas());
-        assertTrue(bloque.getTareas().isEmpty());
+        assertFalse(bloque.getTareas().isEmpty());
     }
 
     private static List<Arguments> proveerTareas() {
