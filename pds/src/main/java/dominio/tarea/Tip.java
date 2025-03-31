@@ -1,16 +1,38 @@
 package dominio.tarea;
 
+import java.util.Optional;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
 public class Tip extends Tarea {
 	
-	private String rutaImagen;
+	@JsonProperty("tipo")
+	public static final String tipo = "Tip";
 	
+	
+	private String rutaImagen;
+
+	/* Constructor JSON */
+	public Tip() {}
+	
+	/* Constructor por defecto */
 	public Tip(String enunciado, String rutaImagen) {
 		super(enunciado);
-		this.rutaImagen = rutaImagen;
-	}
-
-	public String getRutaImagen() {
-		return rutaImagen;
+		setRutaImagen(rutaImagen);
 	}
 	
+    @JsonProperty("imagen")
+    public void setRutaImagen(String rutaImagen) {
+    	if(rutaImagen == null || rutaImagen.length() == 0) {
+    		this.rutaImagen = null;
+    	} else {
+    		this.rutaImagen = rutaImagen;
+    	}
+    }
+	public Optional<String> getRutaImagen() {
+		return Optional.ofNullable(rutaImagen);
+	}
+	
+
 }

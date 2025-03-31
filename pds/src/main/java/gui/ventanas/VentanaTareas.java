@@ -14,21 +14,13 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import gui.GestorGUI;
-import gui.componentes.Componente;
 import gui.componentes.contenidos.ComponenteBloque;
 import gui.componentes.contenidos.ComponenteCurso;
-import gui.componentes.tarea.ComponentePregunta;
 import gui.componentes.tarea.ComponenteRellenar;
 import gui.componentes.tarea.ComponenteTarea;
-import gui.componentes.tarea.ComponenteTip;
-import gui.componentes.tarea.ComponenteTipoTest;
-import gui.componentes.tarea.ComponenteVF;
 import gui.emergentes.EmergenteSiNo;
-import gui.info.contenidos.InfoCurso;
-import gui.info.tarea.InfoRellenar;
-import gui.info.tarea.InfoTip;
-import gui.info.tarea.InfoTipoTest;
-import gui.info.tarea.InfoVF;
+import gui.info.Info;
+
 
 @SuppressWarnings("serial")
 public class VentanaTareas extends VentanaMenu {
@@ -105,7 +97,7 @@ public class VentanaTareas extends VentanaMenu {
         panelGeneral.setBackground(GestorGUI.getInstancia().getColorClaro());
 
         // Crear el componente del curso
-        tareaActual = new ComponenteRellenar( new InfoRellenar("Cuál es el mejor país del mundo", "España") ); 
+        tareaActual = new ComponenteRellenar( new Info("Cuál es el mejor país del mundo") ); 
         tareaActual.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         // Agregar el componente al centro del panel general
@@ -141,9 +133,7 @@ public class VentanaTareas extends VentanaMenu {
 			@Override
 			public void actionPerformed(ActionEvent e) {		
 				// Lanzar la ventana emergente
-				if(tareaActual instanceof ComponentePregunta) {
-					System.out.println(((ComponentePregunta) tareaActual).evaluar());
-				}
+
 			}
 		});
 	}

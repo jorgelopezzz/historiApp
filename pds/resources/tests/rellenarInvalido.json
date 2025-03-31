@@ -1,0 +1,26 @@
+{
+    "titulo": "Curso de Programación",
+    "descripcion": "El mejor curso de programación del mercado.",
+    "rutaImagen": "caracola",
+    "bloquesContenidos": [
+      {
+        "titulo": "Avanzado a Java",
+        "descripcion": "EL mejor bloque del mejor curso.",
+        "rutaImagen": "laotrarutica",
+        "tareas": [
+          {
+            "tipo": "PreguntaRellenar",
+            "enunciado": "Hola",
+            "respuesta": null
+          },
+          {
+            "tipo": "PreguntaRellenar",
+            "tipoPregunta": "VF",
+            "enunciado": "Hola",
+            "esVerdadero": true
+          }
+        ]
+      }
+    ]
+  }
+  

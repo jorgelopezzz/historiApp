@@ -3,6 +3,7 @@ package gui.componentes.tarea;
 import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
@@ -16,9 +17,6 @@ public class ComponenteTipoTest extends ComponentePregunta {
 	/* Cadenas por defecto */
 	private static final String CABECERA_OPCIONES = "Selecciona una respuesta:";
 	
-	/* Atributos de información */
-	private final int indiceCorrecta;
-	
 	/* Componentes gráficos */
 	private ButtonGroup grupoOpciones;
 	private JLabel cabeceraOpciones;
@@ -27,7 +25,6 @@ public class ComponenteTipoTest extends ComponentePregunta {
 	
 	public ComponenteTipoTest(InfoTipoTest info) {
 		super(info);
-		this.indiceCorrecta = info.getCorrecta();
 		this.opciones = List.copyOf(info.getOpciones());
 		this.botones = new ArrayList<JRadioButton>();
 		
@@ -60,8 +57,12 @@ public class ComponenteTipoTest extends ComponentePregunta {
 	}
 	
 	@Override
-	public boolean evaluar() {
-		return botones.get(indiceCorrecta).isSelected();
+	public Optional<String> getRespuesta() {
+		for(JRadioButton boton : botones) {
+			if(boton.isSelected())
+				return Optional.ofNullable(boton.getText());
+		}
+		return Optional.empty();
 	}
 
 }

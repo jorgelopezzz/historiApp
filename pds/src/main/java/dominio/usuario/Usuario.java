@@ -2,7 +2,7 @@ package dominio.usuario;
 
 import java.time.LocalDateTime;
 
-public abstract class Usuario {
+public class Usuario {
 
     private int id;
     private String nombre;
@@ -12,7 +12,7 @@ public abstract class Usuario {
     private String saludo;
     private final LocalDateTime fechaRegistro;
 
-    public Usuario(String nombre, String movil, String contrasena, String imagen, String saludo, LocalDateTime fechaRegistro, boolean isPremium) {
+    public Usuario(String nombre, String movil, String contrasena, String imagen, String saludo, LocalDateTime fechaRegistro) {
         this.id = 0;
         this.nombre = nombre;
         this.movil = movil;

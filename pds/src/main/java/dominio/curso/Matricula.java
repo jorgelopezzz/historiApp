@@ -10,6 +10,9 @@ public class Matricula {
     private LocalDate fechaMatricula;
     
     public Matricula(Curso curso, Usuario usuario, LocalDate fechaMatricula) {
+    	if (curso == null || usuario == null || fechaMatricula == null) {
+    		throw new IllegalArgumentException("Los atributos no pueden ser nulos");
+        }
         this.curso = curso;
         this.usuario = usuario;
         this.fechaMatricula = fechaMatricula;
