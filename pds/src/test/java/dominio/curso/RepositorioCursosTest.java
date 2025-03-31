@@ -1,12 +1,13 @@
 package dominio.curso;
 
-import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 import dominio.ServicioJSON;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+
+import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
 import java.util.List;
@@ -23,9 +24,12 @@ public class RepositorioCursosTest {
         // Mock del comportamiento de carga de cursos
         Curso curso1 = new Curso("Curso 1", "Descripción 1", "rutaImagen1", null);
         Curso curso2 = new Curso("Curso 2", "Descripción 2", "rutaImagen2", null);
-
-        when(servicioMock.cargarCurso("resources/curso1.json")).thenReturn(curso1);
-        when(servicioMock.cargarCurso("resources/curso2.json")).thenReturn(curso2);
+        try {			
+        	when(servicioMock.cargarCurso("resources/curso1.json")).thenReturn(curso1);
+        	when(servicioMock.cargarCurso("resources/curso2.json")).thenReturn(curso2);
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
     }
 
     @Test
@@ -56,7 +60,11 @@ public class RepositorioCursosTest {
     @Test
     public void testRepositorioCursosConArchivosInvalidos() {
         // Simulamos que un archivo JSON lanza una excepción
-        when(servicioMock.cargarCurso("resources/cursoInvalido.json")).thenThrow(new RuntimeException("Error al cargar el curso"));
+        try {			
+        	when(servicioMock.cargarCurso("resources/cursoInvalido.json")).thenThrow(new RuntimeException("Error al cargar el curso"));
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
 
         RepositorioCursos repositorio = RepositorioCursos.INSTANCE;
         List<Curso> cursos = repositorio.getCursos();

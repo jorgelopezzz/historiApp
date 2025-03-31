@@ -13,7 +13,7 @@ public class MatriculaTest {
 
     private static List<Arguments> parametrosParaConstructor() {
         // Crear los objetos de prueba
-        Curso cursoValido = new Curso("titulo", "descripcion", "rutaImagen", null);
+        Curso cursoValido = new Curso("titulo", "descripcion", "rutaImagen", List.of(new BloqueContenidos()));
         Usuario usuarioValido = new Usuario("nombre", "movil", "contrasena", "imagen", "saludo", null);
         
         // Retornar los argumentos para los tests
