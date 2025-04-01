@@ -16,25 +16,11 @@ import javax.swing.border.EmptyBorder;
 
 import gui.GestorGUI;
 
+import dominio.metodoAprendizaje.MetodoAprendizaje;
+
+
 @SuppressWarnings("serial")
 public class EmergenteMetodoAprendizaje extends EmergenteBotones {
-
-    /* Enumerado para las estrategias de aprendizaje */
-    public enum EstrategiaAprendizaje {
-        NORMAL("Normal"),
-        ALEATORIO("Aleatorio");
-
-        private final String nombre;
-
-        EstrategiaAprendizaje(String nombre) {
-            this.nombre = nombre;
-        }
-
-        @Override
-        public String toString() {
-            return nombre;
-        }
-    }
 
     /* Componentes de organización */
     private JPanel panelEnvolvente;
@@ -45,11 +31,14 @@ public class EmergenteMetodoAprendizaje extends EmergenteBotones {
     /* Componentes de información */
     private JLabel etiquetaImagen;
     private JLabel etiquetaTitulo;
-    private JComboBox<EstrategiaAprendizaje> comboEstrategias;
+    private JComboBox<MetodoAprendizaje> comboEstrategias;
 
     /* Botones de acción */
     private JButton botonConfirmar;
     private JButton botonSalir;
+
+    /* Atributo a devolver */
+    private MetodoAprendizaje estrategiaSeleccionada;
 
     /* Constructor */
     public EmergenteMetodoAprendizaje(JFrame ventanaMadre) {
@@ -98,7 +87,7 @@ public class EmergenteMetodoAprendizaje extends EmergenteBotones {
         panelOpciones = new JPanel();
         GestorGUI.configurarPanel(panelOpciones, new BoxLayout(panelOpciones, BoxLayout.X_AXIS), false);
 
-        comboEstrategias = new JComboBox<>(EstrategiaAprendizaje.values());
+        comboEstrategias = new JComboBox<>(MetodoAprendizaje.values());
         comboEstrategias.setFont(GestorGUI.getInstancia().getFuenteTexto());
         comboEstrategias.setForeground(GestorGUI.getInstancia().getColorOscuro());
         comboEstrategias.setMaximumSize(new java.awt.Dimension(200, 30));
@@ -135,7 +124,7 @@ public class EmergenteMetodoAprendizaje extends EmergenteBotones {
         botonConfirmar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                estrategiaSeleccionada = (EstrategiaAprendizaje) comboEstrategias.getSelectedItem();
+                estrategiaSeleccionada = (MetodoAprendizaje) comboEstrategias.getSelectedItem();
                 dispose();
             }
         });
@@ -151,8 +140,7 @@ public class EmergenteMetodoAprendizaje extends EmergenteBotones {
         });
     }
 
-
-    public Optional<EstrategiaAprendizaje> obtenerRespuesta() {
+    public Optional<MetodoAprendizaje> obtenerRespuesta() {
         return Optional.ofNullable(estrategiaSeleccionada);
     }
 }
