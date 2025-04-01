@@ -72,16 +72,11 @@ public class VentanaBloques extends VentanaMenu {
 		//controlador
 		
 		ComponenteBloque[] componentes = new ComponenteBloque[5];
-		for (int i = 1; i < 5; i++) {
+		for (int i = 0; i < 5; i++) {
 	        componentes[i] = new ComponenteBloque(new InfoBloque(
 	                "Arte renacentista", "Descubre el esplendor del Renacimiento, una era de innovación artística y cultural que transformó la historia del arte. Exploraremos las obras maestras de artistas como Leonardo da Vinci, Miguel Ángel y Rafael, analizando sus técnicas, influencias y el contexto histórico que dio forma a este movimiento. Ideal para apasionados del arte y la historia.", 
-	                //"C:/Users/aleja/git/historiApp/pds/resources/" + (new Random().nextInt(5)+1) + ".png", true));
-	                "C:\\Users\\jorge\\git\\repository\\proyectoPDS\\historiApp\\pds\\resources\\" + (new Random().nextInt(5)+1) + ".png", true));
+	                "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Pistachio_vera.jpg/800px-Pistachio_vera.jpg", true));
 	    }
-		componentes[0] = new ComponenteBloque(new InfoBloque(
-                "Arte moderno", "Explora las revoluciones artísticas desde finales del siglo XIX hasta el siglo XX, con movimientos como el impresionismo, cubismo, surrealismo y expresionismo. Analizaremos las obras de artistas como Van Gogh, Picasso y Dalí, comprendiendo su impacto en la evolución del arte. Ideal para quienes desean adentrarse en la creatividad y las vanguardias modernas.", 
-                //"C:/Users/aleja/git/historiApp/pds/resources/" + (new Random().nextInt(5)+1) + ".png", true));
-                "C:\\Users\\jorge\\git\\repository\\proyectoPDS\\historiApp\\pds\\resources\\" + (new Random().nextInt(5)+1) + ".png", true));
 		scroll = new ScrollBloques(VentanaBloques.this, selector, componentes, cursoSeleccionado);
 		
 	}
