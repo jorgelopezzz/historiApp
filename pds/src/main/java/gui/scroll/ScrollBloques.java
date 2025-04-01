@@ -10,9 +10,11 @@ import gui.componentes.contenidos.ComponenteContenido;
 import gui.componentes.contenidos.ComponenteCurso;
 import gui.emergentes.EmergenteMetodoAprendizaje;
 import gui.emergentes.EmergenteSiNo;
-import gui.emergentes.EmergenteMetodoAprendizaje.EstrategiaAprendizaje;
 import gui.ventanas.SelectorVentana;
 import gui.ventanas.VentanaTareas;
+
+import dominio.metodoAprendizaje.MetodoAprendizaje;
+
 
 @SuppressWarnings("serial")
 public class ScrollBloques extends Scroll {
@@ -20,6 +22,7 @@ public class ScrollBloques extends Scroll {
 	private ComponenteCurso cursoSeleccionado;
 	
 	/* Atributos a obtener */
+
     private Optional<MetodoAprendizaje> metodoSeleccionado;
 
 	public ScrollBloques(JFrame ventanaMadre, SelectorVentana selector, ComponenteContenido[] componentes, ComponenteCurso cursoSeleccionado) {
