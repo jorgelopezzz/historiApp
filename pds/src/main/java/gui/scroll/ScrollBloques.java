@@ -1,11 +1,15 @@
 package gui.scroll;
 
+import java.util.Optional;
+
 import javax.swing.JFrame;
 
 import gui.componentes.contenidos.ComponenteBloque;
 import gui.componentes.contenidos.ComponenteContenido;
 import gui.componentes.contenidos.ComponenteCurso;
+import gui.emergentes.EmergenteMetodoAprendizaje;
 import gui.emergentes.EmergenteSiNo;
+import gui.emergentes.EmergenteMetodoAprendizaje.EstrategiaAprendizaje;
 import gui.ventanas.SelectorVentana;
 import gui.ventanas.VentanaTareas;
 
@@ -13,6 +17,9 @@ import gui.ventanas.VentanaTareas;
 public class ScrollBloques extends Scroll {
 	
 	private ComponenteCurso cursoSeleccionado;
+	
+	/* Atributos a obtener */
+    private Optional<EstrategiaAprendizaje> estrategiaSeleccionada;
 
 	public ScrollBloques(JFrame ventanaMadre, SelectorVentana selector, ComponenteContenido[] componentes, ComponenteCurso cursoSeleccionado) {
 		super(ventanaMadre, selector, componentes);
@@ -31,9 +38,15 @@ public class ScrollBloques extends Scroll {
 	                    ComponenteBloque bloqueSeleccionado = (ComponenteBloque) listaComponentes.getModel().getElementAt(index);
 	                    EmergenteSiNo emergente = new EmergenteSiNo(ventanaMadre, "¿Deseas acceder a este bloque de contenidos?");
 	    				emergente.mostrar();
-	    				if(emergente.obtenerRespuesta().orElse(false))
-	    					selector.cambiarVentana(new VentanaTareas(selector, bloqueSeleccionado, cursoSeleccionado)); // ESTO ES SOLO POR QUE SE VEA ALGO
-	    				// AHORA BIEN, A LO MEJOR ES INCORRECTO QUE SE CREE UNA NUEVA VENTANA CURSOS SIEMPRE
+	    				if(emergente.obtenerRespuesta().orElse(false)) {
+	    					EmergenteMetodoAprendizaje emergenteAprendizaje = new EmergenteMetodoAprendizaje(ventanaMadre);
+	    					emergenteAprendizaje.mostrar();
+	    					estrategiaSeleccionada = Optional.of(emergenteAprendizaje.obtenerRespuesta().orElse(null));
+	    					if(estrategiaSeleccionada != null)
+	    						selector.cambiarVentana(new VentanaTareas(selector, bloqueSeleccionado, cursoSeleccionado));
+	    					/// ME QUEDO POR AQUÍ
+	    				}
+	    				
 	                }
 	            }
 	        }

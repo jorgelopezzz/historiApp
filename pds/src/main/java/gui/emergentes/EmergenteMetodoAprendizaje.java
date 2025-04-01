@@ -51,13 +51,9 @@ public class EmergenteMetodoAprendizaje extends EmergenteBotones {
     private JButton botonConfirmar;
     private JButton botonSalir;
 
-    /* Atributos a obtener */
-    private EstrategiaAprendizaje estrategiaSeleccionada;
-
     /* Constructor */
     public EmergenteMetodoAprendizaje(JFrame ventanaMadre) {
         super(ventanaMadre, "Método de Aprendizaje");
-        estrategiaSeleccionada = null;
     }
 
     @Override
