@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import javax.swing.JFrame;
 
+import dominio.metodoAprendizaje.MetodoAprendizaje;
 import gui.componentes.contenidos.ComponenteBloque;
 import gui.componentes.contenidos.ComponenteContenido;
 import gui.componentes.contenidos.ComponenteCurso;
@@ -19,7 +20,7 @@ public class ScrollBloques extends Scroll {
 	private ComponenteCurso cursoSeleccionado;
 	
 	/* Atributos a obtener */
-    private Optional<EstrategiaAprendizaje> estrategiaSeleccionada;
+    private Optional<MetodoAprendizaje> metodoSeleccionado;
 
 	public ScrollBloques(JFrame ventanaMadre, SelectorVentana selector, ComponenteContenido[] componentes, ComponenteCurso cursoSeleccionado) {
 		super(ventanaMadre, selector, componentes);
@@ -41,10 +42,11 @@ public class ScrollBloques extends Scroll {
 	    				if(emergente.obtenerRespuesta().orElse(false)) {
 	    					EmergenteMetodoAprendizaje emergenteAprendizaje = new EmergenteMetodoAprendizaje(ventanaMadre);
 	    					emergenteAprendizaje.mostrar();
-	    					estrategiaSeleccionada = Optional.of(emergenteAprendizaje.obtenerRespuesta().orElse(null));
-	    					if(estrategiaSeleccionada != null)
+	    					metodoSeleccionado = emergenteAprendizaje.obtenerRespuesta();
+	    					if(metodoSeleccionado.isPresent()) {
+	    						//bloqueSeleccionado.setMetodoAprendizaje(metodoSeleccionado)); por el controlador
 	    						selector.cambiarVentana(new VentanaTareas(selector, bloqueSeleccionado, cursoSeleccionado));
-	    					/// ME QUEDO POR AQUÍ
+	    					}
 	    				}
 	    				
 	                }
