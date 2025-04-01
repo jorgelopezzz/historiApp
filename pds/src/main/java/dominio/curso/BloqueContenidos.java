@@ -21,15 +21,15 @@ public class BloqueContenidos {
     
     public BloqueContenidos() {} // Constructor vacío para Jackson (servicioJSON)
     
-    public BloqueContenidos(String titulo, String descripcion, String rutaImagen, MetodoAprendizaje metodoAprendizaje, List<Tarea> list) {
+    public BloqueContenidos(String titulo, String descripcion, String rutaImagen, MetodoAprendizaje metodoAprendizaje, List<Tarea> tareas) {
         if(titulo == null)
         	throw new IllegalArgumentException("El título no puede ser nulo");
     	this.titulo = titulo;
         this.descripcion = descripcion;
         this.rutaImagen = rutaImagen;
         this.certBloque = null;
+        this.tareas = tareas != null ? new ArrayList<>(tareas) : new ArrayList<Tarea>();
         this.metodoAprendizaje = metodoAprendizaje == null ? MetodoAprendizaje.SECUENCIAL : metodoAprendizaje;
-        this.tareas = list != null ? new ArrayList<>(list) : new ArrayList<Tarea>();
         GestorEstrategiaAprendizaje gestor = new GestorEstrategiaAprendizaje(this.metodoAprendizaje);
         tareasMetodoAprendizaje = gestor.generarTareas(this.tareas);
         posicion = 0;
@@ -53,6 +53,12 @@ public class BloqueContenidos {
 
     public List<Tarea> getTareas() {
         return tareas;
+    }
+    
+    public void setMetodoAprendizaje(MetodoAprendizaje metodoAprendizaje) {
+    	this.metodoAprendizaje = metodoAprendizaje == null ? MetodoAprendizaje.SECUENCIAL : metodoAprendizaje;
+        GestorEstrategiaAprendizaje gestor = new GestorEstrategiaAprendizaje(this.metodoAprendizaje);
+        tareasMetodoAprendizaje = gestor.generarTareas(this.tareas);
     }
     
     /* Patrón iterador */

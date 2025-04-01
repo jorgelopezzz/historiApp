@@ -21,4 +21,6 @@ Este repositorio está estructurado en diferentes carpetas, cada una conteniendo
 
 - **[Memoria](./memoria/README.md)**: Contiene toda la documentación sobre los requisitos del sistema y su modelado. Incluye información detallada sobre los casos de uso, el modelo del dominio y otros aspectos esenciales para la comprensión del proyecto.
 
+- **[Pruebas Software](./pruebas/README.md)**: Contiene toda la documentación relacionada con las pruebas realizadas en la aplicación. Incluye información detallada sobre la cobertura alcanzada, los casos de prueba ejecutados y otros aspectos esenciales para garantizar la calidad del proyecto.
+
 Cada una de estas secciones está diseñada para facilitar la navegación y el acceso a la información relevante dentro del repositorio.
