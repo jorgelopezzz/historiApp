@@ -10,21 +10,24 @@ classDiagram
         - contraseña : String
         - imagen : Imagen
         - saludo : String
+        - tiempoDeUso : Duration
+        + getPuntuacion() : Int
+        + getRacha() : Int
     }
 
     class Curso {
         - nombre : String
     }
 
-    class Matricula {
+    class RealizacionCurso {
+        - fechaInicio : localDate
+    }
+
+    class EstrategiaAprendizaje {
     }
 
     class BloqueContenidos {
         - nombre : String
-    }
-
-    class CertificadoBloque {
-        - fechaCert : localdate
     }
 
     class Tarea {
@@ -53,18 +56,21 @@ classDiagram
     }
 
     Usuario "1" --o "*" Curso : creador
-    Usuario "*" --o "1" Matricula : realiza
+    Usuario "1" --o "*" RealizacionCurso : realiza
     Curso "*" --o "*" Usuario : matriculado
     Curso "1" --o "*" BloqueContenidos : contiene
     BloqueContenidos "1" --o "*" Tarea : contiene
-    Matricula "1" --o "1" CertificadoBloque : contiene
-    BloqueContenidos "*" --o "1" CertificadoBloque : completa
-    Matricula "1" --o "1" BloqueContenidos : asociada
+    RealizacionCurso "*" --o "1" Curso : asociado
+    RealizacionCurso "1" -- "1" EstrategiaAprendizaje : usa
     Tarea <|-- Tip
     Tarea <|-- Pregunta
     Pregunta <|-- PreguntaVF
     Pregunta <|-- PreguntaTipoTest
     Pregunta <|-- PreguntaRellenar
+
+    class EstrategiaAprendizaje {
+        <<enumeration>>
+    }
 ```
 
 ## Referencias Adicionales

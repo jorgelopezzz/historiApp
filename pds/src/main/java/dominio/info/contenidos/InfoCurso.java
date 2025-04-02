@@ -1,5 +1,9 @@
 package dominio.info.contenidos;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import dominio.curso.Curso;
 
 public final class InfoCurso extends InfoContenidos {
@@ -15,6 +19,12 @@ public final class InfoCurso extends InfoContenidos {
 	public InfoCurso(Curso curso) {
 		super(curso.getTitulo(), curso.getDescripcion(), curso.getRutaImagen());
 		estaMatriculado = curso.getMatricula() == null ? false : true;
+	}
+	
+	public static List<InfoCurso> getListInfoCurso(List<Curso> cursos) {
+		return cursos.stream() 
+					 .map(InfoCurso::new)
+					 .collect(Collectors.toList());
 	}
 	
 	public boolean estaMatriculado() {

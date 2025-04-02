@@ -1,5 +1,6 @@
 package gui.scroll;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.swing.JFrame;
@@ -25,7 +26,7 @@ public class ScrollBloques extends Scroll {
 
     private Optional<MetodoAprendizaje> metodoSeleccionado;
 
-	public ScrollBloques(JFrame ventanaMadre, SelectorVentana selector, ComponenteContenido[] componentes, ComponenteCurso cursoSeleccionado) {
+	public ScrollBloques(JFrame ventanaMadre, SelectorVentana selector, List<ComponenteContenido> componentes, ComponenteCurso cursoSeleccionado) {
 		super(ventanaMadre, selector, componentes);
 		
 		this.cursoSeleccionado = cursoSeleccionado;
@@ -43,13 +44,7 @@ public class ScrollBloques extends Scroll {
 	                    EmergenteSiNo emergente = new EmergenteSiNo(ventanaMadre, "¿Deseas acceder a este bloque de contenidos?");
 	    				emergente.mostrar();
 	    				if(emergente.obtenerRespuesta().orElse(false)) {
-	    					EmergenteMetodoAprendizaje emergenteAprendizaje = new EmergenteMetodoAprendizaje(ventanaMadre);
-	    					emergenteAprendizaje.mostrar();
-	    					metodoSeleccionado = emergenteAprendizaje.obtenerRespuesta();
-	    					if(metodoSeleccionado.isPresent()) {
-	    						//bloqueSeleccionado.setMetodoAprendizaje(metodoSeleccionado)); por el controlador
 	    						selector.cambiarVentana(new VentanaTareas(selector, bloqueSeleccionado, cursoSeleccionado));
-	    					}
 	    				}
 	    				
 	                }

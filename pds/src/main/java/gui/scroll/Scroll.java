@@ -3,18 +3,23 @@ package gui.scroll;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.util.List;
 
 import javax.swing.BorderFactory;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.ListCellRenderer;
+import javax.swing.ListModel;
 import javax.swing.border.EmptyBorder;
 
 import gui.GestorGUI;
+import gui.componentes.Componente;
 import gui.componentes.contenidos.ComponenteContenido;
+import gui.componentes.contenidos.ComponenteCurso;
 import gui.ventanas.SelectorVentana;
 
 @SuppressWarnings("serial")
@@ -28,7 +33,7 @@ public abstract class Scroll extends JScrollPane {
 	protected JList<ComponenteContenido> listaComponentes;
 	protected JFrame ventanaMadre;
 	
-	public Scroll(JFrame ventanaMadre, SelectorVentana selector, ComponenteContenido[] componentes) {
+	public Scroll(JFrame ventanaMadre, SelectorVentana selector, List<ComponenteContenido> componentesCursos) {
 		super();
 		
 		this.selector = selector;
@@ -49,7 +54,7 @@ public abstract class Scroll extends JScrollPane {
         setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		
 		/* Vinculación de lista */
-		configurarLista(componentes);
+		configurarLista(componentesCursos);
 		setViewportView(listaComponentes);	
 		
 	}
@@ -77,9 +82,13 @@ public abstract class Scroll extends JScrollPane {
         return arrowButton;
     }
 
-	private void configurarLista(ComponenteContenido[] componentes) {
+	private void configurarLista(List<ComponenteContenido> componentesCursos) {
 		/* Aspectos básicos */
-		listaComponentes = new JList<ComponenteContenido>(componentes);
+		DefaultListModel<ComponenteContenido> modelo = new DefaultListModel<>();
+        for (ComponenteContenido componente : componentesCursos) {
+            modelo.addElement(componente);
+        }
+		listaComponentes = new JList<ComponenteContenido>(modelo);
 		listaComponentes.setLayoutOrientation(JList.HORIZONTAL_WRAP);
 		
 		/* Dimensiones de celda */

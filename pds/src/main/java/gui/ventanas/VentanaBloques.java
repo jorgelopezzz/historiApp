@@ -3,7 +3,9 @@ package gui.ventanas;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -11,9 +13,13 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import dominio.HistoriApp;
 import dominio.info.contenidos.InfoBloque;
+import dominio.info.contenidos.InfoCurso;
+import dominio.metodoAprendizaje.MetodoAprendizaje;
 import gui.GestorGUI;
 import gui.componentes.contenidos.ComponenteBloque;
+import gui.componentes.contenidos.ComponenteContenido;
 import gui.componentes.contenidos.ComponenteCurso;
 import gui.scroll.ScrollBloques;
 
@@ -26,9 +32,9 @@ public class VentanaBloques extends VentanaMenu {
 	private JButton botonVolver;
 		
 	/* Método de aprendizaje */
-	private String metodoAprendizaje;
+	private MetodoAprendizaje metodoAprendizaje;
 	
-	public VentanaBloques(SelectorVentana selector, ComponenteCurso cursoSeleccionado, String metodoAprendizaje) {
+	public VentanaBloques(SelectorVentana selector, ComponenteCurso cursoSeleccionado, MetodoAprendizaje metodoAprendizaje) {
 	        super(selector);
 	        
 	        this.cursoSeleccionado = cursoSeleccionado;
@@ -71,13 +77,21 @@ public class VentanaBloques extends VentanaMenu {
 		
 		//controlador
 		
-		ComponenteBloque[] componentes = new ComponenteBloque[5];
+
+		List<InfoBloque> infoBloques = HistoriApp.INSTANCE.getBloques(cursoSeleccionado);
+    	
+		List<ComponenteContenido> componentesBloques = infoBloques.stream()
+			    .map(ComponenteBloque::new)
+			    .collect(Collectors.toList());
+		
+		/*ComponenteBloque[] componentes = new ComponenteBloque[5];
 		for (int i = 0; i < 5; i++) {
 	        componentes[i] = new ComponenteBloque(new InfoBloque(
 	                "Arte renacentista", "Descubre el esplendor del Renacimiento, una era de innovación artística y cultural que transformó la historia del arte. Exploraremos las obras maestras de artistas como Leonardo da Vinci, Miguel Ángel y Rafael, analizando sus técnicas, influencias y el contexto histórico que dio forma a este movimiento. Ideal para apasionados del arte y la historia.", 
 	                "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Pistachio_vera.jpg/800px-Pistachio_vera.jpg", true));
-	    }
-		scroll = new ScrollBloques(VentanaBloques.this, selector, componentes, cursoSeleccionado);
+	    }*/
+		
+		scroll = new ScrollBloques(VentanaBloques.this, selector, componentesBloques, cursoSeleccionado);
 		
 	}
 	

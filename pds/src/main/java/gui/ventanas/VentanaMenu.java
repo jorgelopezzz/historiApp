@@ -12,6 +12,7 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import dominio.HistoriApp;
 import gui.GestorGUI;
 import gui.emergentes.EmergenteClasificacion;
 import gui.emergentes.EmergenteEstadisticas;
@@ -95,7 +96,8 @@ public abstract class VentanaMenu extends Ventana {
 		///
 		
 		ImageIcon imagenPuntuacion = GestorGUI.getInstancia().iconoDeRecursos(RUTA_PUNTUACION, ANCHO_IMAGEN, ALTO_IMAGEN);
-		etiquetaPuntuacion = new JLabel("Puntuación", imagenPuntuacion, JLabel.LEFT);
+		String puntuacion = "24" ;// String.valueof(HistoriApp.INSTANCE.getPuntuacion());
+		etiquetaPuntuacion = new JLabel(puntuacion, imagenPuntuacion, JLabel.LEFT);
 		GestorGUI.configurarEtiqueta(etiquetaPuntuacion, false, GestorGUI.getInstancia().getColorClaro() , GestorGUI.getInstancia().getFuenteTexto());
 		barraSuperior.add(etiquetaPuntuacion);
 		
@@ -104,7 +106,8 @@ public abstract class VentanaMenu extends Ventana {
 		///
 				
 		ImageIcon imagenRacha = GestorGUI.getInstancia().iconoDeRecursos(RUTA_RACHA, ANCHO_IMAGEN, ALTO_IMAGEN);
-		etiquetaRacha = new JLabel("Racha", imagenRacha, JLabel.LEFT);
+		String racha = "3" ;// String.valueof(HistoriApp.INSTANCE.getRacha());
+		etiquetaRacha = new JLabel(racha, imagenRacha, JLabel.LEFT);
 		GestorGUI.configurarEtiqueta(etiquetaRacha, false, GestorGUI.getInstancia().getColorClaro() , GestorGUI.getInstancia().getFuenteTexto());
 		barraSuperior.add(etiquetaRacha);
 		
@@ -124,8 +127,9 @@ public abstract class VentanaMenu extends Ventana {
 		barraSuperior.add(Box.createHorizontalStrut(ESPACIO_HORIZONTAL_GRANDE));
 		///
 		
-		String nombrePerfil = "el_rey67";
-		String rutaPerfil = RUTA_PERFIL_PREDETERMINADO;
+		String nombrePerfil = "el_rey67"; // HistoriApp.INSTANCE.getNombre();
+		
+		String rutaPerfil = "/perfil.png"; //HistoriApp.INSTANCE.getImagen();
 		etiquetaPerfil = new JLabel(nombrePerfil);
 		GestorGUI.configurarEtiqueta(etiquetaPerfil, false, GestorGUI.getInstancia().getColorClaro() , GestorGUI.getInstancia().getFuenteTexto());
 		barraSuperior.add(etiquetaPerfil);

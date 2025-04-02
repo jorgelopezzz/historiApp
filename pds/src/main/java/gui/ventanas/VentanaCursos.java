@@ -3,7 +3,10 @@ package gui.ventanas;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -14,6 +17,7 @@ import javax.swing.JPanel;
 import dominio.HistoriApp;
 import dominio.info.contenidos.InfoCurso;
 import gui.GestorGUI;
+import gui.componentes.contenidos.ComponenteContenido;
 import gui.componentes.contenidos.ComponenteCurso;
 import gui.emergentes.EmergenteFichero;
 import gui.scroll.ScrollCursos;
@@ -71,17 +75,22 @@ public class VentanaCursos extends VentanaMenu {
     @Override
 	protected void construirScrollMenu() {
 		
-		//HistoriApp.INSTANCE.getCursos();
+		List<InfoCurso> infoCursos = HistoriApp.INSTANCE.getCursos();
     	
-    	ComponenteCurso[] componentes = new ComponenteCurso[5];
+		List<ComponenteContenido> componentesCursos = infoCursos.stream()
+			    .map(ComponenteCurso::new)
+			    .collect(Collectors.toList());
+
+    	
+    	/*ComponenteCurso[] componentes = new ComponenteCurso[5];
 		for (int i = 0; i < 5; i++) {
 	        componentes[i] = new ComponenteCurso(new InfoCurso(
 	                "Historia del arte", "Explora la evolución del arte desde la prehistoria hasta la actualidad, analizando sus estilos, movimientos y contextos históricos. A través de imágenes, análisis de obras y debates, descubrirás cómo el arte refleja la cultura y el pensamiento de cada época. Ideal para amantes del arte y la historia.", 
 	                "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Pistachio_vera.jpg/800px-Pistachio_vera.jpg" ,true));
-	    }
+	    }*/
 		
                 
-		scroll = new ScrollCursos(VentanaCursos.this, selector, componentes);
+		scroll = new ScrollCursos(VentanaCursos.this, selector, componentesCursos);
 		
 	}
     
