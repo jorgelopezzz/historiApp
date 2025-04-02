@@ -2,7 +2,7 @@ package dominio.usuario;
 
 import java.time.LocalDateTime;
 
-import gui.info.usuario.infoEstadisticas;
+import dominio.info.usuario.infoEstadisticas;
 
 public class Usuario {
 

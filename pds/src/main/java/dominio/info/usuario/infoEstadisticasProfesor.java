@@ -1,4 +1,4 @@
-package gui.info.usuario;
+package dominio.info.usuario;
 
 import java.util.Optional;
 

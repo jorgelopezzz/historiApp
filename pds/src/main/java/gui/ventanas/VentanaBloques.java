@@ -11,10 +11,10 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import dominio.info.contenidos.InfoBloque;
 import gui.GestorGUI;
 import gui.componentes.contenidos.ComponenteBloque;
 import gui.componentes.contenidos.ComponenteCurso;
-import gui.info.contenidos.InfoBloque;
 import gui.scroll.ScrollBloques;
 
 @SuppressWarnings("serial")

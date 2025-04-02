@@ -1,6 +1,6 @@
-package gui.info.contenidos;
+package dominio.info.contenidos;
 
-import gui.info.Info;
+import dominio.info.Info;
 
 public abstract class InfoContenidos extends Info {
 

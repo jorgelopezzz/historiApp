@@ -1,6 +1,6 @@
 package gui.componentes.contenidos;
 
-import gui.info.contenidos.InfoCurso;
+import dominio.info.contenidos.InfoCurso;
 
 @SuppressWarnings("serial")
 public class ComponenteCurso extends ComponenteContenido {

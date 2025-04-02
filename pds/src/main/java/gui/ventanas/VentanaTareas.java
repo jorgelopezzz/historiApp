@@ -13,13 +13,13 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import dominio.info.Info;
 import gui.GestorGUI;
 import gui.componentes.contenidos.ComponenteBloque;
 import gui.componentes.contenidos.ComponenteCurso;
 import gui.componentes.tarea.ComponenteRellenar;
 import gui.componentes.tarea.ComponenteTarea;
 import gui.emergentes.EmergenteSiNo;
-import gui.info.Info;
 
 
 @SuppressWarnings("serial")
