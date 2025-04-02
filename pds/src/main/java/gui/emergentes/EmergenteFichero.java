@@ -32,31 +32,33 @@ public class EmergenteFichero extends Emergente {
 	/* Componentes de organización */
 	private JPanel panelPrincipal;
 	private JPanel panelElector;
-	private JPanel panelImagen;
+	protected JPanel panelInferior;
 	
 	/* Componentes para seleccionar imágenes */
 	private JEditorPane panelArrastre;
-	private JFileChooser panelFichero;
+	protected JFileChooser panelFichero;
 	
-	/* Vista previa */
-	private JLabel etiquetaImagen;
+
 	
 	/* Botones */
 	private JButton botonAceptar;
 	private JButton botonSalir;
 	
 	/* Atributos a obtener */
-	private String rutaFichero;
+	protected String rutaFichero;
 	
 	/* Dimensiones */
-	private static final int LADO_IMAGEN = 150;
 	private static final int ANCHO_FICHERO = 400;
 	private static final int ALTO_FICHERO = 250;
 	private static final int ANCHO_ARRASTRE = 200;
 	private static final int ALTO_ARRASTRE = ALTO_FICHERO;
 	
+	public EmergenteFichero(JFrame ventanaMadre, String tipoFichero) {
+		super("Seleccionar " + tipoFichero, GestorGUI.getInstancia().getColorBlanco(), ventanaMadre);
+	}
+	
 	public EmergenteFichero(JFrame ventanaMadre) {
-		super("Seleccionar Fichero", GestorGUI.getInstancia().getColorBlanco(), ventanaMadre);
+		this(ventanaMadre, "Fichero");
 	}
 	
 	@Override
@@ -71,11 +73,11 @@ public class EmergenteFichero extends Emergente {
 		
 		/* Construccion de explorador y panel de arrastre */
 		construirPanelElector();
-		construirPanelImagen(GestorGUI.IMAGEN_PREDET_OSC);
+		construirpanelInferior(GestorGUI.IMAGEN_PREDET_OSC);
 		
 		/* Montaje */
 		panelPrincipal.add(panelElector, BorderLayout.CENTER);
-		panelPrincipal.add(panelImagen, BorderLayout.SOUTH);
+		panelPrincipal.add(panelInferior, BorderLayout.SOUTH);
 		
 		this.add(panelPrincipal);
 	}
@@ -111,36 +113,14 @@ public class EmergenteFichero extends Emergente {
             public void actionPerformed(ActionEvent e) {
                 String accion = e.getActionCommand();
                 if (accion.equals(JFileChooser.APPROVE_SELECTION)) {
-                	rutaFichero = panelFichero.getSelectedFile().getAbsolutePath();
-                    establecerImagen(rutaFichero);
+                	manejadorPanelFichero();
                 }
             }
         });
 	}
 	
-	private void establecerImagen(String ruta) {
-		// Restaurar la etiqueta a su estado original
-	    etiquetaImagen.setIcon(null);
-	    etiquetaImagen.setText("");
-	    etiquetaImagen.setOpaque(false);
-	    etiquetaImagen.setBorder(null);
-	    
-		ImageIcon icono = GestorGUI.getInstancia().iconoAbsoluto(ruta, LADO_IMAGEN, LADO_IMAGEN);
-	    if (icono != null && icono.getIconWidth() > 0) {
-	        etiquetaImagen.setIcon(icono);
-	    } else {
-	    	etiquetaImagen.setIcon(null);
-	    	etiquetaImagen.setText(new File(ruta).getName());
-	        etiquetaImagen.setHorizontalAlignment(SwingConstants.CENTER);
-	        etiquetaImagen.setVerticalAlignment(SwingConstants.CENTER);
-	        etiquetaImagen.setForeground(GestorGUI.getInstancia().getColorBlanco());
-	        etiquetaImagen.setOpaque(true);
-	        etiquetaImagen.setBackground(GestorGUI.getInstancia().getColorOscuro());
-	        etiquetaImagen.setBorder(BorderFactory.createCompoundBorder(
-	            BorderFactory.createLineBorder(GestorGUI.getInstancia().getColorOscuro(), 2),
-	            BorderFactory.createEmptyBorder(10, 10, 10, 10)
-	        ));
-	    }
+	protected void manejadorPanelFichero() {
+		rutaFichero = panelFichero.getSelectedFile().getAbsolutePath();
 	}
 	
 	private void construirPanelArrastre() {
@@ -173,8 +153,7 @@ public class EmergenteFichero extends Emergente {
 					List<File> ficheros = (List<File>) evt.getTransferable().
 					getTransferData(DataFlavor.javaFileListFlavor);
 					if (!ficheros.isEmpty()) {
-						rutaFichero = ficheros.get(0).getAbsolutePath();
-						establecerImagen(rutaFichero);
+						manejadorPanelArrastre(ficheros);
 					}
 				} catch (Exception ex){
 					ex.printStackTrace();
@@ -184,31 +163,38 @@ public class EmergenteFichero extends Emergente {
 		
 	}
 	
-	private void construirPanelImagen(String ruta) {
+	protected void manejadorPanelArrastre(List<File> ficheros) {
+		rutaFichero = ficheros.get(0).getAbsolutePath();
+	}
+	
+	protected void construirpanelInferior(String ruta) {
 		
 		/* Configuración panel */
-		panelImagen = new JPanel();
-		GestorGUI.configurarPanel(panelImagen, new BoxLayout(panelImagen, BoxLayout.X_AXIS), false);
+		panelInferior = new JPanel();
+		GestorGUI.configurarPanel(panelInferior, new BoxLayout(panelInferior, BoxLayout.X_AXIS), false);
+		panelInferior.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
-		/* Vista previa */
-		etiquetaImagen = new JLabel();
-		etiquetaImagen.setIcon(GestorGUI.getInstancia().iconoDeRecursos(GestorGUI.IMAGEN_PREDET_OSC, LADO_IMAGEN, LADO_IMAGEN));
-		etiquetaImagen.setAlignmentX(Component.LEFT_ALIGNMENT);
+		/* Montaje */
+		panelInferior.add(Box.createHorizontalStrut(ANCHO_EMERGENTE_PREDET/3-GestorGUI.SEPARACION_BOTONES));
+		montarBotones();
+        panelInferior.setBorder(BorderFactory.createEmptyBorder(0, 0, ALTO_EMERGENTE_PREDET/5, 0)); // Espacio abajo
+
+
 		
-		/* Creación de botones y establecimiento de manejadores */
+	}
+	
+	protected void montarBotones() {
+		/* Construcción */
 		botonAceptar = GestorGUI.getBotonPredeterminado("Aceptar");
 		manejadorAceptar();
-		
 		botonSalir = GestorGUI.getBotonPredeterminado("Salir");
 		manejadorSalir(botonSalir);
 		
 		/* Montaje */
-		panelImagen.add(Box.createHorizontalStrut( (int) ((ANCHO_EMERGENTE_PREDET - GestorGUI.ANCHO_BOTON_PREDET)/ 4.0) ));
-		panelImagen.add(etiquetaImagen);
-		panelImagen.add(Box.createHorizontalStrut(GestorGUI.SEPARACION_BOTONES));
-		panelImagen.add(botonAceptar);
-		panelImagen.add(Box.createHorizontalStrut(GestorGUI.SEPARACION_BOTONES));
-		panelImagen.add(botonSalir);
+		panelInferior.add(Box.createHorizontalStrut(GestorGUI.SEPARACION_BOTONES));
+		panelInferior.add(botonAceptar);
+		panelInferior.add(Box.createHorizontalStrut(GestorGUI.SEPARACION_BOTONES));
+		panelInferior.add(botonSalir);
 		
 	}
 	

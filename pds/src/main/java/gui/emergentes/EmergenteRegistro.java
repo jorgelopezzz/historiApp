@@ -167,7 +167,7 @@ public class EmergenteRegistro extends Emergente {
 			@Override
 			public void actionPerformed(ActionEvent e) {		
 				/* Lanzar la ventana emergente */
-				EmergenteFichero emergente = new EmergenteFichero(ventanaMadre);
+				EmergenteImagen emergente = new EmergenteImagen(ventanaMadre);
 				emergente.mostrar();
 
 				/* Obtener resultado */
