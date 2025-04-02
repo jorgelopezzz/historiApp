@@ -42,11 +42,19 @@ public enum HistoriApp {
 	
 	// 1.1.- Registro de un nuevo usuario
 	
-	public boolean registrarUsuario(String nombre, String movil, String contrasena, String imagen, String saludo) {
-		//if (existeUsuario(nombre) || existeUsuario(movil))
+	public boolean registrarUsuario(String nombre, String contrasena, String imagen, String saludo) {
+		//if (existeUsuario(nombre))
 		//	return false;
-		Usuario usuario = new Usuario(nombre, movil, contrasena, imagen, LocalDateTime.now());
+		Usuario usuario = new Usuario(nombre, contrasena, imagen, saludo, LocalDateTime.now());
 		usuarios.addUsuario(usuario);	
+		return true;
+	}
+
+	public boolean registrarProfesor(String nombre, String contrasena, String imagen, String saludo) {
+		//if (existeUsuario(nombre))
+		//	return false;
+		Profesor profesor = new Profesor(nombre, contrasena, imagen, saludo, LocalDateTime.now());
+		usuarios.addUsuario(profesor);	
 		return true;
 	}
 	
@@ -63,14 +71,12 @@ public enum HistoriApp {
 		return false;
 	}
 	
-	// 1.3.- Cambiar imagen
+	// 1.3.- Cambiar información de perfil
 	
 	public void cambiarImagen(String imagen) {
 		usuario.setImagen(imagen);
 		actualizarUsuario(usuario);
 	}
-	
-	// 1.4.- Cambiar saludo
 	
 	public void cambiarSaludo(String saludo) {
 		usuario.setSaludo(saludo);
