@@ -36,9 +36,8 @@ public abstract class EmergenteBotones extends Emergente {
 
 	/* Constructor */
 	public EmergenteBotones(JFrame ventanaMadre, String mensaje) {
-		super(GestorGUI.NOMBRE_APP + " Mensaje", GestorGUI.getInstancia().getColorClaro(), ventanaMadre,
+		super(" Mensaje", GestorGUI.getInstancia().getColorClaro(), ventanaMadre,
 				ANCHO_EMERGENTE, ALTO_EMERGENTE);
-
 		this.mensaje = mensaje;
 	}
 
@@ -56,14 +55,14 @@ public abstract class EmergenteBotones extends Emergente {
 		/* Panel texto */
 		panelTexto = new JPanel();
 		GestorGUI.configurarPanel(panelTexto, new BoxLayout(panelTexto, BoxLayout.Y_AXIS), false);
-
+		
 		/* Etiqueta imagen */
 		etiquetaImagen = new JLabel();
 		etiquetaImagen.setIcon(GestorGUI.getInstancia().iconoDeRecursos(RUTA_ALERTA, LADO_IMAGEN, LADO_IMAGEN));
 		etiquetaImagen.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 		/* Campo texto */
-		areaTexto = GestorGUI.crearAreaTexto(mensaje, GestorGUI.getInstancia().getFuenteTexto(),
+		areaTexto = GestorGUI.crearAreaTexto(this.mensaje, GestorGUI.getInstancia().getFuenteTexto(),
 				GestorGUI.getInstancia().getColorOscuro(), NUMERO_COLUMNAS_TEXTO);
 
 		/* Montaje */
