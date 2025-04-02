@@ -42,7 +42,7 @@
 4. El sistema permite el acceso y redirige al usuario a la pantalla principal.
 5. El sistema comienza a contar el tiempo de sesión del usuario.
 6. El usuario cierra la sesión
-7. El sistema actualiza las estadísticas de tiempo de uso de la apliación, tiempo medio de uso diario de la apliación y mejor racha.
+7. El sistema actualiza las estadísticas de tiempo de uso de la aplicación, tiempo medio de uso diario de la aplicación y mejor racha.
 
 **Flujos alternativos:**
 - 4a. Si las credenciales son incorrectas, el sistema muestra un mensaje de error y solicita reintentar.
@@ -69,6 +69,10 @@
 **Postcondiciones:**
 - La imagen de perfil del usuario se actualiza correctamente.
 - El saludo del usuario se actualiza correctamente.
+
+> [!NOTE]
+> Este caso de uso no ha sido obtenido directamente del caso de estudio, sino que ha sido introducido por el equipo.
+
 
 ### 2. Gestión de contenidos
 
