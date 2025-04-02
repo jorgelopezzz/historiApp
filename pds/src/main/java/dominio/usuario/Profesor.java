@@ -2,8 +2,7 @@ package dominio.usuario;
 
 import java.time.LocalDateTime;
 
-import gui.info.usuario.infoEstadisticasProfesor;
-
+import dominio.info.usuario.infoEstadisticasProfesor;
 
 public class Profesor extends Usuario {
 
@@ -17,7 +16,7 @@ public class Profesor extends Usuario {
 	
 	@Override
 	public infoEstadisticasProfesor getEstadisticas(){
-		return new infoEstadisticasProfesor(nombre, puntuacion, bloquesCompletados, cursosCompletados, minutosUso, diasUso, maxRacha, cursosPublicados);
+		return new infoEstadisticasProfesor(nombre, puntuacion, cursosCompletados, tiempoUso, diasUso, maxRacha, cursosPublicados);
 	}
 
 }
