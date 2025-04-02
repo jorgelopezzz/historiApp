@@ -3,6 +3,7 @@ package gui.scroll;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -28,7 +29,7 @@ public abstract class Scroll extends JScrollPane {
 	protected JList<ComponenteContenido> listaComponentes;
 	protected JFrame ventanaMadre;
 	
-	public Scroll(JFrame ventanaMadre, SelectorVentana selector, ComponenteContenido[] componentes) {
+	public Scroll(JFrame ventanaMadre, SelectorVentana selector, List<ComponenteContenido> componentes) {
 		super();
 		
 		this.selector = selector;

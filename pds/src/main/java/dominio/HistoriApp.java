@@ -6,8 +6,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
+import java.util.List;
 
+import dominio.curso.Curso;
 import dominio.curso.RepositorioCursos;
+import dominio.info.contenidos.InfoCurso;
 import dominio.usuario.Profesor;
 import dominio.usuario.RepositorioUsuarios;
 import dominio.usuario.Usuario;
@@ -79,7 +82,11 @@ public enum HistoriApp {
 	
 	////////////
 	
-	public 
+	public List<InfoCurso> getCursos() {
+		return InfoCurso.getListInfoCurso(cursos.getCursos());
+	}
+	
+	
 	
 	public boolean crearCurso(String rutaCurso) {
 	    if (!(usuario instanceof Profesor)) {

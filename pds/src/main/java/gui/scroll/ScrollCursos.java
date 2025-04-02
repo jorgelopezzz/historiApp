@@ -1,5 +1,7 @@
 package gui.scroll;
 
+import java.util.List;
+
 import javax.swing.JFrame;
 
 import gui.componentes.contenidos.ComponenteContenido;
@@ -11,8 +13,8 @@ import gui.ventanas.VentanaBloques;
 @SuppressWarnings("serial")
 public class ScrollCursos extends Scroll {
 
-	public ScrollCursos(JFrame ventanaMadre, SelectorVentana selector, ComponenteContenido[] componentes) {
-		super(ventanaMadre, selector, componentes);
+	public ScrollCursos(JFrame ventanaMadre, SelectorVentana selector, List<ComponenteCurso> componentesCursos) {
+		super(ventanaMadre, selector, componentesCursos);
 	}
 
 	@Override
