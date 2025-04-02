@@ -72,13 +72,18 @@ public enum HistoriApp {
 	}
 	
 	// 1.3.- Cambiar información de perfil
+
+	public void cambiarInformacionPerfil(String imagen, String saludo){ //OJO que pasa si solo se cambia una?
+		cambiarImagen(imagen);
+		cambiarSaludo(saludo);
+	}
 	
-	public void cambiarImagen(String imagen) {
+	private void cambiarImagen(String imagen) {
 		usuario.setImagen(imagen);
 		actualizarUsuario(usuario);
 	}
 	
-	public void cambiarSaludo(String saludo) {
+	private void cambiarSaludo(String saludo) {
 		usuario.setSaludo(saludo);
 		actualizarUsuario(usuario);
 	}
