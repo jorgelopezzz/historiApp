@@ -85,6 +85,8 @@ public enum HistoriApp {
 	
 	////////////
 	
+	public 
+	
 	public boolean crearCurso(String rutaCurso) {
 	    if (!(usuario instanceof Profesor)) {
 	        return false;

@@ -11,10 +11,11 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import dominio.HistoriApp;
+import dominio.info.contenidos.InfoCurso;
 import gui.GestorGUI;
 import gui.componentes.contenidos.ComponenteCurso;
 import gui.emergentes.EmergenteFichero;
-import gui.info.contenidos.InfoCurso;
 import gui.scroll.ScrollCursos;
 
 @SuppressWarnings("serial")
@@ -53,7 +54,7 @@ public class VentanaCursos extends VentanaMenu {
 	    GestorGUI.configurarEtiqueta(etiquetaBienvenida, false, GestorGUI.getInstancia().getColorOscuro(), GestorGUI.getInstancia().getFuenteTexto());
 	    panelInicial.add(etiquetaBienvenida, BorderLayout.WEST);
 	    
-	    if(rol == 0) {
+	    if(rol == 0 /*HistoriApp.INSTANCE.esProfesor()*/) {
 		    panelInicial.add(Box.createHorizontalGlue());
 		    
 		    botonCrearCurso = GestorGUI.getBotonPredeterminado("Crear curso");
@@ -70,8 +71,8 @@ public class VentanaCursos extends VentanaMenu {
     @Override
 	protected void construirScrollMenu() {
 		
-		//controlador
-		
+		//HistoriApp.INSTANCE.getCursos();
+    	
     	ComponenteCurso[] componentes = new ComponenteCurso[5];
 		for (int i = 0; i < 5; i++) {
 	        componentes[i] = new ComponenteCurso(new InfoCurso(
@@ -95,8 +96,10 @@ public class VentanaCursos extends VentanaMenu {
 					// Obtener resultado
 					emergente.obtenerFichero().ifPresentOrElse( (ruta) -> {
 						rutaJSON = ruta;
-///////////////////// AQUÍ TENGO QUE AÑADIR CURSO POR EL CONTROLADOR ///////////////////////
-						//Controlador.crearCurso(rutaJSON);
+						//Añadimos el curso a resources
+						HistoriApp.INSTANCE.crearCurso(rutaJSON);
+						//Actualizamos VentanaCursos para que muestre el nuevo curso
+						
 					},
 							() ->  {return;} 
 					);

@@ -1,8 +1,8 @@
-package gui.info.usuario;
+package dominio.info.usuario;
 
 import java.util.Optional;
 
-import gui.info.Info;
+import dominio.info.Info;
 
 public class infoEstadisticas extends Info{
     

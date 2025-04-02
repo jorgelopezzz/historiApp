@@ -8,10 +8,10 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
+import dominio.info.Info;
 import gui.GestorGUI;
 import gui.componentes.Componente;
 import gui.componentes.contenidos.ComponenteContenido;
-import gui.info.Info;
 
 @SuppressWarnings("serial")
 public abstract class ComponenteTarea extends Componente { 

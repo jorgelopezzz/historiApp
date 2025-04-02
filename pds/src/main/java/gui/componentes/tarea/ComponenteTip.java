@@ -4,8 +4,8 @@ import java.awt.Component;
 
 import javax.swing.JLabel;
 
+import dominio.info.tarea.InfoTip;
 import gui.GestorGUI;
-import gui.info.tarea.InfoTip;
 
 public class ComponenteTip extends ComponenteTarea {
 
