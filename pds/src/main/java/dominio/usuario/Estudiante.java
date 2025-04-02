@@ -9,6 +9,5 @@ public class Estudiante extends Usuario {
 		super(nombre, movil, contrasena, imagen, saludo, fechaRegistro, isPremium);
 	}
 	
-	
 
 }

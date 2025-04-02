@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import gui.info.usuario.infoEstadisticas;
 
 public class Usuario {
+    
+    private static final String RUTA_PERFIL_PREDETERMINADO = "/perfil.png";
 
     protected String nombre;
     private String contrasena;
@@ -29,7 +31,8 @@ public class Usuario {
 
         this.nombre = nombre;
         this.contrasena = contrasena;
-        this.imagen = imagen;
+        
+        this.imagen = imagen.equals(null) ? RUTA_PERFIL_PREDETERMINADO : imagen;
         this.saludo = saludo;
 
         this.puntuacion = 0;
@@ -73,9 +76,7 @@ public class Usuario {
     }
 
     /* Estadísticas */
-    /*public int getPuntuacion() {
-        return puntuacion;
-    }
+    /*
 
     public int getBloquesCompletadosPuntuacion() {
         return bloquesCompletados;
@@ -92,10 +93,14 @@ public class Usuario {
     public int getDiasUso() {
         return diasUso;
     }
+    */
+    public int getPuntuacion() {
+        return puntuacion;
+    }
 
     public int getMaxRacha() {
         return maxRacha;
-    } */
+    }
     
     public infoEstadisticas getEstadisticas(){
         return new infoEstadisticas(nombre, puntuacion, bloquesCompletados, cursosCompletados, minutosUso, diasUso, maxRacha);
