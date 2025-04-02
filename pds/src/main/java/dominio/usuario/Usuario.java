@@ -2,60 +2,61 @@ package dominio.usuario;
 
 import java.time.LocalDateTime;
 
+import gui.info.usuario.infoEstadisticas;
+
 public class Usuario {
 
-    private int id;
-    private String nombre;
-    private String movil;
+    protected String nombre;
     private String contrasena;
     private String imagen;
     private String saludo;
+
+    protected int puntuacion;
+    protected int bloquesCompletados;
+    protected int cursosCompletados;
+    protected int minutosUso; //100 años de uso continuado no se sale de un int en minutos
+    protected int diasUso;
+    protected int maxRacha;
+
     private final LocalDateTime fechaRegistro;
 
-    public Usuario(String nombre, String movil, String contrasena, String imagen, String saludo, LocalDateTime fechaRegistro) {
-        this.id = 0;
+    public Usuario(String nombre, String contrasena, String imagen, String saludo, LocalDateTime fechaRegistro) {
+        if(nombre == null) 
+    		throw new IllegalArgumentException("El nombre no puede ser nulo");
+
+        if(contrasena == null) 
+    		throw new IllegalArgumentException("La contraseña no puede ser nula");
+
         this.nombre = nombre;
-        this.movil = movil;
         this.contrasena = contrasena;
         this.imagen = imagen;
         this.saludo = saludo;
+
+        this.puntuacion = 0;
+        this.bloquesCompletados = 0;
+        this.cursosCompletados = 0;
+        this.minutosUso = 0;
+        this.diasUso = 0;
+        this.maxRacha = 0;
+
         this.fechaRegistro = fechaRegistro;
     }
 
     // Getters y setters
-    
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getMovil() {
-        return movil;
-    }
-
-    public void setMovil(String movil) {
-        this.movil = movil;
-    }
-
-    public String getContrasena() {
+    public String getContrasena() { /* Debería tener un método comprobar contraseña??? En lugar de esto */
         return contrasena;
     }
 
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
+    public LocalDateTime getFechaRegistro() {
+    	return fechaRegistro;
     }
 
+    /* Alterables */
     public String getImagen() {
         return imagen;
     }
@@ -66,20 +67,42 @@ public class Usuario {
     public String getSaludo() {
     	return saludo;
     }
-    
+
     public void setSaludo(String saludo) {
     	this.saludo = saludo;
     }
-    public LocalDateTime getFechaRegistro() {
-    	return fechaRegistro;
+
+    /* Estadísticas */
+    /*public int getPuntuacion() {
+        return puntuacion;
+    }
+
+    public int getBloquesCompletadosPuntuacion() {
+        return bloquesCompletados;
+    }
+
+    public int getCursosCompletados() {
+        return cursosCompletados;
+    }
+
+    public int getMinutosUso() {
+        return minutosUso;
+    }
+
+    public int getDiasUso() {
+        return diasUso;
+    }
+
+    public int getMaxRacha() {
+        return maxRacha;
+    } */
+    
+    public infoEstadisticas getEstadisticas(){
+        return new infoEstadisticas(nombre, puntuacion, bloquesCompletados, cursosCompletados, minutosUso, diasUso, maxRacha);
     }
     
 	/////////////////////////////////////////////////////////
 	// 0.- NO HISTORIAS DE USUARIO //////////////////////////
 	/////////////////////////////////////////////////////////
-    
-    public boolean realizarCurso() {
-    	return true;
-    }
     
 }
