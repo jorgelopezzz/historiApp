@@ -33,9 +33,9 @@ public class MatriculaTest {
     @MethodSource("parametrosParaConstructor")
     public void testConstructorNulls(Curso cursoParam, Usuario usuarioParam, LocalDate fechaMatriculaParam, boolean debeLanzarExcepcion) {
         if (debeLanzarExcepcion) {
-            assertThrows(IllegalArgumentException.class, () -> new Matricula(cursoParam, usuarioParam, fechaMatriculaParam));
+            assertThrows(IllegalArgumentException.class, () -> new RealizacionCurso(cursoParam, usuarioParam, fechaMatriculaParam));
         } else {
-            Matricula matricula = new Matricula(cursoParam, usuarioParam, fechaMatriculaParam);
+            RealizacionCurso matricula = new RealizacionCurso(cursoParam, usuarioParam, fechaMatriculaParam);
             assertEquals(cursoParam, matricula.getCurso());
             assertEquals(usuarioParam, matricula.getUsuario());
             assertEquals(fechaMatriculaParam, matricula.fechaMatricula());
