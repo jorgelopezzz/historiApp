@@ -3,7 +3,10 @@ package gui.ventanas;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -71,7 +74,12 @@ public class VentanaCursos extends VentanaMenu {
     @Override
 	protected void construirScrollMenu() {
 		
-		//HistoriApp.INSTANCE.getCursos();
+		List<InfoCurso> infoCursos = HistoriApp.INSTANCE.getCursos();
+    	
+		List<ComponenteCurso> componentesCursos = infoCursos.stream()
+			    .map(ComponenteCurso::new) // Suponiendo que hay un constructor ComponenteCurso(InfoCurso)
+			    .collect(Collectors.toList());
+
     	
     	ComponenteCurso[] componentes = new ComponenteCurso[5];
 		for (int i = 0; i < 5; i++) {
@@ -81,7 +89,7 @@ public class VentanaCursos extends VentanaMenu {
 	    }
 		
                 
-		scroll = new ScrollCursos(VentanaCursos.this, selector, componentes);
+		scroll = new ScrollCursos(VentanaCursos.this, selector, componentesCursos);
 		
 	}
     

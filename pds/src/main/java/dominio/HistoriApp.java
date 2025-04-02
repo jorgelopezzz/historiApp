@@ -6,8 +6,12 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
+import java.util.List;
 
+import dominio.curso.Curso;
 import dominio.curso.RepositorioCursos;
+import dominio.info.contenidos.InfoCurso;
+import dominio.metodoAprendizaje.MetodoAprendizaje;
 import dominio.usuario.Profesor;
 import dominio.usuario.RepositorioUsuarios;
 import dominio.usuario.Usuario;
@@ -16,11 +20,13 @@ public enum HistoriApp {
 	INSTANCE;
 	
 	private Usuario usuario;
+	private MetodoAprendizaje metodoAprendizaje;
 	private RepositorioUsuarios usuarios;
 	private RepositorioCursos cursos;
 	
 	private HistoriApp() {
 		usuario = null;
+		metodoAprendizaje = null;
 		usuarios = RepositorioUsuarios.INSTANCE;
 		cursos = RepositorioCursos.INSTANCE;
 	}
@@ -90,7 +96,14 @@ public enum HistoriApp {
 	
 	////////////
 	
-	public 
+	
+	public List<InfoCurso> getCursos() {
+		return InfoCurso.getListInfoCurso(cursos.getCursos());
+	}
+	
+	public boolean realizarCurso(Curso curso, MetodoAprendizaje metodoAprendizaje) {
+		
+	}
 	
 	public boolean crearCurso(String rutaCurso) {
 	    if (!(usuario instanceof Profesor)) {
