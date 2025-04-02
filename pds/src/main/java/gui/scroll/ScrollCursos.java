@@ -15,7 +15,7 @@ import gui.ventanas.VentanaBloques;
 @SuppressWarnings("serial")
 public class ScrollCursos extends Scroll {
 
-	public ScrollCursos(JFrame ventanaMadre, SelectorVentana selector, List<ComponenteCurso> componentesCursos) {
+	public ScrollCursos(JFrame ventanaMadre, SelectorVentana selector, List<ComponenteContenido> componentesCursos) {
 		super(ventanaMadre, selector, componentesCursos);
 	}
 

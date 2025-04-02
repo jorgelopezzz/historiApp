@@ -46,5 +46,9 @@ public enum RepositorioCursos {
     public List<Curso> getCursos() {
         return cursos;
     }
+    
+    public List<BloqueContenidos> getBloques(Curso curso) {
+    	return curso.getBloquesContenidos();
+    }
 }
 

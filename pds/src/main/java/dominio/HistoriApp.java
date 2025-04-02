@@ -10,6 +10,7 @@ import java.util.List;
 
 import dominio.curso.Curso;
 import dominio.curso.RepositorioCursos;
+import dominio.info.contenidos.InfoBloque;
 import dominio.info.contenidos.InfoCurso;
 import dominio.metodoAprendizaje.MetodoAprendizaje;
 import dominio.usuario.Profesor;
@@ -101,8 +102,12 @@ public enum HistoriApp {
 		return InfoCurso.getListInfoCurso(cursos.getCursos());
 	}
 	
+	public List<InfoBloque> getBloques(InfoCurso infoCurso) {
+		return InfoBloque.getListInfoBloque(cursos.getBloques(infoCurso))
+	}
+	
 	public boolean realizarCurso(Curso curso, MetodoAprendizaje metodoAprendizaje) {
-		
+		return true;
 	}
 	
 	public boolean crearCurso(String rutaCurso) {
