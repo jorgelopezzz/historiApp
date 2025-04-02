@@ -2,7 +2,7 @@ package gui.componentes.tarea;
 
 import java.util.Optional;
 
-import gui.info.Info;
+import dominio.info.Info;
 
 public abstract class ComponentePregunta extends ComponenteTarea {
 

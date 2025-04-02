@@ -1,4 +1,4 @@
-package gui.info;
+package dominio.info;
 
 public class Info {
 	

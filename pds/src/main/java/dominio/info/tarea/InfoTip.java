@@ -1,8 +1,8 @@
-package gui.info.tarea;
+package dominio.info.tarea;
 
 import java.util.Optional;
 
-import gui.info.Info;
+import dominio.info.Info;
 
 public class InfoTip extends Info {
 

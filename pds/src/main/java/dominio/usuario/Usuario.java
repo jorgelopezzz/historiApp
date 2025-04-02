@@ -2,7 +2,7 @@ package dominio.usuario;
 
 import java.time.LocalDateTime;
 
-import gui.info.usuario.infoEstadisticas;
+import dominio.info.usuario.infoEstadisticas;
 
 public class Usuario {
     
@@ -49,10 +49,6 @@ public class Usuario {
 
     public String getNombre() {
         return nombre;
-    }
-
-    public String getContrasena() { /* Debería tener un método comprobar contraseña??? En lugar de esto */
-        return contrasena;
     }
 
     public LocalDateTime getFechaRegistro() {
@@ -106,6 +102,10 @@ public class Usuario {
         return new infoEstadisticas(nombre, puntuacion, bloquesCompletados, cursosCompletados, minutosUso, diasUso, maxRacha);
     }
     
+    public boolean checkContrasena(String contrasena){
+        return this.contrasena.equals(contrasena);
+    }
+
 	/////////////////////////////////////////////////////////
 	// 0.- NO HISTORIAS DE USUARIO //////////////////////////
 	/////////////////////////////////////////////////////////

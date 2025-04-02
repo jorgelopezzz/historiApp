@@ -4,8 +4,8 @@ import java.util.Optional;
 
 import javax.swing.JLabel;
 
+import dominio.info.Info;
 import gui.campos.CampoTexto;
-import gui.info.Info;
 
 public class ComponenteRellenar extends ComponentePregunta {
 
