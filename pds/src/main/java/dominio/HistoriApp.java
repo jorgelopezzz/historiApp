@@ -63,14 +63,12 @@ public enum HistoriApp {
 		return false;
 	}
 	
-	// 1.3.- Cambiar imagen
+	// 1.3.- Cambiar información de perfil
 	
 	public void cambiarImagen(String imagen) {
 		usuario.setImagen(imagen);
 		actualizarUsuario(usuario);
 	}
-	
-	// 1.4.- Cambiar saludo
 	
 	public void cambiarSaludo(String saludo) {
 		usuario.setSaludo(saludo);
