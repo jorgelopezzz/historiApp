@@ -140,7 +140,7 @@ public class GestorGUI {
 	public ImageIcon iconoAbsoluto(String ruta, int ancho, int alto) {
 		File archivo = new File(ruta);
         if (archivo.exists() && archivo.isFile())
-            return escalarIcono(new ImageIcon(getClass().getResource(ruta)), ancho, alto);
+            return escalarIcono(new ImageIcon(ruta), ancho, alto);
 
         try {
             URL url = new URL(ruta);
