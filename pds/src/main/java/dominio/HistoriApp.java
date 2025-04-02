@@ -60,11 +60,11 @@ public enum HistoriApp {
 	
 	// 1.2.- Inicio de sesion
 	
-	public boolean loginUsuario(String nombre, String password) {
+	public boolean loginUsuario(String nombre, String contrasena) {
 		// BLOQUE PARA COMPROBAR LA BASE DE DATOS 
 		
-		Usuario usuario = usuarios.findUsuarioPorNombre(nombre);
-		if (usuario != null && usuario.getContrasena().equals(password)) {
+		Usuario usuario = usuarios.findUsuarioPorNombre(contrasena);
+		if (usuario != null && usuario.checkContrasena(contrasena)) {
 			this.usuario = usuario;
 			return true;
 		}
@@ -72,13 +72,18 @@ public enum HistoriApp {
 	}
 	
 	// 1.3.- Cambiar información de perfil
+
+	public void cambiarInformacionPerfil(String imagen, String saludo){ //OJO que pasa si solo se cambia una?
+		cambiarImagen(imagen);
+		cambiarSaludo(saludo);
+	}
 	
-	public void cambiarImagen(String imagen) {
+	private void cambiarImagen(String imagen) {
 		usuario.setImagen(imagen);
 		actualizarUsuario(usuario);
 	}
 	
-	public void cambiarSaludo(String saludo) {
+	private void cambiarSaludo(String saludo) {
 		usuario.setSaludo(saludo);
 		actualizarUsuario(usuario);
 	}
