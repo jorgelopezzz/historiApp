@@ -1,7 +1,7 @@
 package gui.componentes.tarea;
 
-import gui.info.tarea.InfoTipoTest;
-import gui.info.tarea.InfoVF;
+import dominio.info.tarea.InfoTipoTest;
+import dominio.info.tarea.InfoVF;
 
 public class ComponenteVF extends ComponenteTipoTest {
 
