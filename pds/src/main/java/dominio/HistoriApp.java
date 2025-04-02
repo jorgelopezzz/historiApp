@@ -21,6 +21,7 @@ public enum HistoriApp {
 	INSTANCE;
 	
 	private Usuario usuario;
+	private LocalDateTime inicio;
 	private MetodoAprendizaje metodoAprendizaje;
 	private RepositorioUsuarios usuarios;
 	private RepositorioCursos cursos;
@@ -50,16 +51,18 @@ public enum HistoriApp {
 	// 1.1.- Registro de un nuevo usuario
 	
 	public boolean registrarUsuario(String nombre, String contrasena, String imagen, String saludo) {
-		//if (existeUsuario(nombre))
-		//	return false;
+		if (usuarios.findUsuarioPorNombre(nombre).equals(null)){
+			return false;
+		}
 		Usuario usuario = new Usuario(nombre, contrasena, imagen, saludo, LocalDateTime.now());
 		usuarios.addUsuario(usuario);	
 		return true;
 	}
 
 	public boolean registrarProfesor(String nombre, String contrasena, String imagen, String saludo) {
-		//if (existeUsuario(nombre))
-		//	return false;
+		if (usuarios.findUsuarioPorNombre(nombre).equals(null)){
+			return false;
+		}
 		Profesor profesor = new Profesor(nombre, contrasena, imagen, saludo, LocalDateTime.now());
 		usuarios.addUsuario(profesor);	
 		return true;
@@ -67,12 +70,21 @@ public enum HistoriApp {
 	
 	// 1.2.- Inicio de sesion
 	
-	public boolean loginUsuario(String nombre, String contrasena) {
+	public boolean iniciarSesionUsuario(String nombre, String contrasena) {
 		// BLOQUE PARA COMPROBAR LA BASE DE DATOS 
 		
-		Usuario usuario = usuarios.findUsuarioPorNombre(contrasena);
+		Usuario usuario = usuarios.findUsuarioPorNombre(nombre);
 		if (usuario != null && usuario.checkContrasena(contrasena)) {
 			this.usuario = usuario;
+			inicio = LocalDateTime.now();
+			return true;
+		}
+		return false;
+	}
+
+	public boolean cerrarSesionUsuario(){
+		if(usuario != null){
+			usuario.setTiempoUso(inicio, LocalDateTime.now());
 			return true;
 		}
 		return false;
@@ -80,7 +92,7 @@ public enum HistoriApp {
 	
 	// 1.3.- Cambiar información de perfil
 
-	public void cambiarInformacionPerfil(String imagen, String saludo){ //OJO que pasa si solo se cambia una?
+	public void cambiarInformacionPerfil(String imagen, String saludo){ //OJO que pasa si solo se cambia una? Hay que revisar cuando sea funcional para ver flecos
 		cambiarImagen(imagen);
 		cambiarSaludo(saludo);
 	}
