@@ -31,6 +31,10 @@ public enum HistoriApp {
         usuarios.updateUsuario(usuario);
     }
 	
+	private Usuario getUsuario() {
+		return usuario;
+	}
+	
 	/////////////////////////////////////////////////////////
 	// 1.- Acceso de usuarios ///////////////////////////////
 	/////////////////////////////////////////////////////////
@@ -41,7 +45,7 @@ public enum HistoriApp {
 	public boolean registrarUsuario(String nombre, String movil, String contrasena, String imagen, String saludo) {
 		//if (existeUsuario(nombre) || existeUsuario(movil))
 		//	return false;
-		Usuario usuario = new Usuario(nombre, movil, contrasena, imagen, saludo, LocalDateTime.now());
+		Usuario usuario = new Usuario(nombre, movil, contrasena, imagen, LocalDateTime.now());
 		usuarios.addUsuario(usuario);	
 		return true;
 	}
@@ -53,8 +57,8 @@ public enum HistoriApp {
 		
 		Usuario usuario = usuarios.findUsuarioPorNombre(nombre);
 		if (usuario != null && usuario.getContrasena().equals(password)) {
-		this.usuario = usuario;
-		return true;
+			this.usuario = usuario;
+			return true;
 		}
 		return false;
 	}
