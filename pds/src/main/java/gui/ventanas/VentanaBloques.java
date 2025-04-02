@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import dominio.info.contenidos.InfoBloque;
+import dominio.metodoAprendizaje.MetodoAprendizaje;
 import gui.GestorGUI;
 import gui.componentes.contenidos.ComponenteBloque;
 import gui.componentes.contenidos.ComponenteCurso;
@@ -26,9 +27,9 @@ public class VentanaBloques extends VentanaMenu {
 	private JButton botonVolver;
 		
 	/* Método de aprendizaje */
-	private String metodoAprendizaje;
+	private MetodoAprendizaje metodoAprendizaje;
 	
-	public VentanaBloques(SelectorVentana selector, ComponenteCurso cursoSeleccionado, String metodoAprendizaje) {
+	public VentanaBloques(SelectorVentana selector, ComponenteCurso cursoSeleccionado, MetodoAprendizaje metodoAprendizaje) {
 	        super(selector);
 	        
 	        this.cursoSeleccionado = cursoSeleccionado;
