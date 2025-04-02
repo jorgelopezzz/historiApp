@@ -48,10 +48,6 @@ public class Usuario {
         return nombre;
     }
 
-    public String getContrasena() { /* Debería tener un método comprobar contraseña??? En lugar de esto */
-        return contrasena;
-    }
-
     public LocalDateTime getFechaRegistro() {
     	return fechaRegistro;
     }
@@ -101,6 +97,10 @@ public class Usuario {
         return new infoEstadisticas(nombre, puntuacion, bloquesCompletados, cursosCompletados, minutosUso, diasUso, maxRacha);
     }
     
+    public boolean checkContrasena(String contrasena){
+        return this.contrasena.equals(contrasena);
+    }
+
 	/////////////////////////////////////////////////////////
 	// 0.- NO HISTORIAS DE USUARIO //////////////////////////
 	/////////////////////////////////////////////////////////

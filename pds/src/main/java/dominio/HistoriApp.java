@@ -60,11 +60,11 @@ public enum HistoriApp {
 	
 	// 1.2.- Inicio de sesion
 	
-	public boolean loginUsuario(String nombre, String password) {
+	public boolean loginUsuario(String nombre, String contrasena) {
 		// BLOQUE PARA COMPROBAR LA BASE DE DATOS 
 		
-		Usuario usuario = usuarios.findUsuarioPorNombre(nombre);
-		if (usuario != null && usuario.getContrasena().equals(password)) {
+		Usuario usuario = usuarios.findUsuarioPorNombre(contrasena);
+		if (usuario != null && usuario.checkContrasena(contrasena)) {
 			this.usuario = usuario;
 			return true;
 		}
