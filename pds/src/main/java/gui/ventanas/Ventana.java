@@ -16,17 +16,21 @@ public abstract class Ventana extends JFrame {
 	protected static final int ANCHO_VENTANA = 800;
 	protected static final int ALTO_VENTANA = 600;
 	
-	protected Ventana(SelectorVentana selector, String tituloVentana, Color colorFondo) {
+	protected Ventana(SelectorVentana selector, String tituloVentana, Color colorFondo, int closeAction) {
 		super(); 
 		this.selector = selector; 
 		
 		/* Configuración de aspectos gráficos */
 		setTitle(tituloVentana);
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(closeAction);
 		getContentPane().setBackground(colorFondo);
 		GestorGUI.fijarTamano(ANCHO_VENTANA, ALTO_VENTANA, this);
 		
 		construir();
+	}
+	
+	protected Ventana(SelectorVentana selector, String tituloVentana, Color colorFondo) {
+		this(selector, tituloVentana, colorFondo, JFrame.DISPOSE_ON_CLOSE);
 	}
 
 	public void cerrar() {
