@@ -14,59 +14,52 @@ classDiagram
         + getPuntuacion() : Int
         + getRacha() : Int
     }
-
     class Curso {
         - nombre : String
     }
-
     class RealizacionCurso {
         - fechaInicio : localDate
     }
-
+    class RealizacionBloque {
+        - puntuacion : float
+    }
     class EstrategiaAprendizaje {
     }
-
     class BloqueContenidos {
         - nombre : String
     }
-
     class Tarea {
         - enunciado : String
     }
-
     class Tip {
         - imagen : Imagen
     }
-
     class Pregunta {
         - evaluar() : Boolean
     }
-
     class PreguntaVF {
         - esVerdadero : Boolean
     }
-
     class PreguntaTipoTest {
         - opciones : String[]
         - correcta : Integer
     }
-
     class PreguntaRellenar {
         - respuesta : String
     }
-
     Usuario "1" --o "*" Curso : creador
     Usuario "1" --o "*" RealizacionCurso : realiza
     Curso "1" --o "*" BloqueContenidos : contiene
     BloqueContenidos "1" --o "*" Tarea : contiene
     RealizacionCurso "*" --o "1" Curso : asociado
     RealizacionCurso "1" -- "1" EstrategiaAprendizaje : usa
+    RealizacionCurso "1" -- "1..*" RealizacionBloque : contiene
+    RealizacionBloque "*" -- "1" BloqueContenidos : asociado
     Tarea <|-- Tip
     Tarea <|-- Pregunta
     Pregunta <|-- PreguntaVF
     Pregunta <|-- PreguntaTipoTest
     Pregunta <|-- PreguntaRellenar
-
     class EstrategiaAprendizaje {
         <<enumeration>>
     }
