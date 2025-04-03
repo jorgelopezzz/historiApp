@@ -3,12 +3,15 @@ package gui.ventanas;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -35,6 +38,7 @@ public abstract class VentanaMenu extends Ventana {
 	private JButton botonClasificacion;
 	private JButton botonEstadisticas;
 	private JButton botonPerfil;
+	private JButton botonCerrar;
 
 	/* Etiquetas */
 	private JLabel etiquetaApp;
@@ -55,7 +59,19 @@ public abstract class VentanaMenu extends Ventana {
 	private static final String RUTA_PERFIL_PREDETERMINADO = "/perfil.png";
 	
 	public VentanaMenu(SelectorVentana selector) {
-		super(selector, GestorGUI.NOMBRE_APP + " Menu", GestorGUI.getInstancia().getColorClaro());
+		super(selector, GestorGUI.NOMBRE_APP + " Menu", GestorGUI.getInstancia().getColorClaro(), JFrame.DO_NOTHING_ON_CLOSE);
+		gestionarCierre();
+	}
+	
+	private void gestionarCierre() {
+		addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                // controlador.cerrarSesion();
+            	System.out.println("Cerrando sesión.");
+            	dispose();
+            }
+        });
 	}
 	
 	@Override
@@ -123,8 +139,13 @@ public abstract class VentanaMenu extends Ventana {
 		barraSuperior.add(botonEstadisticas);
 		manejadorEstadisticas();
 		
+		botonCerrar = GestorGUI.getBotonPredeterminado("Cerrar sesión");
+		GestorGUI.fijarTamano(GestorGUI.ANCHO_BOTON_PREDET+10, GestorGUI.ALTO_BOTON_PREDET, botonCerrar);
+		barraSuperior.add(botonCerrar);
+		manejadorCerrar();
+		
 		///
-		barraSuperior.add(Box.createHorizontalStrut(ESPACIO_HORIZONTAL_GRANDE));
+		barraSuperior.add(Box.createHorizontalStrut(ESPACIO_HORIZONTAL_PEQUENO));
 		///
 		
 		String nombrePerfil = "el_rey67"; // HistoriApp.INSTANCE.getNombre();
@@ -167,6 +188,15 @@ public abstract class VentanaMenu extends Ventana {
 		});
 	}
 	
+	private void manejadorCerrar() {
+		botonCerrar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				selector.cambiarVentana(new VentanaLogin(selector));
+			}
+		});
+	}
+	
 	private void manejadorPerfil() {
 		botonPerfil.addActionListener(new ActionListener() {
 			@Override
@@ -176,6 +206,7 @@ public abstract class VentanaMenu extends Ventana {
 			}
 		});
 	}
+	
 	
 	
 }

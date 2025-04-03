@@ -1,6 +1,7 @@
 package dominio.usuario;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 import dominio.info.usuario.infoEstadisticas;
 
@@ -14,9 +15,8 @@ public class Usuario {
     private String saludo;
 
     protected int puntuacion;
-    protected int bloquesCompletados;
-    protected int cursosCompletados;
-    protected int minutosUso; //100 años de uso continuado no se sale de un int en minutos
+    protected int cursosCompletados; /* Arreglar esto, hay que ver el tema de la lista de instancias de curso en usuario */
+    protected int tiempoUso; //100 años de uso continuado no se sale de un int en minutos
     protected int diasUso;
     protected int maxRacha;
 
@@ -36,9 +36,8 @@ public class Usuario {
         this.saludo = saludo;
 
         this.puntuacion = 0;
-        this.bloquesCompletados = 0;
         this.cursosCompletados = 0;
-        this.minutosUso = 0;
+        this.tiempoUso = 0;
         this.diasUso = 0;
         this.maxRacha = 0;
 
@@ -71,25 +70,7 @@ public class Usuario {
     	this.saludo = saludo;
     }
 
-    /* Estadísticas */
-    /*
 
-    public int getBloquesCompletadosPuntuacion() {
-        return bloquesCompletados;
-    }
-
-    public int getCursosCompletados() {
-        return cursosCompletados;
-    }
-
-    public int getMinutosUso() {
-        return minutosUso;
-    }
-
-    public int getDiasUso() {
-        return diasUso;
-    }
-    */
     public int getPuntuacion() {
         return puntuacion;
     }
@@ -97,9 +78,14 @@ public class Usuario {
     public int getMaxRacha() {
         return maxRacha;
     }
+
+    public boolean setTiempoUso(LocalDateTime inicio, LocalDateTime fin){
+        tiempoUso += (int) inicio.until(fin, ChronoUnit.MINUTES);
+        return true;
+    }
     
     public infoEstadisticas getEstadisticas(){
-        return new infoEstadisticas(nombre, puntuacion, bloquesCompletados, cursosCompletados, minutosUso, diasUso, maxRacha);
+        return new infoEstadisticas(nombre, puntuacion, cursosCompletados, tiempoUso, diasUso, maxRacha);
     }
     
     public boolean checkContrasena(String contrasena){
