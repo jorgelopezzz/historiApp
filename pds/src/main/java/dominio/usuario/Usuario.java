@@ -4,15 +4,17 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
 import dominio.info.usuario.infoEstadisticas;
+import dominio.info.usuario.infoPerfilUsuario;
 
 public class Usuario {
     
     private static final String RUTA_PERFIL_PREDETERMINADO = "/perfil.png";
 
     protected String nombre;
-    private String contrasena;
-    private String imagen;
-    private String saludo;
+    protected String correo;
+    protected String contrasena;
+    protected String imagen;
+    protected String saludo;
 
     protected int puntuacion;
     protected int cursosCompletados; /* Arreglar esto, hay que ver el tema de la lista de instancias de curso en usuario */
@@ -24,15 +26,19 @@ public class Usuario {
 
     private final LocalDateTime fechaRegistro;
 
-    public Usuario(String nombre, String contrasena, String imagen, String saludo, LocalDateTime fechaRegistro) {
+    public Usuario(String nombre, String contrasena, String correo, String imagen, String saludo, LocalDateTime fechaRegistro) {
         if(nombre == null) 
     		throw new IllegalArgumentException("El nombre no puede ser nulo");
 
         if(contrasena == null) 
     		throw new IllegalArgumentException("La contraseña no puede ser nula");
 
+        if(correo == null) 
+    		throw new IllegalArgumentException("El correo no puede ser nulo");
+
         this.nombre = nombre;
         this.contrasena = contrasena;
+        this.correo = correo;
         
         this.imagen = imagen.equals(null) ? RUTA_PERFIL_PREDETERMINADO : imagen;
         this.saludo = saludo;
@@ -82,6 +88,10 @@ public class Usuario {
     
     public infoEstadisticas getEstadisticas(){
         return new infoEstadisticas(nombre, puntuacion, cursosCompletados, tiempoUso, diasUso, maxRacha);
+    }
+
+    public infoPerfilUsuario getDatosPerfil(){
+        return new infoPerfilUsuario(nombre, nombre, correo, saludo, "Estudiante", imagen);
     }
     
     public boolean checkContrasena(String contrasena){
