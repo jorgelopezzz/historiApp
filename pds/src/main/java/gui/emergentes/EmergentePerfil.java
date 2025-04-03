@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import dominio.HistoriApp;
 import gui.GestorGUI;
 import gui.campos.CampoTexto;
 
@@ -263,6 +264,7 @@ public class EmergentePerfil extends Emergente {
 
     private void manejadorConfirmar() {
         botonConfirmar.addActionListener(e -> {
+            HistoriApp.INSTANCE.cambiarInformacionPerfil(rutaImagen, campoNuevoSaludo.getTexto());
             EmergenteMensaje emergente = new EmergenteMensaje(ventanaMadre, "Cambios guardados correctamente.");
             emergente.mostrar();
         });

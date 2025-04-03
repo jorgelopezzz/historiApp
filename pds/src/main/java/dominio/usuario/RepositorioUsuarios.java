@@ -51,17 +51,14 @@ public enum RepositorioUsuarios {
 	}
 	
 	public void addUsuario(Usuario usuario) {
-		usuariosPorMovil.put(usuario.getMovil(), usuario);
 		usuariosPorNombre.put(usuario.getNombre(), usuario);
 	}
 	
 	public void removeUsuario(Usuario usuario) {
-		usuariosPorMovil.remove(usuario.getMovil());
 		usuariosPorNombre.remove(usuario.getNombre());
 	}
 	
 	public void updateUsuario(Usuario usuario) {
-		usuariosPorMovil.put(usuario.getMovil(), usuario);
 		usuariosPorNombre.put(usuario.getNombre(), usuario);
 	}
 }
