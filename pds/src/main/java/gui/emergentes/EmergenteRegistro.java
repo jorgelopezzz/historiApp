@@ -239,12 +239,13 @@ public class EmergenteRegistro extends Emergente {
 				}
 				/* Controlador */
 				if (campoRol.getTexto().equals("Profesor")){
-					HistoriApp.INSTANCE.registrarUsuario(campoNombre.getTexto(), campoContrasena.getTexto(), rutaImagen, campoSaludo.getTexto());
+					HistoriApp.INSTANCE.registrarUsuario(campoNombre.getTexto(), campoContrasena.getTexto(), campoCorreo.getTexto(), rutaImagen, campoSaludo.getTexto());
 				} else {
-					HistoriApp.INSTANCE.registrarProfesor(campoNombre.getTexto(), campoContrasena.getTexto(), rutaImagen, campoSaludo.getTexto());
+					HistoriApp.INSTANCE.registrarProfesor(campoNombre.getTexto(), campoContrasena.getTexto(), campoCorreo.getTexto(), rutaImagen, campoSaludo.getTexto());
 				}
 				
 
+				
 			}
 		});
 	}
