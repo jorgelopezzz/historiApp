@@ -4,16 +4,17 @@ import java.util.List;
 import dominio.tarea.Tarea;
 
 public class IteradorEspaciado implements IteradorTarea {
+	
+	private static int ESPACIADO = 3;
+	
     private List<Tarea> tareas;
     private int indice;
-    private int subindice;
-    private boolean repitiendo;
+    private boolean repetir;
 
     public IteradorEspaciado(List<Tarea> tareas) {
         this.tareas = tareas;
         this.indice = 0;
-        this.subindice = 0;
-        this.repitiendo = false;
+        this.repetir = true;
     }
 
     @Override
@@ -23,28 +24,22 @@ public class IteradorEspaciado implements IteradorTarea {
 
     @Override
     public Tarea siguiente() {
-        if (!tieneSiguiente()) {
+        if (!tieneSiguiente())
             return null;
-        }
-        //revisar
-        if (repitiendo) {
-            Tarea tarea = tareas.get(indice - 5 + subindice);
-            subindice++;
 
-            if (subindice == 5) {
-                repitiendo = false;
-                subindice = 0;
+        Tarea tarea = tareas.get(indice);
+       
+        if ((indice+1) % ESPACIADO == 0) {
+            if (repetir) {
+            	indice -= ESPACIADO;
+                repetir = false;
+            } else {
+                repetir = true;
             }
-            return tarea;
-        } else {
-            Tarea tarea = tareas.get(indice);
-            indice++;
-
-            if (indice % 5 == 0 && indice < tareas.size()) {
-                repitiendo = true;
-                subindice = 0;
-            }
-            return tarea;
         }
+       
+        indice++;
+        
+        return tarea;
     }
 }
