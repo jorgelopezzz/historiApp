@@ -8,11 +8,16 @@ import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import dominio.curso.BloqueContenidos;
 import dominio.curso.Curso;
 import dominio.curso.RepositorioCursos;
+import dominio.info.Info;
 import dominio.info.contenidos.InfoBloque;
 import dominio.info.contenidos.InfoCurso;
+import dominio.metodoAprendizaje.FactoriaIteradorTarea;
+import dominio.metodoAprendizaje.IteradorTarea;
 import dominio.metodoAprendizaje.MetodoAprendizaje;
+import dominio.tarea.Tarea;
 import dominio.usuario.Profesor;
 import dominio.usuario.RepositorioUsuarios;
 import dominio.usuario.Usuario;
@@ -21,14 +26,14 @@ public enum HistoriApp {
 	INSTANCE;
 	
 	private Usuario usuario;
+	private Curso cursoActual;
 	private LocalDateTime inicio;
 	private MetodoAprendizaje metodoAprendizaje;
+	private IteradorTarea iteradorTarea;
 	private RepositorioUsuarios usuarios;
 	private RepositorioCursos cursos;
 	
 	private HistoriApp() {
-		usuario = null;
-		metodoAprendizaje = null;
 		usuarios = RepositorioUsuarios.INSTANCE;
 		cursos = RepositorioCursos.INSTANCE;
 	}
@@ -109,19 +114,37 @@ public enum HistoriApp {
 	
 	////////////
 	
+	public Curso getCursoActual() {
+		return cursoActual;
+	}
 	
 	public List<InfoCurso> getCursos() {
 		return InfoCurso.getListInfoCurso(cursos.getCursos());
 	}
 	
-	public List<InfoBloque> getBloques(InfoCurso infoCurso) {
-		return InfoBloque.getListInfoBloque(cursos.getBloques(infoCurso))
+	public List<InfoBloque> getBloques(Curso curso) {
+		return InfoBloque.getListInfoBloque(cursos.getBloques(curso));
 	}
 	
-	public boolean realizarCurso(Curso curso, MetodoAprendizaje metodoAprendizaje) {
+	public boolean realizarCurso(String nombreCurso, MetodoAprendizaje metodoAprendizaje) {
+		this.cursoActual = cursos.buscarCursoPorNombre(nombreCurso);
+		this.metodoAprendizaje = metodoAprendizaje;
 		return true;
 	}
 	
+	public boolean realizarBloque(String bloqueNombre) {
+		BloqueContenidos bloque = cursoActual.getBloquePorNombre(bloqueNombre);
+		iteradorTarea = FactoriaIteradorTarea.crearIterador(bloque.getTareas(), metodoAprendizaje);
+		return true;
+	}
+	
+	public Info siguiente() {
+		if(!iteradorTarea.tieneSiguiente()) 
+			return null;
+		
+		Tarea tareaSiguiente = iteradorTarea.siguiente();
+		return tareaSiguiente.crearInfo();
+	}
 	
 	public boolean crearCurso(String rutaCurso) {
 	    if (!(usuario instanceof Profesor)) {

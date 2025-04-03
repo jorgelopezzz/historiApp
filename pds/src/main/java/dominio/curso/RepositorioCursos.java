@@ -1,25 +1,30 @@
 package dominio.curso;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import dominio.ServicioJSON;
+import dominio.usuario.Usuario;
 
 public enum RepositorioCursos {
     INSTANCE;
 
-    private List<Curso> cursos;
+    private Map<String, Curso> cursosPorNombre;
 
-    private RepositorioCursos() {
-    	File carpeta = new File("resources");
+    private RepositorioCursos() {  	
+    	File carpeta = new File("resources/cursos");
         if(!carpeta.exists() || !carpeta.isDirectory()) {
         	System.err.println("La carpeta 'resources' no existe o no es un directorio válido");
-            cursos = List.of();
+            cursosPorNombre = new HashMap<String, Curso>();
+            return;
         }
         	
-    	cursos = Arrays.stream(carpeta.listFiles((dir, name) -> name.endsWith(".json")))
+    	cursosPorNombre = Arrays.stream(carpeta.listFiles((dir, name) -> name.endsWith(".json")))
                     .map(File::getPath)
                     .map(ruta -> {
                         try {
@@ -30,22 +35,17 @@ public enum RepositorioCursos {
                         }
                     })
                     .filter(curso -> curso != null)
-                    .collect(Collectors.toList());
-        
-        ///
-        for(Curso curso: cursos) {
-        	System.out.println("\n"+curso.getTitulo()
-        			+","+curso.getDescripcion()
-        			+","+curso.getRutaImagen()
-        			+",");
-        	curso.getBloquesContenidos().stream().forEach(b -> System.out.print(b.getTitulo()+","));
-        }
-        ///
+                    .collect(Collectors.toMap(Curso::getTitulo, curso -> curso));
+    	
     }
 
     public List<Curso> getCursos() {
-        return cursos;
+        return new ArrayList<>(cursosPorNombre.values());
     }
+    
+    public Curso buscarCursoPorNombre(String nombreCurso) {
+		return cursosPorNombre.get(nombreCurso);
+	}
     
     public List<BloqueContenidos> getBloques(Curso curso) {
     	return curso.getBloquesContenidos();

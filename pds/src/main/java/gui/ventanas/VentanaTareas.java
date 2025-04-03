@@ -13,12 +13,15 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import dominio.HistoriApp;
 import dominio.info.Info;
+import dominio.tarea.Tarea;
 import gui.GestorGUI;
 import gui.componentes.contenidos.ComponenteBloque;
 import gui.componentes.contenidos.ComponenteCurso;
 import gui.componentes.tarea.ComponenteRellenar;
 import gui.componentes.tarea.ComponenteTarea;
+import gui.componentes.tarea.FactoriaComponenteTarea;
 import gui.emergentes.EmergenteSiNo;
 
 
@@ -29,23 +32,15 @@ public class VentanaTareas extends VentanaMenu {
 	private static final int MARGEN = 15;
 	
 	/* Componentes de organización */
+	JPanel panelGeneral;
 	private JButton botonSalir;
 	private JButton botonSiguiente;
 	private JPanel panelSiguiente;
 	
 	private ComponenteTarea tareaActual;
 	
-	/* Atributos a recabar */
-	private String rutaJSON;
-	
-	/* Bloque de contenidos seleccionado */
-	private ComponenteBloque bloqueSeleccionado; // Para botón SIGUIENTE
-	private ComponenteCurso cursoSeleccionado; // Para botón SALIR
-	
-	public VentanaTareas(SelectorVentana selector, ComponenteBloque bloqueSeleccionado, ComponenteCurso cursoSeleccionado) {
+	public VentanaTareas(SelectorVentana selector) {
 	       super(selector);
-	       this.bloqueSeleccionado = bloqueSeleccionado;
-	       this.cursoSeleccionado = cursoSeleccionado;
 	}
 
     @Override
@@ -92,12 +87,12 @@ public class VentanaTareas extends VentanaMenu {
     @Override
     protected void construirScrollMenu() {
         // Crear el panel general
-        JPanel panelGeneral = new JPanel();
+        panelGeneral = new JPanel();
         panelGeneral.setLayout(new BoxLayout(panelGeneral, BoxLayout.Y_AXIS));
         panelGeneral.setBackground(GestorGUI.getInstancia().getColorClaro());
 
         // Crear el componente del curso
-        tareaActual = new ComponenteRellenar( new Info("Cuál es el mejor país del mundo") ); 
+        tareaActual = FactoriaComponenteTarea.crearTarea(HistoriApp.INSTANCE.siguiente()); 
         tareaActual.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         // Agregar el componente al centro del panel general
@@ -123,7 +118,7 @@ public class VentanaTareas extends VentanaMenu {
 				EmergenteSiNo emergente = new EmergenteSiNo(VentanaTareas.this, "¿Estás seguro de que quieres salir?\nNo se guardará tu progreso.");
 				emergente.mostrar();
 				if(emergente.obtenerRespuesta().orElse(false))
-					selector.cambiarVentana(new VentanaBloques(selector, cursoSeleccionado, "Método de aprendizaje"));
+					selector.cambiarVentana(new VentanaBloques(selector));
 			}
 		});
 	}
@@ -132,8 +127,19 @@ public class VentanaTareas extends VentanaMenu {
 		botonSiguiente.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {		
-				// Lanzar la ventana emergente
-
+				Info tareaSiguiente = HistoriApp.INSTANCE.siguiente();
+				if(tareaSiguiente != null) {
+					panelGeneral.remove(tareaActual);
+	                
+	                tareaActual = FactoriaComponenteTarea.crearTarea(tareaSiguiente);
+	                tareaActual.setAlignmentX(Component.CENTER_ALIGNMENT);
+	                panelGeneral.add(tareaActual, 0);
+	                
+	                panelGeneral.revalidate();
+	                panelGeneral.repaint();
+				}
+				else
+					selector.cambiarVentana(new VentanaBloques(selector)); // AQUÍ SE DEBERÁ HACER PRÓXIMAMENTE LAS CORRECTAS/INCORRECTAS					
 			}
 		});
 	}

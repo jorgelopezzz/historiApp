@@ -1,8 +1,9 @@
 package dominio.tarea;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import dominio.info.Info;
+import dominio.info.tarea.InfoVF;
 
 public class PreguntaVF extends Pregunta {
 	
@@ -33,4 +34,12 @@ public class PreguntaVF extends Pregunta {
 		return (respuesta.equals(CADENA_VERDADERO) && esVerdadero) || (respuesta.equals(CADENA_FALSO) && (!esVerdadero));
 	}
 	
+	public boolean esVerdadero() {
+		return esVerdadero;
+	}
+	
+	@Override
+	public Info crearInfo() {
+		return new InfoVF(this);
+	}
 }

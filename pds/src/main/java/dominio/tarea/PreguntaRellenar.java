@@ -2,6 +2,9 @@ package dominio.tarea;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import dominio.info.Info;
+import dominio.info.tarea.InfoRellenar;
+
 public class PreguntaRellenar extends Pregunta {
 	
 	/* Atributos de información */
@@ -35,5 +38,10 @@ public class PreguntaRellenar extends Pregunta {
         cadenaValida(respuesta);
         this.respuesta = respuesta;
     }
+    
+    @Override
+	public Info crearInfo() {
+		return new InfoRellenar(this);
+	}
 	
 }

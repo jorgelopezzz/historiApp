@@ -2,8 +2,10 @@ package dominio.tarea;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import dominio.info.Info;
+import dominio.info.tarea.InfoTipoTest;
 
 public class PreguntaTipoTest extends Pregunta {
 	
@@ -42,6 +44,11 @@ public class PreguntaTipoTest extends Pregunta {
 		return respuesta.equals(opciones.get(correcta));
 	}
 	
+	
+	public List<String> getOpciones() {
+		return List.copyOf(opciones);
+	}
+	
     /* Métodos para validar la serialización */
 	
     @JsonProperty("opciones")
@@ -59,6 +66,11 @@ public class PreguntaTipoTest extends Pregunta {
     	}
     	this.correcta = correcta;
     }
+    
+    @Override
+	public Info crearInfo() {
+		return new InfoTipoTest(this);
+	}
 	
 	
 

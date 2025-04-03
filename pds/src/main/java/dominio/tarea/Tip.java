@@ -3,7 +3,9 @@ package dominio.tarea;
 import java.util.Optional;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonTypeName;
+
+import dominio.info.Info;
+import dominio.info.tarea.InfoTip;
 
 public class Tip extends Tarea {
 	
@@ -34,5 +36,9 @@ public class Tip extends Tarea {
 		return Optional.ofNullable(rutaImagen);
 	}
 	
+	@Override
+	public Info crearInfo() {
+		return new InfoTip(this);
+	}
 
 }

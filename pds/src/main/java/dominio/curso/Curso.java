@@ -1,14 +1,18 @@
 package dominio.curso;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import com.fasterxml.jackson.annotation.JsonSetter;
 
 public class Curso {
     private String titulo;
     private String descripcion;
     private String rutaImagen;
+    private Map<String,BloqueContenidos> bloquesContenidos;
     private RealizacionCurso matricula;
-    private List<BloqueContenidos> bloquesContenidos;
     
     public Curso() {} // Constructor vacío para Jackson (servicioJSON)
     
@@ -20,7 +24,7 @@ public class Curso {
         this.rutaImagen = rutaImagen;
         if(bloquesContenidos == null)
         	throw new IllegalArgumentException("Se necesita al menos un bloque de contenidos");
-        this.bloquesContenidos = new ArrayList<>(bloquesContenidos);
+        setBloquesContenidos(bloquesContenidos);
     }
 
     public String getTitulo() {
@@ -46,7 +50,22 @@ public class Curso {
     }
     
     public List<BloqueContenidos> getBloquesContenidos() {
-        return bloquesContenidos;
+    	return new ArrayList<>(bloquesContenidos.values());
+    }
+    
+    public BloqueContenidos getBloquePorNombre(String bloqueNombre) {
+    	return bloquesContenidos.get(bloqueNombre);    	
+    }
+    
+    @JsonSetter("bloquesContenidos")
+    private void setBloquesContenidos(List<BloqueContenidos> bloques) {
+        if (bloques == null || bloques.isEmpty()) 
+            throw new IllegalArgumentException("Se necesita al menos un bloque de contenidos");
+
+        this.bloquesContenidos = new HashMap<>();
+        for (BloqueContenidos bloque : bloques) {
+            this.bloquesContenidos.put(bloque.getTitulo(), bloque);
+        }
     }
 
 

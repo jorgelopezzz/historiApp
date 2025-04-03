@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.swing.JFrame;
 
+import dominio.HistoriApp;
 import dominio.metodoAprendizaje.MetodoAprendizaje;
 import gui.componentes.contenidos.ComponenteContenido;
 import gui.componentes.contenidos.ComponenteCurso;
@@ -34,7 +35,10 @@ public class ScrollCursos extends Scroll {
 	    					EmergenteMetodoAprendizaje emergente2 = new EmergenteMetodoAprendizaje(ventanaMadre);
 		    				emergente2.mostrar();
 		    				MetodoAprendizaje metodoAprendizaje = emergente2.obtenerRespuesta().orElse(null);
-	    					selector.cambiarVentana(new VentanaBloques(selector, cursoSeleccionado, metodoAprendizaje));
+		    				///
+		    				HistoriApp.INSTANCE.realizarCurso(cursoSeleccionado.getTitulo(), metodoAprendizaje);
+		    				///
+	    					selector.cambiarVentana(new VentanaBloques(selector));
 	    				}
 	                }
 	            }

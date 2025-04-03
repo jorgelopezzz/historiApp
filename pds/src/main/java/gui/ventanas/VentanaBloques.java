@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import dominio.HistoriApp;
+import dominio.curso.Curso;
 import dominio.info.contenidos.InfoBloque;
 import dominio.info.contenidos.InfoCurso;
 import dominio.metodoAprendizaje.MetodoAprendizaje;
@@ -27,18 +28,15 @@ import gui.scroll.ScrollBloques;
 public class VentanaBloques extends VentanaMenu {
 	
 	/* Componentes de organización */
-	private ComponenteCurso cursoSeleccionado;
+	//private ComponenteCurso cursoSeleccionado;
 	private JLabel etiquetaBienvenida;
 	private JButton botonVolver;
 		
 	/* Método de aprendizaje */
-	private MetodoAprendizaje metodoAprendizaje;
+	//private MetodoAprendizaje metodoAprendizaje;
 	
-	public VentanaBloques(SelectorVentana selector, ComponenteCurso cursoSeleccionado, MetodoAprendizaje metodoAprendizaje) {
+	public VentanaBloques(SelectorVentana selector) {
 	        super(selector);
-	        
-	        this.cursoSeleccionado = cursoSeleccionado;
-	        this.metodoAprendizaje = metodoAprendizaje;
 	}
 
     @Override
@@ -78,7 +76,9 @@ public class VentanaBloques extends VentanaMenu {
 		//controlador
 		
 
-		List<InfoBloque> infoBloques = HistoriApp.INSTANCE.getBloques(cursoSeleccionado);
+		Curso cursoActual = HistoriApp.INSTANCE.getCursoActual();
+		
+		List<InfoBloque> infoBloques = HistoriApp.INSTANCE.getBloques(cursoActual);
     	
 		List<ComponenteContenido> componentesBloques = infoBloques.stream()
 			    .map(ComponenteBloque::new)
@@ -91,7 +91,7 @@ public class VentanaBloques extends VentanaMenu {
 	                "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Pistachio_vera.jpg/800px-Pistachio_vera.jpg", true));
 	    }*/
 		
-		scroll = new ScrollBloques(VentanaBloques.this, selector, componentesBloques, cursoSeleccionado);
+		scroll = new ScrollBloques(VentanaBloques.this, selector, componentesBloques);
 		
 	}
 	

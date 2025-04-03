@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
+import dominio.info.Info;
+
 public abstract class Pregunta extends Tarea {
 	/*
 	@JsonTypeInfo(
@@ -30,5 +32,7 @@ public abstract class Pregunta extends Tarea {
 	public Pregunta() {super();}
 	
 	public abstract boolean evaluar(String respuesta);
+	
+	public abstract Info crearInfo();
 	
 }

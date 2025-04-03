@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import javax.swing.JFrame;
 
+import dominio.HistoriApp;
 import dominio.metodoAprendizaje.MetodoAprendizaje;
 import gui.componentes.contenidos.ComponenteBloque;
 import gui.componentes.contenidos.ComponenteContenido;
@@ -14,22 +15,13 @@ import gui.emergentes.EmergenteSiNo;
 import gui.ventanas.SelectorVentana;
 import gui.ventanas.VentanaTareas;
 
-import dominio.metodoAprendizaje.MetodoAprendizaje;
-
 
 @SuppressWarnings("serial")
 public class ScrollBloques extends Scroll {
 	
-	private ComponenteCurso cursoSeleccionado;
-	
-	/* Atributos a obtener */
 
-    private Optional<MetodoAprendizaje> metodoSeleccionado;
-
-	public ScrollBloques(JFrame ventanaMadre, SelectorVentana selector, List<ComponenteContenido> componentes, ComponenteCurso cursoSeleccionado) {
+	public ScrollBloques(JFrame ventanaMadre, SelectorVentana selector, List<ComponenteContenido> componentes) {
 		super(ventanaMadre, selector, componentes);
-		
-		this.cursoSeleccionado = cursoSeleccionado;
 	}
 
 	@Override
@@ -44,7 +36,10 @@ public class ScrollBloques extends Scroll {
 	                    EmergenteSiNo emergente = new EmergenteSiNo(ventanaMadre, "¿Deseas acceder a este bloque de contenidos?");
 	    				emergente.mostrar();
 	    				if(emergente.obtenerRespuesta().orElse(false)) {
-	    						selector.cambiarVentana(new VentanaTareas(selector, bloqueSeleccionado, cursoSeleccionado));
+	    					///
+	    					HistoriApp.INSTANCE.realizarBloque(bloqueSeleccionado.getTitulo());
+	    					///
+	    					selector.cambiarVentana(new VentanaTareas(selector));
 	    				}
 	    				
 	                }

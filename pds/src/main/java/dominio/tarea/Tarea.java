@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
+import dominio.info.Info;
+
 
 @JsonTypeInfo(
 	    use = JsonTypeInfo.Id.NAME,
@@ -48,6 +50,9 @@ public abstract class Tarea {
         cadenaValida(enunciado);
         this.enunciado = enunciado;
     }
+    
+    /* Método para mutar a info */
+    public abstract Info crearInfo();
 	
 
 }

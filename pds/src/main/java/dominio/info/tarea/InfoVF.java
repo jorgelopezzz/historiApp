@@ -3,6 +3,7 @@ package dominio.info.tarea;
 import java.util.List;
 
 import dominio.info.Info;
+import dominio.tarea.PreguntaVF;
 
 public class InfoVF extends Info {
 	
@@ -17,6 +18,10 @@ public class InfoVF extends Info {
 		this.esVerdadero = esVerdadero;
 	}
 
+	public InfoVF(PreguntaVF preguntaVF) {
+		this(preguntaVF.getEnunciado(), preguntaVF.esVerdadero());
+	}
+	
 	public InfoTipoTest adaptarVF() {
 		return new InfoTipoTest(getTitulo(), List.of(CADENA_VERDADERO, CADENA_FALSO));
 	}

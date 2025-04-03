@@ -1,5 +1,8 @@
 package dominio.info.contenidos;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import dominio.curso.BloqueContenidos;
 
 public class InfoBloque extends InfoContenidos {
@@ -13,11 +16,17 @@ public class InfoBloque extends InfoContenidos {
 	}
 	
 	public InfoBloque(BloqueContenidos bloque) {
-		super(bloque.getTitulo(), bloque.getDescripcion(), bloque.getRutaImagen());
-		estaCompletado = bloque.getCertBloque() == null ? false : true;
+		this(bloque.getTitulo(), bloque.getDescripcion(), bloque.getRutaImagen(), 
+				bloque.getCertBloque() == null ? false : true);
 	}
 	
 	public boolean estaCompletado() {
 		return estaCompletado;
+	}
+
+	public static List<InfoBloque> getListInfoBloque(List<BloqueContenidos> bloques) {
+		return bloques.stream() 
+				 .map(InfoBloque::new)
+				 .collect(Collectors.toList());
 	}
 }

@@ -12,5 +12,4 @@ public class ComponenteCurso extends ComponenteContenido {
 		super(CABECERA_TITULO, info.getTitulo(), info.getDescripcion(), info.getRutaImagen(), 
 				info.estaMatriculado() ? "Matriculado" : "No matriculado");
 	}
-	
 }

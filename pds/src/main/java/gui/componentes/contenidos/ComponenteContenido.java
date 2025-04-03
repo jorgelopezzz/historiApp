@@ -20,6 +20,7 @@ import gui.componentes.Componente;
 public abstract class ComponenteContenido extends Componente {
 	
 	/* Componentes de información */
+	private String titulo;
 	private JLabel etiquetaImagen;
 	private JLabel etiquetaCabeceraTitulo;
 	private JLabel etiquetaTitulo;
@@ -59,6 +60,7 @@ public abstract class ComponenteContenido extends Componente {
 		panelInformacion.setBorder(new EmptyBorder(0, SEPARACION, 0, 0));
 		
 		/* Etiquetas de texto */
+		this.titulo = titulo;
 		construirEtiquetasTitulo(cabeceraTitulo, titulo);
 		construirEtiquetasDescripcion(descripcion);
 		construirEtiquetasEstado(estado);
@@ -144,6 +146,10 @@ public abstract class ComponenteContenido extends Componente {
 
 	public void deseleccionar() {
 		setBackground(GestorGUI.getInstancia().getColorMedio());
+	}
+
+	public String getTitulo() {
+		return titulo;
 	}
 	
 }
