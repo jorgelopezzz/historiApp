@@ -10,17 +10,17 @@ public class RealizacionBloque {
 	
 	/* Atributos opcionales */
 	private LocalDateTime fechaCompletado;
-	private Float puntuacion;
+	private Double puntuacion;
 
 	public RealizacionBloque(BloqueContenidos bloque) {
-		if(bloque == null || bloque.getTareas().size() == 0)
+		if(bloque == null)
 			throw new IllegalArgumentException();
 		this.bloque = bloque;
 		this.puntuacion = null;
 		this.fechaCompletado = null;
 	}
 
-	public void completar(Float puntuacion) {
+	public void completar(Double puntuacion) {
 		if(puntuacion == null || puntuacion < 0 || puntuacion > 10) {
 			throw new IllegalArgumentException();
 		}
@@ -36,7 +36,7 @@ public class RealizacionBloque {
 		return Optional.ofNullable(fechaCompletado);
 	}
 
-	public Optional<Float> getPuntuacion() {
+	public Optional<Double> getPuntuacion() {
 		return Optional.ofNullable(puntuacion);
 	}
 
