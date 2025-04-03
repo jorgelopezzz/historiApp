@@ -57,7 +57,6 @@ classDiagram
 
     Usuario "1" --o "*" Curso : creador
     Usuario "1" --o "*" RealizacionCurso : realiza
-    Curso "*" --o "*" Usuario : matriculado
     Curso "1" --o "*" BloqueContenidos : contiene
     BloqueContenidos "1" --o "*" Tarea : contiene
     RealizacionCurso "*" --o "1" Curso : asociado
