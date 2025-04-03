@@ -38,8 +38,6 @@ public class EmergenteFichero extends Emergente {
 	private JEditorPane panelArrastre;
 	protected JFileChooser panelFichero;
 	
-
-	
 	/* Botones */
 	private JButton botonAceptar;
 	private JButton botonSalir;
@@ -55,10 +53,14 @@ public class EmergenteFichero extends Emergente {
 	
 	public EmergenteFichero(JFrame ventanaMadre, String tipoFichero) {
 		super("Seleccionar " + tipoFichero, GestorGUI.getInstancia().getColorBlanco(), ventanaMadre);
+		
+		construir();
 	}
 	
 	public EmergenteFichero(JFrame ventanaMadre) {
 		this(ventanaMadre, "Fichero");
+		
+		construir();
 	}
 	
 	@Override

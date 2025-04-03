@@ -43,6 +43,8 @@ public class EmergenteMetodoAprendizaje extends EmergenteBotones {
     /* Constructor */
     public EmergenteMetodoAprendizaje(JFrame ventanaMadre) {
         super(ventanaMadre, "Método de Aprendizaje");
+		
+		construir();
     }
 
     @Override

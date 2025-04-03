@@ -122,8 +122,13 @@ public enum HistoriApp {
 		return InfoCurso.getListInfoCurso(cursos.getCursos());
 	}
 	
+<<<<<<< HEAD
 	public List<InfoBloque> getBloques(Curso curso) {
 		return InfoBloque.getListInfoBloque(cursos.getBloques(curso));
+=======
+	public List<InfoBloque> getBloques(InfoCurso infoCurso) {
+		return InfoBloque.getListInfoBloque(cursos.getBloques(infoCurso));
+>>>>>>> branch 'main' of git@github.com:jorgelopezzz/historiApp.git
 	}
 	
 	public boolean realizarCurso(String nombreCurso, MetodoAprendizaje metodoAprendizaje) {

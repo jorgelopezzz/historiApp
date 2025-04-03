@@ -18,6 +18,8 @@ public class EmergenteMensaje extends EmergenteBotones {
 	
 	public EmergenteMensaje(JFrame ventanaMadre, String mensaje) {
 		super(ventanaMadre, mensaje);
+		
+		construir();
 	}
 	
 	@Override

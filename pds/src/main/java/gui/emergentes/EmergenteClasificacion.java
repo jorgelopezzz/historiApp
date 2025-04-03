@@ -44,6 +44,8 @@ public class EmergenteClasificacion extends Emergente {
 
     public EmergenteClasificacion(JFrame ventanaMadre) {
         super("Clasificación", GestorGUI.getInstancia().getColorBlanco(), ventanaMadre, ANCHO_VENTANA, ALTO_VENTANA);
+		
+		construir();
     }
 
     @Override

@@ -62,6 +62,8 @@ public class EmergenteRegistro extends Emergente {
 	
 	public EmergenteRegistro(JFrame ventanaMadre) {
 		super("Registro", GestorGUI.getInstancia().getColorClaro(), ventanaMadre);
+		
+		construir();
 	}
 	
 	@Override
