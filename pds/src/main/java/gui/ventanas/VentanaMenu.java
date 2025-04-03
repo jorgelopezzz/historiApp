@@ -67,8 +67,7 @@ public abstract class VentanaMenu extends Ventana {
 		addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                // controlador.cerrarSesion();
-            	System.out.println("Cerrando sesión.");
+                HistoriApp.INSTANCE.cerrarSesionUsuario();
             	dispose();
             }
         });
