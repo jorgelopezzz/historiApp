@@ -108,7 +108,7 @@ public class EmergenteMetodoAprendizaje extends EmergenteBotones {
 
         /* Botón Salir */
         botonSalir = GestorGUI.getBotonPredeterminado("Salir");
-        configurarManejadorSalir();
+        manejadorSalir(botonSalir);
 
         /* Montaje*/
         panelBotones.add(Box.createHorizontalGlue());
@@ -127,16 +127,6 @@ public class EmergenteMetodoAprendizaje extends EmergenteBotones {
             @Override
             public void actionPerformed(ActionEvent e) {
                 estrategiaSeleccionada = (MetodoAprendizaje) comboEstrategias.getSelectedItem();
-                dispose();
-            }
-        });
-    }
-
-    private void configurarManejadorSalir() {
-        botonSalir.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                estrategiaSeleccionada = null;
                 dispose();
             }
         });
