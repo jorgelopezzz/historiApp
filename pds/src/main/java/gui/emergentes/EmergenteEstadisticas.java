@@ -30,6 +30,8 @@ public class EmergenteEstadisticas extends Emergente {
 
     public EmergenteEstadisticas(JFrame ventanaMadre) {
         super("Estadísticas de Uso", GestorGUI.getInstancia().getColorBlanco(), ventanaMadre);
+		
+		construir();
     }
 
     @Override

@@ -31,6 +31,8 @@ public class EmergenteSiNo extends EmergenteBotones {
 		super(ventanaMadre, mensaje);
 		
 		opcion = false;
+		
+		construir();
 	}
 
 	

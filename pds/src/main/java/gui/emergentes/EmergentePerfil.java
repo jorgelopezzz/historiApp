@@ -59,6 +59,8 @@ public class EmergentePerfil extends Emergente {
 
     public EmergentePerfil(JFrame ventanaMadre) {
         super("Perfil", GestorGUI.getInstancia().getColorClaro(), ventanaMadre);
+		
+		construir();
     }
 
     @Override
