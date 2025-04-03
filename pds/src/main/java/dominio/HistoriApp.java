@@ -115,12 +115,13 @@ public enum HistoriApp {
 	}
 	
 	public List<InfoBloque> getBloques(InfoCurso infoCurso) {
-		return InfoBloque.getListInfoBloque(cursos.getBloques(infoCurso))
+		return InfoBloque.getListInfoBloque(cursos.getBloques(infoCurso));
 	}
 	
 	public boolean realizarCurso(Curso curso, MetodoAprendizaje metodoAprendizaje) {
 		return true;
 	}
+	
 	
 	public boolean crearCurso(String rutaCurso) {
 	    if (!(usuario instanceof Profesor)) {
