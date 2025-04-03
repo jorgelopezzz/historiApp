@@ -20,6 +20,8 @@ public class Usuario {
     protected int diasUso;
     protected int maxRacha;
 
+    private LocalDateTime inicioSesion;
+
     private final LocalDateTime fechaRegistro;
 
     public Usuario(String nombre, String contrasena, String imagen, String saludo, LocalDateTime fechaRegistro) {
@@ -70,18 +72,12 @@ public class Usuario {
     	this.saludo = saludo;
     }
 
-
     public int getPuntuacion() {
         return puntuacion;
     }
 
     public int getMaxRacha() {
         return maxRacha;
-    }
-
-    public boolean setTiempoUso(LocalDateTime inicio, LocalDateTime fin){
-        tiempoUso += (int) inicio.until(fin, ChronoUnit.MINUTES);
-        return true;
     }
     
     public infoEstadisticas getEstadisticas(){
@@ -90,6 +86,16 @@ public class Usuario {
     
     public boolean checkContrasena(String contrasena){
         return this.contrasena.equals(contrasena);
+    }
+
+    public boolean iniciarSesion(){
+        inicioSesion = LocalDateTime.now();
+        return true;
+    }
+
+    public boolean cerrarSesion(){
+        tiempoUso += (int) inicioSesion.until(LocalDateTime.now(), ChronoUnit.MINUTES);
+        return true;
     }
 
 	/////////////////////////////////////////////////////////

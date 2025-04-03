@@ -27,7 +27,6 @@ public enum HistoriApp {
 	
 	private Usuario usuario;
 	private Curso cursoActual;
-	private LocalDateTime inicio;
 	private MetodoAprendizaje metodoAprendizaje;
 	private IteradorTarea iteradorTarea;
 	private RepositorioUsuarios usuarios;
@@ -77,20 +76,18 @@ public enum HistoriApp {
 	
 	public boolean iniciarSesionUsuario(String nombre, String contrasena) {
 		// BLOQUE PARA COMPROBAR LA BASE DE DATOS 
-		
 		Usuario usuario = usuarios.findUsuarioPorNombre(nombre);
+
 		if (usuario != null && usuario.checkContrasena(contrasena)) {
 			this.usuario = usuario;
-			inicio = LocalDateTime.now();
-			return true;
+			return usuario.iniciarSesion();
 		}
 		return false;
 	}
 
 	public boolean cerrarSesionUsuario(){
 		if(usuario != null){
-			usuario.setTiempoUso(inicio, LocalDateTime.now());
-			return true;
+			return usuario.cerrarSesion();
 		}
 		return false;
 	}
