@@ -73,12 +73,7 @@ public class VentanaBloques extends VentanaMenu {
 	@Override
 	protected void construirScrollMenu() {
 		
-		//controlador
-		
-
-		Curso cursoActual = HistoriApp.INSTANCE.getCursoActual();
-		
-		List<InfoBloque> infoBloques = HistoriApp.INSTANCE.getBloques(cursoActual);
+		List<InfoBloque> infoBloques = HistoriApp.INSTANCE.getBloques();
     	
 		List<ComponenteContenido> componentesBloques = infoBloques.stream()
 			    .map(ComponenteBloque::new)
