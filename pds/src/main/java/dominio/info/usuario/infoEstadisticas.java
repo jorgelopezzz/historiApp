@@ -24,7 +24,7 @@ public class infoEstadisticas extends Info{
 
         this.minutosUso = String.format("%02d:%02d:%02d", dias, horas, minutos);
 
-        int tiempo = minutosUso/diasUso;
+        int tiempo = diasUso == 0 ? 0 : minutosUso/diasUso;
         horas = tiempo / 60;
         minutos = tiempo % 60;
 

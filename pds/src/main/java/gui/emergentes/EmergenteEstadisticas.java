@@ -6,6 +6,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+import dominio.HistoriApp;
+import dominio.info.usuario.infoEstadisticas;
+
 @SuppressWarnings("serial")
 public class EmergenteEstadisticas extends Emergente {
 
@@ -22,6 +25,8 @@ public class EmergenteEstadisticas extends Emergente {
     private static final int ANCHO_DATOS = 80;
 
     private static final int ALTO_ESTATISTICA = 40;
+
+    // Estadísticas
 
     // Componentes
     private JPanel panelPrincipal;
@@ -84,18 +89,22 @@ public class EmergenteEstadisticas extends Emergente {
         // Añadir margen
         panelEnvolvente.add(Box.createVerticalStrut(MARGEN));
 
+        // Pedir estadísticas
+
+        infoEstadisticas estadisticas = HistoriApp.INSTANCE.pedirEstadisticasUsuario();
+
         // Añadir estadísticas
-        panelEnvolvente.add(crearPanelEstadistica("Cursos completados:", "3"));
+        panelEnvolvente.add(crearPanelEstadistica("Cursos completados:", Integer.toString(estadisticas.getPuntuacion())));
         panelEnvolvente.add(Box.createVerticalStrut(MARGEN_INTERNO));
         panelEnvolvente.add(crearPanelEstadistica("Bloques completados:", "15"));
         panelEnvolvente.add(Box.createVerticalStrut(MARGEN_INTERNO));
-        panelEnvolvente.add(crearPanelEstadistica("Puntuación:", "1200"));
+        panelEnvolvente.add(crearPanelEstadistica("Puntuación:", Integer.toString(estadisticas.getPuntuacion())));
         panelEnvolvente.add(Box.createVerticalStrut(MARGEN_INTERNO));
-        panelEnvolvente.add(crearPanelEstadistica("Tiempo de uso:", "80 horas"));
+        panelEnvolvente.add(crearPanelEstadistica("Tiempo de uso:", estadisticas.getMinutosUso()));
         panelEnvolvente.add(Box.createVerticalStrut(MARGEN_INTERNO));
-        panelEnvolvente.add(crearPanelEstadistica("Tiempo de uso diario:", "1.5 horas"));
+        panelEnvolvente.add(crearPanelEstadistica("Tiempo de uso diario:", estadisticas.getMinutosUsoDiario()));
         panelEnvolvente.add(Box.createVerticalStrut(MARGEN_INTERNO));
-        panelEnvolvente.add(crearPanelEstadistica("Mejor racha:", "5 días"));
+        panelEnvolvente.add(crearPanelEstadistica("Mejor racha:", Integer.toString(estadisticas.getMaxRacha())));
     }
 
     private JPanel crearPanelEstadistica(String nombre, String dato) {
