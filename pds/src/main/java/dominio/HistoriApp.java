@@ -122,6 +122,15 @@ public enum HistoriApp {
 	public infoEstadisticas pedirEstadisticasUsuario(){
 		return usuario.getEstadisticas();
 	}
+	
+	public String getNombreUsuario() {
+		return usuario.getNombre();
+	}
+	
+	public String getImagenUsuario() {
+		String imagenRuta = usuario.getImagen();
+		return imagenRuta == null ? "/perfil.png" : imagenRuta;
+	}
 
 	public int getPuntuacionUsuario(){
 		return usuario.getPuntuacion();
@@ -158,11 +167,16 @@ public enum HistoriApp {
 	}
 	
 	public Info siguiente(Optional<String> respuesta) {
-		if(!iteradorTarea.tieneSiguiente(respuesta)) 
-			return null;
+		//if(!iteradorTarea.tieneSiguiente()) 
+		//	return null;
 		
-		Tarea tareaSiguiente = iteradorTarea.siguiente();
-		return tareaSiguiente.crearInfo();
+		Optional<Tarea> tareaSiguiente = iteradorTarea.siguiente(respuesta);
+		Info infoTarea = tareaSiguiente.isPresent() ? tareaSiguiente.get().crearInfo() : null;
+		return infoTarea;
+	}
+	
+	public double obtenerPuntuacion() {
+		return iteradorTarea.obtenerPuntuacion();
 	}
 	
 	public boolean crearCurso(String rutaCurso) {

@@ -1,6 +1,8 @@
 package gui.componentes.tarea;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.LayoutManager;
 import java.util.Optional;
 
 import javax.swing.BoxLayout;
@@ -24,8 +26,8 @@ public abstract class ComponenteTarea extends Componente {
 	private final String enunciado;
 	
 	/* Componentes gráficos */
-	private JLabel etiquetaCabecera;
-	private JTextArea areaContenido;
+	protected JLabel etiquetaCabecera;
+	protected JTextArea areaContenido;
 
 	public ComponenteTarea(Info info) {
 		super();
@@ -34,6 +36,11 @@ public abstract class ComponenteTarea extends Componente {
 		/* Configuración gráfica */
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setBorder(new EmptyBorder(MARGEN,MARGEN,MARGEN,MARGEN));
+	}
+	
+	public ComponenteTarea(Info info, LayoutManager layout) {
+		this(info);
+		setLayout(layout);
 	}
 	
 	public String getEnunciado() {

@@ -207,7 +207,8 @@ public static JButton getBotonPredeterminadoLargo(String texto) {
 	public static JButton getBotonPredeterminadoImagen(String rutaImagen) {
 		
 		JButton boton = new JButton();
-		ImageIcon icono = GestorGUI.getInstancia().iconoDeRecursos(rutaImagen, ANCHO_BOTON_IMAGEN, ALTO_BOTON_IMAGEN);
+		
+		ImageIcon icono = GestorGUI.getInstancia().iconoAbsoluto(rutaImagen, ANCHO_BOTON_IMAGEN, ALTO_BOTON_IMAGEN);
 		GestorGUI.configurarBoton(boton, GestorGUI.getInstancia().getColorOscuro(), 
 				GestorGUI.getInstancia().getColorBlanco(), GestorGUI.getInstancia().getFuenteTexto(), 
 				ANCHO_BOTON_IMAGEN, ALTO_BOTON_IMAGEN);

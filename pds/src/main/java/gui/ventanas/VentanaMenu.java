@@ -111,7 +111,7 @@ public abstract class VentanaMenu extends Ventana {
 		///
 		
 		ImageIcon imagenPuntuacion = GestorGUI.getInstancia().iconoDeRecursos(RUTA_PUNTUACION, ANCHO_IMAGEN, ALTO_IMAGEN);
-		String puntuacion = "24" ;// String.valueof(HistoriApp.INSTANCE.getPuntuacion());
+		String puntuacion = String.valueOf(HistoriApp.INSTANCE.getPuntuacionUsuario());
 		etiquetaPuntuacion = new JLabel(puntuacion, imagenPuntuacion, JLabel.LEFT);
 		GestorGUI.configurarEtiqueta(etiquetaPuntuacion, false, GestorGUI.getInstancia().getColorClaro() , GestorGUI.getInstancia().getFuenteTexto());
 		barraSuperior.add(etiquetaPuntuacion);
@@ -121,7 +121,7 @@ public abstract class VentanaMenu extends Ventana {
 		///
 				
 		ImageIcon imagenRacha = GestorGUI.getInstancia().iconoDeRecursos(RUTA_RACHA, ANCHO_IMAGEN, ALTO_IMAGEN);
-		String racha = "3" ;// String.valueof(HistoriApp.INSTANCE.getRacha());
+		String racha = String.valueOf(HistoriApp.INSTANCE.getMaxRachaUsuario());
 		etiquetaRacha = new JLabel(racha, imagenRacha, JLabel.LEFT);
 		GestorGUI.configurarEtiqueta(etiquetaRacha, false, GestorGUI.getInstancia().getColorClaro() , GestorGUI.getInstancia().getFuenteTexto());
 		barraSuperior.add(etiquetaRacha);
@@ -147,9 +147,9 @@ public abstract class VentanaMenu extends Ventana {
 		barraSuperior.add(Box.createHorizontalStrut(ESPACIO_HORIZONTAL_PEQUENO));
 		///
 		
-		String nombrePerfil = "el_rey67"; // HistoriApp.INSTANCE.getNombre();
+		String nombrePerfil = HistoriApp.INSTANCE.getNombreUsuario();
 		
-		String rutaPerfil = "/perfil.png"; //HistoriApp.INSTANCE.getImagen();
+		String rutaPerfil = HistoriApp.INSTANCE.getImagenUsuario();
 		etiquetaPerfil = new JLabel(nombrePerfil);
 		GestorGUI.configurarEtiqueta(etiquetaPerfil, false, GestorGUI.getInstancia().getColorClaro() , GestorGUI.getInstancia().getFuenteTexto());
 		barraSuperior.add(etiquetaPerfil);
