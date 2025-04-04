@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import dominio.HistoriApp;
+import dominio.info.usuario.infoPerfilUsuario;
 import gui.GestorGUI;
 import gui.campos.CampoTexto;
 
@@ -103,11 +104,13 @@ public class EmergentePerfil extends Emergente {
         panelCampos.setBorder(GestorGUI.bordeTexto("Datos de perfil", GestorGUI.getInstancia().getFuenteTexto(),
                 GestorGUI.getInstancia().getColorOscuro(), GestorGUI.getInstancia().getColorOscuro()));
 
+        infoPerfilUsuario datos = HistoriApp.INSTANCE.pedirDatosUsuario();
+        
         // Nombre
         panelNombre = new JPanel();
         GestorGUI.configurarPanel(panelNombre, new BoxLayout(panelNombre, BoxLayout.X_AXIS), false);
         etiquetaNombreEtiqueta = new JLabel("Nombre:");
-        etiquetaNombre = new JLabel("Juan Pérez");
+        etiquetaNombre = new JLabel(datos.getNombre());
         
         GestorGUI.configurarEtiqueta(etiquetaNombreEtiqueta, false, GestorGUI.getInstancia().getColorOscuro(),
                 GestorGUI.hacerNegrita(GestorGUI.getInstancia().getFuenteTexto()));
@@ -124,7 +127,7 @@ public class EmergentePerfil extends Emergente {
         panelCorreo = new JPanel();
         GestorGUI.configurarPanel(panelCorreo, new BoxLayout(panelCorreo, BoxLayout.X_AXIS), false);
         etiquetaCorreoEtiqueta = new JLabel("Correo:");
-        etiquetaCorreo = new JLabel("juan.perez@example.com");
+        etiquetaCorreo = new JLabel(datos.getCorreo());
         
         GestorGUI.configurarEtiqueta(etiquetaCorreoEtiqueta, false, GestorGUI.getInstancia().getColorOscuro(),
                 GestorGUI.hacerNegrita(GestorGUI.getInstancia().getFuenteTexto()));
@@ -141,7 +144,7 @@ public class EmergentePerfil extends Emergente {
         panelSaludo = new JPanel();
         GestorGUI.configurarPanel(panelSaludo, new BoxLayout(panelSaludo, BoxLayout.X_AXIS), false);
         etiquetaSaludoEtiqueta = new JLabel("Saludo:");
-        etiquetaSaludo = new JLabel("¡Hola a todos!");
+        etiquetaSaludo = new JLabel(datos.getSaludo());
         
         GestorGUI.configurarEtiqueta(etiquetaSaludoEtiqueta, false, GestorGUI.getInstancia().getColorOscuro(),
                 GestorGUI.hacerNegrita(GestorGUI.getInstancia().getFuenteTexto()));
@@ -167,7 +170,7 @@ public class EmergentePerfil extends Emergente {
         panelRol = new JPanel();
         GestorGUI.configurarPanel(panelRol, new BoxLayout(panelRol, BoxLayout.X_AXIS), false);
         etiquetaRolEtiqueta = new JLabel("Rol:");
-        etiquetaRol = new JLabel("Alumno");
+        etiquetaRol = new JLabel(datos.getRol());
         
         GestorGUI.configurarEtiqueta(etiquetaRolEtiqueta, false, GestorGUI.getInstancia().getColorOscuro(),
                 GestorGUI.hacerNegrita(GestorGUI.getInstancia().getFuenteTexto()));
@@ -181,7 +184,7 @@ public class EmergentePerfil extends Emergente {
         panelRol.add(etiquetaRol);
 
         // Imagen
-        construirPanelImagen(GestorGUI.IMAGEN_PREDET_OSC);
+        construirPanelImagen(datos.getImagen());
 
         panelCampos.add(Box.createVerticalStrut(MARGEN));
         panelCampos.add(panelNombre);
