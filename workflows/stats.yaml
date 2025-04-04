@@ -1,0 +1,30 @@
+name: Update Repo Stats
+
+on:
+  schedule:
+    - cron: "0 0 * * *"  # Se ejecuta una vez al día
+  workflow_dispatch:  # Permite ejecutarlo manualmente
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Generar Estadísticas
+        run: |
+          echo "| Métrica | Valor |" > STATS.md
+          echo "|---------|-------|" >> STATS.md
+          echo "| Commits | $(git rev-list --count HEAD) |" >> STATS.md
+          echo "| Issues  | $(gh issue list --repo ${{ github.repository }} --state all --json number | jq '. | length') |" >> STATS.md
+          echo "| PRs     | $(gh pr list --repo ${{ github.repository }} --state all --json number | jq '. | length') |" >> STATS.md
+          echo "| Contribuyentes | $(gh repo view ${{ github.repository }} --json contributors --jq '.contributors | length') |" >> STATS.md
+      - name: Actualizar README
+        run: |
+          cat STATS.md >> README.md
+      - name: Commit y Push
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add README.md
+          git commit -m "Actualizar estadísticas"
+          git push
