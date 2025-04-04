@@ -12,7 +12,7 @@ public class CursoTest {
 
     @BeforeEach
     public void setUp() {
-        curso = new Curso("Curso de Java", "Descripción del curso", "ruta/imagen", new ArrayList<BloqueContenidos>());
+        curso = new Curso("Curso de Java", "Descripción del curso", "ruta/imagen", List.of(new BloqueContenidos()));
     }
 
     @Test
@@ -38,6 +38,6 @@ public class CursoTest {
     @Test
     public void testGetBloquesContenidos() {
         assertNotNull(curso.getBloquesContenidos());
-        assertTrue(curso.getBloquesContenidos().isEmpty());
+        assertFalse(curso.getBloquesContenidos().isEmpty());
     }
 }

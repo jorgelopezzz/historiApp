@@ -6,10 +6,12 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.time.LocalDate;
+
+import dominio.metodoAprendizaje.MetodoAprendizaje;
 import dominio.usuario.Usuario;
 import java.util.List;
 
-public class MatriculaTest {
+public class RealizacionCursoTest {
 
     private static List<Arguments> parametrosParaConstructor() {
         // Crear los objetos de prueba
@@ -33,9 +35,9 @@ public class MatriculaTest {
     @MethodSource("parametrosParaConstructor")
     public void testConstructorNulls(Curso cursoParam, Usuario usuarioParam, LocalDate fechaMatriculaParam, boolean debeLanzarExcepcion) {
         if (debeLanzarExcepcion) {
-            assertThrows(IllegalArgumentException.class, () -> new RealizacionCurso(cursoParam, usuarioParam, fechaMatriculaParam));
+            assertThrows(IllegalArgumentException.class, () -> new RealizacionCurso(cursoParam, usuarioParam, fechaMatriculaParam, MetodoAprendizaje.ESPACIADA));
         } else {
-            RealizacionCurso matricula = new RealizacionCurso(cursoParam, usuarioParam, fechaMatriculaParam);
+            RealizacionCurso matricula = new RealizacionCurso(cursoParam, usuarioParam, fechaMatriculaParam, MetodoAprendizaje.ALEATORIA);
             assertEquals(cursoParam, matricula.getCurso());
             assertEquals(usuarioParam, matricula.getUsuario());
             assertEquals(fechaMatriculaParam, matricula.fechaMatricula());

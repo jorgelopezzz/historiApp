@@ -15,10 +15,10 @@ public class CertificadoBloqueTest {
     private static List<Arguments> parametrosParaConstructor() {
         return List.of(
             // Casos válidos
-            Arguments.of(LocalDate.of(2025, 03, 29), "usuario1", new BloqueContenidos("Título", "Descripción", "ruta/imagen.png", null, null), null),
+            Arguments.of(LocalDate.of(2025, 03, 29), "usuario1", new BloqueContenidos("Título", "Descripción", "ruta/imagen.png", null), null),
             // Casos con valores nulos
-            Arguments.of(null, "usuario1", new BloqueContenidos("Título", "Descripción", "ruta/imagen.png", null, null), "Los atributos no pueden ser nulos"),
-            Arguments.of(LocalDate.of(2025, 03, 29), null, new BloqueContenidos("Título", "Descripción", "ruta/imagen.png", null, null), "Los atributos no pueden ser nulos"),
+            Arguments.of(null, "usuario1", new BloqueContenidos("Título", "Descripción", "ruta/imagen.png", null), "Los atributos no pueden ser nulos"),
+            Arguments.of(LocalDate.of(2025, 03, 29), null, new BloqueContenidos("Título", "Descripción", "ruta/imagen.png", null), "Los atributos no pueden ser nulos"),
             Arguments.of(LocalDate.of(2025, 03, 29), "usuario1", null, "Los atributos no pueden ser nulos")
         );
     }
