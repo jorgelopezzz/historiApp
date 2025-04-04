@@ -18,3 +18,6 @@ Nótese que falta parte de la funcionalidad de RepositorioCursos y por ello no s
 
 ### Jerarquía Usuario
 Las pruebas realizadas sobre la jerarquía de usuarios han permitido verificar los roles y permisos dentro de la aplicación, garantizando una correcta autenticación y control de acceso.
+
+![image](https://github.com/user-attachments/assets/a31387fe-acb4-4b2d-bafe-41dc917f1799)
+
