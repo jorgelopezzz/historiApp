@@ -9,13 +9,11 @@ public enum RepositorioUsuarios {
 	//private FactoriaDAO factoria;
 
 	//private HashMap<Integer, Usuario> usuariosPorID;
-	private HashMap<String, Usuario> usuariosPorMovil;
 	private HashMap<String, Usuario> usuariosPorNombre;
 
 	private RepositorioUsuarios (){
 		//usuariosPorID = new HashMap<Integer, Usuario>();
 		usuariosPorNombre = new HashMap<String, Usuario>();
-		usuariosPorMovil = new HashMap<String, Usuario>();
 		
 		/*
 		try {
@@ -34,17 +32,13 @@ public enum RepositorioUsuarios {
 		*/
 	}
 	
-	public List<Usuario> findUsuarios() /*throws DAOException*/ {
+	/*public List<Usuario> findUsuarios() /throws DAOException/ {
 		return new ArrayList<Usuario>(usuariosPorMovil.values());
-	}
+	}*/
 
 	/*public Usuario findUsuarioPorId(int id) {
 		return usuariosPorID.get(id);
 	}*/
-	
-	public Usuario findUsuarioPorMovil(String movil) {
-		return usuariosPorMovil.get(movil);
-	}
 
 	public Usuario findUsuarioPorNombre(String nombre) {
 		return usuariosPorNombre.get(nombre);
