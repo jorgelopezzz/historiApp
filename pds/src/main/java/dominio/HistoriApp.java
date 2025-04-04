@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import dominio.curso.BloqueContenidos;
 import dominio.curso.Curso;
@@ -140,8 +141,8 @@ public enum HistoriApp {
 		return true;
 	}
 	
-	public Info siguiente() {
-		if(!iteradorTarea.tieneSiguiente()) 
+	public Info siguiente(Optional<String> respuesta) {
+		if(!iteradorTarea.tieneSiguiente(respuesta)) 
 			return null;
 		
 		Tarea tareaSiguiente = iteradorTarea.siguiente();

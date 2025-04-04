@@ -73,4 +73,8 @@ public abstract class ComponenteTarea extends Componente {
 		GestorGUI.fijarTamano(ANCHO_COMPONENTE -2*MARGEN, areaContenido.getPreferredSize().height+areaContenido.getFont().getSize() + MARGEN, areaContenido);
 		return areaContenido;
 	}
+	
+	public boolean esPregunta() {
+		return this instanceof ComponentePregunta;
+	}
 }
