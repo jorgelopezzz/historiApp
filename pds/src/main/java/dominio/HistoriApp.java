@@ -122,6 +122,15 @@ public enum HistoriApp {
 	public infoEstadisticas pedirEstadisticasUsuario(){
 		return usuario.getEstadisticas();
 	}
+	
+	public String getNombreUsuario() {
+		return usuario.getNombre();
+	}
+	
+	public String getImagenUsuario() {
+		String imagenRuta = usuario.getImagen();
+		return imagenRuta == null ? "/perfil.png" : imagenRuta;
+	}
 
 	public int getPuntuacionUsuario(){
 		return usuario.getPuntuacion();
