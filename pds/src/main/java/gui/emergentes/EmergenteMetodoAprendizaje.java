@@ -14,8 +14,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import gui.GestorGUI;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowAdapter;
 
+import gui.GestorGUI;
+import dominio.HistoriApp;
 import dominio.metodoAprendizaje.MetodoAprendizaje;
 
 
@@ -43,6 +46,8 @@ public class EmergenteMetodoAprendizaje extends EmergenteBotones {
     /* Constructor */
     public EmergenteMetodoAprendizaje(JFrame ventanaMadre) {
         super(ventanaMadre, "Método de Aprendizaje");
+
+        gestionarCierre();
 		
 		construir();
     }
@@ -113,8 +118,8 @@ public class EmergenteMetodoAprendizaje extends EmergenteBotones {
         /* Montaje*/
         panelBotones.add(Box.createHorizontalGlue());
         panelBotones.add(botonConfirmar);
-        panelBotones.add(Box.createHorizontalStrut(MARGEN));
-        panelBotones.add(botonSalir);
+        /*panelBotones.add(Box.createHorizontalStrut(MARGEN));
+        panelBotones.add(botonSalir);*/
         panelBotones.add(Box.createHorizontalGlue());
 
         panelContenido.add(panelOpciones);
@@ -131,6 +136,16 @@ public class EmergenteMetodoAprendizaje extends EmergenteBotones {
             }
         });
     }
+
+    private void gestionarCierre() {
+		addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                estrategiaSeleccionada = (MetodoAprendizaje) comboEstrategias.getSelectedItem();
+            	dispose();
+            }
+        });
+	}
 
     public Optional<MetodoAprendizaje> obtenerRespuesta() {
         return Optional.ofNullable(estrategiaSeleccionada);
