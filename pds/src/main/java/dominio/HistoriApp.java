@@ -150,10 +150,10 @@ public enum HistoriApp {
 	}
 	
 	public Info siguiente(Optional<String> respuesta) {
-		if(!iteradorTarea.tieneSiguiente(respuesta)) 
+		if(!iteradorTarea.tieneSiguiente()) 
 			return null;
 		
-		Tarea tareaSiguiente = iteradorTarea.siguiente();
+		Tarea tareaSiguiente = iteradorTarea.siguiente(respuesta);
 		return tareaSiguiente.crearInfo();
 	}
 	
