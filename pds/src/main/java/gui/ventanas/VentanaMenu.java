@@ -191,6 +191,7 @@ public abstract class VentanaMenu extends Ventana {
 		botonCerrar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				HistoriApp.INSTANCE.cerrarSesionUsuario();
 				selector.cambiarVentana(new VentanaLogin(selector));
 			}
 		});
