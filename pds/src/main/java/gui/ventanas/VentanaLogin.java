@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import dominio.HistoriApp;
 import gui.GestorGUI;
 import gui.campos.CampoContrasena;
 import gui.campos.CampoPredeterminado;
@@ -147,8 +148,13 @@ public class VentanaLogin extends Ventana {
 				contrasena = campoContrasena.getTexto();
 				
 				/* Controlador */
-
 				
+				if( !HistoriApp.INSTANCE.iniciarSesionUsuario(nombre, contrasena)) {
+					EmergenteMensaje emergente = new EmergenteMensaje(VentanaLogin.this, "Error al iniciar sesión.");
+					emergente.mostrar();
+					return;
+				} 
+
 				/* Cambio de ventana */
 				// controlador.getRolUsuarioActual
 				int rol = 1;

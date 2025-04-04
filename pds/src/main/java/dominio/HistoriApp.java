@@ -14,6 +14,7 @@ import dominio.curso.RepositorioCursos;
 import dominio.info.Info;
 import dominio.info.contenidos.InfoBloque;
 import dominio.info.contenidos.InfoCurso;
+import dominio.info.usuario.infoEstadisticas;
 import dominio.info.usuario.infoPerfilUsuario;
 import dominio.metodoAprendizaje.FactoriaIteradorTarea;
 import dominio.metodoAprendizaje.IteradorTarea;
@@ -56,7 +57,7 @@ public enum HistoriApp {
 	// 1.1.- Registro de un nuevo usuario
 	
 	public boolean registrarUsuario(String nombre, String contrasena, String correo, String imagen, String saludo) {
-		if (usuarios.findUsuarioPorNombre(nombre).equals(null)){
+		if (usuarios.findUsuarioPorNombre(nombre) != null){
 			return false;
 		}
 		Usuario usuario = new Usuario(nombre, contrasena, correo, imagen, saludo, LocalDateTime.now());
@@ -65,7 +66,7 @@ public enum HistoriApp {
 	}
 
 	public boolean registrarProfesor(String nombre, String contrasena, String correo, String imagen, String saludo) {
-		if (usuarios.findUsuarioPorNombre(nombre).equals(null)){
+		if (usuarios.findUsuarioPorNombre(nombre) != null){
 			return false;
 		}
 		Profesor profesor = new Profesor(nombre, contrasena, correo, imagen, saludo, LocalDateTime.now());
@@ -113,6 +114,12 @@ public enum HistoriApp {
 		usuario.setSaludo(saludo);
 		actualizarUsuario(usuario);
 	}
+
+	////////////
+
+	public infoEstadisticas pedirEstadisticasUsuario(){
+		return usuario.getEstadisticas();
+	}	
 	
 	////////////
 	

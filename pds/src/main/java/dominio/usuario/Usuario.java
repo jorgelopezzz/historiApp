@@ -40,7 +40,7 @@ public class Usuario {
         this.contrasena = contrasena;
         this.correo = correo;
         
-        this.imagen = imagen.equals(null) ? RUTA_PERFIL_PREDETERMINADO : imagen;
+        this.imagen = imagen == null ? RUTA_PERFIL_PREDETERMINADO : imagen;
         this.saludo = saludo;
 
         this.puntuacion = 0;

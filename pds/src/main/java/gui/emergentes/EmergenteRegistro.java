@@ -238,13 +238,22 @@ public class EmergenteRegistro extends Emergente {
 					return;
 				}
 				/* Controlador */
+				boolean check;
 				if (campoRol.getTexto().equals("Profesor")){
-					HistoriApp.INSTANCE.registrarUsuario(campoNombre.getTexto(), campoContrasena.getTexto(), campoCorreo.getTexto(), rutaImagen, campoSaludo.getTexto());
+					check = HistoriApp.INSTANCE.registrarProfesor(campoNombre.getTexto(), campoContrasena.getTexto(), campoCorreo.getTexto(), rutaImagen, campoSaludo.getTexto());
 				} else {
-					HistoriApp.INSTANCE.registrarProfesor(campoNombre.getTexto(), campoContrasena.getTexto(), campoCorreo.getTexto(), rutaImagen, campoSaludo.getTexto());
+					check = HistoriApp.INSTANCE.registrarUsuario(campoNombre.getTexto(), campoContrasena.getTexto(), campoCorreo.getTexto(), rutaImagen, campoSaludo.getTexto());
 				}
 				
-
+				if (check == true){
+					EmergenteMensaje emergente = new EmergenteMensaje(ventanaMadre, "Usuario registrado correctamente.");
+					emergente.mostrar();
+					return;
+				} else {
+					EmergenteMensaje emergente = new EmergenteMensaje(ventanaMadre, "Error al registrar usuario.");
+					emergente.mostrar();
+					return;
+				}
 				
 			}
 		});
