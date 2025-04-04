@@ -167,11 +167,16 @@ public enum HistoriApp {
 	}
 	
 	public Info siguiente(Optional<String> respuesta) {
-		if(!iteradorTarea.tieneSiguiente()) 
-			return null;
+		//if(!iteradorTarea.tieneSiguiente()) 
+		//	return null;
 		
-		Tarea tareaSiguiente = iteradorTarea.siguiente(respuesta);
-		return tareaSiguiente.crearInfo();
+		Optional<Tarea> tareaSiguiente = iteradorTarea.siguiente(respuesta);
+		Info infoTarea = tareaSiguiente.isPresent() ? tareaSiguiente.get().crearInfo() : null;
+		return infoTarea;
+	}
+	
+	public double obtenerPuntuacion() {
+		return iteradorTarea.obtenerPuntuacion();
 	}
 	
 	public boolean crearCurso(String rutaCurso) {

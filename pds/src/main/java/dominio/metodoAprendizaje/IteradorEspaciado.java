@@ -8,7 +8,7 @@ import dominio.tarea.Tarea;
 
 public class IteradorEspaciado extends IteradorTarea {
 	
-	private static int ESPACIADO = 2;
+	private static int ESPACIADO = 3;
 	
     private boolean repetir;
 
@@ -18,7 +18,7 @@ public class IteradorEspaciado extends IteradorTarea {
     }
 
     @Override
-    public Tarea siguiente(Optional<String> respuesta) {
+    public Optional<Tarea> siguiente(Optional<String> respuesta) {
     	if(respuesta.isPresent()) {
     		Pregunta preguntaActual = (Pregunta) tareas.get(indice);
     		preguntasTotales += 1;
@@ -36,8 +36,8 @@ public class IteradorEspaciado extends IteradorTarea {
         }
              
         if (!tieneSiguiente())
-            return null;
+        	return Optional.empty();
        
-        return tareas.get(++indice);
+        return Optional.of(tareas.get(++indice));
     }
 }

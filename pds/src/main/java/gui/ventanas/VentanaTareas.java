@@ -23,6 +23,7 @@ import gui.componentes.tarea.ComponentePregunta;
 import gui.componentes.tarea.ComponenteRellenar;
 import gui.componentes.tarea.ComponenteTarea;
 import gui.componentes.tarea.FactoriaComponenteTarea;
+import gui.emergentes.EmergenteMensaje;
 import gui.emergentes.EmergenteSiNo;
 
 
@@ -149,9 +150,13 @@ public class VentanaTareas extends VentanaMenu {
 	                
 	                panelGeneral.revalidate();
 	                panelGeneral.repaint();
-				}
-				else
+				} else {
+					double puntuacion = HistoriApp.INSTANCE.obtenerPuntuacion();
+					String mensaje = "Tu puntuación es " + String.valueOf(puntuacion);
+					EmergenteMensaje emergentePuntuacion = new EmergenteMensaje(VentanaTareas.this, mensaje);
+					emergentePuntuacion.mostrar();
 					selector.cambiarVentana(new VentanaBloques(selector)); // AQUÍ SE DEBERÁ HACER PRÓXIMAMENTE LAS CORRECTAS/INCORRECTAS					
+				}
 			}
 		});
 	}
