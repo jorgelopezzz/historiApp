@@ -93,7 +93,7 @@ public class VentanaTareas extends VentanaMenu {
         panelGeneral.setBackground(GestorGUI.getInstancia().getColorClaro());
 
         // Crear el componente del curso
-        tareaActual = FactoriaComponenteTarea.crearTarea(HistoriApp.INSTANCE.siguiente()); 
+        tareaActual = FactoriaComponenteTarea.crearTarea(HistoriApp.INSTANCE.siguiente(Optional.empty())); 
         tareaActual.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         // Agregar el componente al centro del panel general
@@ -131,11 +131,12 @@ public class VentanaTareas extends VentanaMenu {
 				/* Obtención de la respuesta */
 				Optional<String> respuesta;
 				
-				if(tareaActual.esPregunta()) { // Si es Tip, pasamos directamente
+				if(tareaActual.esPregunta()) {
+					// Si es Pregunta, es evaluable y obtenemos la respuesta
 					respuesta = ((ComponentePregunta)tareaActual).getRespuesta();
 					if(respuesta.isEmpty()) 
-						return; // Si es Pregunta pero no hay respuesta, no podemos pasar a la siguiente
-				} else {
+						return; // Si no hay respuesta, no podemos pasar a la siguiente
+				} else { 
 					respuesta = Optional.empty();
 				}
 				Info tareaSiguiente = HistoriApp.INSTANCE.siguiente(respuesta);
