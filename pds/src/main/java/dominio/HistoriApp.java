@@ -121,7 +121,15 @@ public enum HistoriApp {
 
 	public infoEstadisticas pedirEstadisticasUsuario(){
 		return usuario.getEstadisticas();
-	}	
+	}
+
+	public int getPuntuacionUsuario(){
+		return usuario.getPuntuacion();
+	}
+
+	public int getMaxRachaUsuario(){
+		return usuario.getMaxRacha();
+	}
 	
 	////////////
 	
