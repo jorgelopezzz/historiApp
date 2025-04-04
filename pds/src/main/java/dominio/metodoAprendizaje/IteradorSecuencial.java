@@ -14,6 +14,7 @@ public class IteradorSecuencial extends IteradorTarea {
 	
 	@Override
 	public Tarea siguiente(Optional<String> respuesta) {
+		System.out.println(indice);
 		if(respuesta.isPresent()) {
 			Pregunta preguntaActual = (Pregunta) tareas.get(indice);
 			preguntasTotales += 1;
@@ -22,7 +23,7 @@ public class IteradorSecuencial extends IteradorTarea {
 
 		if(!tieneSiguiente())
 			return null;
-		
+		System.out.println("f:" + (indice+1));
 		return tareas.get(++indice);
 	}
 }

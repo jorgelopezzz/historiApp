@@ -8,7 +8,7 @@ import dominio.tarea.Tarea;
 
 public class IteradorEspaciado extends IteradorTarea {
 	
-	private static int ESPACIADO = 3;
+	private static int ESPACIADO = 2;
 	
     private boolean repetir;
 
@@ -26,7 +26,7 @@ public class IteradorEspaciado extends IteradorTarea {
     	}
         
        
-        if ((indice+1) % ESPACIADO == 0) {
+        if ((indice+1) != 0 && (indice+1) % ESPACIADO == 0) {
             if (repetir) {
             	indice -= ESPACIADO;
                 repetir = false;
