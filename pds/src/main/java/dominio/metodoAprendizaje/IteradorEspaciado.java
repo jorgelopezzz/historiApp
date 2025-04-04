@@ -3,6 +3,7 @@ package dominio.metodoAprendizaje;
 import java.util.List;
 import java.util.Optional;
 
+import dominio.tarea.Pregunta;
 import dominio.tarea.Tarea;
 
 public class IteradorEspaciado extends IteradorTarea {
@@ -18,11 +19,12 @@ public class IteradorEspaciado extends IteradorTarea {
 
     @Override
     public Tarea siguiente(Optional<String> respuesta) {
+    	if(respuesta.isPresent()) {
+    		Pregunta preguntaActual = (Pregunta) tareas.get(indice);
+    		preguntasTotales += 1;
+    		preguntasCorrectas += preguntaActual.evaluar(respuesta.get()) ? 1 : 0;
+    	}
         
-        Tarea tareaActual = tareas.get(indice);
-        
-        preguntasTotales += 1;
-		preguntasCorrectas += tareaActual.evaluar(respuesta) ? 1 : 0;
        
         if ((indice+1) % ESPACIADO == 0) {
             if (repetir) {

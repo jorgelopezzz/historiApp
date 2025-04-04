@@ -5,6 +5,8 @@ import java.util.Optional;
 import java.util.Collections;
 import java.util.ArrayList;
 import java.util.Random;
+
+import dominio.tarea.Pregunta;
 import dominio.tarea.Tarea;
 
 public class IteradorAleatoria extends IteradorTarea {
@@ -16,11 +18,10 @@ public class IteradorAleatoria extends IteradorTarea {
 
     @Override
     public Tarea siguiente(Optional<String> respuesta) {
-    	Tarea tareaActual = tareas.get(indice);
-    	
     	if(respuesta.isPresent()) {
+    		Pregunta preguntaActual = (Pregunta) tareas.get(indice);
     		preguntasTotales += 1;
-    		preguntasCorrectas += tareaActual.evaluar(respuesta) ? 1 : 0;
+    		preguntasCorrectas += preguntaActual.evaluar(respuesta.get()) ? 1 : 0;
     	}
     	
         if (!tieneSiguiente()) {
