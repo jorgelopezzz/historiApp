@@ -1,33 +1,28 @@
 package dominio.metodoAprendizaje;
 
 import java.util.List;
+import java.util.Optional;
+
 import dominio.tarea.Tarea;
 
-public class IteradorEspaciado implements IteradorTarea {
+public class IteradorEspaciado extends IteradorTarea {
 	
 	private static int ESPACIADO = 3;
 	
-    private List<Tarea> tareas;
-    private int indice;
     private boolean repetir;
 
     public IteradorEspaciado(List<Tarea> tareas) {
-        this.tareas = tareas;
-        this.indice = 0;
+        super(tareas);
         this.repetir = true;
     }
 
     @Override
-    public boolean tieneSiguiente() {
-        return indice < tareas.size();
-    }
-
-    @Override
-    public Tarea siguiente() {
-        if (!tieneSiguiente())
-            return null;
-
-        Tarea tarea = tareas.get(indice);
+    public Tarea siguiente(Optional<String> respuesta) {
+        
+        Tarea tareaActual = tareas.get(indice);
+        
+        preguntasTotales += 1;
+		preguntasCorrectas += tareaActual.evaluar(respuesta) ? 1 : 0;
        
         if ((indice+1) % ESPACIADO == 0) {
             if (repetir) {
@@ -37,9 +32,10 @@ public class IteradorEspaciado implements IteradorTarea {
                 repetir = true;
             }
         }
+             
+        if (!tieneSiguiente())
+            return null;
        
-        indice++;
-        
-        return tarea;
+        return tareas.get(++indice);
     }
 }
