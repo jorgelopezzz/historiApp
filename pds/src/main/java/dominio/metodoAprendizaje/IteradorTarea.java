@@ -14,13 +14,13 @@ public abstract class IteradorTarea {
 
 	protected IteradorTarea(List<Tarea> tareas) {
 		this.tareas = new ArrayList<>(tareas);
-		this.indice = 0;
+		this.indice = -1;
         this.preguntasTotales = 0;
         this.preguntasCorrectas = 0;
 	}
 	
 	public boolean tieneSiguiente() {
-		return indice < tareas.size();
+		return indice < tareas.size()-1;
 	}
 	
 	public abstract Tarea siguiente(Optional<String> respuesta);
