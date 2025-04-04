@@ -2,6 +2,19 @@
   <img src="https://github.com/user-attachments/assets/c2e4d973-0d73-436c-81d8-ad9d7f788f8b" width="300" height="300">
 </p>
 
+<div align="center">
+
+  ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
+  ![JSwing](https://img.shields.io/badge/JSwing-007396?style=for-the-badge&logo=java&logoColor=white)
+  ![JPA](https://img.shields.io/badge/JPA-4B0082?style=for-the-badge)
+  ![JUnit](https://img.shields.io/badge/JUnit-25A162?style=for-the-badge&logo=junit5&logoColor=white)
+
+</div>
+
+
+
+
+
 ## Información General
 **Profesor Responsable:** Antonio López Martínez Carrasco  
 **Asignatura:** Procesos de Desarrollo de Software  
@@ -46,14 +59,6 @@ Este repositorio está estructurado en diferentes carpetas, cada una conteniendo
 - **[Pruebas Software](./pruebas/README.md)**: Contiene toda la documentación relacionada con las pruebas realizadas en la aplicación. Incluye información detallada sobre la cobertura alcanzada, los casos de prueba ejecutados y otros aspectos esenciales para garantizar la calidad del proyecto.
 
 Cada una de estas secciones está diseñada para facilitar la navegación y el acceso a la información relevante dentro del repositorio.
-
-## Tecnologías Utilizadas
-
-```
-Lenguaje: Java 100%
-Bibliotecas: JSwing, JPA
-Pruebas: JUnit
-```
 
 ## Contribuciones Recientes
 
