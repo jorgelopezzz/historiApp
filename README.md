@@ -33,6 +33,18 @@ HistoriApp es una plataforma diseñada para facilitar el aprendizaje de la histo
 
 Nuestro objetivo es ofrecer una experiencia educativa accesible y atractiva, combinando la facilidad de uso con contenido de calidad, permitiendo así mejorar la retención de conocimientos de manera efectiva.
 
+## Organización del Repositorio
+
+Este repositorio está estructurado en diferentes carpetas, cada una conteniendo información relevante para el desarrollo y documentación del proyecto. A continuación, se detallan las secciones principales:
+
+- **[Vistas](./vistas/README.md)**: En esta sección se encuentran las descripciones y recursos relacionados con la interfaz gráfica de la aplicación. Desde su `README.md` se puede acceder a una vista previa de las diferentes ventanas y su disposición dentro del sistema.
+
+- **[Memoria](./memoria/README.md)**: Contiene toda la documentación sobre los requisitos del sistema y su modelado. Incluye información detallada sobre los casos de uso, el modelo del dominio y otros aspectos esenciales para la comprensión del proyecto.
+
+- **[Pruebas Software](./pruebas/README.md)**: Contiene toda la documentación relacionada con las pruebas realizadas en la aplicación. Incluye información detallada sobre la cobertura alcanzada, los casos de prueba ejecutados y otros aspectos esenciales para garantizar la calidad del proyecto.
+
+Cada una de estas secciones está diseñada para facilitar la navegación y el acceso a la información relevante dentro del repositorio.
+
 ## Tecnologías Utilizadas
 
 ```
@@ -56,18 +68,6 @@ Pruebas: JUnit
 Para el desarrollo de HistoriApp, nos hemos inspirado en plataformas educativas exitosas como [Duolingo](https://www.duolingo.com/), que utiliza la gamificación y lecciones cortas para facilitar el aprendizaje de idiomas. Duolingo ofrece características como lecciones adaptativas basadas en inteligencia artificial, seguimiento del progreso y elementos sociales que fomentan la competencia amistosa entre usuarios. Estas características han demostrado ser efectivas para mantener la motivación y mejorar la retención del aprendizaje.
 
 Al igual que Duolingo, HistoriApp incorporará elementos de gamificación y personalización para crear una experiencia de aprendizaje atractiva y efectiva en el ámbito de la historia.
-
-## Organización del Repositorio
-
-Este repositorio está estructurado en diferentes carpetas, cada una conteniendo información relevante para el desarrollo y documentación del proyecto. A continuación, se detallan las secciones principales:
-
-- **[Vistas](./vistas/README.md)**: En esta sección se encuentran las descripciones y recursos relacionados con la interfaz gráfica de la aplicación. Desde su `README.md` se puede acceder a una vista previa de las diferentes ventanas y su disposición dentro del sistema.
-
-- **[Memoria](./memoria/README.md)**: Contiene toda la documentación sobre los requisitos del sistema y su modelado. Incluye información detallada sobre los casos de uso, el modelo del dominio y otros aspectos esenciales para la comprensión del proyecto.
-
-- **[Pruebas Software](./pruebas/README.md)**: Contiene toda la documentación relacionada con las pruebas realizadas en la aplicación. Incluye información detallada sobre la cobertura alcanzada, los casos de prueba ejecutados y otros aspectos esenciales para garantizar la calidad del proyecto.
-
-Cada una de estas secciones está diseñada para facilitar la navegación y el acceso a la información relevante dentro del repositorio.
 
 ## Enlace a la Asignatura
 
