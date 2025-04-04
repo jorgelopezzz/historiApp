@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import dominio.curso.BloqueContenidos;
 import dominio.curso.Curso;
@@ -14,6 +15,7 @@ import dominio.curso.RepositorioCursos;
 import dominio.info.Info;
 import dominio.info.contenidos.InfoBloque;
 import dominio.info.contenidos.InfoCurso;
+import dominio.info.usuario.infoPerfilUsuario;
 import dominio.metodoAprendizaje.FactoriaIteradorTarea;
 import dominio.metodoAprendizaje.IteradorTarea;
 import dominio.metodoAprendizaje.MetodoAprendizaje;
@@ -27,7 +29,6 @@ public enum HistoriApp {
 	
 	private Usuario usuario;
 	private Curso cursoActual;
-	private LocalDateTime inicio;
 	private MetodoAprendizaje metodoAprendizaje;
 	private IteradorTarea iteradorTarea;
 	private RepositorioUsuarios usuarios;
@@ -55,20 +56,20 @@ public enum HistoriApp {
 	
 	// 1.1.- Registro de un nuevo usuario
 	
-	public boolean registrarUsuario(String nombre, String contrasena, String imagen, String saludo) {
+	public boolean registrarUsuario(String nombre, String contrasena, String correo, String imagen, String saludo) {
 		if (usuarios.findUsuarioPorNombre(nombre).equals(null)){
 			return false;
 		}
-		Usuario usuario = new Usuario(nombre, contrasena, imagen, saludo, LocalDateTime.now());
+		Usuario usuario = new Usuario(nombre, contrasena, correo, imagen, saludo, LocalDateTime.now());
 		usuarios.addUsuario(usuario);	
 		return true;
 	}
 
-	public boolean registrarProfesor(String nombre, String contrasena, String imagen, String saludo) {
+	public boolean registrarProfesor(String nombre, String contrasena, String correo, String imagen, String saludo) {
 		if (usuarios.findUsuarioPorNombre(nombre).equals(null)){
 			return false;
 		}
-		Profesor profesor = new Profesor(nombre, contrasena, imagen, saludo, LocalDateTime.now());
+		Profesor profesor = new Profesor(nombre, contrasena, correo, imagen, saludo, LocalDateTime.now());
 		usuarios.addUsuario(profesor);	
 		return true;
 	}
@@ -77,25 +78,27 @@ public enum HistoriApp {
 	
 	public boolean iniciarSesionUsuario(String nombre, String contrasena) {
 		// BLOQUE PARA COMPROBAR LA BASE DE DATOS 
-		
 		Usuario usuario = usuarios.findUsuarioPorNombre(nombre);
+
 		if (usuario != null && usuario.checkContrasena(contrasena)) {
 			this.usuario = usuario;
-			inicio = LocalDateTime.now();
-			return true;
+			return usuario.iniciarSesion();
 		}
 		return false;
 	}
 
 	public boolean cerrarSesionUsuario(){
 		if(usuario != null){
-			usuario.setTiempoUso(inicio, LocalDateTime.now());
-			return true;
+			return usuario.cerrarSesion();
 		}
 		return false;
 	}
 	
 	// 1.3.- Cambiar información de perfil
+
+	public infoPerfilUsuario pedirDatosUsuario(){
+		return usuario.getDatosPerfil();
+	}
 
 	public void cambiarInformacionPerfil(String imagen, String saludo){ //OJO que pasa si solo se cambia una? Hay que revisar cuando sea funcional para ver flecos
 		cambiarImagen(imagen);
@@ -138,8 +141,8 @@ public enum HistoriApp {
 		return true;
 	}
 	
-	public Info siguiente() {
-		if(!iteradorTarea.tieneSiguiente()) 
+	public Info siguiente(Optional<String> respuesta) {
+		if(!iteradorTarea.tieneSiguiente(respuesta)) 
 			return null;
 		
 		Tarea tareaSiguiente = iteradorTarea.siguiente();

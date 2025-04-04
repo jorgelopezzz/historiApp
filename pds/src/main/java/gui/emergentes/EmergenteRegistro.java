@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import dominio.HistoriApp;
 import gui.GestorGUI;
 import gui.campos.CampoContrasena;
 import gui.campos.CampoDesplegable;
@@ -237,7 +238,14 @@ public class EmergenteRegistro extends Emergente {
 					return;
 				}
 				/* Controlador */
+				if (campoRol.getTexto().equals("Profesor")){
+					HistoriApp.INSTANCE.registrarUsuario(campoNombre.getTexto(), campoContrasena.getTexto(), campoCorreo.getTexto(), rutaImagen, campoSaludo.getTexto());
+				} else {
+					HistoriApp.INSTANCE.registrarProfesor(campoNombre.getTexto(), campoContrasena.getTexto(), campoCorreo.getTexto(), rutaImagen, campoSaludo.getTexto());
+				}
+				
 
+				
 			}
 		});
 	}

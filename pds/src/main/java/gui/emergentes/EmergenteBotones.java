@@ -55,7 +55,7 @@ public abstract class EmergenteBotones extends Emergente {
 		/* Panel texto */
 		panelTexto = new JPanel();
 		GestorGUI.configurarPanel(panelTexto, new BoxLayout(panelTexto, BoxLayout.Y_AXIS), false);
-		
+
 		/* Etiqueta imagen */
 		etiquetaImagen = new JLabel();
 		etiquetaImagen.setIcon(GestorGUI.getInstancia().iconoDeRecursos(RUTA_ALERTA, LADO_IMAGEN, LADO_IMAGEN));

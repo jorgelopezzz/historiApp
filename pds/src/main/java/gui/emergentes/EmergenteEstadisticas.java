@@ -53,7 +53,7 @@ public class EmergenteEstadisticas extends Emergente {
         GestorGUI.configurarPanel(panelBotonCentrado, new BoxLayout(panelBotonCentrado, BoxLayout.X_AXIS), false);
         botonCerrar = GestorGUI.getBotonPredeterminado("Cerrar");
 
-		manejadorCerrar();
+		manejadorSalir(botonCerrar);
 
         
         panelBotonCentrado.add(Box.createHorizontalGlue());
@@ -134,16 +134,6 @@ public class EmergenteEstadisticas extends Emergente {
 
         return panelContenedor;
     }
-
-	private JButton manejadorCerrar(){
-		botonCerrar.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-			}
-		});
-		return botonCerrar;
-	}
 
 	
 }
