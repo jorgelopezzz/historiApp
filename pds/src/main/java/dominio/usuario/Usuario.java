@@ -1,5 +1,7 @@
 package dominio.usuario;
 
+import java.io.File;
+import java.net.URISyntaxException;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
@@ -64,7 +66,15 @@ public class Usuario {
 
     /* Alterables */
     public String getImagen() {
-        return imagen;
+    	if(imagen != RUTA_PERFIL_PREDETERMINADO)
+    		return imagen;
+    	try {
+			return new File(this.getClass().getResource(imagen).toURI()).getAbsolutePath();
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+			return null;
+		}
+        
     }
 
     public void setImagen(String imagen) {
