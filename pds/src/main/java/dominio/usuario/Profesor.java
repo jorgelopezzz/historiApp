@@ -9,8 +9,8 @@ public class Profesor extends Usuario {
 
 	private int cursosPublicados;
 
-	public Profesor(String nombre, String contrasena, String correo, String imagen, String saludo, LocalDateTime fechaRegistro) {
-		super(nombre, contrasena, correo, imagen, saludo, fechaRegistro);
+	public Profesor(String nombre, String contrasena, String correo, String imagen, String saludo) {
+		super(nombre, contrasena, correo, imagen, saludo);
 
 
 	}

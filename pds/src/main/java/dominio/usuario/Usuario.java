@@ -28,7 +28,7 @@ public class Usuario {
 
     private final LocalDateTime fechaRegistro;
 
-    public Usuario(String nombre, String contrasena, String correo, String imagen, String saludo, LocalDateTime fechaRegistro) {
+    public Usuario(String nombre, String contrasena, String correo, String imagen, String saludo) {
         if(nombre == null) 
     		throw new IllegalArgumentException("El nombre no puede ser nulo");
 
@@ -51,7 +51,7 @@ public class Usuario {
         this.diasUso = 0;
         this.maxRacha = 0;
 
-        this.fechaRegistro = fechaRegistro;
+        this.fechaRegistro = LocalDateTime.now();
     }
 
     // Getters y setters
@@ -114,7 +114,11 @@ public class Usuario {
     }
 
     public boolean cerrarSesion(){
+        System.out.println(inicioSesion);
+        System.out.println(tiempoUso);
         tiempoUso += (int) inicioSesion.until(LocalDateTime.now(), ChronoUnit.MINUTES);
+        System.out.println(LocalDateTime.now());
+        System.out.println(tiempoUso);
         return true;
     }
 

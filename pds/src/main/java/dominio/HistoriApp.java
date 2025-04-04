@@ -62,7 +62,7 @@ public enum HistoriApp {
 		if (usuarios.findUsuarioPorNombre(nombre) != null){
 			return false;
 		}
-		Usuario usuario = new Usuario(nombre, contrasena, correo, imagen, saludo, LocalDateTime.now());
+		Usuario usuario = new Usuario(nombre, contrasena, correo, imagen, saludo);
 		usuarios.addUsuario(usuario);	
 		return true;
 	}
@@ -71,7 +71,7 @@ public enum HistoriApp {
 		if (usuarios.findUsuarioPorNombre(nombre) != null){
 			return false;
 		}
-		Profesor profesor = new Profesor(nombre, contrasena, correo, imagen, saludo, LocalDateTime.now());
+		Profesor profesor = new Profesor(nombre, contrasena, correo, imagen, saludo);
 		usuarios.addUsuario(profesor);	
 		return true;
 	}
