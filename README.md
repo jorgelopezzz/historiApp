@@ -1,4 +1,6 @@
-# HistoriApp
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/c2e4d973-0d73-436c-81d8-ad9d7f788f8b" width="300" height="300">
+</p>
 
 ## Información General
 **Profesor Responsable:** Antonio López Martínez Carrasco  
