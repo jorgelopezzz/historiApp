@@ -23,10 +23,10 @@ public abstract class IteradorTarea {
 		return indice < tareas.size()-1;
 	}
 	
-	public abstract Tarea siguiente(Optional<String> respuesta);
+	public abstract Optional<Tarea> siguiente(Optional<String> respuesta);
 	
 	public double obtenerPuntuacion() {
-		return preguntasCorrectas*10/preguntasTotales;
+		return preguntasTotales == 0.0 ? 10.0 : preguntasCorrectas*10/preguntasTotales;
 	}
 	
 }
