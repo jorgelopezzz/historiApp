@@ -54,5 +54,9 @@ public abstract class Tarea {
     /* Método para mutar a info */
     public abstract Info crearInfo();
 	
+    public boolean esPregunta() {
+    	return this instanceof Pregunta;
+    }
+    
 
 }

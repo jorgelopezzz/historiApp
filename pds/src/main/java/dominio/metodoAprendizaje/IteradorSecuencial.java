@@ -1,29 +1,28 @@
 package dominio.metodoAprendizaje;
 
 import java.util.List;
+import java.util.Optional;
 
+import dominio.tarea.Pregunta;
 import dominio.tarea.Tarea;
 
-public class IteradorSecuencial implements IteradorTarea {
-	private List<Tarea> tareas;
-	private int indice;
+public class IteradorSecuencial extends IteradorTarea {
 	
 	public IteradorSecuencial(List<Tarea> tareas) {
-		this.tareas = tareas;
-		indice = 0;
+		super(tareas);
 	}
 	
 	@Override
-	public boolean tieneSiguiente() {
-		return indice < tareas.size();
-	}
-	
-	@Override
-	public Tarea siguiente() {
+	public Tarea siguiente(Optional<String> respuesta) {
+		if(respuesta.isPresent()) {
+			Pregunta preguntaActual = (Pregunta) tareas.get(indice);
+			preguntasTotales += 1;
+			preguntasCorrectas += preguntaActual.evaluar(respuesta.get()) ? 1 : 0;
+		}
+
 		if(!tieneSiguiente())
 			return null;
-		Tarea tarea = tareas.get(indice);
-		indice += 1;
-		return tarea;
+		
+		return tareas.get(++indice);
 	}
 }

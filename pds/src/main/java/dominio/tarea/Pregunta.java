@@ -20,9 +20,6 @@ public abstract class Pregunta extends Tarea {
 	    @JsonSubTypes.Type(value = PreguntaVF.class, name = PreguntaVF.tipoPregunta)
 	})*/
 	
-	@JsonProperty
-	public static final String tipo = "PreguntaRellenar";
-	
 	@JsonCreator
     public Pregunta(@JsonProperty("enunciado") String enunciado) {
 		super(enunciado);
@@ -34,5 +31,7 @@ public abstract class Pregunta extends Tarea {
 	public abstract boolean evaluar(String respuesta);
 	
 	public abstract Info crearInfo();
+	
+	
 	
 }
