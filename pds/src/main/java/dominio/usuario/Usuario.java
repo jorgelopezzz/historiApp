@@ -110,7 +110,7 @@ public class Usuario {
     }
     
     public infoEstadisticas getEstadisticas(){
-        return new infoEstadisticas(nombre, puntuacion, getCursosCompletados(), tiempoUso, diasUso, maxRacha);
+        return new infoEstadisticas(nombre, puntuacion, getCursosCompletados(), getBloquesCompletados(), tiempoUso, diasUso, maxRacha);
     }
 
     public infoPerfilUsuario getDatosPerfil(){
@@ -169,6 +169,13 @@ public class Usuario {
 			.count();
 		return numCursos.intValue();
 	}
+	
+	public int getBloquesCompletados() {
+		return cursos.stream()
+			.mapToInt( rc -> rc.getBloques().size() )
+			.sum();
+	}
+	
 	
 	public Optional<MetodoAprendizaje> getMetodoAprendizaje(Curso curso) {
 		Optional<RealizacionCurso> rc = getRealizacion(curso.getTitulo());

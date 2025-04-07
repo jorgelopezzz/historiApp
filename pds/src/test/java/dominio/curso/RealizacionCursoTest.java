@@ -21,26 +21,24 @@ public class RealizacionCursoTest {
         // Retornar los argumentos para los tests
         return List.of(
             // Ninguno o un valor nulo
-            Arguments.of(cursoValido, usuarioValido, LocalDate.now(), false),
-            Arguments.of(cursoValido, null, LocalDate.now(), true),
-            Arguments.of(null, usuarioValido, LocalDate.now(), true),
-            Arguments.of(cursoValido, usuarioValido, null, true),
+            Arguments.of(cursoValido, usuarioValido, false),
+            Arguments.of(cursoValido, null, true),
+            Arguments.of(null, usuarioValido, true),
 
             // Todos los valores nulos
-            Arguments.of(null, null, null, true) 
+            Arguments.of(null, null, true) 
         );
     }
 
     @ParameterizedTest
     @MethodSource("parametrosParaConstructor")
-    public void testConstructorNulls(Curso cursoParam, Usuario usuarioParam, LocalDate fechaMatriculaParam, boolean debeLanzarExcepcion) {
+    public void testConstructorNulls(Curso cursoParam, Usuario usuarioParam, boolean debeLanzarExcepcion) {
         if (debeLanzarExcepcion) {
-            assertThrows(IllegalArgumentException.class, () -> new RealizacionCurso(cursoParam, usuarioParam, fechaMatriculaParam, MetodoAprendizaje.ESPACIADA));
+            assertThrows(IllegalArgumentException.class, () -> new RealizacionCurso(cursoParam, usuarioParam, MetodoAprendizaje.ESPACIADA));
         } else {
-            RealizacionCurso matricula = new RealizacionCurso(cursoParam, usuarioParam, fechaMatriculaParam, MetodoAprendizaje.ALEATORIA);
+            RealizacionCurso matricula = new RealizacionCurso(cursoParam, usuarioParam, MetodoAprendizaje.ALEATORIA);
             assertEquals(cursoParam, matricula.getCurso());
             assertEquals(usuarioParam, matricula.getUsuario());
-            assertEquals(fechaMatriculaParam, matricula.fechaMatricula());
         }
     }
 }

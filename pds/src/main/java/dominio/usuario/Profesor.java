@@ -17,7 +17,7 @@ public class Profesor extends Usuario {
 	
 	@Override
 	public infoEstadisticasProfesor getEstadisticas(){
-		return new infoEstadisticasProfesor(nombre, puntuacion, cursosCompletados, tiempoUso, diasUso, maxRacha, cursosPublicados);
+		return new infoEstadisticasProfesor(nombre, puntuacion, getCursosCompletados(), getBloquesCompletados(), tiempoUso, diasUso, maxRacha, cursosPublicados);
 	}
 
 	@Override

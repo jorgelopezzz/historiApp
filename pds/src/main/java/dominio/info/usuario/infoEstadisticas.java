@@ -9,14 +9,16 @@ public class infoEstadisticas extends Info{
     
     private int puntuacion;
     private int cursosCompletados;
+    private int bloquesCompletados;
     private String minutosUso;
     private String minutosUsoDiario;
     private int maxRacha;
 
-    public infoEstadisticas (String texto, int puntuacion, int cursosCompletados, Duration tiempoUso, int diasUso, int maxRacha){
+    public infoEstadisticas (String texto, int puntuacion, int cursosCompletados, int bloquesCompletados, Duration tiempoUso, int diasUso, int maxRacha){
         super(texto);
         this.puntuacion = puntuacion;
         this.cursosCompletados = cursosCompletados;
+        this.bloquesCompletados = bloquesCompletados;
         this.maxRacha = maxRacha;
 
         int totalSegundos = ((Long) tiempoUso.toSeconds()).intValue();
@@ -46,6 +48,10 @@ public class infoEstadisticas extends Info{
 
     public int getCursosCompletados (){
         return cursosCompletados;
+    }
+    
+    public int getBloquesCompletados (){
+        return bloquesCompletados;
     }
 
     public String getMinutosUso (){

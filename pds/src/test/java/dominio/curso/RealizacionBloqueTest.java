@@ -17,7 +17,7 @@ class RealizacionBloqueTest {
 	private static BloqueContenidos bloqueValido = new BloqueContenidos("Titulo", "Descripcion", null, List.of(new Tip("Enunciado", null)));
 	static List<Arguments> argumentosInvalidos() {
         return List.of(
-        	Arguments.of((BloqueContenidos)null)
+        	Arguments.of((BloqueContenidos)null, 1.0)
         );
     }
 	
@@ -41,46 +41,38 @@ class RealizacionBloqueTest {
 	
 	static List<Arguments> argumentosValidos() {
         return List.of(
-        	Arguments.of(bloqueValido)
+        	Arguments.of(bloqueValido, 3.0),
+        	Arguments.of(bloqueValido, 0.0),
+        	Arguments.of(bloqueValido, 10.0)
         );
     }
 	
     @ParameterizedTest
     @MethodSource("argumentosInvalidos")
-    void testArgumentosInvalidos(BloqueContenidos bloque) {
+    void testArgumentosInvalidos(BloqueContenidos bloque, double puntuacion) {
         assertThrows(IllegalArgumentException.class, () -> {
-            new RealizacionBloque(bloque);
+            new RealizacionBloque(bloque, puntuacion);
         });
     }
     
     @ParameterizedTest
     @MethodSource("argumentosValidos")
-    void testArgumentosValidos(BloqueContenidos bloque) {
-        assertDoesNotThrow(() -> { new RealizacionBloque(bloque); });
-        assertEquals(bloque, new RealizacionBloque(bloque).getBloque());
-    }
-    
-    @ParameterizedTest
-    @MethodSource("argumentosValidos")
-    void testAtributosSinCompletar(BloqueContenidos bloque) {
-    	RealizacionBloque rb = new RealizacionBloque(bloque);
-    	assertTrue(rb.getPuntuacion().isEmpty());
-    	assertTrue(rb.getFechaCompletado().isEmpty());
+    void testArgumentosValidos(BloqueContenidos bloque, double puntuacion) {
+        assertDoesNotThrow(() -> { new RealizacionBloque(bloque, puntuacion); });
+        assertEquals(bloque, new RealizacionBloque(bloque, puntuacion).getBloque());
+        assertEquals(puntuacion, new RealizacionBloque(bloque, puntuacion).getPuntuacion());
     }
     
     @ParameterizedTest
     @MethodSource("argumentosInvalidosNota")
     void testCompletarIncorrecto(BloqueContenidos bloque, double puntuacion) {
-    	RealizacionBloque rb = new RealizacionBloque(bloque);
-    	assertThrows(IllegalArgumentException.class, () -> { rb.completar(puntuacion); });
-    	
+    	assertThrows(IllegalArgumentException.class, () -> new RealizacionBloque(bloque, puntuacion));
     }
     
     @ParameterizedTest
     @MethodSource("argumentosValidosNota")
     void testCompletarCorrecto(BloqueContenidos bloque, double puntuacion) {
-    	RealizacionBloque rb = new RealizacionBloque(bloque);
-    	assertDoesNotThrow(() -> { rb.completar(puntuacion); });
+    	assertDoesNotThrow(() -> new RealizacionBloque(bloque, puntuacion));
     	
     }
     

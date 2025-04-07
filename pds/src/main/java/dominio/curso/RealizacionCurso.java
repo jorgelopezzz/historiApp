@@ -91,4 +91,8 @@ public class RealizacionCurso {
 		this.metodoAprendizaje = metodoAprendizaje;
 	}
 	
+	public List<RealizacionBloque> getBloques() {
+		return List.copyOf(listaBloques);
+	}
+	
 }
