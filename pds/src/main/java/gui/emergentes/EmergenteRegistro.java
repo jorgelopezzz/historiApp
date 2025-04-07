@@ -236,7 +236,13 @@ public class EmergenteRegistro extends Emergente {
 					EmergenteMensaje emergente = new EmergenteMensaje(ventanaMadre, "Las contraseñas no coinciden.");
 					emergente.mostrar();
 					return;
+				/* Caso 3: Usuario ya registrado */
+				} else if(HistoriApp.INSTANCE.usuarioRegistrado(campoNombre.getTexto())) {
+					EmergenteMensaje emergente = new EmergenteMensaje(ventanaMadre, "El nombre de usuario ya está registrado.");
+					emergente.mostrar();
+					return;
 				}
+				
 				/* Controlador */
 				boolean check;
 				if (campoRol.getTexto().equals("Profesor")){
@@ -245,7 +251,7 @@ public class EmergenteRegistro extends Emergente {
 					check = HistoriApp.INSTANCE.registrarUsuario(campoNombre.getTexto(), campoContrasena.getTexto(), campoCorreo.getTexto(), rutaImagen, campoSaludo.getTexto());
 				}
 				
-				if (check == true){
+				if (check){
 					EmergenteMensaje emergente = new EmergenteMensaje(ventanaMadre, "Usuario registrado correctamente.");
 					emergente.mostrar();
 					return;

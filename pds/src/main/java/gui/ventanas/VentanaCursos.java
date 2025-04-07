@@ -35,9 +35,8 @@ public class VentanaCursos extends VentanaMenu {
 	/* Tipo de rol */
 	protected int rol;
 	
-	public VentanaCursos(SelectorVentana selector, int rol) {
+	public VentanaCursos(SelectorVentana selector) {
 	       super(selector);
-	       this.rol = rol;
 	}
 
     @Override
@@ -58,7 +57,7 @@ public class VentanaCursos extends VentanaMenu {
 	    GestorGUI.configurarEtiqueta(etiquetaBienvenida, false, GestorGUI.getInstancia().getColorOscuro(), GestorGUI.getInstancia().getFuenteTexto());
 	    panelInicial.add(etiquetaBienvenida, BorderLayout.WEST);
 	    
-	    if(rol == 0 /*HistoriApp.INSTANCE.esProfesor()*/) {
+	    if(HistoriApp.INSTANCE.esProfesor()) {
 		    panelInicial.add(Box.createHorizontalGlue());
 		    
 		    botonCrearCurso = GestorGUI.getBotonPredeterminado("Crear curso");
