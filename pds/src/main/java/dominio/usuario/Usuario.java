@@ -187,7 +187,8 @@ public class Usuario {
 	public boolean haCompletado(Curso curso) {
 		return cursos.stream()
 				.filter( rc -> rc.estaCompletado() )
-				.anyMatch( rc -> rc.getCurso().getTitulo().equals(curso.getTitulo()));
+				.anyMatch( rc -> rc.getCurso().getTitulo().equals(curso.getTitulo()))
+				&& ! estaMatriculado(curso.getTitulo());
 	}
 	
 	
