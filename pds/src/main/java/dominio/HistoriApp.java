@@ -196,4 +196,9 @@ public enum HistoriApp {
 	    }
 	}
 	
+	/* Comprobación de registro */
+	public boolean usuarioRegistrado(String nombre) {
+		return usuarios.findUsuarioPorNombre(nombre) != null;
+	}
+	
 }
