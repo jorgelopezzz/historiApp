@@ -119,8 +119,10 @@ public class VentanaTareas extends VentanaMenu {
 				// Lanzar la ventana emergente
 				EmergenteSiNo emergente = new EmergenteSiNo(VentanaTareas.this, "¿Estás seguro de que quieres salir?\nNo se guardará tu progreso.");
 				emergente.mostrar();
-				if(emergente.obtenerRespuesta().orElse(false))
+				if(emergente.obtenerRespuesta().orElse(false)) {
+					HistoriApp.INSTANCE.cerrarBloque();
 					selector.cambiarVentana(new VentanaBloques(selector));
+				}
 			}
 		});
 	}

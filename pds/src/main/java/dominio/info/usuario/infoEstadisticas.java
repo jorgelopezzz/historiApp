@@ -1,5 +1,6 @@
 package dominio.info.usuario;
 
+import java.time.Duration;
 import java.util.Optional;
 
 import dominio.info.Info;
@@ -12,23 +13,29 @@ public class infoEstadisticas extends Info{
     private String minutosUsoDiario;
     private int maxRacha;
 
-    public infoEstadisticas (String texto, int puntuacion, int cursosCompletados, int minutosUso, int diasUso, int maxRacha){
+    public infoEstadisticas (String texto, int puntuacion, int cursosCompletados, Duration tiempoUso, int diasUso, int maxRacha){
         super(texto);
         this.puntuacion = puntuacion;
         this.cursosCompletados = cursosCompletados;
         this.maxRacha = maxRacha;
 
-        int dias = minutosUso / 1440;
-        int horas = (minutosUso % 1440) / 60;
-        int minutos = minutosUso % 60;
+        int totalSegundos = ((Long) tiempoUso.toSeconds()).intValue();
+        
+        /* Uso total */
+        int horas = totalSegundos / 3600;
+        int minutos = (totalSegundos % 3600) / 60;
+        int segundos = totalSegundos - minutos * 60 - horas * 3600;
 
-        this.minutosUso = String.format("%02d:%02d:%02d", dias, horas, minutos);
+        this.minutosUso = String.format("%02d:%02d:%02d", horas, minutos, segundos);
+        
+        /* Uso medio por día */
+        totalSegundos = diasUso == 0 ? 0 : totalSegundos/diasUso;
+        horas = totalSegundos / 3600;
+        minutos = (totalSegundos % 3600) / 60;
+        segundos = totalSegundos - minutos * 60 - horas * 3600;
+        
 
-        int tiempo = diasUso == 0 ? 0 : minutosUso/diasUso;
-        horas = tiempo / 60;
-        minutos = tiempo % 60;
-
-        this.minutosUsoDiario = String.format("%02d:%02d", horas, minutos);
+        this.minutosUsoDiario = String.format("%02d:%02d:%02d", horas, minutos, segundos);
     }
 
     /* Getters */

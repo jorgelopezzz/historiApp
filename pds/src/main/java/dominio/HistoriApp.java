@@ -5,7 +5,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,8 +28,8 @@ public enum HistoriApp {
 	INSTANCE;
 	
 	private Usuario usuario;
-	private Curso cursoActual;
-	private MetodoAprendizaje metodoAprendizaje;
+	private Curso cursoActual = null;
+	private BloqueContenidos bloqueActual = null;
 	private IteradorTarea iteradorTarea;
 	private RepositorioUsuarios usuarios;
 	private RepositorioCursos cursos;
@@ -154,16 +153,31 @@ public enum HistoriApp {
 		return InfoBloque.getListInfoBloque(cursos.getBloques(cursoActual));
 	}
 	
-	public boolean realizarCurso(String nombreCurso, MetodoAprendizaje metodoAprendizaje) {
-		this.cursoActual = cursos.buscarCursoPorNombre(nombreCurso);
-		this.metodoAprendizaje = metodoAprendizaje;
+	public boolean matricularCurso(String nombreCurso, MetodoAprendizaje metodoAprendizaje) {
+		Curso curso = cursos.buscarCursoPorNombre(nombreCurso);
+		if(curso == null || usuario.estaMatriculado(nombreCurso))
+			return false;
+		usuario.matricularCurso(curso, metodoAprendizaje);
+		return true;
+	}
+	
+	
+	public boolean realizarCurso(String nombreCurso) {
+		Curso curso = cursos.buscarCursoPorNombre(nombreCurso);
+		if(curso == null)
+			return false;
+		cursoActual = curso;
 		return true;
 	}
 	
 	public boolean realizarBloque(String bloqueNombre) {
-		BloqueContenidos bloque = cursoActual.getBloquePorNombre(bloqueNombre);
-		iteradorTarea = FactoriaIteradorTarea.crearIterador(bloque.getTareas(), metodoAprendizaje);
+		bloqueActual = cursoActual.getBloquePorNombre(bloqueNombre);
+		iteradorTarea = FactoriaIteradorTarea.crearIterador(bloqueActual.getTareas(), usuario.getMetodoAprendizaje(cursoActual).get());
 		return true;
+	}
+	
+	public void cerrarBloque() {
+		bloqueActual = null;
 	}
 	
 	public Info siguiente(Optional<String> respuesta) {
@@ -176,7 +190,9 @@ public enum HistoriApp {
 	}
 	
 	public double obtenerPuntuacion() {
-		return iteradorTarea.obtenerPuntuacion();
+		double puntuacion = iteradorTarea.obtenerPuntuacion();
+		usuario.completarBloque(cursoActual, bloqueActual, puntuacion);
+		return puntuacion;
 	}
 	
 	public boolean crearCurso(String rutaCurso) {
@@ -204,6 +220,11 @@ public enum HistoriApp {
 	/* Obtención del rol */
 	public boolean esProfesor() {
 		return usuario.esProfesor();
+	}
+	
+	/* Comprobación de matrícula */
+	public boolean usuarioMatriculado(String nombreCurso) {
+		return usuario.estaMatriculado(nombreCurso);
 	}
 	
 }
