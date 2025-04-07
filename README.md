@@ -68,4 +68,4 @@ Al igual que Duolingo, HistoriApp incorporará elementos de gamificación y pers
 
 ## Enlace a la Asignatura
 
-Para más información sobre la asignatura **Procesos de Desarrollo de Software** impartida en la Universidad de Murcia, puede consultarse el siguiente enlace: [Procesos de Desarrollo de Software - Universidad de Murcia](https://www.um.es/web/estudios/masteres/ingenieria-software/descripcion).
+Para más información sobre la asignatura **Procesos de Desarrollo de Software** impartida en la Universidad de Murcia, puede consultarse el siguiente enlace: [Procesos de Desarrollo de Software - Universidad de Murcia]([https://www.um.es/web/estudios/masteres/ingenieria-software/descripcion](https://api.um.es/aulavirtual/guiasdocentes-api/public/v1/guias/1910/G/2024/E/html)).
