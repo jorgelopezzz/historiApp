@@ -1,5 +1,6 @@
 package dominio.usuario;
 
+import jakarta.persistence.*;
 import java.io.File;
 import java.net.URISyntaxException;
 import java.time.LocalDateTime;
@@ -8,25 +9,45 @@ import java.time.temporal.ChronoUnit;
 import dominio.info.usuario.infoEstadisticas;
 import dominio.info.usuario.infoPerfilUsuario;
 
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "usuarios")
 public class Usuario {
     
     private static final String RUTA_PERFIL_PREDETERMINADO = "/perfil.png";
-
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(nullable = false, unique = true)
     protected String nombre;
+    @Column(nullable = false, unique = true)
     protected String correo;
+    @Column(nullable = false)
     protected String contrasena;
+    @Column(nullable = true)
     protected String imagen;
+    @Column(nullable = true)
     protected String saludo;
 
+    @Column(nullable = true)
     protected int puntuacion;
+    @Column(nullable = true)
     protected int cursosCompletados; /* Arreglar esto, hay que ver el tema de la lista de instancias de curso en usuario */
+    @Column(nullable = true)
     protected int tiempoUso; //100 años de uso continuado no se sale de un int en minutos
+    @Column(nullable = true)
     protected int diasUso;
+    @Column(nullable = true)
     protected int maxRacha;
 
+    @Transient
     private LocalDateTime inicioSesion;
 
-    private final LocalDateTime fechaRegistro;
+    @Column(nullable = true)
+    private LocalDateTime fechaRegistro;
+    
+    public Usuario() {}
 
     public Usuario(String nombre, String contrasena, String correo, String imagen, String saludo) {
         if(nombre == null) 

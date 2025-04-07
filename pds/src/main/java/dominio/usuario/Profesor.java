@@ -1,18 +1,25 @@
 package dominio.usuario;
 
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 import dominio.info.usuario.infoEstadisticasProfesor;
 import dominio.info.usuario.infoPerfilUsuario;
 
+@Entity
+@Table(name = "profesores")
+@PrimaryKeyJoinColumn(name = "nombre") // Clave foránea que apunta a Usuario.nombre
 public class Profesor extends Usuario {
 
 	private int cursosPublicados;
+	
+	public Profesor() {
+		super();
+	}
 
 	public Profesor(String nombre, String contrasena, String correo, String imagen, String saludo) {
 		super(nombre, contrasena, correo, imagen, saludo);
-
-
+		cursosPublicados = 0;
 	}
 	
 	@Override
