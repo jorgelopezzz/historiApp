@@ -107,12 +107,12 @@ public enum HistoriApp {
 		cambiarSaludo(saludo);
 	}
 	
-	private void cambiarImagen(String imagen) {
+	public void cambiarImagen(String imagen) {
 		usuario.setImagen(imagen);
 		actualizarUsuario(usuario);
 	}
 	
-	private void cambiarSaludo(String saludo) {
+	public void cambiarSaludo(String saludo) {
 		usuario.setSaludo(saludo);
 		actualizarUsuario(usuario);
 	}

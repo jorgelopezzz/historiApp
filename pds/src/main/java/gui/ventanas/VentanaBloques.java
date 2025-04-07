@@ -95,7 +95,7 @@ public class VentanaBloques extends VentanaMenu {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int rol = 1;
-				selector.cambiarVentana(new VentanaCursos(selector, rol));
+				selector.cambiarVentana(new VentanaCursos(selector));
 			}
 		});
 	}

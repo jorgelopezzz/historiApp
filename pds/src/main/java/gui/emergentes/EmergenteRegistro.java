@@ -254,7 +254,7 @@ public class EmergenteRegistro extends Emergente {
 				if (check){
 					EmergenteMensaje emergente = new EmergenteMensaje(ventanaMadre, "Usuario registrado correctamente.");
 					emergente.mostrar();
-					return;
+					cerrar();
 				} else {
 					EmergenteMensaje emergente = new EmergenteMensaje(ventanaMadre, "Error al registrar usuario.");
 					emergente.mostrar();
