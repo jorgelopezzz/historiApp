@@ -141,8 +141,8 @@ public enum HistoriApp {
 	
 	////////////
 	
-	public Curso getCursoActual() {
-		return cursoActual;
+	public String getCursoActual() {
+		return cursoActual.getTitulo();
 	}
 	
 	public List<InfoCurso> getCursos() {
@@ -225,6 +225,11 @@ public enum HistoriApp {
 	/* Comprobación de matrícula */
 	public boolean usuarioMatriculado(String nombreCurso) {
 		return usuario.estaMatriculado(nombreCurso);
+	}
+	
+	/* Notificar curso completado */
+	public boolean cursoCompletado() {
+		return usuario.haCompletado(cursoActual);
 	}
 	
 }
