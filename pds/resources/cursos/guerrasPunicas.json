@@ -1,0 +1,151 @@
+{
+  "titulo": "Las Guerras Púnicas: Roma contra Cartago",
+  "descripcion": "Un viaje histórico por los conflictos que decidieron el control del Mediterráneo occidental entre Roma y Cartago.",
+  "rutaImagen": "https://sites.oxy.edu/guillenf/espanol302/recursos/mapas/1guerrapunica.jpg",
+  "bloquesContenidos": [
+    {
+      "titulo": "Primera Guerra Púnica (264-241 a.C.)",
+      "descripcion": "Estudio del conflicto inicial entre Roma y Cartago por el control de Sicilia y el Mediterráneo.",
+      "rutaImagen": "https://www.muyinteresante.com/wp-content/uploads/sites/5/2023/10/29/653e72404dac5.jpeg",
+      "tareas": [
+        {
+          "tipo": "Tip",
+          "enunciado": "La Primera Guerra Púnica fue el primer conflicto de Roma fuera de la península itálica, obligando a los romanos a desarrollar una armada para enfrentar al poderío naval cartaginés."
+        },
+        {
+          "tipo": "PreguntaTipoTest",
+          "enunciado": "¿Cuál fue el principal motivo del inicio de la Primera Guerra Púnica?",
+          "opciones": [
+            "El control de Sicilia",
+            "La invasión de Roma por Cartago",
+            "La conquista de Hispania",
+            "El asesinato de un embajador romano"
+          ],
+          "correcta": 0
+        },
+        {
+          "tipo": "PreguntaRellenar",
+          "enunciado": "La batalla naval decisiva de la Primera Guerra Púnica fue la Batalla de las Islas ________.",
+          "respuesta": "Égates"
+        },
+        {
+          "tipo": "PreguntaVF",
+          "enunciado": "Durante la Primera Guerra Púnica, Roma no tenía experiencia naval y tuvo que construir su primera flota.",
+          "esVerdadero": true
+        },
+        {
+          "tipo": "Tip",
+          "enunciado": "El Corvus (cuervo) fue una innovación táctica romana: una pasarela con un garfio que permitía a los soldados romanos abordar naves enemigas y convertir las batallas navales en combates terrestres."
+        }
+      ]
+    },
+    {
+      "titulo": "Aníbal y la Segunda Guerra Púnica (218-201 a.C.)",
+      "descripcion": "Análisis del conflicto más famoso donde Aníbal Barca cruzó los Alpes y casi derrota a Roma.",
+      "rutaImagen": "https://www.rehenes.org/uploads/1/7/6/1/17610745/3230321_orig.jpg",
+      "tareas": [
+        {
+          "tipo": "Tip",
+          "enunciado": "Aníbal Barca cruzó los Alpes con un ejército que incluía elefantes de guerra, sorprendiendo a Roma con un ataque desde el norte de Italia."
+        },
+        {
+          "tipo": "PreguntaTipoTest",
+          "enunciado": "¿En qué batalla Aníbal logró su victoria más devastadora contra Roma?",
+          "opciones": [
+            "Cannas",
+            "Zama",
+            "Trebia",
+            "Trasimeno"
+          ],
+          "correcta": 0
+        },
+        {
+          "tipo": "PreguntaRellenar",
+          "enunciado": "La estrategia de evitar el enfrentamiento directo con Aníbal, desgastando a su ejército, fue implementada por el general romano ________ y es conocida como estrategia ________.",
+          "respuesta": "Fabio Máximo, fabiana"
+        },
+        {
+          "tipo": "PreguntaVF",
+          "enunciado": "A pesar de sus victorias en Italia, Aníbal nunca logró tomar la ciudad de Roma.",
+          "esVerdadero": true
+        },
+        {
+          "tipo": "Tip",
+          "enunciado": "La batalla de Cannas es estudiada hasta hoy en academias militares como un ejemplo perfecto de táctica envolvente, donde Aníbal logró rodear y aniquilar a un ejército romano numéricamente superior."
+        }
+      ]
+    },
+    {
+      "titulo": "Escipión el Africano y el fin de la Segunda Guerra",
+      "descripcion": "Estudio de la figura de Escipión y su estrategia para derrotar a Cartago.",
+      "rutaImagen": "https://upload.wikimedia.org/wikipedia/commons/b/be/ScipioAfricanusSulla.jpg",
+      "tareas": [
+        {
+          "tipo": "Tip",
+          "enunciado": "Publio Cornelio Escipión, más tarde conocido como 'Africano', cambió la estrategia romana al atacar directamente Hispania y luego África, obligando a Aníbal a abandonar Italia."
+        },
+        {
+          "tipo": "PreguntaTipoTest",
+          "enunciado": "¿Dónde tuvo lugar la batalla final entre Escipión y Aníbal?",
+          "opciones": [
+            "Zama",
+            "Cartago",
+            "Útica",
+            "Cirta"
+          ],
+          "correcta": 0
+        },
+        {
+          "tipo": "PreguntaRellenar",
+          "enunciado": "Escipión recibió el sobrenombre de '________' después de su victoria sobre Cartago.",
+          "respuesta": "Africano"
+        },
+        {
+          "tipo": "PreguntaVF",
+          "enunciado": "Escipión aprendió de las tácticas de Aníbal y las utilizó contra él en la batalla decisiva.",
+          "esVerdadero": true
+        },
+        {
+          "tipo": "Tip",
+          "enunciado": "Las condiciones de paz impuestas a Cartago tras la Segunda Guerra Púnica fueron extremadamente severas, incluyendo la entrega de la flota de guerra y enormes indemnizaciones, sentando las bases para el tercer conflicto."
+        }
+      ]
+    },
+    {
+      "titulo": "Tercera Guerra Púnica y la Destrucción de Cartago (149-146 a.C.)",
+      "descripcion": "Estudio del último conflicto que terminó con la completa destrucción de Cartago.",
+      "rutaImagen": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqk5oSM9wgniQdtl7QR731pf6zcTG93dHskvY7-obGyGFu-gRb47StzFzgXNDzobqyKZax0805JukqBO2FBZzvDEnESVY2MhgBBxdHQk6zSoVD2-NeyWnqA8w4rJNwvv5UHDOXveQv_tiq/s1600/imagenes_Numancia_Sitio_0c4ed5b4.jpg",
+      "tareas": [
+        {
+          "tipo": "Tip",
+          "enunciado": "La Tercera Guerra Púnica comenzó 50 años después de la Segunda. Durante este período, Cartago cumplió con todas las condiciones de paz, pero su recuperación económica alarmó a algunos sectores de Roma."
+        },
+        {
+          "tipo": "PreguntaTipoTest",
+          "enunciado": "¿Qué político romano terminaba todos sus discursos con la frase 'Además, creo que Cartago debe ser destruida'?",
+          "opciones": [
+            "Catón el Viejo",
+            "Escipión Emiliano",
+            "Julio César",
+            "Marco Antonio"
+          ],
+          "correcta": 0
+        },
+        {
+          "tipo": "PreguntaRellenar",
+          "enunciado": "La orden de los romanos de que Cartago fuera _________ a 16 km de la costa, lo que significaba su desaparición como ciudad portuaria, fue el detonante final de la Tercera Guerra Púnica.",
+          "respuesta": "reubicada"
+        },
+        {
+          "tipo": "PreguntaVF",
+          "enunciado": "Tras la destrucción de Cartago, los romanos esparcieron sal en sus tierras para que nada pudiera crecer allí nuevamente.",
+          "esVerdadero": false
+        },
+        {
+          "tipo": "Tip",
+          "enunciado": "La destrucción total de Cartago en el 146 a.C. marcó el inicio de la hegemonía romana en el Mediterráneo occidental. El territorio cartaginés se convirtió en la provincia romana de África."
+        }
+      ]
+    }
+  ]
+}
