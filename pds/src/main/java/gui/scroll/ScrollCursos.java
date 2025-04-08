@@ -32,12 +32,14 @@ public class ScrollCursos extends Scroll {
 	                    EmergenteSiNo emergente1 = new EmergenteSiNo(ventanaMadre, "¿Deseas acceder a este curso?");
 	    				emergente1.mostrar();
 	    				if(emergente1.obtenerRespuesta().orElse(false)) {
-	    					EmergenteMetodoAprendizaje emergente2 = new EmergenteMetodoAprendizaje(ventanaMadre);
-		    				emergente2.mostrar();
-		    				MetodoAprendizaje metodoAprendizaje = emergente2.obtenerRespuesta().orElse(null);
-		    				///
-		    				HistoriApp.INSTANCE.realizarCurso(cursoSeleccionado.getTitulo(), metodoAprendizaje);
-		    				///
+	    					if(! HistoriApp.INSTANCE.usuarioMatriculado(cursoSeleccionado.getTitulo())) {
+	    						/* Si el usuario no está matriculado, se matricula */
+	    						EmergenteMetodoAprendizaje emergente2 = new EmergenteMetodoAprendizaje(ventanaMadre);
+	    						emergente2.mostrar();
+	    						MetodoAprendizaje metodoAprendizaje = emergente2.obtenerRespuesta().orElse(null);
+	    						HistoriApp.INSTANCE.matricularCurso(cursoSeleccionado.getTitulo(), metodoAprendizaje);
+	    					}
+		    				HistoriApp.INSTANCE.realizarCurso(cursoSeleccionado.getTitulo());
 	    					selector.cambiarVentana(new VentanaBloques(selector));
 	    				}
 	                }

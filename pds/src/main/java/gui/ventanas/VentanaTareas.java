@@ -119,8 +119,10 @@ public class VentanaTareas extends VentanaMenu {
 				// Lanzar la ventana emergente
 				EmergenteSiNo emergente = new EmergenteSiNo(VentanaTareas.this, "¿Estás seguro de que quieres salir?\nNo se guardará tu progreso.");
 				emergente.mostrar();
-				if(emergente.obtenerRespuesta().orElse(false))
+				if(emergente.obtenerRespuesta().orElse(false)) {
+					HistoriApp.INSTANCE.cerrarBloque();
 					selector.cambiarVentana(new VentanaBloques(selector));
+				}
 			}
 		});
 	}
@@ -155,7 +157,14 @@ public class VentanaTareas extends VentanaMenu {
 					String mensaje = "Tu puntuación es " + String.valueOf(puntuacion);
 					EmergenteMensaje emergentePuntuacion = new EmergenteMensaje(VentanaTareas.this, mensaje);
 					emergentePuntuacion.mostrar();
-					selector.cambiarVentana(new VentanaBloques(selector)); // AQUÍ SE DEBERÁ HACER PRÓXIMAMENTE LAS CORRECTAS/INCORRECTAS					
+					if(HistoriApp.INSTANCE.cursoCompletado()) {
+						EmergenteMensaje emergenteFinCurso = new EmergenteMensaje(VentanaTareas.this,
+								"¡Enhorabuena! Has completado el curso: " + HistoriApp.INSTANCE.getCursoActual());
+						emergenteFinCurso.mostrar();
+						selector.cambiarVentana(new VentanaCursos(selector));
+					} else {						
+						selector.cambiarVentana(new VentanaBloques(selector));					
+					}
 				}
 			}
 		});

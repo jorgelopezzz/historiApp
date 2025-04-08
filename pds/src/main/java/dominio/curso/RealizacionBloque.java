@@ -12,16 +12,11 @@ public class RealizacionBloque {
 	private LocalDateTime fechaCompletado;
 	private Double puntuacion;
 
-	public RealizacionBloque(BloqueContenidos bloque) {
+	public RealizacionBloque(BloqueContenidos bloque, double puntuacion) {
 		if(bloque == null)
 			throw new IllegalArgumentException();
 		this.bloque = bloque;
-		this.puntuacion = null;
-		this.fechaCompletado = null;
-	}
-
-	public void completar(Double puntuacion) {
-		if(puntuacion == null || puntuacion < 0 || puntuacion > 10) {
+		if( puntuacion < 0 || puntuacion > 10) {
 			throw new IllegalArgumentException();
 		}
 		this.puntuacion = puntuacion;
@@ -32,12 +27,12 @@ public class RealizacionBloque {
 		return bloque;
 	}
 
-	public Optional<LocalDateTime>getFechaCompletado() {
-		return Optional.ofNullable(fechaCompletado);
+	public LocalDateTime getFechaCompletado() {
+		return fechaCompletado;
 	}
 
-	public Optional<Double> getPuntuacion() {
-		return Optional.ofNullable(puntuacion);
+	public double getPuntuacion() {
+		return puntuacion;
 	}
 
 	
