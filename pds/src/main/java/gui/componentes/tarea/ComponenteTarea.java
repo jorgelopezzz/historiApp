@@ -77,7 +77,7 @@ public abstract class ComponenteTarea extends Componente {
 		JTextArea areaContenido = GestorGUI.crearAreaTexto(contenido, GestorGUI.getInstancia().getFuenteGrande(), GestorGUI.getInstancia().getColorBlanco());
 		areaContenido.setColumns(NUM_COLUMNAS);
 		areaContenido.setAlignmentX(ComponenteContenido.LEFT_ALIGNMENT);
-		GestorGUI.fijarTamano(ANCHO_COMPONENTE -2*MARGEN, areaContenido.getPreferredSize().height+areaContenido.getFont().getSize() + MARGEN, areaContenido);
+		GestorGUI.fijarTamano(ANCHO_COMPONENTE -2*MARGEN, areaContenido.getPreferredSize().height+areaContenido.getFont().getSize() + 6*MARGEN, areaContenido);
 		return areaContenido;
 	}
 	
