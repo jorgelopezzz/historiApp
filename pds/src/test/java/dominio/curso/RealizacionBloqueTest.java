@@ -2,6 +2,7 @@ package dominio.curso;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -74,6 +75,27 @@ class RealizacionBloqueTest {
     void testCompletarCorrecto(BloqueContenidos bloque, double puntuacion) {
     	assertDoesNotThrow(() -> new RealizacionBloque(bloque, puntuacion));
     	
+    }
+    
+    @Test
+    void testFechaCompletadoEsMismoDiaActual() {
+        // Given
+        double puntuacion = 8.5;
+        
+        // When
+        RealizacionBloque realizacion = new RealizacionBloque(bloqueValido, puntuacion);
+        
+        // Then
+        LocalDateTime fechaCompletado = realizacion.getFechaCompletado();
+        LocalDateTime ahora = LocalDateTime.now();
+        
+        // Comparar año, mes y día
+        assertEquals(ahora.getYear(), fechaCompletado.getYear(), 
+                    "El año de la fecha de completado debe ser el actual");
+        assertEquals(ahora.getMonth(), fechaCompletado.getMonth(), 
+                    "El mes de la fecha de completado debe ser el actual");
+        assertEquals(ahora.getDayOfMonth(), fechaCompletado.getDayOfMonth(), 
+                    "El día de la fecha de completado debe ser el actual");
     }
     
     
