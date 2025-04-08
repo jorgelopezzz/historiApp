@@ -229,7 +229,7 @@ public enum HistoriApp {
 	
 	/* Notificar curso completado */
 	public boolean cursoCompletado() {
-		return usuario.haCompletado(cursoActual);
+		return usuario.haCompletado(cursoActual) && ! usuario.estaMatriculado(cursoActual.getTitulo());
 	}
 	
 }

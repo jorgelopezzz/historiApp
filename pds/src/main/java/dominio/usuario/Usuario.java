@@ -137,7 +137,7 @@ public class Usuario {
 	
 	/* Progreso y realizaciones de curso y bloque */
 	
-	private Optional<RealizacionCurso> getRealizacion(String nombreCurso) {
+	public Optional<RealizacionCurso> getRealizacion(String nombreCurso) {
 		return cursos.stream()
 				.filter( rc -> ! rc.estaCompletado() )
 				.filter( rc -> rc.getCurso().getTitulo().equals(nombreCurso))
@@ -151,6 +151,7 @@ public class Usuario {
 	public boolean matricularCurso(Curso curso, MetodoAprendizaje metodoAprendizaje) {
 		if(! estaMatriculado(curso.getTitulo())) {
 			cursos.add(new RealizacionCurso(curso, this, metodoAprendizaje));
+			return true;
 		}
 		return false;
 	}
@@ -159,7 +160,7 @@ public class Usuario {
 		/* Caso 1: El usuario no está matriculado en el curso */
 		getRealizacion(curso.getTitulo()).ifPresentOrElse(
 				rc -> rc.completarBloque(bloque, puntuacion),
-				() -> System.err.println("El usuario no está matriculado en el curso."));
+				() -> {throw new IllegalStateException("El usuario no está matriculado en el curso.");});
 		
 	}
 	
@@ -185,10 +186,12 @@ public class Usuario {
 	}
 	
 	public boolean haCompletado(Curso curso) {
+		/* Comprueba que:
+		 * - El usuario tenga una realización del curso completada
+		 */
 		return cursos.stream()
 				.filter( rc -> rc.estaCompletado() )
-				.anyMatch( rc -> rc.getCurso().getTitulo().equals(curso.getTitulo()))
-				&& ! estaMatriculado(curso.getTitulo());
+				.anyMatch( rc -> rc.getCurso().getTitulo().equals(curso.getTitulo()) );
 	}
 	
 	
