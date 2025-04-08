@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import dominio.HistoriApp;
 import dominio.curso.Curso;
 
 public final class InfoCurso extends InfoContenidos {
@@ -18,7 +19,7 @@ public final class InfoCurso extends InfoContenidos {
 	
 	public InfoCurso(Curso curso) {
 		this(curso.getTitulo(), curso.getDescripcion(), curso.getRutaImagen(),
-				curso.getMatricula() == null ? false : true);
+				HistoriApp.INSTANCE.usuarioMatriculado(curso.getTitulo()));
 	}
 	
 	public static List<InfoCurso> getListInfoCurso(List<Curso> cursos) {

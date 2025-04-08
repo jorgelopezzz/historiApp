@@ -185,13 +185,22 @@ public class Usuario {
 		return Optional.empty();
 	}
 	
-	public boolean haCompletado(Curso curso) {
+	public boolean haCompletado(String nombreCurso) {
 		/* Comprueba que:
 		 * - El usuario tenga una realización del curso completada
 		 */
 		return cursos.stream()
 				.filter( rc -> rc.estaCompletado() )
-				.anyMatch( rc -> rc.getCurso().getTitulo().equals(curso.getTitulo()) );
+				.anyMatch( rc -> rc.getCurso().getTitulo().equals(nombreCurso) );
+	}
+	
+	public boolean bloqueCompletado(String nombreCurso, String nombreBloque) {
+		Optional<RealizacionCurso> realizacionCurso = getRealizacion(nombreCurso);
+		if(realizacionCurso.isPresent()) {
+			return realizacionCurso.get().getBloques().stream()
+				.anyMatch( rb -> rb.getBloque().getTitulo().equals(nombreBloque));
+		}
+		return false;
 	}
 	
 	

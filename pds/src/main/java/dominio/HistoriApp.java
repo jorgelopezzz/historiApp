@@ -229,7 +229,19 @@ public enum HistoriApp {
 	
 	/* Notificar curso completado */
 	public boolean cursoCompletado() {
-		return usuario.haCompletado(cursoActual) && ! usuario.estaMatriculado(cursoActual.getTitulo());
+		return cursoCompletado(cursoActual.getTitulo());
+	}
+	
+	public boolean cursoCompletado(String nombreCurso) {
+		return usuario.haCompletado(nombreCurso) && ! usuario.estaMatriculado(nombreCurso);
+	}
+	
+	private boolean bloqueCompletado(String nombreCurso, String nombreBloque) {
+		return usuario.bloqueCompletado(nombreCurso, nombreBloque);
+	}
+	
+	public boolean bloqueCompletado(String nombreBloque) {
+		return bloqueCompletado(cursoActual.getTitulo(), nombreBloque);
 	}
 	
 }
