@@ -31,11 +31,6 @@ public class CursoTest {
     }
 
     @Test
-    public void testGetMatricula() {
-        assertNull(curso.getMatricula());  // Matricula está null en el constructor
-    }
-
-    @Test
     public void testGetBloquesContenidos() {
         assertNotNull(curso.getBloquesContenidos());
         assertFalse(curso.getBloquesContenidos().isEmpty());

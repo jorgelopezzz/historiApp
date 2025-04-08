@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Optional;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -54,6 +55,7 @@ public class EmergentePerfil extends Emergente {
 
     /* Atributos */
     private String rutaImagen = null;
+    private boolean hayCambios = false;
 
     /* Botones */
     private JButton botonSeleccionarImagen;
@@ -223,6 +225,7 @@ public class EmergentePerfil extends Emergente {
         panelImagen.add(Box.createHorizontalStrut(GestorGUI.SEPARACION_BOTONES));
         panelImagen.add(botonBorrarImagen);
     }
+    
 
     private void construirPanelBotones() {
         panelBotones = new JPanel();
@@ -250,7 +253,7 @@ public class EmergentePerfil extends Emergente {
         botonSeleccionarImagen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                EmergenteFichero emergente = new EmergenteFichero(ventanaMadre);
+                EmergenteImagen emergente = new EmergenteImagen(ventanaMadre);
                 emergente.mostrar();
 
                 emergente.obtenerFichero().ifPresentOrElse((ruta) -> {
@@ -267,10 +270,23 @@ public class EmergentePerfil extends Emergente {
 
     private void manejadorConfirmar() {
         botonConfirmar.addActionListener(e -> {
-            HistoriApp.INSTANCE.cambiarInformacionPerfil(rutaImagen, campoNuevoSaludo.getTexto());
-            EmergenteMensaje emergente = new EmergenteMensaje(ventanaMadre, "Cambios guardados correctamente.");
-            emergente.mostrar();
+        	if(rutaImagen != null) {
+        		HistoriApp.INSTANCE.cambiarImagen(rutaImagen);
+        		hayCambios = true;
+        	}
+        	if(campoNuevoSaludo.campoValido()) {
+        		HistoriApp.INSTANCE.cambiarSaludo(campoNuevoSaludo.getTexto());
+        		hayCambios = true;
+        	}
+            if(hayCambios) {
+            	EmergenteMensaje emergente = new EmergenteMensaje(ventanaMadre, "Cambios guardados correctamente.");
+                emergente.mostrar();
+            }
+            cerrar();
         });
     }
-
+    
+    public boolean hayCambioImagen() {
+    	return hayCambios && rutaImagen != null;
+    }
 }

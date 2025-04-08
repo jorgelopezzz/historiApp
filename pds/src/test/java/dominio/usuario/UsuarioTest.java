@@ -14,17 +14,14 @@ import dominio.info.usuario.infoEstadisticas;
 import dominio.info.usuario.infoPerfilUsuario;
 
 class UsuarioTest {
-
-    private Usuario usuario;
-
-    @BeforeEach
-    void setUp() {
-        usuario = new Usuario("Jorge", "1234", "egea@correo.com", null, "Alfonso");
+    
+    static List<Arguments> usuarioValido() {
+        return List.of(Arguments.of(new Usuario("Jorge", "1234", "egea@correo.com", null, "Alfonso")));
     }
 
     @ParameterizedTest
     @MethodSource("usuariosValidos")
-    void testConstructorValido(String nombre, String contrasena, String correo, String saludo) {
+    void testConstructorValido(String nombre, String contrasena, String correo, String rutaImagen, String saludo) {
         Usuario u = new Usuario(nombre, contrasena, correo, null, saludo);
         assertEquals(nombre, u.getNombre());
         assertEquals(saludo, u.getSaludo());
@@ -34,9 +31,9 @@ class UsuarioTest {
 
     static List<Arguments> usuariosValidos() {
         return List.of(
-            Arguments.of("Jorge", "1234", "jorge@correo.com", "Alfonso"),
-            Arguments.of("María", "abcd", "maria@gmail.com", "¡Hola!"),
-            Arguments.of("Luis", "contraseña", "luis@yahoo.es", "Buenos días")
+            Arguments.of("Jorge", "1234", "jorge@correo.com", null, "Alfonso"),
+            Arguments.of("María", "abcd", "maria@gmail.com", "imagen.png", "¡Hola!"),
+            Arguments.of("Luis", "contraseña", "luis@yahoo.es", null, "Buenos días")
         );
     }
 
@@ -69,15 +66,17 @@ class UsuarioTest {
         );
     }
 
-    @Test
-    void testImagenPorDefecto() {
+    @ParameterizedTest
+    @MethodSource("usuarioValido")
+    void testImagenPorDefecto(Usuario usuario) {
         String imagen = usuario.getImagen();
         assertNotNull(imagen);
         assertTrue(imagen.endsWith("perfil.png"));
     }
 
-    @Test
-    void testIniciarYcerrarSesionAumentaTiempoUso() throws InterruptedException {
+    @ParameterizedTest
+    @MethodSource("usuarioValido")
+    void testIniciarYcerrarSesionAumentaTiempoUso(Usuario usuario) throws InterruptedException {
         usuario.iniciarSesion();
         Thread.sleep(100);
         usuario.cerrarSesion();
@@ -85,32 +84,38 @@ class UsuarioTest {
         assertNotNull(estadisticas.getMinutosUso());
         assertTrue(estadisticas.getMinutosUso().matches("\\d{2}:\\d{2}:\\d{2}"));
     }
-
-    @Test
-    void testGetEstadisticas() {
+    
+    @ParameterizedTest
+    @MethodSource("usuarioValido")
+    void testGetEstadisticas(Usuario usuario) {
         infoEstadisticas estadisticas = usuario.getEstadisticas();
         assertEquals(0, estadisticas.getPuntuacion());
         assertEquals(0, estadisticas.getCursosCompletados());
         assertEquals("00:00:00", estadisticas.getMinutosUso());
-        assertEquals("00:00", estadisticas.getMinutosUsoDiario());
+        assertEquals("00:00:00", estadisticas.getMinutosUsoDiario());
         assertEquals(0, estadisticas.getMaxRacha());
     }
 
-    @Test
-    void testGetDatosPerfil() {
+    @ParameterizedTest
+    @MethodSource("usuarioValido")
+    void testGetDatosPerfil(Usuario usuario) {
         infoPerfilUsuario perfil = usuario.getDatosPerfil();
         assertEquals("Jorge", perfil.getNombre());
         assertEquals("egea@correo.com", perfil.getCorreo());
         assertEquals("Alfonso", perfil.getSaludo());
         assertEquals("Estudiante", perfil.getRol());
         assertTrue(perfil.getImagen().endsWith("perfil.png"));
+        assertFalse(usuario.esProfesor());
     }
 
-    @Test
-    void testModificarSaludoEImagen() {
+    @ParameterizedTest
+    @MethodSource("usuarioValido")
+    void testModificarSaludoEImagen(Usuario usuario) {
         usuario.setSaludo("Buenos días");
         usuario.setImagen("aaaa.png");
         assertEquals("Buenos días", usuario.getSaludo());
         assertEquals("aaaa.png", usuario.getImagen());
     }
+    
+    
 }

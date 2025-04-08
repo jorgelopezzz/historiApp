@@ -148,17 +148,19 @@ public class VentanaLogin extends Ventana {
 				contrasena = campoContrasena.getTexto();
 				
 				/* Controlador */
-				
+				if( !HistoriApp.INSTANCE.usuarioRegistrado(nombre)) {
+					EmergenteMensaje emergente = new EmergenteMensaje(VentanaLogin.this, "El usuario no está registrado.");
+					emergente.mostrar();
+					return;
+				}
 				if( !HistoriApp.INSTANCE.iniciarSesionUsuario(nombre, contrasena)) {
-					EmergenteMensaje emergente = new EmergenteMensaje(VentanaLogin.this, "Error al iniciar sesión.");
+					EmergenteMensaje emergente = new EmergenteMensaje(VentanaLogin.this, "La contraseña proporcionada es incorrecta.");
 					emergente.mostrar();
 					return;
 				} 
 
 				/* Cambio de ventana */
-				// controlador.getRolUsuarioActual
-				int rol = 1;
-				selector.cambiarVentana(new VentanaCursos(selector, rol));
+				selector.cambiarVentana(new VentanaCursos(selector));
 			}
 		});
 	}

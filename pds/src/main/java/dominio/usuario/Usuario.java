@@ -2,27 +2,40 @@ package dominio.usuario;
 
 import java.io.File;
 import java.net.URISyntaxException;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
+import dominio.curso.BloqueContenidos;
+import dominio.curso.Curso;
+import dominio.curso.RealizacionCurso;
 import dominio.info.usuario.infoEstadisticas;
 import dominio.info.usuario.infoPerfilUsuario;
+import dominio.metodoAprendizaje.MetodoAprendizaje;
 
 public class Usuario {
     
     private static final String RUTA_PERFIL_PREDETERMINADO = "/perfil.png";
 
+    /* Atributos de información */
     protected String nombre;
     protected String correo;
     protected String contrasena;
     protected String imagen;
     protected String saludo;
 
+    /* Progresos */
+    private List<RealizacionCurso> cursos;
+    
+    /* Estadísticas */
     protected int puntuacion;
-    protected int cursosCompletados; /* Arreglar esto, hay que ver el tema de la lista de instancias de curso en usuario */
-    protected int tiempoUso; //100 años de uso continuado no se sale de un int en minutos
+    protected Duration tiempoUso;
     protected int diasUso;
     protected int maxRacha;
+    
 
     private LocalDateTime inicioSesion;
 
@@ -45,9 +58,9 @@ public class Usuario {
         this.imagen = imagen == null ? RUTA_PERFIL_PREDETERMINADO : imagen;
         this.saludo = saludo;
 
-        this.puntuacion = 0;
-        this.cursosCompletados = 0;
-        this.tiempoUso = 0;
+        this.cursos = new ArrayList<RealizacionCurso>();
+        
+        this.tiempoUso = Duration.ofSeconds(0);
         this.diasUso = 0;
         this.maxRacha = 0;
 
@@ -97,7 +110,7 @@ public class Usuario {
     }
     
     public infoEstadisticas getEstadisticas(){
-        return new infoEstadisticas(nombre, puntuacion, cursosCompletados, tiempoUso, diasUso, maxRacha);
+        return new infoEstadisticas(nombre, puntuacion, getCursosCompletados(), getBloquesCompletados(), tiempoUso, diasUso, maxRacha);
     }
 
     public infoPerfilUsuario getDatosPerfil(){
@@ -114,16 +127,81 @@ public class Usuario {
     }
 
     public boolean cerrarSesion(){
-        System.out.println(inicioSesion);
-        System.out.println(tiempoUso);
-        tiempoUso += (int) inicioSesion.until(LocalDateTime.now(), ChronoUnit.MINUTES);
-        System.out.println(LocalDateTime.now());
-        System.out.println(tiempoUso);
+        tiempoUso = tiempoUso.plus(Duration.between(inicioSesion, LocalDateTime.now()));
         return true;
     }
 
-	/////////////////////////////////////////////////////////
-	// 0.- NO HISTORIAS DE USUARIO //////////////////////////
-	/////////////////////////////////////////////////////////
-    
+	public boolean esProfesor() {
+		return this instanceof Profesor;
+	}
+	
+	/* Progreso y realizaciones de curso y bloque */
+	
+	public Optional<RealizacionCurso> getRealizacion(String nombreCurso) {
+		return cursos.stream()
+				.filter( rc -> ! rc.estaCompletado() )
+				.filter( rc -> rc.getCurso().getTitulo().equals(nombreCurso))
+				.findFirst();
+	}
+	
+	public boolean estaMatriculado(String nombreCurso) {
+		return getRealizacion(nombreCurso).isPresent();
+	}
+	
+	public boolean matricularCurso(Curso curso, MetodoAprendizaje metodoAprendizaje) {
+		if(! estaMatriculado(curso.getTitulo())) {
+			cursos.add(new RealizacionCurso(curso, this, metodoAprendizaje));
+			return true;
+		}
+		return false;
+	}
+	
+	public void completarBloque(Curso curso, BloqueContenidos bloque, double puntuacion) {
+		/* Caso 1: El usuario no está matriculado en el curso */
+		getRealizacion(curso.getTitulo()).ifPresentOrElse(
+				rc -> rc.completarBloque(bloque, puntuacion),
+				() -> {throw new IllegalStateException("El usuario no está matriculado en el curso.");});
+		
+	}
+	
+	public int getCursosCompletados() {
+		Long numCursos = cursos.stream()
+			.filter( rc -> rc.estaCompletado())
+			.count();
+		return numCursos.intValue();
+	}
+	
+	public int getBloquesCompletados() {
+		return cursos.stream()
+			.mapToInt( rc -> rc.getBloques().size() )
+			.sum();
+	}
+	
+	
+	public Optional<MetodoAprendizaje> getMetodoAprendizaje(Curso curso) {
+		Optional<RealizacionCurso> rc = getRealizacion(curso.getTitulo());
+		if(rc.isPresent())
+			return Optional.of(rc.get().getMetodoAprendizaje());
+		return Optional.empty();
+	}
+	
+	public boolean haCompletado(String nombreCurso) {
+		/* Comprueba que:
+		 * - El usuario tenga una realización del curso completada
+		 */
+		return cursos.stream()
+				.filter( rc -> rc.estaCompletado() )
+				.anyMatch( rc -> rc.getCurso().getTitulo().equals(nombreCurso) );
+	}
+	
+	public boolean bloqueCompletado(String nombreCurso, String nombreBloque) {
+		Optional<RealizacionCurso> realizacionCurso = getRealizacion(nombreCurso);
+		if(realizacionCurso.isPresent()) {
+			return realizacionCurso.get().getBloques().stream()
+				.anyMatch( rb -> rb.getBloque().getTitulo().equals(nombreBloque));
+		}
+		return false;
+	}
+	
+	
 }

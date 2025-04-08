@@ -203,6 +203,13 @@ public abstract class VentanaMenu extends Ventana {
 			public void actionPerformed(ActionEvent e) {
 				EmergentePerfil emergente = new EmergentePerfil(VentanaMenu.this);
 				emergente.mostrar();
+				
+				if(emergente.hayCambioImagen()) {
+					botonPerfil.setIcon(GestorGUI.getInstancia().iconoAbsoluto(HistoriApp.INSTANCE.getImagenUsuario(), GestorGUI.ANCHO_BOTON_IMAGEN, GestorGUI.ALTO_BOTON_IMAGEN));
+					barraSuperior.revalidate();
+					barraSuperior.repaint();
+				}
+				
 			}
 		});
 	}
