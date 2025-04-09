@@ -54,7 +54,7 @@ public abstract class CampoPredeterminado {
 		return panel;
 	}
 	
-	private boolean campoValido() {
+	public boolean campoValido() {
 		return ! getTexto().isEmpty();
 	}
 	

@@ -1,0 +1,143 @@
+{
+    "titulo": "La Primera Guerra Mundial",
+    "descripcion": "Un análisis profundo de la Gran Guerra, con especial atención a la devastadora Batalla del Somme y las consecuencias que sembraron las bases para un nuevo conflicto mundial.",
+    "rutaImagen": "https://encyclopedia.ushmm.org/images/large/c03190d9-0bcc-4c8d-97e7-45b36c603cc6.jpg",
+    "bloquesContenidos": [
+      {
+        "titulo": "Orígenes y Estallido de la Primera Guerra Mundial",
+        "descripcion": "Análisis de las causas profundas y el desencadenante inmediato que llevó a Europa al abismo en 1914.",
+        "rutaImagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Gavrilo_Princip_captured_in_Sarajevo_1914.jpg/330px-Gavrilo_Princip_captured_in_Sarajevo_1914.jpg",
+        "tareas": [
+          {
+            "tipo": "Tip",
+            "enunciado": "El sistema de alianzas europeas creó dos bloques enfrentados: la Triple Alianza (Alemania, Austria-Hungría e Italia) y la Triple Entente (Reino Unido, Francia y Rusia), que convertirían un conflicto regional en una guerra mundial."
+          },
+          {
+            "tipo": "PreguntaTipoTest",
+            "enunciado": "¿Qué evento es considerado el detonante inmediato de la Primera Guerra Mundial?",
+            "opciones": [
+              "El asesinato del Archiduque Francisco Fernando en Sarajevo",
+              "La invasión alemana de Bélgica",
+              "La Revolución Rusa",
+              "El hundimiento del Lusitania"
+            ],
+            "correcta": 0
+          },
+          {
+            "tipo": "PreguntaRellenar",
+            "enunciado": "El plan alemán para derrotar rápidamente a Francia antes de enfrentarse a Rusia se conocía como Plan ________.",
+            "respuesta": "Schlieffen"
+          },
+          {
+            "tipo": "PreguntaVF",
+            "enunciado": "La mayoría de los líderes europeos esperaban una guerra breve y gloriosa cuando estalló el conflicto en 1914.",
+            "esVerdadero": true
+          }
+        ]
+      },
+      {
+        "titulo": "La Batalla del Somme: El Horror de la Guerra de Trincheras",
+        "descripcion": "Estudio detallado de una de las batallas más sangrientas de la historia, símbolo de la devastación de la guerra moderna industrial.",
+        "rutaImagen": "https://global-strategy.org/wp-content/uploads/2019/12/primera-guerra-mundial-trincheras.jpg",
+        "tareas": [
+          {
+            "tipo": "Tip",
+            "enunciado": "El primer día de la Batalla del Somme, el 1 de julio de 1916, fue el más sangriento en la historia del ejército británico, con casi 20.000 soldados muertos y más de 40.000 heridos en un solo día."
+          },
+          {
+            "tipo": "PreguntaTipoTest",
+            "enunciado": "¿Cuál fue el objetivo principal de la ofensiva del Somme?",
+            "opciones": [
+              "Aliviar la presión alemana sobre Verdún",
+              "Capturar Berlín",
+              "Romper el estancamiento en el frente occidental",
+              "Todas las anteriores"
+            ],
+            "correcta": 0
+          },
+          {
+            "tipo": "PreguntaRellenar",
+            "enunciado": "Los británicos utilizaron por primera vez en combate el ________ durante la Batalla del Somme, una innovación que cambiaría la guerra moderna.",
+            "respuesta": "tanque"
+          },
+          {
+            "tipo": "PreguntaVF",
+            "enunciado": "A pesar de su alto costo en vidas, la Batalla del Somme logró avances territoriales significativos para los Aliados.",
+            "esVerdadero": false
+          },
+          {
+            "tipo": "Tip",
+            "enunciado": "La Batalla del Somme duró casi cinco meses, desde julio hasta noviembre de 1916, y costó aproximadamente un millón de bajas entre ambos bandos por un avance territorial mínimo."
+          }
+        ]
+      },
+      {
+        "titulo": "Tecnología y Tácticas en la Gran Guerra",
+        "descripcion": "Exploración de las innovaciones tecnológicas y la evolución de las tácticas militares durante el conflicto.",
+        "rutaImagen": "https://www.granma.cu/file/img/2014/07/medium/f0015316.jpg",
+        "tareas": [
+          {
+            "tipo": "Tip",
+            "enunciado": "La Primera Guerra Mundial vio el desarrollo o perfeccionamiento de numerosas armas: ametralladoras, artillería de largo alcance, gases tóxicos, tanques, aviones y submarinos, que transformaron radicalmente el campo de batalla."
+          },
+          {
+            "tipo": "PreguntaTipoTest",
+            "enunciado": "¿Qué nueva arma fue empleada por primera vez por los alemanes en Ypres en 1915?",
+            "opciones": [
+              "Gas cloro",
+              "Tanques",
+              "Lanzallamas",
+              "Bombardeo aéreo"
+            ],
+            "correcta": 0
+          },
+          {
+            "tipo": "PreguntaRellenar",
+            "enunciado": "Los pilotos de aviones que luchaban en duelos aéreos individuales eran conocidos como ________.",
+            "respuesta": "ases"
+          },
+          {
+            "tipo": "PreguntaVF",
+            "enunciado": "La guerra de trincheras surgió como resultado del poder defensivo de las nuevas armas, especialmente las ametralladoras.",
+            "esVerdadero": true
+          }
+        ]
+      },
+      {
+        "titulo": "El Tratado de Versalles y las Semillas de la Segunda Guerra Mundial",
+        "descripcion": "Análisis crítico de las consecuencias de la Gran Guerra y cómo el tratado de paz sentó las bases para un futuro conflicto.",
+        "rutaImagen": "https://www.politicaexterior.com/wp-content/uploads/wilson_clemenceau_versalles_polext189-960x686.jpg",
+        "tareas": [
+          {
+            "tipo": "Tip",
+            "enunciado": "El Tratado de Versalles impuso severas condiciones a Alemania: pérdidas territoriales, limitaciones militares y enormes reparaciones de guerra que generaron un profundo resentimiento en la población alemana."
+          },
+          {
+            "tipo": "PreguntaTipoTest",
+            "enunciado": "¿Qué cláusula del Tratado de Versalles fue especialmente controvertida y humillante para Alemania?",
+            "opciones": [
+              "La cláusula de culpabilidad de la guerra",
+              "La pérdida de colonias",
+              "La creación de la Sociedad de Naciones",
+              "La limitación del tamaño del ejército"
+            ],
+            "correcta": 0
+          },
+          {
+            "tipo": "PreguntaRellenar",
+            "enunciado": "La hiperinflación que devastó la economía alemana en 1923 estuvo directamente relacionada con la incapacidad para pagar las ________ impuestas por el Tratado de Versalles.",
+            "respuesta": "reparaciones"
+          },
+          {
+            "tipo": "PreguntaVF",
+            "enunciado": "Los Estados Unidos se unieron a la Sociedad de Naciones creada por el Tratado de Versalles.",
+            "esVerdadero": false
+          },
+          {
+            "tipo": "Tip",
+            "enunciado": "La Gran Depresión de 1929 exacerbó la crisis económica en Alemania, creando las condiciones para el ascenso de movimientos extremistas como el nazismo, que prometían restaurar el orgullo nacional y revertir las condiciones 'injustas' del Tratado de Versalles."
+          }
+        ]
+      }
+    ]
+  }

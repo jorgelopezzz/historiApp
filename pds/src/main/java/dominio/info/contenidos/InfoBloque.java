@@ -3,6 +3,7 @@ package dominio.info.contenidos;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import dominio.HistoriApp;
 import dominio.curso.BloqueContenidos;
 
 public class InfoBloque extends InfoContenidos {
@@ -17,7 +18,7 @@ public class InfoBloque extends InfoContenidos {
 	
 	public InfoBloque(BloqueContenidos bloque) {
 		this(bloque.getTitulo(), bloque.getDescripcion(), bloque.getRutaImagen(), 
-				bloque.getCertBloque() == null ? false : true);
+				HistoriApp.INSTANCE.bloqueCompletado(bloque.getTitulo()));
 	}
 	
 	public boolean estaCompletado() {

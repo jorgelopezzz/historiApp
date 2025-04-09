@@ -94,9 +94,9 @@ public class EmergenteEstadisticas extends Emergente {
         infoEstadisticas estadisticas = HistoriApp.INSTANCE.pedirEstadisticasUsuario();
 
         // Añadir estadísticas
-        panelEnvolvente.add(crearPanelEstadistica("Cursos completados:", Integer.toString(estadisticas.getPuntuacion())));
+        panelEnvolvente.add(crearPanelEstadistica("Cursos completados:", Integer.toString(estadisticas.getCursosCompletados())));
         panelEnvolvente.add(Box.createVerticalStrut(MARGEN_INTERNO));
-        panelEnvolvente.add(crearPanelEstadistica("Bloques completados:", "15"));
+        panelEnvolvente.add(crearPanelEstadistica("Bloques completados:", Integer.toString(estadisticas.getBloquesCompletados())));
         panelEnvolvente.add(Box.createVerticalStrut(MARGEN_INTERNO));
         panelEnvolvente.add(crearPanelEstadistica("Puntuación:", Integer.toString(estadisticas.getPuntuacion())));
         panelEnvolvente.add(Box.createVerticalStrut(MARGEN_INTERNO));

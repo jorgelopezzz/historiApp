@@ -12,5 +12,12 @@ Se han ejecutado pruebas para verificar la correcta gestión de las tareas dentr
 ### Jerarquía Curso
 Se ha evaluado el manejo de cursos en la aplicación, validando la consistencia de la información y la adecuada gestión de los permisos de acceso para los diferentes tipos de usuarios.
 
+![image](https://github.com/user-attachments/assets/6b16c187-536b-43b4-9f58-851d640002f9)
+
+Nótese que falta parte de la funcionalidad de RepositorioCursos y por ello no se han hecho todavía los tests correspondientes.
+
 ### Jerarquía Usuario
 Las pruebas realizadas sobre la jerarquía de usuarios han permitido verificar los roles y permisos dentro de la aplicación, garantizando una correcta autenticación y control de acceso.
+
+![image](https://github.com/user-attachments/assets/a31387fe-acb4-4b2d-bafe-41dc917f1799)
+

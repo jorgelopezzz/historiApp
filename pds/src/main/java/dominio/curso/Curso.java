@@ -12,7 +12,6 @@ public class Curso {
     private String descripcion;
     private String rutaImagen;
     private Map<String,BloqueContenidos> bloquesContenidos;
-    private RealizacionCurso matricula;
     
     public Curso() {} // Constructor vacío para Jackson (servicioJSON)
     
@@ -37,16 +36,6 @@ public class Curso {
     
     public String getRutaImagen() {
     	return rutaImagen;
-    }
-    
-    public RealizacionCurso getMatricula() {
-    	return matricula;
-    }
-    
-    public void setMatricula(RealizacionCurso matricula) {
-        if (matricula == null) 
-        	throw new IllegalArgumentException("La matrícula no puede ser nula");
-        this.matricula = matricula;
     }
     
     public List<BloqueContenidos> getBloquesContenidos() {

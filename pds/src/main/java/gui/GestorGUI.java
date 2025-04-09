@@ -136,7 +136,6 @@ public class GestorGUI {
 		return bordeTexto;
 	}
 	
-	
 	public ImageIcon iconoAbsoluto(String ruta, int ancho, int alto) {
 		File archivo = new File(ruta);
         if (archivo.exists() && archivo.isFile())

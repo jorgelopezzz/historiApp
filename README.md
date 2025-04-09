@@ -60,16 +60,6 @@ Este repositorio está estructurado en diferentes carpetas, cada una conteniendo
 
 Cada una de estas secciones está diseñada para facilitar la navegación y el acceso a la información relevante dentro del repositorio.
 
-## Contribuciones Recientes
-
-| Fecha       | Usuario          | Tipo       | Descripción |
-|------------|----------------|------------|-------------|
-| 2025-04-03 | @jorgelopezzz  | Commit     | Implementación del sistema de flashcards |
-| 2025-04-02 | @a-egealopez   | Issue      | Reporte de bug en la navegación |
-| 2025-04-01 | @AlfonsoGM03   | Commit     | Mejora en la interfaz gráfica |
-| 2025-03-30 | @jorgelopezzz  | Commit     | Integración de base de datos con JPA |
-| 2025-03-28 | @a-egealopez   | Issue      | Propuesta de nueva funcionalidad |
-
 ## Inspiración en Plataformas Educativas
 
 Para el desarrollo de HistoriApp, nos hemos inspirado en plataformas educativas exitosas como [Duolingo](https://www.duolingo.com/), que utiliza la gamificación y lecciones cortas para facilitar el aprendizaje de idiomas. Duolingo ofrece características como lecciones adaptativas basadas en inteligencia artificial, seguimiento del progreso y elementos sociales que fomentan la competencia amistosa entre usuarios. Estas características han demostrado ser efectivas para mantener la motivación y mejorar la retención del aprendizaje.
@@ -78,4 +68,4 @@ Al igual que Duolingo, HistoriApp incorporará elementos de gamificación y pers
 
 ## Enlace a la Asignatura
 
-Para más información sobre la asignatura **Procesos de Desarrollo de Software** impartida en la Universidad de Murcia, puede consultarse el siguiente enlace: [Procesos de Desarrollo de Software - Universidad de Murcia](https://www.um.es/web/estudios/masteres/ingenieria-software/descripcion).
+Para más información sobre la asignatura **Procesos de Desarrollo de Software** impartida en la Universidad de Murcia, puede consultarse el siguiente enlace: [Procesos de Desarrollo de Software - Universidad de Murcia]([https://www.um.es/web/estudios/masteres/ingenieria-software/descripcion](https://api.um.es/aulavirtual/guiasdocentes-api/public/v1/guias/1910/G/2024/E/html)).

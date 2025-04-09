@@ -5,7 +5,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,8 +28,8 @@ public enum HistoriApp {
 	INSTANCE;
 	
 	private Usuario usuario;
-	private Curso cursoActual;
-	private MetodoAprendizaje metodoAprendizaje;
+	private Curso cursoActual = null;
+	private BloqueContenidos bloqueActual = null;
 	private IteradorTarea iteradorTarea;
 	private RepositorioUsuarios usuarios;
 	private RepositorioCursos cursos;
@@ -60,18 +59,19 @@ public enum HistoriApp {
 	// 1.1.- Registro de un nuevo usuario
 	
 	public boolean registrarUsuario(String nombre, String contrasena, String correo, String imagen, String saludo) {
-		if (usuarios.encontrarUsuarioPorNombre(nombre) != null){
+		if (usuarioRegistrado(nombre)){
 			return false;
 		}
+		
 		Usuario usuario = new Usuario(nombre, contrasena, correo, imagen, saludo);
 		usuarios.agregarUsuario(usuario);	
 		return true;
 	}
 
 	public boolean registrarProfesor(String nombre, String contrasena, String correo, String imagen, String saludo) {
-		if (usuarios.encontrarUsuarioPorNombre(nombre) != null){
+		if (usuarioRegistrado(nombre))
 			return false;
-		}
+			
 		Profesor profesor = new Profesor(nombre, contrasena, correo, imagen, saludo);
 		usuarios.agregarUsuario(profesor);	
 		return true;
@@ -108,12 +108,12 @@ public enum HistoriApp {
 		cambiarSaludo(saludo);
 	}
 	
-	private void cambiarImagen(String imagen) {
+	public void cambiarImagen(String imagen) {
 		usuario.setImagen(imagen);
 		actualizarUsuario(usuario);
 	}
 	
-	private void cambiarSaludo(String saludo) {
+	public void cambiarSaludo(String saludo) {
 		usuario.setSaludo(saludo);
 		actualizarUsuario(usuario);
 	}
@@ -143,8 +143,8 @@ public enum HistoriApp {
 	
 	////////////
 	
-	public Curso getCursoActual() {
-		return cursoActual;
+	public String getCursoActual() {
+		return cursoActual.getTitulo();
 	}
 	
 	public List<InfoCurso> getCursos() {
@@ -155,16 +155,31 @@ public enum HistoriApp {
 		return InfoBloque.getListInfoBloque(cursos.getBloques(cursoActual));
 	}
 	
-	public boolean realizarCurso(String nombreCurso, MetodoAprendizaje metodoAprendizaje) {
-		this.cursoActual = cursos.buscarCursoPorNombre(nombreCurso);
-		this.metodoAprendizaje = metodoAprendizaje;
+	public boolean matricularCurso(String nombreCurso, MetodoAprendizaje metodoAprendizaje) {
+		Curso curso = cursos.buscarCursoPorNombre(nombreCurso);
+		if(curso == null || usuario.estaMatriculado(nombreCurso))
+			return false;
+		usuario.matricularCurso(curso, metodoAprendizaje);
+		return true;
+	}
+	
+	
+	public boolean realizarCurso(String nombreCurso) {
+		Curso curso = cursos.buscarCursoPorNombre(nombreCurso);
+		if(curso == null)
+			return false;
+		cursoActual = curso;
 		return true;
 	}
 	
 	public boolean realizarBloque(String bloqueNombre) {
-		BloqueContenidos bloque = cursoActual.getBloquePorNombre(bloqueNombre);
-		iteradorTarea = FactoriaIteradorTarea.crearIterador(bloque.getTareas(), metodoAprendizaje);
+		bloqueActual = cursoActual.getBloquePorNombre(bloqueNombre);
+		iteradorTarea = FactoriaIteradorTarea.crearIterador(bloqueActual.getTareas(), usuario.getMetodoAprendizaje(cursoActual).get());
 		return true;
+	}
+	
+	public void cerrarBloque() {
+		bloqueActual = null;
 	}
 	
 	public Info siguiente(Optional<String> respuesta) {
@@ -174,11 +189,13 @@ public enum HistoriApp {
 	}
 	
 	public double obtenerPuntuacion() {
-		return iteradorTarea.obtenerPuntuacion();
+		double puntuacion = iteradorTarea.obtenerPuntuacion();
+		usuario.completarBloque(cursoActual, bloqueActual, puntuacion);
+		return puntuacion;
 	}
 	
 	public boolean crearCurso(String rutaCurso) {
-	    if (!(usuario instanceof Profesor)) {
+	    if (!esProfesor()) {
 	        return false;
 	    }
 	    
@@ -192,6 +209,38 @@ public enum HistoriApp {
 	        e.printStackTrace();
 	        return false;
 	    }
+	}
+	
+	/* Comprobación de registro */
+	public boolean usuarioRegistrado(String nombre) {
+		return usuarios.encontrarUsuarioPorNombre(nombre) != null;
+	}
+	
+	/* Obtención del rol */
+	public boolean esProfesor() {
+		return usuario.esProfesor();
+	}
+	
+	/* Comprobación de matrícula */
+	public boolean usuarioMatriculado(String nombreCurso) {
+		return usuario.estaMatriculado(nombreCurso);
+	}
+	
+	/* Notificar curso completado */
+	public boolean cursoCompletado() {
+		return cursoCompletado(cursoActual.getTitulo());
+	}
+	
+	public boolean cursoCompletado(String nombreCurso) {
+		return usuario.haCompletado(nombreCurso) && ! usuario.estaMatriculado(nombreCurso);
+	}
+	
+	private boolean bloqueCompletado(String nombreCurso, String nombreBloque) {
+		return usuario.bloqueCompletado(nombreCurso, nombreBloque);
+	}
+	
+	public boolean bloqueCompletado(String nombreBloque) {
+		return bloqueCompletado(cursoActual.getTitulo(), nombreBloque);
 	}
 	
 }

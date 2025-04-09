@@ -1,13 +1,14 @@
 package dominio.info.usuario;
 
+import java.time.Duration;
 import java.util.Optional;
 
 public class infoEstadisticasProfesor extends infoEstadisticas{
     
     private int cursosPublicados;
 
-    public infoEstadisticasProfesor (String texto, int puntuacion, int cursosCompletados, int minutosUso, int diasUso, int maxRacha, int cursosPublicados){
-        super(texto, puntuacion, cursosCompletados, minutosUso, diasUso, maxRacha);
+    public infoEstadisticasProfesor (String texto, int puntuacion, int cursosCompletados, int bloquesCompletados, Duration minutosUso, int diasUso, int maxRacha, int cursosPublicados){
+        super(texto, puntuacion, cursosCompletados, bloquesCompletados, minutosUso, diasUso, maxRacha);
         
         this.cursosPublicados = cursosPublicados;
 
