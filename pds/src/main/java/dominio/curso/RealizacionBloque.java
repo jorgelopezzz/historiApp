@@ -11,10 +11,15 @@ public class RealizacionBloque {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "realizacion_curso_id")
+    private RealizacionCurso realizacionCurso;
 	
 	/* Atributos iniciales */
 	@Transient
 	private BloqueContenidos bloque;
+	@Column(nullable = false)
 	private String bloqueNombre;
 	
 	/* Atributos opcionales */
@@ -52,7 +57,4 @@ public class RealizacionBloque {
 		return puntuacion;
 	}
 
-	
-	
-	
 }

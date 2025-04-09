@@ -18,6 +18,7 @@ public class RealizacionCurso {
 	
 	@Transient
     private Curso curso;
+	@Column(nullable = false)
 	private String cursoNombre;
 	@ManyToOne(optional = false)
     private Usuario usuario;
@@ -30,7 +31,7 @@ public class RealizacionCurso {
 	private int bloquesTotales;
 	@Column(nullable = false)
 	private int bloquesCompletados;
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "realizacionCurso", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<RealizacionBloque> listaBloques;
 	
 	public RealizacionCurso () {}
@@ -100,7 +101,7 @@ public class RealizacionCurso {
     	return usuario;
     }
     
-    public LocalDate fechaMatricula() {
+    public LocalDate getFechaMatricula() {
     	return fechaMatricula;
     }
 
