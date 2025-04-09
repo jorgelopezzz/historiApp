@@ -123,30 +123,10 @@ Nótese que un miembro de la aplicación puede registrarse como Profesor y cursa
 
 **Flujo alternativo:**
 - 6a. Si se han completado todos los bloques del curso, el sistema actualiza la estadística de cursos completados.
+- 6b. Si un estudiante se sale de un bloque sin haberlo terminado, el progreso en dicho bloque no se guardará.
 
 **Postcondiciones:**
 - Se guarda el progreso del estudiante en el curso.
-
-#### 2.2 Realizar bloque de contenidos
-**Resumen:** El estudiante accede a un bloque de contenido dentro de un curso y comienza a realizar tareas.
-
-**Actores:** 
-- Estudiante.
-
-**Precondiciones:**
-- El estudiante debe estar realizando un curso.
-
-**Flujo principal:**
-1. El estudiante selecciona un bloque de contenidos.
-2. El estudiante completa todas las tareas del curso.
-3. El sistema marca el bloque de contenidos como completado.
-4. El estudiante sale del bloque de contenidos.
-
-**Flujo alternativo:**
-- 2b. Si el estudiante no completa el bloque de contenidos, el progreso en dicho bloque se perderá.
-
-**Postcondiciones:**
-- El sistema actualiza las estadísticas de bloques completados y puntuación obtenida en preguntas.
 
 ### 3. Administración de cursos
 
