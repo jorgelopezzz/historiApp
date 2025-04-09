@@ -1,5 +1,6 @@
 package dominio.curso;
 
+import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,15 +9,32 @@ import java.util.Optional;
 import dominio.metodoAprendizaje.MetodoAprendizaje;
 import dominio.usuario.Usuario;
 
+@Entity
 public class RealizacionCurso {
+	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+	
+	@Transient
     private Curso curso;
+	@Column(nullable = false)
+	private String cursoNombre;
+	@ManyToOne(optional = false)
     private Usuario usuario;
+	@Column(nullable = false)
     private LocalDate fechaMatricula;
+	@Enumerated(EnumType.STRING)
 	private MetodoAprendizaje metodoAprendizaje;
 	
-	private int bloquesTotales; 
+	@Column(nullable = false)
+	private int bloquesTotales;
+	@Column(nullable = false)
 	private int bloquesCompletados;
+	@OneToMany(mappedBy = "realizacionCurso", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<RealizacionBloque> listaBloques;
+	
+	public RealizacionCurso () {}
 	
     public RealizacionCurso(Curso curso, Usuario usuario, MetodoAprendizaje metodoAprendizaje) {
     	if (curso == null) {
@@ -29,6 +47,7 @@ public class RealizacionCurso {
     		throw new IllegalArgumentException("El método de aprendizaje no puede ser nulo.");
         }
         this.curso = curso;
+        this.cursoNombre = curso.getTitulo();
         this.usuario = usuario;
         this.fechaMatricula = LocalDate.now();
         this.metodoAprendizaje = metodoAprendizaje;
@@ -72,6 +91,9 @@ public class RealizacionCurso {
     }
 
     public Curso getCurso() {
+    	if(curso == null) {
+    		this.curso = RepositorioCursos.INSTANCE.buscarCursoPorNombre(cursoNombre);
+    	}
     	return curso;
     }
     
@@ -79,7 +101,7 @@ public class RealizacionCurso {
     	return usuario;
     }
     
-    public LocalDate fechaMatricula() {
+    public LocalDate getFechaMatricula() {
     	return fechaMatricula;
     }
 

@@ -47,6 +47,13 @@ public enum RepositorioCursos {
 		return cursosPorNombre.get(nombreCurso);
 	}
     
+    public BloqueContenidos buscarBloquePorNombre(String nombreBloque) {
+		return cursosPorNombre.values().stream()
+				.map(curso -> curso.getBloquePorNombre(nombreBloque)) 
+				.findFirst()
+				.orElse(null);
+	}
+    
     public List<BloqueContenidos> getBloques(Curso curso) {
     	return curso.getBloquesContenidos();
     }

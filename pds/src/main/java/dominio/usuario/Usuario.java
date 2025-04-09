@@ -43,8 +43,8 @@ public class Usuario {
     /* Progresos */
     
     @Column(nullable = true)
-    protected int cursosCompletados; /* Arreglar esto, hay que ver el tema de la lista de instancias de curso en usuario */
-    @Column(nullable = true)
+    protected int cursosCompletados;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "usuario")
     private List<RealizacionCurso> cursos;
     
     /* Estadísticas */
@@ -104,7 +104,7 @@ public class Usuario {
 
     /* Alterables */
     public String getImagen() {
-    	if(imagen != RUTA_PERFIL_PREDETERMINADO)
+    	if(!imagen.equals(RUTA_PERFIL_PREDETERMINADO))
     		return imagen;
     	try {
 			return new File(this.getClass().getResource(imagen).toURI()).getAbsolutePath();
