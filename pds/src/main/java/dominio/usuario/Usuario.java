@@ -44,7 +44,7 @@ public class Usuario {
     
     @Column(nullable = true)
     protected int cursosCompletados; /* Arreglar esto, hay que ver el tema de la lista de instancias de curso en usuario */
-    @Column(nullable = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<RealizacionCurso> cursos;
     
     /* Estadísticas */
