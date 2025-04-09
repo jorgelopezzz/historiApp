@@ -14,6 +14,13 @@ classDiagram
         + getPuntuacion() : Int
         + getRacha() : Int
     }
+
+    class Profesor {
+        + importarCurso : Void
+    }
+
+    Usuario <|-- Profesor
+
     class Curso {
         - nombre : String
     }

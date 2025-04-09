@@ -1,74 +1,101 @@
 # Casos de uso
 
-### 1. Acceso de usuarios
+#### Actores
+En los casos de uso del proyecto se utilizarán los actores **Profesor** y **Estudiante**. A nivel de aplicación, las diferencias son las siguientes:
+- El rol de Estudiante se centra en el aprendizaje de contenidos y todo lo relativo a la realización de cursos académicos. 
+- El rol de Profesor se centra en la importación de cursos para favorecer la biblioteca de la aplicación. 
 
-#### 1.1 Registrar un nuevo usuario
-**Resumen:** El usuario proporciona sus datos para registrarse en el sistema.
+Nótese que un miembro de la aplicación puede registrarse como Profesor y cursar contenidos, de cara a revisar su propio material o para aprender de otros profesores. En cambio, un Estudiante no podrá importar cursos. Así, en los casos de uso habrá situaciones donde un actor pueda ser tanto Profesor como Estudiante. Nos referiremos a dicho actor como Estudiante, entendiendo que el Profesor actuará como Estudiante a la hora de cursar contenidos. 
+
+### 1. Acceso
+
+#### 1.1 Registro
+**Resumen:** El Estudiante/Profesor proporciona sus datos para registrarse en el sistema.
 
 **Actores:** 
--Usuario.
+- Estudiante.
+- Profesor
 
 **Precondiciones:**
-- El usuario no debe estar registrado previamente.
+- El Estudiante/Profesor no debe estar registrado previamente.
 
 **Flujo principal:**
-1. En la pantalla de inicio el usuario accede a la opción de registro.
+1. En la pantalla de inicio el Estudiante/Profesor accede a la opción de registro.
 2. El sistema muestra un formulario de registro.
-3. El usuario introduce sus datos requeridos (nombre, correo, contraseña, rol, etc.).
+3. El Estudiante/Profesor introduce sus datos requeridos (nombre, correo, contraseña, rol, etc.).
 4. El sistema valida la información proporcionada.
-5. El sistema crea la cuenta del usuario y lo redirige a la pantalla principal.
+5. El sistema crea la cuenta del Estudiante/Profesor y lo redirige a la pantalla principal.
 
 **Flujos alternativos:**
-- 4a. Si el correo ya está registrado, el sistema muestra un mensaje de error y solicita otro correo.
-- 4b. Si la contraseña no se introduce correctamente por segunda vez, el sistema informa al usuario y la solicita de nuevo.
-- 4c. Si falta algún campo, el sistema informa al usuario y pide que se introduzcan los datos que falten.
+- 4a. Si el correo o nombre ya está registrado, el sistema muestra un mensaje de error y solicita otro correo.
+- 4b. Si la contraseña no se introduce correctamente por segunda vez, el sistema informa al Estudiante/Profesor y la solicita de nuevo.
+- 4c. Si falta algún campo, el sistema informa al Estudiante/Profesor y pide que se introduzcan los datos que falten.
 
 **Postcondiciones:**
-- El usuario queda registrado en el sistema y puede iniciar sesión.
+- El Estudiante/Profesor queda registrado en el sistema y puede iniciar sesión.
 
-#### 1.2 Iniciar y cerrar sesión de usuario
-**Resumen:** El usuario ingresa sus credenciales para acceder al sistema.
+#### 1.2 Inicio de sesión
+**Resumen:** El Estudiante/Profesor ingresa sus credenciales para acceder al sistema.
 
 **Actores:** 
--Usuario.
+- Estudiante.
+- Profesor
 
 **Precondiciones:**
-- El usuario debe estar registrado.
+- El Estudiante/Profesor debe estar registrado.
 
 **Flujo principal:**
 1. El sistema muestra un formulario de login.
-2. El usuario introduce su nombre de usuario y contraseña.
+2. El Estudiante/Profesor introduce su nombre y contraseña.
 3. El sistema valida las credenciales.
-4. El sistema permite el acceso y redirige al usuario a la pantalla principal.
-5. El sistema comienza a contar el tiempo de sesión del usuario.
-6. El usuario cierra la sesión
-7. El sistema actualiza las estadísticas de tiempo de uso de la aplicación, tiempo medio de uso diario de la aplicación y mejor racha.
+4. El sistema permite el acceso y muestra la pantalla principal.
+5. El sistema comienza a contar el tiempo de sesión del Estudiante/Profesor.
 
 **Flujos alternativos:**
 - 4a. Si las credenciales son incorrectas, el sistema muestra un mensaje de error y solicita reintentar.
 
 **Postcondiciones:**
-- El usuario accede correctamente a su cuenta.
+- El Estudiante/Profesor accede correctamente a su cuenta.
 
-#### 1.3 Cambiar información de perfil de usuario
-**Resumen:** El usuario proporciona sus datos para registrarse en el sistema.
+#### 1.3 Cierre de sesión
+**Resumen:** El Estudiante/Profesor cierra su sesión para salir de la aplicación.
 
 **Actores:** 
--Usuario.
+- Estudiante.
+- Profesor
 
 **Precondiciones:**
-- El usuario debe estar registrado en el sistema.
+- El Estudiante/Profesor debe haber ingresado en la aplicación correctamente.
 
 **Flujo principal:**
-1. El usuario accede a la configuración de perfil.
+1. La ventana correspondiente muestra el botón de cerrar sesión.
+2. El Estudiante/Profesor hace click en el botón.
+3. El sistema devuelve al Estudiante/Profesor a la ventana de Log In y deja de contar tiempo de sesión.
+4. El sistema actualiza las estadísticas de tiempo de uso de la aplicación, tiempo medio de uso diario de la aplicación y mejor racha.
+
+**Postcondiciones:**
+- El Estudiante/Profesor deja de tener una sesión activa.
+
+#### 1.3 Cambiar información de perfil
+**Resumen:** El Estudiante/Profesor proporciona sus datos para registrarse en el sistema.
+
+**Actores:** 
+- Estudiante.
+- Profesor.
+
+**Precondiciones:**
+- El Estudiante/Profesor debe estar registrado en el sistema.
+
+**Flujo principal:**
+1. El Estudiante/Profesor accede a la configuración de perfil.
 2. El sistema muestra la pantalla de configuración de perfil.
-3. El usuario introduce sus datos requeridos (nombre, correo, contraseña, etc.).
-4. El usuario selecciona una imagen desde su dispositivo o introduce un nuevo saludo.
+3. El Estudiante/Profesor introduce sus datos requeridos (nombre, correo, contraseña, etc.).
+4. El Estudiante/Profesor selecciona una imagen desde su dispositivo o introduce un nuevo saludo.
 5. El sistema guarda los cambios.
 
 **Postcondiciones:**
-- La imagen de perfil del usuario se actualiza correctamente.
-- El saludo del usuario se actualiza correctamente.
+- La imagen de perfil del Estudiante/Profesor se actualiza correctamente.
+- El saludo del Estudiante/Profesor se actualiza correctamente.
 
 > [!NOTE]
 > Este caso de uso no ha sido obtenido directamente del caso de estudio, sino que ha sido introducido por el equipo.
@@ -107,7 +134,7 @@
 - Estudiante.
 
 **Precondiciones:**
-- El usuario debe estar realizando un curso.
+- El estudiante debe estar realizando un curso.
 
 **Flujo principal:**
 1. El estudiante selecciona un bloque de contenidos.
@@ -138,7 +165,7 @@
 2. El profesor sube un archivo `.json` del curso.  
 
 **Flujos alternativos:**  
-- 3a En caso de subirse un curso que ya existe, el sistema muestra una solicitud de confirmación al usuario.  
+- 3a En caso de subirse un curso que ya existe, el sistema muestra una solicitud de confirmación al profesor.  
 - 4a Si se confirma la solicitud, se sobrescribe el curso.  
 
 **Postcondiciones:**  
