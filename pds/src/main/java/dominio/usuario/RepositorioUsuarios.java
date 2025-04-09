@@ -1,58 +1,67 @@
 package dominio.usuario;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import jakarta.persistence.*;
 import java.util.List;
 
 public enum RepositorioUsuarios {
-	INSTANCE;
-	//private FactoriaDAO factoria;
+    INSTANCE;
 
-	//private HashMap<Integer, Usuario> usuariosPorID;
-	private HashMap<String, Usuario> usuariosPorNombre;
+    private EntityManagerFactory entityManagerFactory;
+    private EntityManager entityManager;
 
-	private RepositorioUsuarios (){
-		//usuariosPorID = new HashMap<Integer, Usuario>();
-		usuariosPorNombre = new HashMap<String, Usuario>();
-		
-		/*
-		try {
-			factoria = FactoriaDAO.getInstancia();
-			
-			@SuppressWarnings("unchecked")
-			List<Usuario> listaUsuarios = (List<Usuario>) factoria.crearObjetoDAO("usuario").getAll();
-			for (Usuario usuario : listaUsuarios) {
-				//usuariosPorID.put(usuario.getId(), usuario);
-				usuariosPorMovil.put(usuario.getMovil(), usuario);
-				usuariosPorNombre.put(usuario.getNombre(), usuario);
-			}
-		} catch (DAOException eDAO) {
-			   eDAO.printStackTrace();
-		}
-		*/
-	}
-	
-	/*public List<Usuario> findUsuarios() /throws DAOException/ {
-		return new ArrayList<Usuario>(usuariosPorMovil.values());
-	}*/
+    // Constructor privado para inicializar el EntityManager
+    private RepositorioUsuarios() {
+        // Inicializa el EntityManagerFactory
+        this.entityManagerFactory = Persistence.createEntityManagerFactory("usuarios");
+        this.entityManager = entityManagerFactory.createEntityManager();
+    }
 
-	/*public Usuario findUsuarioPorId(int id) {
-		return usuariosPorID.get(id);
-	}*/
+    // Método para agregar un nuevo usuario
+    public void agregarUsuario(Usuario usuario) {
+        entityManager.getTransaction().begin();
+        entityManager.persist(usuario);
+        //entityManager.flush();
+        entityManager.getTransaction().commit();
+    }
 
-	public Usuario findUsuarioPorNombre(String nombre) {
-		return usuariosPorNombre.get(nombre);
-	}
-	
-	public void addUsuario(Usuario usuario) {
-		usuariosPorNombre.put(usuario.getNombre(), usuario);
-	}
-	
-	public void removeUsuario(Usuario usuario) {
-		usuariosPorNombre.remove(usuario.getNombre());
-	}
-	
-	public void updateUsuario(Usuario usuario) {
-		usuariosPorNombre.put(usuario.getNombre(), usuario);
-	}
+    // Método para encontrar un usuario por nombre
+    public Usuario encontrarUsuarioPorNombre(String nombre) {
+        try {
+            return entityManager.createQuery("SELECT u FROM Usuario u WHERE u.nombre = :nombre", Usuario.class)
+                                .setParameter("nombre", nombre)
+                                .getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
+    // Método para obtener todos los usuarios
+    public List<Usuario> obtenerTodosLosUsuarios() {
+        TypedQuery<Usuario> query = entityManager.createQuery("SELECT u FROM Usuario u", Usuario.class);
+        return query.getResultList();
+    }
+
+    // Método para actualizar un usuario
+    public void actualizarUsuario(Usuario usuario) {
+        entityManager.getTransaction().begin();
+        entityManager.merge(usuario);
+        entityManager.getTransaction().commit();
+    }
+
+    // Método para eliminar un usuario
+    public void eliminarUsuario(Usuario usuario) {
+        entityManager.getTransaction().begin();
+        entityManager.remove(usuario);
+        entityManager.getTransaction().commit();
+    }
+
+    // Cerrar el EntityManager y EntityManagerFactory al finalizar el uso
+    public void cerrar() {
+        if (entityManager.isOpen()) {
+            entityManager.close();
+        }
+        if (entityManagerFactory.isOpen()) {
+            entityManagerFactory.close();
+        }
+    }
 }

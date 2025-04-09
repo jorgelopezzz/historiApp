@@ -43,9 +43,10 @@ public enum HistoriApp {
 	// NO CASOS DE USO
 	
 	private void actualizarUsuario(Usuario usuario) {
-        usuarios.updateUsuario(usuario);
+        usuarios.actualizarUsuario(usuario);
     }
 	
+	@SuppressWarnings("unused")
 	private Usuario getUsuario() {
 		return usuario;
 	}
@@ -61,17 +62,18 @@ public enum HistoriApp {
 		if (usuarioRegistrado(nombre)){
 			return false;
 		}
+		
 		Usuario usuario = new Usuario(nombre, contrasena, correo, imagen, saludo);
-		usuarios.addUsuario(usuario);	
+		usuarios.agregarUsuario(usuario);	
 		return true;
 	}
 
 	public boolean registrarProfesor(String nombre, String contrasena, String correo, String imagen, String saludo) {
-		if (usuarioRegistrado(nombre)){
+		if (usuarioRegistrado(nombre))
 			return false;
-		}
+			
 		Profesor profesor = new Profesor(nombre, contrasena, correo, imagen, saludo);
-		usuarios.addUsuario(profesor);	
+		usuarios.agregarUsuario(profesor);	
 		return true;
 	}
 	
@@ -79,7 +81,7 @@ public enum HistoriApp {
 	
 	public boolean iniciarSesionUsuario(String nombre, String contrasena) {
 		// BLOQUE PARA COMPROBAR LA BASE DE DATOS 
-		Usuario usuario = usuarios.findUsuarioPorNombre(nombre);
+		Usuario usuario = usuarios.encontrarUsuarioPorNombre(nombre);
 
 		if (usuario != null && usuario.checkContrasena(contrasena)) {
 			this.usuario = usuario;
@@ -181,9 +183,6 @@ public enum HistoriApp {
 	}
 	
 	public Info siguiente(Optional<String> respuesta) {
-		//if(!iteradorTarea.tieneSiguiente()) 
-		//	return null;
-		
 		Optional<Tarea> tareaSiguiente = iteradorTarea.siguiente(respuesta);
 		Info infoTarea = tareaSiguiente.isPresent() ? tareaSiguiente.get().crearInfo() : null;
 		return infoTarea;
@@ -214,7 +213,7 @@ public enum HistoriApp {
 	
 	/* Comprobación de registro */
 	public boolean usuarioRegistrado(String nombre) {
-		return usuarios.findUsuarioPorNombre(nombre) != null;
+		return usuarios.encontrarUsuarioPorNombre(nombre) != null;
 	}
 	
 	/* Obtención del rol */
