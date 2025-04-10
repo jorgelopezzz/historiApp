@@ -16,44 +16,65 @@ classDiagram
     }
 
     class Profesor {
-        + importarCurso : Void
+        + asignarCurso(curso: Curso)
+        + gestionarCurso(curso: Curso)
+        + verInformesCurso(curso: Curso)
     }
 
     Usuario <|-- Profesor
 
     class Curso {
         - nombre : String
+        + agregarProfesor(profesor: Profesor)
+        + eliminarProfesor(profesor: Profesor)
     }
+
     class RealizacionCurso {
         - fechaInicio : localDate
     }
+
     class RealizacionBloque {
         - puntuacion : float
     }
-    class EstrategiaAprendizaje {
+
+    class Valoracion {
+        - puntuacion : Double
+        - comentario : String
     }
+
+    class EstrategiaAprendizaje {
+        <<enumeration>>
+    }
+
     class BloqueContenidos {
         - nombre : String
     }
+
     class Tarea {
         - enunciado : String
     }
+
     class Tip {
         - imagen : Imagen
     }
+
     class Pregunta {
-        - evaluar() : Boolean
+        + evaluar() : Boolean
     }
+
     class PreguntaVF {
         - esVerdadero : Boolean
     }
+
     class PreguntaTipoTest {
         - opciones : String[]
         - correcta : Integer
     }
+
     class PreguntaRellenar {
         - respuesta : String
     }
+
     Usuario "1" --o "*" Curso : creador
     Usuario "1" --o "*" RealizacionCurso : realiza
     Curso "1" --o "*" BloqueContenidos : contiene
@@ -62,15 +83,19 @@ classDiagram
     RealizacionCurso "1" -- "1" EstrategiaAprendizaje : usa
     RealizacionCurso "1" -- "1..*" RealizacionBloque : contiene
     RealizacionBloque "*" -- "1" BloqueContenidos : asociado
+    RealizacionCurso "0..1" --> "1" Valoracion : evaluacion
     Tarea <|-- Tip
     Tarea <|-- Pregunta
     Pregunta <|-- PreguntaVF
     Pregunta <|-- PreguntaTipoTest
     Pregunta <|-- PreguntaRellenar
-    class EstrategiaAprendizaje {
-        <<enumeration>>
-    }
+
 ```
+
+### Comentarios
+
+Se ha discutido sobre la necesidad de una clase `RealizacionBloque`. Lo cierto es que, aunque pueda no ser estrictamente necesaria para seguir el progreso del usuario, enriquece las estadísticas que muestra la aplicación, que son parte de nuestra [funcionalidad adicional](funcionalidadExtra.md). Para generar unas estadísticas más detalladas, hemos decidido seguir el progreso del usuario a nivel de bloque almacenando también las notas de este en cada bloque. Además, `RealizacionBloque` permite a los usuarios rehacer los bloques ya completados en un orden arbitrario de cara a obtener mejores puntuaciones.
+
 
 ## Referencias Adicionales
 
@@ -79,3 +104,4 @@ Para más información sobre la arquitectura de la aplicación, consulte:
 - [Modelo de Estados y Transiciones](modeloEstados.md)
 - [Casos de Uso](casosDeUso.md)
 - [Documentación del Proyecto](README.md)
+- [Funcionalidad extra](funcionalidadExtra.md)

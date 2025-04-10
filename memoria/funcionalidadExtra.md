@@ -15,7 +15,7 @@ Una vez que un estudiante ha cursado parcial o totalmente un curso, tiene la pos
 
 Como adiciones al enunciado de la práctica, hemos desarrollado una ventana de estadísticas globales que permiten a los usuarios ver su posición en un ranking basado en su desempeño dentro de la aplicación. Este ranking se genera a partir de un coeficiente calculado en función de diversas métricas que reflejan la actividad del estudiante.
 
-### Detalles de la funcionalidad
+### Detalles
 
 La aplicación calcula una **puntuación numérica** para cada estudiante, basada en los siguientes factores:
 

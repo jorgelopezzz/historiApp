@@ -151,18 +151,6 @@ Nótese que un miembro de la aplicación puede registrarse como Profesor y cursa
 **Postcondiciones:**  
 - El sistema almacena el curso.
 
-## Referencias de Arquitectura
-
-La arquitectura de HistoriApp está documentada en detalle en los siguientes archivos:
-
-- [Modelado de Dominio](modeladoDominio.md): Representa las entidades principales del sistema y sus relaciones.
-- [Estructuras y Patrones de Diseño de la Interfaz Gráfica](modeloVista.md): Detalla la organización de los componentes visuales y patrones implementados.
-- [Modelo de Estados y Transiciones](modeloEstados.md): Ilustra el flujo de navegación y las transiciones entre diferentes interfaces de la aplicación.
-- [Casos de Uso](casosDeUso.md)
-- [Documentación del Proyecto](README.md)
-
-Estos documentos proporcionan una visión completa de los aspectos estructurales y dinámicos de la aplicación HistoriApp.
-
 ### 4. Reseñas
 
 #### 4.1 Valorar un curso
@@ -195,3 +183,16 @@ Una vez que el estudiante ha cursado total o parcialmente un curso, el sistema l
 **Postcondiciones:**  
 - La reseña del estudiante queda guardada y visible para otros usuarios.
 - Las estadísticas del curso se actualizan con la nueva valoración.
+
+## Referencias de Arquitectura
+
+La arquitectura de HistoriApp está documentada en detalle en los siguientes archivos:
+
+- [Modelado de Dominio](modeladoDominio.md): Representa las entidades principales del sistema y sus relaciones.
+- [Estructuras y Patrones de Diseño de la Interfaz Gráfica](modeloVista.md): Detalla la organización de los componentes visuales y patrones implementados.
+- [Modelo de Estados y Transiciones](modeloEstados.md): Ilustra el flujo de navegación y las transiciones entre diferentes interfaces de la aplicación.
+- [Casos de Uso](casosDeUso.md)
+- [Funcionalidad extra](funcionalidadExtra.md)
+- [Documentación del Proyecto](README.md)
+
+Estos documentos proporcionan una visión completa de los aspectos estructurales y dinámicos de la aplicación HistoriApp.
