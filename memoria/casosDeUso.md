@@ -162,3 +162,36 @@ La arquitectura de HistoriApp está documentada en detalle en los siguientes arc
 - [Documentación del Proyecto](README.md)
 
 Estos documentos proporcionan una visión completa de los aspectos estructurales y dinámicos de la aplicación HistoriApp.
+
+### 4. Reseñas
+
+#### 4.1 Valorar un curso
+
+> [!IMPORTANT]
+> Este es el caso de uso adicional de HistoriApp.
+
+**Resumen:**  
+Una vez que el estudiante ha cursado total o parcialmente un curso, el sistema le ofrece la opción de dejar una reseña. Esta puede incluir una valoración numérica y un comentario textual.
+
+**Actores:**  
+- Estudiante.
+
+**Precondiciones:**  
+- El estudiante debe estar identificado en el sistema.  
+- El estudiante debe haber accedido a al menos un bloque de contenido del curso.
+
+**Flujo principal:**
+1. El estudiante accede a la sección de reseñas del curso.
+2. El sistema solicita una puntuación del 1 al 5.
+3. El estudiante introduce una puntuación.
+4. El sistema ofrece un campo de texto para añadir un comentario opcional.
+5. El estudiante escribe un comentario (opcional) y confirma el envío.
+6. El sistema registra la reseña y la asocia al curso.
+
+**Flujo alternativo:**
+- 2a. Si el estudiante intenta acceder a la reseña sin haber accedido al curso, el sistema muestra un mensaje de error y no permite continuar.
+- 5a. Si el estudiante no escribe ningún comentario, se registra solo la valoración numérica.
+
+**Postcondiciones:**  
+- La reseña del estudiante queda guardada y visible para otros usuarios.
+- Las estadísticas del curso se actualizan con la nueva valoración.
