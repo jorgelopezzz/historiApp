@@ -4,7 +4,7 @@ import java.awt.EventQueue;
 
 
 import gui.ventanas.SelectorVentana;
-import dominio.curso.RepositorioCursos;
+import repositorios.RepositorioCursos;
 
 public class Lanzador {
 	public static void main(final String[] args){

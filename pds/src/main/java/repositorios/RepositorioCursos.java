@@ -1,4 +1,4 @@
-package dominio.curso;
+package repositorios;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -9,7 +9,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import dominio.ServicioJSON;
-import dominio.usuario.Usuario;
+import dominio.curso.BloqueContenidos;
+import dominio.curso.Curso;
 
 public enum RepositorioCursos {
     INSTANCE;

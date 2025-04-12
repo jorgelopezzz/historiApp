@@ -10,7 +10,6 @@ import java.util.Optional;
 
 import dominio.curso.BloqueContenidos;
 import dominio.curso.Curso;
-import dominio.curso.RepositorioCursos;
 import dominio.info.Info;
 import dominio.info.contenidos.InfoBloque;
 import dominio.info.contenidos.InfoCurso;
@@ -21,8 +20,9 @@ import dominio.metodoAprendizaje.IteradorTarea;
 import dominio.metodoAprendizaje.MetodoAprendizaje;
 import dominio.tarea.Tarea;
 import dominio.usuario.Profesor;
-import dominio.usuario.RepositorioUsuarios;
 import dominio.usuario.Usuario;
+import repositorios.RepositorioCursos;
+import repositorios.RepositorioUsuarios;
 
 public enum HistoriApp {
 	INSTANCE;

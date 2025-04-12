@@ -1,7 +1,9 @@
-package dominio.usuario;
+package repositorios;
 
 import jakarta.persistence.*;
 import java.util.List;
+
+import dominio.usuario.Usuario;
 
 public enum RepositorioUsuarios {
     INSTANCE;
