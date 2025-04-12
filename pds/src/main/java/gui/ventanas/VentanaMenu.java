@@ -25,7 +25,7 @@ import gui.emergentes.EmergentePerfil;
 public abstract class VentanaMenu extends Ventana {
 	
 	/* Componentes de organización */
-	private JPanel panelPrincipal;
+	protected JPanel panelPrincipal;
 	private JPanel barraSuperior;
 	protected JPanel panelMenu;
 	protected JPanel panelInicial;

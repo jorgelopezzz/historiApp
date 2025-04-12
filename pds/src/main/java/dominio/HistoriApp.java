@@ -200,10 +200,12 @@ public enum HistoriApp {
 	    }
 	    
 	    Path origen = Paths.get(rutaCurso);
-	    Path destino = Paths.get("src/main/resources/" + origen.getFileName());
+	    Path destino = Paths.get("resources/cursos/" + origen.getFileName());
+	   
 	    
 	    try {
 	        Files.copy(origen, destino, StandardCopyOption.REPLACE_EXISTING);
+	        cursos.anadirCurso(destino.toString());
 	        return true;
 	    } catch (IOException e) {
 	        e.printStackTrace();

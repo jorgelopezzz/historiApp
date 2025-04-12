@@ -79,18 +79,15 @@ public class VentanaCursos extends VentanaMenu {
 		List<ComponenteContenido> componentesCursos = infoCursos.stream()
 			    .map(ComponenteCurso::new)
 			    .collect(Collectors.toList());
-
-    	
-    	/*ComponenteCurso[] componentes = new ComponenteCurso[5];
-		for (int i = 0; i < 5; i++) {
-	        componentes[i] = new ComponenteCurso(new InfoCurso(
-	                "Historia del arte", "Explora la evolución del arte desde la prehistoria hasta la actualidad, analizando sus estilos, movimientos y contextos históricos. A través de imágenes, análisis de obras y debates, descubrirás cómo el arte refleja la cultura y el pensamiento de cada época. Ideal para amantes del arte y la historia.", 
-	                "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Pistachio_vera.jpg/800px-Pistachio_vera.jpg" ,true));
-	    }*/
-		
                 
 		scroll = new ScrollCursos(VentanaCursos.this, selector, componentesCursos);
-		
+	}
+    
+	
+	protected void actualizarScroll() {
+		panelPrincipal.remove(scroll);
+		construirScrollMenu();
+		panelPrincipal.add(scroll, BorderLayout.SOUTH);
 	}
     
 	private void manejadorCrearCurso() {
@@ -107,7 +104,7 @@ public class VentanaCursos extends VentanaMenu {
 						//Añadimos el curso a resources
 						HistoriApp.INSTANCE.crearCurso(rutaJSON);
 						//Actualizamos VentanaCursos para que muestre el nuevo curso
-						
+						actualizarScroll();						 
 					},
 							() ->  {return;} 
 					);
