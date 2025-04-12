@@ -1,12 +1,12 @@
 {
     "titulo": "La Toma de Granada y el Fin de la Reconquista",
     "descripcion": "Un recorrido por los hechos que pusieron fin a casi ocho siglos de presencia musulmana en la península ibérica, marcando el inicio de la España unificada bajo los Reyes Católicos.",
-    "rutaImagen": "https://al-andalus.blog/wp-content/uploads/2021/12/rendicion-granada-pradilla.jpg",
+    "rutaImagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMmZBhiSdZOahxC7HK7PRBO_MXXrfPnitx6g&s",
     "bloquesContenidos": [
       {
         "titulo": "El Reino Nazarí de Granada",
         "descripcion": "Último bastión musulmán en la península ibérica, el Reino de Granada resistió durante más de dos siglos a los avances cristianos.",
-        "rutaImagen": "https://3.bp.blogspot.com/-MLxHwWcEcHo/UYhlWwaPzMI/AAAAAAAAGvY/8sXJWzEYqFg/s1600/mapa+reino+nazari.jpg",
+        "rutaImagen": "https://i.pinimg.com/736x/5b/e1/c9/5be1c9b375f4a57a77ef5c510b8de668.jpg",
         "tareas": [
           {
             "tipo": "Tip",
@@ -38,7 +38,7 @@
       {
         "titulo": "La Guerra de Granada (1482–1492)",
         "descripcion": "El conflicto militar que culminó con la rendición de Granada tras diez años de asedio y campañas militares dirigidas por los Reyes Católicos.",
-        "rutaImagen": "https://upload.wikimedia.org/wikipedia/commons/7/79/Toma_de_M%C3%A1laga_por_los_Reyes_Cat%C3%B3licos_%28detalle%29.jpg",
+        "rutaImagen": "https://historia.nationalgeographic.com.es/medio/2018/02/28/fernando-de-aragon-e-isabel-de-castilla__1280x704.jpgs",
         "tareas": [
           {
             "tipo": "Tip",
@@ -70,7 +70,7 @@
       {
         "titulo": "La Capitulación de Granada",
         "descripcion": "Estudio del acuerdo que permitió la entrega pacífica de la ciudad y sus consecuencias para la población musulmana.",
-        "rutaImagen": "https://historia.nationalgeographic.com.es/medio/2021/12/10/la-rendicion-de-granada-de-francisco-pradilla_5766eb6b_1200x848.jpg",
+        "rutaImagen": "https://static.ideal.es/www/pre2017/multimedia/noticias/201512/30/media/cortadas/rendicion_granada--575x323.jpg",
         "tareas": [
           {
             "tipo": "Tip",
