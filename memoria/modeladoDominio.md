@@ -83,7 +83,7 @@ classDiagram
     RealizacionCurso "1" -- "1" EstrategiaAprendizaje : usa
     RealizacionCurso "1" -- "1..*" RealizacionBloque : contiene
     RealizacionBloque "*" -- "1" BloqueContenidos : asociado
-    RealizacionCurso "0..1" --> "1" Valoracion : evaluacion
+    RealizacionCurso "0..*" --> "1" Valoracion : evaluacion
     Tarea <|-- Tip
     Tarea <|-- Pregunta
     Pregunta <|-- PreguntaVF
