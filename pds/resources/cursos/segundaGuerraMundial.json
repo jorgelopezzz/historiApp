@@ -1,0 +1,136 @@
+{
+    "titulo": "La Segunda Guerra Mundial: Conflicto Global",
+    "descripcion": "Explora los eventos clave, protagonistas y consecuencias del conflicto más devastador del siglo XX.",
+    "rutaImagen": "https://media.istockphoto.com/id/137161065/es/foto/blanco-y-negro-im%C3%A1genes-retro-batalla-de-inglaterra-ww2-aviones.jpg?s=612x612&w=0&k=20&c=YZEhyaAsnHsB8Ol1tBsDosX2stKlgsuG-puYpihjS00=",
+    "bloquesContenidos": [
+      {
+        "titulo": "Orígenes y causas del conflicto",
+        "descripcion": "Análisis de las tensiones políticas y económicas que desembocaron en la guerra.",
+        "rutaImagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrTEFSGOfqwSAikdglqaqQgzsMLa7NOsvyUw&s",
+        "tareas": [
+          {
+            "tipo": "Tip",
+            "enunciado": "El Tratado de Versalles (1919) impuso severas condiciones a Alemania tras la Primera Guerra Mundial, generando resentimiento y condiciones propicias para el ascenso del nazismo."
+          },
+          {
+            "tipo": "PreguntaTipoTest",
+            "enunciado": "¿Qué evento se considera el inicio oficial de la Segunda Guerra Mundial?",
+            "opciones": [
+              "El ascenso de Hitler al poder",
+              "La invasión de Polonia por Alemania",
+              "El ataque a Pearl Harbor",
+              "La firma del Pacto de Múnich"
+            ],
+            "correcta": 1
+          },
+          {
+            "tipo": "PreguntaRellenar",
+            "enunciado": "El pacto de no agresión firmado entre Alemania y la Unión Soviética en 1939 fue el Pacto ________-________.",
+            "respuesta": "Ribbentrop-Mólotov"
+          },
+          {
+            "tipo": "PreguntaVF",
+            "enunciado": "El fascismo en Italia y el nazismo en Alemania compartían una ideología ultranacionalista y autoritaria.",
+            "esVerdadero": true
+          }
+        ]
+      },
+      {
+        "titulo": "El avance del Eje (1939–1942)",
+        "descripcion": "Estudio de las victorias iniciales del Eje y la expansión de la guerra por Europa y el Pacífico.",
+        "rutaImagen": "https://bilder.deutschlandfunk.de/FI/LE/_d/d8/FILE_dd8a6f649994f1d04230763ac510820b/polen-ueberfall-jpg-100-1920x1080.jpg",
+        "tareas": [
+          {
+            "tipo": "Tip",
+            "enunciado": "Durante los primeros años del conflicto, Alemania utilizó una táctica militar conocida como Blitzkrieg o 'guerra relámpago', caracterizada por ataques rápidos y coordinados."
+          },
+          {
+            "tipo": "PreguntaTipoTest",
+            "enunciado": "¿Qué país fue invadido conjuntamente por Alemania y la URSS en 1939?",
+            "opciones": [
+              "Checoslovaquia",
+              "Francia",
+              "Polonia",
+              "Noruega"
+            ],
+            "correcta": 2
+          },
+          {
+            "tipo": "PreguntaRellenar",
+            "enunciado": "Japón atacó la base naval estadounidense de ________ ________ el 7 de diciembre de 1941.",
+            "respuesta": "Pearl Harbor"
+          },
+          {
+            "tipo": "PreguntaVF",
+            "enunciado": "La operación Barbarroja fue la invasión de Francia por parte de Alemania.",
+            "esVerdadero": false
+          }
+        ]
+      },
+      {
+        "titulo": "El giro del conflicto (1942–1945)",
+        "descripcion": "Cómo las potencias aliadas comenzaron a revertir la ofensiva del Eje.",
+        "rutaImagen": "https://static.nationalgeographic.es/files/styles/image_3200/public/RIAN_archive_602161_Center_of_Stalingrad_after_liberation.jpg?w=1900&h=1264",
+        "tareas": [
+          {
+            "tipo": "Tip",
+            "enunciado": "La batalla de Stalingrado marcó un punto de inflexión en el Frente Oriental, con una decisiva victoria soviética sobre el ejército nazi."
+          },
+          {
+            "tipo": "PreguntaTipoTest",
+            "enunciado": "¿Cuál fue la operación militar aliada para liberar Europa Occidental en 1944?",
+            "opciones": [
+              "Operación Market Garden",
+              "Operación Barbarroja",
+              "Operación Overlord",
+              "Operación Dinamo"
+            ],
+            "correcta": 2
+          },
+          {
+            "tipo": "PreguntaRellenar",
+            "enunciado": "El 6 de junio de 1944, conocido como el Día D, las tropas aliadas desembarcaron en las playas de ________.",
+            "respuesta": "Normandía"
+          },
+          {
+            "tipo": "PreguntaVF",
+            "enunciado": "La Conferencia de Yalta fue una reunión entre líderes aliados para planificar el mundo después de la guerra.",
+            "esVerdadero": true
+          }
+        ]
+      },
+      {
+        "titulo": "El Holocausto y las consecuencias",
+        "descripcion": "Reflexión sobre los crímenes del régimen nazi y el impacto global de la guerra.",
+        "rutaImagen": "https://www.rom.on.ca/sites/default/files/styles/metatags_image/public/2024-11/auschwitz_gate_image_crop_web_6nov2024_0.jpg.webp?itok=bOSwoTzl",
+        "tareas": [
+          {
+            "tipo": "Tip",
+            "enunciado": "El Holocausto fue el genocidio sistemático de más de seis millones de judíos, junto con otras minorías, orquestado por el régimen nazi."
+          },
+          {
+            "tipo": "PreguntaTipoTest",
+            "enunciado": "¿Qué tribunal juzgó a los principales líderes nazis tras la guerra?",
+            "opciones": [
+              "La Corte Internacional de Justicia",
+              "El Tribunal de La Haya",
+              "Los Juicios de Núremberg",
+              "La ONU"
+            ],
+            "correcta": 2
+          },
+          {
+            "tipo": "PreguntaRellenar",
+            "enunciado": "La guerra terminó oficialmente en Europa el 8 de mayo de 1945, día conocido como el Día de la ________ en Europa.",
+            "respuesta": "Victoria"
+          },
+          {
+            "tipo": "PreguntaVF",
+            "enunciado": "La Segunda Guerra Mundial dejó más de 70 millones de muertos y cambió radicalmente el mapa geopolítico mundial.",
+            "esVerdadero": true
+          }
+        ]
+      }
+    ]
+  }
+  

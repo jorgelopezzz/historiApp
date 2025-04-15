@@ -28,3 +28,4 @@ Para más información sobre la arquitectura de la aplicación, consulte:
 - [Estructuras y Patrones de Diseño de la Interfaz Gráfica](modeloVista.md)
 - [Casos de Uso](casosDeUso.md)
 - [Documentación del Proyecto](README.md)
+- [Funcionalidad extra](funcionalidadExtra.md)

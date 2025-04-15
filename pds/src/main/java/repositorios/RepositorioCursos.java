@@ -1,6 +1,7 @@
-package dominio.curso;
+package repositorios;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -9,7 +10,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import dominio.ServicioJSON;
-import dominio.usuario.Usuario;
+import dominio.curso.BloqueContenidos;
+import dominio.curso.Curso;
 
 public enum RepositorioCursos {
     INSTANCE;
@@ -36,7 +38,17 @@ public enum RepositorioCursos {
                     })
                     .filter(curso -> curso != null)
                     .collect(Collectors.toMap(Curso::getTitulo, curso -> curso));
-    	
+    }
+    
+    public void anadirCurso(String ruta) {
+    	Curso nuevoCurso;
+    	try {
+			 nuevoCurso = ServicioJSON.INSTANCE.cargarCurso(ruta);
+		} catch (IOException e) {
+			System.err.println("Error al cargar el curso desde " + ruta + ": " + e.getMessage());
+            return;
+		}
+    	cursosPorNombre.put(nuevoCurso.getTitulo(), nuevoCurso);
     }
 
     public List<Curso> getCursos() {

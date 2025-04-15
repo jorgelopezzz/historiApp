@@ -16,6 +16,8 @@ La documentación completa del proyecto HistoriApp está organizada en los sigui
 
 - [Casos de Uso](casosDeUso.md): Describe las interacciones entre los usuarios y el sistema, detallando los flujos principales y alternativos para cada funcionalidad.
 
+- [Funcionalidad extra](funcionalidadExtra.md): Este documento describe las características adicionales del proyecto que mejoran su rendimiento y experiencia de usuario. 
+
 ## Propósito de la Documentación
 
 Esta colección de documentos proporciona una visión integral de la arquitectura, diseño e implementación de HistoriApp. Está destinada a desarrolladores, diseñadores y otros stakeholders involucrados en el mantenimiento, evolución o comprensión del sistema.
