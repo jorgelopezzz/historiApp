@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 
 import dominio.HistoriApp;
 import dominio.metodoAprendizaje.MetodoAprendizaje;
+import gui.componentes.Componente;
 import gui.componentes.contenidos.ComponenteContenido;
 import gui.componentes.contenidos.ComponenteCurso;
 import gui.emergentes.EmergenteMetodoAprendizaje;
@@ -17,7 +18,7 @@ import gui.ventanas.VentanaBloques;
 @SuppressWarnings("serial")
 public class ScrollCursos extends Scroll {
 
-	public ScrollCursos(JFrame ventanaMadre, SelectorVentana selector, List<ComponenteContenido> componentesCursos) {
+	public ScrollCursos(JFrame ventanaMadre, SelectorVentana selector, List<Componente> componentesCursos) {
 		super(ventanaMadre, selector, componentesCursos);
 	}
 

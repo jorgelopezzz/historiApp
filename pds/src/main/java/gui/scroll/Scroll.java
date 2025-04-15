@@ -18,7 +18,6 @@ import javax.swing.border.EmptyBorder;
 
 import gui.GestorGUI;
 import gui.componentes.Componente;
-import gui.componentes.contenidos.ComponenteContenido;
 import gui.componentes.contenidos.ComponenteCurso;
 import gui.ventanas.SelectorVentana;
 
@@ -30,10 +29,14 @@ public abstract class Scroll extends JScrollPane {
 	protected SelectorVentana selector;
 	
 	/* Lista de componentes */
-	protected JList<ComponenteContenido> listaComponentes;
+	protected JList<Componente> listaComponentes;
 	protected JFrame ventanaMadre;
 	
-	public Scroll(JFrame ventanaMadre, SelectorVentana selector, List<ComponenteContenido> componentesCursos) {
+	public Scroll(JFrame ventanaMadre, List<Componente> componentesCursos) {
+		this(ventanaMadre, null, componentesCursos);
+	}
+	
+	public Scroll(JFrame ventanaMadre, SelectorVentana selector, List<Componente> componentesCursos) {
 		super();
 		
 		this.selector = selector;
@@ -82,18 +85,18 @@ public abstract class Scroll extends JScrollPane {
         return arrowButton;
     }
 
-	private void configurarLista(List<ComponenteContenido> componentesCursos) {
+	private void configurarLista(List<Componente> componentesCursos) {
 		/* Aspectos básicos */
-		DefaultListModel<ComponenteContenido> modelo = new DefaultListModel<>();
-        for (ComponenteContenido componente : componentesCursos) {
+		DefaultListModel<Componente> modelo = new DefaultListModel<>();
+        for (Componente componente : componentesCursos) {
             modelo.addElement(componente);
         }
-		listaComponentes = new JList<ComponenteContenido>(modelo);
+		listaComponentes = new JList<Componente>(modelo);
 		listaComponentes.setLayoutOrientation(JList.HORIZONTAL_WRAP);
 		
 		/* Dimensiones de celda */
-		listaComponentes.setFixedCellHeight(ComponenteContenido.ALTO_COMPONENTE);
-		listaComponentes.setFixedCellWidth(ComponenteContenido.ANCHO_COMPONENTE);
+		listaComponentes.setFixedCellHeight(Componente.ALTO_COMPONENTE);
+		listaComponentes.setFixedCellWidth(Componente.ANCHO_COMPONENTE);
 		listaComponentes.setVisibleRowCount(-1);
 		
 		/* Comportamiento */
@@ -103,9 +106,9 @@ public abstract class Scroll extends JScrollPane {
 	}
 	
 	private void dibujarLista() {
-		listaComponentes.setCellRenderer(new ListCellRenderer<ComponenteContenido>() {
+		listaComponentes.setCellRenderer(new ListCellRenderer<Componente>() {
 	        @Override
-	        public Component getListCellRendererComponent(JList<? extends ComponenteContenido> list, ComponenteContenido co, int index,
+	        public Component getListCellRendererComponent(JList<? extends Componente> list, Componente co, int index,
 	                                                      boolean isSelected, boolean cellHasFocus) {
 	            if(isSelected)
 	            	co.seleccionar();

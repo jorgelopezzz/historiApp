@@ -18,6 +18,7 @@ import dominio.info.contenidos.InfoBloque;
 import dominio.info.contenidos.InfoCurso;
 import dominio.metodoAprendizaje.MetodoAprendizaje;
 import gui.GestorGUI;
+import gui.componentes.Componente;
 import gui.componentes.contenidos.ComponenteBloque;
 import gui.componentes.contenidos.ComponenteContenido;
 import gui.componentes.contenidos.ComponenteCurso;
@@ -80,7 +81,7 @@ public class VentanaBloques extends VentanaMenu {
 		
 		List<InfoBloque> infoBloques = HistoriApp.INSTANCE.getBloques();
     	
-		List<ComponenteContenido> componentesBloques = infoBloques.stream()
+		List<Componente> componentesBloques = infoBloques.stream()
 			    .map(ComponenteBloque::new)
 			    .collect(Collectors.toList());
 		

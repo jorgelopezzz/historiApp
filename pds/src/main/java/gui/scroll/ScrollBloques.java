@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 
 import dominio.HistoriApp;
 import dominio.metodoAprendizaje.MetodoAprendizaje;
+import gui.componentes.Componente;
 import gui.componentes.contenidos.ComponenteBloque;
 import gui.componentes.contenidos.ComponenteContenido;
 import gui.componentes.contenidos.ComponenteCurso;
@@ -20,7 +21,7 @@ import gui.ventanas.VentanaTareas;
 public class ScrollBloques extends Scroll {
 	
 
-	public ScrollBloques(JFrame ventanaMadre, SelectorVentana selector, List<ComponenteContenido> componentes) {
+	public ScrollBloques(JFrame ventanaMadre, SelectorVentana selector, List<Componente> componentes) {
 		super(ventanaMadre, selector, componentes);
 	}
 

@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import dominio.HistoriApp;
 import dominio.info.contenidos.InfoCurso;
 import gui.GestorGUI;
+import gui.componentes.Componente;
 import gui.componentes.contenidos.ComponenteContenido;
 import gui.componentes.contenidos.ComponenteCurso;
 import gui.emergentes.EmergenteFichero;
@@ -76,7 +77,7 @@ public class VentanaCursos extends VentanaMenu {
 		
 		List<InfoCurso> infoCursos = HistoriApp.INSTANCE.getCursos();
     	
-		List<ComponenteContenido> componentesCursos = infoCursos.stream()
+		List<Componente> componentesCursos = infoCursos.stream()
 			    .map(ComponenteCurso::new)
 			    .collect(Collectors.toList());
                 

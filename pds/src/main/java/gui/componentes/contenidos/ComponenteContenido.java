@@ -139,14 +139,6 @@ public abstract class ComponenteContenido extends Componente {
 	protected void setBoton(JButton boton) {
 		this.boton = boton;
 	}
-	
-	public void seleccionar() {
-		setBackground(GestorGUI.getInstancia().getColorOscuro());
-	}
-
-	public void deseleccionar() {
-		setBackground(GestorGUI.getInstancia().getColorMedio());
-	}
 
 	public String getTitulo() {
 		return titulo;

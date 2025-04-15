@@ -2,6 +2,8 @@ package gui.emergentes;
 
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -13,6 +15,8 @@ import gui.GestorGUI;
 
 public class EmergenteTriple extends EmergenteSiNo{
 
+	private JButton botonVer;
+	
 	public EmergenteTriple(JFrame ventanaMadre, String mensaje) {
 		super(ventanaMadre, mensaje);
 	}
@@ -34,8 +38,9 @@ public class EmergenteTriple extends EmergenteSiNo{
 		panelSuperior.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 		/* Botón ver valoraciones */
-		JButton botonVer = GestorGUI.getBotonPredeterminadoLargo("Ver valoraciones");
+		botonVer = GestorGUI.getBotonPredeterminadoLargo("Ver valoraciones");
 		botonVer.setAlignmentX(Component.CENTER_ALIGNMENT);
+		manejadorVer();
 		
 		/* Montaje */
 		panelBotones.add(panelSuperior);
@@ -44,6 +49,16 @@ public class EmergenteTriple extends EmergenteSiNo{
 		
 		GestorGUI.fijarTamano(350, 300, this);
 		panelTexto.add(panelBotones);
+	}
+	
+	private void manejadorVer() {
+		botonVer.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				EmergenteVerValoraciones emergente = new EmergenteVerValoraciones(ventanaMadre);
+				emergente.mostrar();
+			}
+		});
 	}
 	
 }
