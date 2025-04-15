@@ -15,9 +15,8 @@ import gui.GestorGUI;
 
 @SuppressWarnings("serial")
 public class EmergenteSiNo extends EmergenteBotones {
-	// le falta añadir un Jpanel para meter los botones
 
-	private JPanel panelBotones;
+	protected JPanel panelBotones;
 
 	/* Botones */
 	private JButton botonNo;
@@ -43,8 +42,13 @@ public class EmergenteSiNo extends EmergenteBotones {
 	@Override
 	protected void botones_montaje() {
 		/* Panel Botones */
-		panelBotones = new JPanel();
-		GestorGUI.configurarPanel(panelBotones, new BoxLayout(panelBotones, BoxLayout.X_AXIS), false);	
+		panelBotones = construirPanelSiNo();
+		panelTexto.add(panelBotones);
+	}
+	
+	protected JPanel construirPanelSiNo() {
+		JPanel panel = new JPanel();
+		GestorGUI.configurarPanel(panel, new BoxLayout(panel, BoxLayout.X_AXIS), false);	
 		
 		/* Botón No*/
 		botonNo = GestorGUI.getBotonPredeterminado("No");
@@ -57,11 +61,11 @@ public class EmergenteSiNo extends EmergenteBotones {
 		manejadorSi();
 
 		/* Montaje */
-		panelBotones.add(botonNo);
-		panelBotones.add(Box.createHorizontalStrut(MARGEN));
-		panelBotones.add(botonSi);
-
-		panelTexto.add(panelBotones);
+		panel.add(botonNo);
+		panel.add(Box.createHorizontalStrut(MARGEN));
+		panel.add(botonSi);
+		return panel;
+		
 	}
 	
 	private JButton manejadorNo() {

@@ -10,6 +10,7 @@ import gui.componentes.contenidos.ComponenteContenido;
 import gui.componentes.contenidos.ComponenteCurso;
 import gui.emergentes.EmergenteMetodoAprendizaje;
 import gui.emergentes.EmergenteSiNo;
+import gui.emergentes.EmergenteTriple;
 import gui.ventanas.SelectorVentana;
 import gui.ventanas.VentanaBloques;
 
@@ -29,7 +30,7 @@ public class ScrollCursos extends Scroll {
 	                int index = listaComponentes.locationToIndex(evt.getPoint());
 	                if (index != -1) {
 	                    ComponenteCurso cursoSeleccionado = (ComponenteCurso) listaComponentes.getModel().getElementAt(index);
-	                    EmergenteSiNo emergente1 = new EmergenteSiNo(ventanaMadre, "¿Deseas acceder a este curso?");
+	                    EmergenteTriple emergente1 = new EmergenteTriple(ventanaMadre, "¿Deseas acceder a este curso?");
 	    				emergente1.mostrar();
 	    				if(emergente1.obtenerRespuesta().orElse(false)) {
 	    					if(! HistoriApp.INSTANCE.usuarioMatriculado(cursoSeleccionado.getTitulo())) {
