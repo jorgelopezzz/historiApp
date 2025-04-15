@@ -20,7 +20,8 @@ public class RealizacionCurso {
     private Curso curso;
 	@Column(nullable = false)
 	private String cursoNombre;
-	@ManyToOne(optional = false)
+	@ManyToOne
+	@JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
 	@Column(nullable = false)
     private LocalDate fechaMatricula;
@@ -115,6 +116,10 @@ public class RealizacionCurso {
 	
 	public List<RealizacionBloque> getBloques() {
 		return List.copyOf(listaBloques);
+	}
+
+	public void setUsuario(Usuario usuario) {
+	    this.usuario = usuario;
 	}
 	
 }

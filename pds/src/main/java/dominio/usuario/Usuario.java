@@ -18,7 +18,7 @@ import dominio.metodoAprendizaje.MetodoAprendizaje;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = "usuarios")
+@Table(name = "usuario")
 public class Usuario {
     
     private static final String RUTA_PERFIL_PREDETERMINADO = "/perfil.png";
@@ -44,13 +44,13 @@ public class Usuario {
     
     @Column(nullable = true)
     protected int cursosCompletados;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "usuario")
-    private List<RealizacionCurso> cursos;
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<RealizacionCurso> cursos = new ArrayList<>();
     
     /* Estadísticas */
     @Column(nullable = true)
     protected int puntuacion;
-    @Column(nullable = true)
+    @Convert(converter = DurationConverter.class)
     protected Duration tiempoUso;
 	@Column(nullable = true)
     protected int diasUso;
@@ -227,6 +227,4 @@ public class Usuario {
 		}
 		return false;
 	}
-	
-	
 }

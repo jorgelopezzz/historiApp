@@ -13,7 +13,7 @@ public class RealizacionBloque {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "realizacion_curso_id")
+    @JoinColumn(name = "realizacionCurso_id")
     private RealizacionCurso realizacionCurso;
 	
 	/* Atributos iniciales */
