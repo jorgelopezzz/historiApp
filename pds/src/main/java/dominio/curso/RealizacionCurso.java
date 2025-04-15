@@ -1,6 +1,7 @@
 package dominio.curso;
 
 import jakarta.persistence.*;
+import jakarta.transaction.Transactional;
 import repositorios.RepositorioCursos;
 
 import java.time.LocalDate;
@@ -76,18 +77,19 @@ public class RealizacionCurso {
     			
     }
     
+    @Transactional //MUY IMPORTANTEEE
     public void completarBloque(BloqueContenidos bloque, double puntuacion) {
         getRealizacionBloque(bloque).ifPresentOrElse(
             // Caso 1: El bloque ya ha sido realizado
             rb -> {
                 if (rb.getPuntuacion() < puntuacion) {
                     listaBloques.remove(rb);
-                    listaBloques.add(new RealizacionBloque(bloque, puntuacion));
+                    listaBloques.add(new RealizacionBloque(this, bloque, puntuacion));
                 }
             },
             // Caso 2: El bloque no ha sido realizado
             () -> {
-                listaBloques.add(new RealizacionBloque(bloque, puntuacion));
+                listaBloques.add(new RealizacionBloque(this, bloque, puntuacion));
                 bloquesCompletados++;
             }
         );

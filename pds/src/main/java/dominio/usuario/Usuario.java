@@ -1,6 +1,9 @@
 package dominio.usuario;
 
 import jakarta.persistence.*;
+import jakarta.transaction.Transactional;
+import repositorios.RepositorioUsuarios;
+
 import java.io.File;
 import java.net.URISyntaxException;
 import java.time.Duration;
@@ -153,6 +156,7 @@ public class Usuario {
 
     public boolean cerrarSesion(){
         tiempoUso = tiempoUso.plus(Duration.between(inicioSesion, LocalDateTime.now()));
+        RepositorioUsuarios.INSTANCE.actualizarUsuario(this);
         return true;
     }
 
@@ -173,19 +177,24 @@ public class Usuario {
 		return getRealizacion(nombreCurso).isPresent();
 	}
 	
+	@Transactional //MUY IMPORTANTEEE
 	public boolean matricularCurso(Curso curso, MetodoAprendizaje metodoAprendizaje) {
 		if(! estaMatriculado(curso.getTitulo())) {
-			cursos.add(new RealizacionCurso(curso, this, metodoAprendizaje));
+			RealizacionCurso rc = new RealizacionCurso(curso, this, metodoAprendizaje);
+			cursos.add(rc);
+			RepositorioUsuarios.INSTANCE.actualizarUsuario(this);
 			return true;
 		}
 		return false;
 	}
 	
+	@Transactional //MUY IMPORTANTEEE
 	public void completarBloque(Curso curso, BloqueContenidos bloque, double puntuacion) {
 		/* Caso 1: El usuario no está matriculado en el curso */
 		getRealizacion(curso.getTitulo()).ifPresentOrElse(
 				rc -> rc.completarBloque(bloque, puntuacion),
 				() -> {throw new IllegalStateException("El usuario no está matriculado en el curso.");});
+		RepositorioUsuarios.INSTANCE.actualizarUsuario(this);
 		
 	}
 	
