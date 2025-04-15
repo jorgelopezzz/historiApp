@@ -1,0 +1,54 @@
+{
+    "titulo": "Curso de Prueba: La Pipa de la Paz y Otros Malentendidos",
+    "descripcion": "Un curso corto con humor irónico y liviano sobre estereotipos históricos y la pipa de la paz, sin perder el respeto por las culturas indígenas.",
+    "rutaImagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8PWf2CJv0du3ralp1TrPNDJOVMVQGjZYLFw&s",
+    "bloquesContenidos": [
+      {
+        "titulo": "Bloque 1: Fumando la Pipa de la Paz",
+        "descripcion": "Explorando la famosa pipa de la paz... y lo que *no* significa realmente.",
+        "rutaImagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8PWf2CJv0du3ralp1TrPNDJOVMVQGjZYLFw&s",
+        "tareas": [
+          {
+            "tipo": "PreguntaTipoTest",
+            "enunciado": "¿Qué creían los colonos europeos que contenía la pipa de la paz?",
+            "opciones": [
+              "Tabaco ceremonial",
+              "El secreto del universo",
+              "Una receta de chili picante",
+              "Algo ilegal (según ellos)"
+            ],
+            "correcta": 0
+          },
+          {
+            "tipo": "PreguntaVF",
+            "enunciado": "La pipa de la paz era solo un objeto ceremonial, no un producto de la industria tabacalera.",
+            "esVerdadero": true
+          }
+        ]
+      },
+      {
+        "titulo": "Bloque 2: Confusiones Históricas",
+        "descripcion": "Algunos malentendidos divertidos sobre los pueblos originarios y los colonizadores.",
+        "rutaImagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8PWf2CJv0du3ralp1TrPNDJOVMVQGjZYLFw&s",
+        "tareas": [
+          {
+            "tipo": "PreguntaRellenar",
+            "enunciado": "Cuando el jefe indio dijo 'Habla con lengua ________', no se refería a un examen de idiomas.",
+            "respuesta": "de serpiente"
+          },
+          {
+            "tipo": "PreguntaTipoTest",
+            "enunciado": "¿Por qué algunos creen que los indígenas eran expertos en señales de humo?",
+            "opciones": [
+              "Porque es cierto, eran un medio de comunicación",
+              "Por las películas del oeste",
+              "Porque no había Wi-Fi en 1492",
+              "Todas las anteriores"
+            ],
+            "correcta": 3
+          }
+        ]
+      }
+    ]
+  }
+  

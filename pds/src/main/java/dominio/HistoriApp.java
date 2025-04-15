@@ -10,7 +10,6 @@ import java.util.Optional;
 
 import dominio.curso.BloqueContenidos;
 import dominio.curso.Curso;
-import dominio.curso.RepositorioCursos;
 import dominio.info.Info;
 import dominio.info.contenidos.InfoBloque;
 import dominio.info.contenidos.InfoCurso;
@@ -21,8 +20,9 @@ import dominio.metodoAprendizaje.IteradorTarea;
 import dominio.metodoAprendizaje.MetodoAprendizaje;
 import dominio.tarea.Tarea;
 import dominio.usuario.Profesor;
-import dominio.usuario.RepositorioUsuarios;
 import dominio.usuario.Usuario;
+import repositorios.RepositorioCursos;
+import repositorios.RepositorioUsuarios;
 
 public enum HistoriApp {
 	INSTANCE;
@@ -200,10 +200,12 @@ public enum HistoriApp {
 	    }
 	    
 	    Path origen = Paths.get(rutaCurso);
-	    Path destino = Paths.get("src/main/resources/" + origen.getFileName());
+	    Path destino = Paths.get("resources/cursos/" + origen.getFileName());
+	   
 	    
 	    try {
 	        Files.copy(origen, destino, StandardCopyOption.REPLACE_EXISTING);
+	        cursos.anadirCurso(destino.toString());
 	        return true;
 	    } catch (IOException e) {
 	        e.printStackTrace();

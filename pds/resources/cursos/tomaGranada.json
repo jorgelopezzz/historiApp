@@ -1,0 +1,104 @@
+{
+    "titulo": "La Toma de Granada y el Fin de la Reconquista",
+    "descripcion": "Un recorrido por los hechos que pusieron fin a casi ocho siglos de presencia musulmana en la península ibérica, marcando el inicio de la España unificada bajo los Reyes Católicos.",
+    "rutaImagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMmZBhiSdZOahxC7HK7PRBO_MXXrfPnitx6g&s",
+    "bloquesContenidos": [
+      {
+        "titulo": "El Reino Nazarí de Granada",
+        "descripcion": "Último bastión musulmán en la península ibérica, el Reino de Granada resistió durante más de dos siglos a los avances cristianos.",
+        "rutaImagen": "https://i.pinimg.com/736x/5b/e1/c9/5be1c9b375f4a57a77ef5c510b8de668.jpg",
+        "tareas": [
+          {
+            "tipo": "Tip",
+            "enunciado": "El Reino Nazarí de Granada fue fundado en 1238 por Muhammad I ibn Nasr y se mantuvo como vasallo de Castilla durante largos periodos."
+          },
+          {
+            "tipo": "PreguntaTipoTest",
+            "enunciado": "¿Qué dinastía gobernaba el Reino de Granada antes de su caída?",
+            "opciones": [
+              "Omeya",
+              "Almohade",
+              "Nazarí",
+              "Abasí"
+            ],
+            "correcta": 2
+          },
+          {
+            "tipo": "PreguntaRellenar",
+            "enunciado": "La famosa ciudad andaluza que albergaba la Alhambra y era la capital del último reino musulmán fue ________.",
+            "respuesta": "Granada"
+          },
+          {
+            "tipo": "PreguntaVF",
+            "enunciado": "Durante siglos, Granada pagó tributo a Castilla a cambio de mantener su independencia.",
+            "esVerdadero": true
+          }
+        ]
+      },
+      {
+        "titulo": "La Guerra de Granada (1482–1492)",
+        "descripcion": "El conflicto militar que culminó con la rendición de Granada tras diez años de asedio y campañas militares dirigidas por los Reyes Católicos.",
+        "rutaImagen": "https://historia.nationalgeographic.com.es/medio/2018/02/28/fernando-de-aragon-e-isabel-de-castilla__1280x704.jpgs",
+        "tareas": [
+          {
+            "tipo": "Tip",
+            "enunciado": "La guerra comenzó en 1482 con la conquista de Alhama de Granada y se caracterizó por asedios prolongados y una fuerte participación de tropas de toda la Corona de Castilla."
+          },
+          {
+            "tipo": "PreguntaTipoTest",
+            "enunciado": "¿Quiénes lideraron las campañas cristianas en la guerra de Granada?",
+            "opciones": [
+              "Carlos V y Juana la Loca",
+              "Fernando e Isabel",
+              "Felipe II y María Tudor",
+              "Alfonso X y Sancho IV"
+            ],
+            "correcta": 1
+          },
+          {
+            "tipo": "PreguntaRellenar",
+            "enunciado": "El último emir de Granada, ________ ________, rindió la ciudad a los Reyes Católicos en 1492.",
+            "respuesta": "Boabdil el Chico"
+          },
+          {
+            "tipo": "PreguntaVF",
+            "enunciado": "La toma de Granada fue un evento simbólico que marcó el fin de la Edad Media en la península ibérica.",
+            "esVerdadero": true
+          }
+        ]
+      },
+      {
+        "titulo": "La Capitulación de Granada",
+        "descripcion": "Estudio del acuerdo que permitió la entrega pacífica de la ciudad y sus consecuencias para la población musulmana.",
+        "rutaImagen": "https://static.ideal.es/www/pre2017/multimedia/noticias/201512/30/media/cortadas/rendicion_granada--575x323.jpg",
+        "tareas": [
+          {
+            "tipo": "Tip",
+            "enunciado": "La Capitulación de Granada aseguraba inicialmente la libertad religiosa y el respeto por la propiedad de los musulmanes, aunque pronto esas condiciones fueron incumplidas."
+          },
+          {
+            "tipo": "PreguntaTipoTest",
+            "enunciado": "¿Qué garantía ofrecieron inicialmente los Reyes Católicos a los musulmanes de Granada?",
+            "opciones": [
+              "Expulsión inmediata",
+              "Conversión forzada",
+              "Libertad religiosa",
+              "Indemnización económica"
+            ],
+            "correcta": 2
+          },
+          {
+            "tipo": "PreguntaRellenar",
+            "enunciado": "El documento firmado entre Boabdil y los Reyes Católicos se conoce como las ________ de Granada.",
+            "respuesta": "Capitulaciones"
+          },
+          {
+            "tipo": "PreguntaVF",
+            "enunciado": "Las Capitulaciones de Granada se respetaron estrictamente durante todo el reinado de los Reyes Católicos.",
+            "esVerdadero": false
+          }
+        ]
+      }
+    ]
+  }
+  

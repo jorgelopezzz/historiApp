@@ -126,7 +126,13 @@ public class GestorGUI {
 	}
 	
 	public ImageIcon iconoDeRecursos(String ruta, int ancho, int alto) {
-		return escalarIcono(new ImageIcon(getClass().getResource(ruta)), ancho, alto);			
+		URL url = getClass().getResource(ruta);
+		if(url == null) {
+			System.err.println("No se pudo cargar la imagen desde la ruta: " + ruta);
+			return null;
+		}
+		ImageIcon icono = new ImageIcon(url);
+		return escalarIcono(icono, ancho, alto);			
 	}
 	
 	public static TitledBorder bordeTexto(String texto, Font fuente, Color colorFuente, Color colorBorde) {

@@ -1,6 +1,8 @@
 package dominio.curso;
 
 import jakarta.persistence.*;
+import repositorios.RepositorioCursos;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
