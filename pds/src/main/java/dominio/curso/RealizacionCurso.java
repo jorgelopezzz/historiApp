@@ -1,6 +1,7 @@
 package dominio.curso;
 
 import jakarta.persistence.*;
+import jakarta.transaction.Transactional;
 import repositorios.RepositorioCursos;
 
 import java.time.LocalDate;
@@ -22,7 +23,8 @@ public class RealizacionCurso {
     private Curso curso;
 	@Column(nullable = false)
 	private String cursoNombre;
-	@ManyToOne(optional = false)
+	@ManyToOne
+	@JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
 	@Column(nullable = false)
     private LocalDate fechaMatricula;
@@ -75,18 +77,19 @@ public class RealizacionCurso {
     			
     }
     
+    @Transactional //MUY IMPORTANTEEE
     public void completarBloque(BloqueContenidos bloque, double puntuacion) {
         getRealizacionBloque(bloque).ifPresentOrElse(
             // Caso 1: El bloque ya ha sido realizado
             rb -> {
                 if (rb.getPuntuacion() < puntuacion) {
                     listaBloques.remove(rb);
-                    listaBloques.add(new RealizacionBloque(bloque, puntuacion));
+                    listaBloques.add(new RealizacionBloque(this, bloque, puntuacion));
                 }
             },
             // Caso 2: El bloque no ha sido realizado
             () -> {
-                listaBloques.add(new RealizacionBloque(bloque, puntuacion));
+                listaBloques.add(new RealizacionBloque(this, bloque, puntuacion));
                 bloquesCompletados++;
             }
         );
@@ -117,6 +120,10 @@ public class RealizacionCurso {
 	
 	public List<RealizacionBloque> getBloques() {
 		return List.copyOf(listaBloques);
+	}
+
+	public void setUsuario(Usuario usuario) {
+	    this.usuario = usuario;
 	}
 	
 }

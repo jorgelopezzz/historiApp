@@ -37,7 +37,7 @@ public enum HistoriApp {
 	private HistoriApp() {
 		usuarios = RepositorioUsuarios.INSTANCE;
 		cursos = RepositorioCursos.INSTANCE;
-		registrarUsuario("a", "a", "a", null, "a");
+		//registrarUsuario("a", "a", "a", null, "a");
 	}
 	
 	// NO CASOS DE USO

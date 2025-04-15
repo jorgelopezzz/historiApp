@@ -1,6 +1,9 @@
 package dominio.usuario;
 
 import jakarta.persistence.*;
+import jakarta.transaction.Transactional;
+import repositorios.RepositorioUsuarios;
+
 import java.io.File;
 import java.net.URISyntaxException;
 import java.time.Duration;
@@ -18,7 +21,7 @@ import dominio.metodoAprendizaje.MetodoAprendizaje;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = "usuarios")
+@Table(name = "usuario")
 public class Usuario {
     
     private static final String RUTA_PERFIL_PREDETERMINADO = "/perfil.png";
@@ -44,13 +47,13 @@ public class Usuario {
     
     @Column(nullable = true)
     protected int cursosCompletados;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "usuario")
-    private List<RealizacionCurso> cursos;
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<RealizacionCurso> cursos = new ArrayList<>();
     
     /* Estadísticas */
     @Column(nullable = true)
     protected int puntuacion;
-    @Column(nullable = true)
+    @Convert(converter = DurationConverter.class)
     protected Duration tiempoUso;
 	@Column(nullable = true)
     protected int diasUso;
@@ -153,6 +156,7 @@ public class Usuario {
 
     public boolean cerrarSesion(){
         tiempoUso = tiempoUso.plus(Duration.between(inicioSesion, LocalDateTime.now()));
+        RepositorioUsuarios.INSTANCE.actualizarUsuario(this);
         return true;
     }
 
@@ -173,19 +177,24 @@ public class Usuario {
 		return getRealizacion(nombreCurso).isPresent();
 	}
 	
+	@Transactional //MUY IMPORTANTEEE
 	public boolean matricularCurso(Curso curso, MetodoAprendizaje metodoAprendizaje) {
 		if(! estaMatriculado(curso.getTitulo())) {
-			cursos.add(new RealizacionCurso(curso, this, metodoAprendizaje));
+			RealizacionCurso rc = new RealizacionCurso(curso, this, metodoAprendizaje);
+			cursos.add(rc);
+			RepositorioUsuarios.INSTANCE.actualizarUsuario(this);
 			return true;
 		}
 		return false;
 	}
 	
+	@Transactional //MUY IMPORTANTEEE
 	public void completarBloque(Curso curso, BloqueContenidos bloque, double puntuacion) {
 		/* Caso 1: El usuario no está matriculado en el curso */
 		getRealizacion(curso.getTitulo()).ifPresentOrElse(
 				rc -> rc.completarBloque(bloque, puntuacion),
 				() -> {throw new IllegalStateException("El usuario no está matriculado en el curso.");});
+		RepositorioUsuarios.INSTANCE.actualizarUsuario(this);
 		
 	}
 	
@@ -227,6 +236,4 @@ public class Usuario {
 		}
 		return false;
 	}
-	
-	
 }

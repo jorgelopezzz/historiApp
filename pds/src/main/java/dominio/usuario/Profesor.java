@@ -8,7 +8,7 @@ import dominio.info.usuario.infoPerfilUsuario;
 
 @Entity
 @Table(name = "profesores")
-@PrimaryKeyJoinColumn(name = "nombre") // Clave foránea que apunta a Usuario.nombre
+@PrimaryKeyJoinColumn(name = "id") // Clave foránea que apunta a Usuario.id
 public class Profesor extends Usuario {
 
 	private int cursosPublicados;
