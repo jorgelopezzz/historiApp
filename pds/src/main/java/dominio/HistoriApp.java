@@ -263,4 +263,8 @@ public enum HistoriApp {
 	public boolean hacerValoracion(String comentario, int puntuacion) {
 		return usuario.hacerValoracion(cursoActual, comentario, puntuacion);		
 	}
+	
+	public boolean hayAlgunBloqueCompletado() {
+		return usuario.getBloquesCompletados() > 0;
+	}
 }

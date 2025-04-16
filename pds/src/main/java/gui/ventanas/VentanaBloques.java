@@ -22,6 +22,7 @@ import gui.componentes.Componente;
 import gui.componentes.contenidos.ComponenteBloque;
 import gui.componentes.contenidos.ComponenteContenido;
 import gui.componentes.contenidos.ComponenteCurso;
+import gui.emergentes.EmergenteMensaje;
 import gui.emergentes.EmergenteValoracion;
 import gui.scroll.ScrollBloques;
 
@@ -89,8 +90,13 @@ public class VentanaBloques extends VentanaMenu {
 		botonValorar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				EmergenteValoracion emergenteValoracion = new EmergenteValoracion(VentanaBloques.this);
-				emergenteValoracion.mostrar();
+				if(HistoriApp.INSTANCE.hayAlgunBloqueCompletado()) {
+					EmergenteValoracion emergenteValoracion = new EmergenteValoracion(VentanaBloques.this);
+					emergenteValoracion.mostrar();				
+				} else {
+					EmergenteMensaje emergenteMensaje = new EmergenteMensaje(VentanaBloques.this, "Tienes que completar al menos un bloque para valorar este curso.");
+					emergenteMensaje.mostrar();
+				}
 			}
 		});
 	}
