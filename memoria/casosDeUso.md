@@ -178,7 +178,7 @@ Una vez que el Estudiante/Profesor ha cursado total o parcialmente un curso, el 
 6. El sistema registra la reseña y la asocia al curso.
 
 **Flujo alternativo:**
-- 2a. Si el Estudiante/Profesor intenta acceder a la reseña sin haber accedido al curso, el sistema muestra un mensaje de error y no permite continuar.
+- 2a. Si el Estudiante/Profesor intenta acceder a la reseña sin haber accedido a al menos un bloque, el sistema muestra un mensaje de error y no permite continuar.
 - 5a. Si el Estudiante/Profesor no escribe ningún comentario, se registra solo la valoración numérica.
 
 **Postcondiciones:**  
