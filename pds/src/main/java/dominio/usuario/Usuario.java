@@ -11,10 +11,12 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import dominio.curso.BloqueContenidos;
 import dominio.curso.Curso;
 import dominio.curso.RealizacionCurso;
+import dominio.curso.Valoracion;
 import dominio.info.usuario.infoEstadisticas;
 import dominio.info.usuario.infoPerfilUsuario;
 import dominio.metodoAprendizaje.MetodoAprendizaje;
@@ -60,6 +62,9 @@ public class Usuario {
     @Column(nullable = true)
     protected int maxRacha;
     
+    /* Valoraciones */
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Valoracion> valoraciones = new ArrayList<>();
 
     @Transient
     private LocalDateTime inicioSesion;
@@ -86,7 +91,6 @@ public class Usuario {
         this.imagen = imagen == null ? RUTA_PERFIL_PREDETERMINADO : imagen;
         this.saludo = saludo;
 
-        this.cursos = new ArrayList<RealizacionCurso>();
         
         this.tiempoUso = Duration.ofSeconds(0);
         this.diasUso = 0;
@@ -97,7 +101,17 @@ public class Usuario {
 
     // Getters y setters
 
-    public String getNombre() {
+    public List<Valoracion> getValoraciones() {
+		return List.copyOf(valoraciones);
+	}
+    
+    public List<Valoracion> getValoracionesPorCursoNombre(String cursoNombre) {
+    	return valoraciones.stream()
+    			.filter(v -> v.getCursoNombre().equals(cursoNombre))
+    			.collect(Collectors.toList());
+    }
+
+	public String getNombre() {
         return nombre;
     }
 
@@ -235,5 +249,9 @@ public class Usuario {
 				.anyMatch( rb -> rb.getBloque().getTitulo().equals(nombreBloque));
 		}
 		return false;
+	}
+
+	public boolean hacerValoracion(Curso curso, String comentario, int puntuacion) {
+		return valoraciones.add(new Valoracion(curso, this, puntuacion, comentario));
 	}
 }

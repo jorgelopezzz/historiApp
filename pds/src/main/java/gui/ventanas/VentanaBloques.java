@@ -29,13 +29,9 @@ import gui.scroll.ScrollBloques;
 public class VentanaBloques extends VentanaMenu {
 	
 	/* Componentes de organización */
-	//private ComponenteCurso cursoSeleccionado;
 	private JLabel etiquetaBienvenida;
 	private JButton botonVolver;
 	private JButton botonValorar;
-		
-	/* Método de aprendizaje */
-	//private MetodoAprendizaje metodoAprendizaje;
 	
 	public VentanaBloques(SelectorVentana selector) {
 	        super(selector);

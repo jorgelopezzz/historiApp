@@ -2,6 +2,7 @@ package gui.emergentes;
 
 import javax.swing.*;
 
+import dominio.HistoriApp;
 import gui.GestorGUI;
 
 import java.awt.*;
@@ -93,7 +94,7 @@ public class EmergenteValoracion extends Emergente {
             public void actionPerformed(ActionEvent e) {
                 int valor = sliderValoracion.getValue();
                 String comentario = campoComentario.getText();
-                // HistoriApp.INSTANCE.hacerValoracion(valor, comentario);
+                HistoriApp.INSTANCE.hacerValoracion(comentario, valor);
                 cerrar();
             }
         });

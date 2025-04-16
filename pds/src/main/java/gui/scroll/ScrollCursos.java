@@ -31,7 +31,7 @@ public class ScrollCursos extends Scroll {
 	                int index = listaComponentes.locationToIndex(evt.getPoint());
 	                if (index != -1) {
 	                    ComponenteCurso cursoSeleccionado = (ComponenteCurso) listaComponentes.getModel().getElementAt(index);
-	                    EmergenteTriple emergente1 = new EmergenteTriple(ventanaMadre, "¿Deseas acceder a este curso?");
+	                    EmergenteTriple emergente1 = new EmergenteTriple(ventanaMadre, cursoSeleccionado.getTitulo(), "¿Deseas acceder a este curso?");
 	    				emergente1.mostrar();
 	    				if(emergente1.obtenerRespuesta().orElse(false)) {
 	    					if(! HistoriApp.INSTANCE.usuarioMatriculado(cursoSeleccionado.getTitulo())) {

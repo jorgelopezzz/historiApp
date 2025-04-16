@@ -1,7 +1,6 @@
 package gui.emergentes;
 
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,12 +12,15 @@ import javax.swing.JPanel;
 
 import gui.GestorGUI;
 
+@SuppressWarnings("serial")
 public class EmergenteTriple extends EmergenteSiNo{
 
 	private JButton botonVer;
+	private String cursoTitulo;
 	
-	public EmergenteTriple(JFrame ventanaMadre, String mensaje) {
+	public EmergenteTriple(JFrame ventanaMadre, String cursoTitulo, String mensaje) {
 		super(ventanaMadre, mensaje);
+		this.cursoTitulo = cursoTitulo;
 	}
 
 	@Override
@@ -55,7 +57,7 @@ public class EmergenteTriple extends EmergenteSiNo{
 		botonVer.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				EmergenteVerValoraciones emergente = new EmergenteVerValoraciones(ventanaMadre);
+				EmergenteVerValoraciones emergente = new EmergenteVerValoraciones(ventanaMadre, cursoTitulo);
 				emergente.mostrar();
 			}
 		});

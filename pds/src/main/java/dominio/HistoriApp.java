@@ -7,10 +7,12 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import dominio.curso.BloqueContenidos;
 import dominio.curso.Curso;
 import dominio.info.Info;
+import dominio.info.InfoValoracion;
 import dominio.info.contenidos.InfoBloque;
 import dominio.info.contenidos.InfoCurso;
 import dominio.info.usuario.infoEstadisticas;
@@ -245,4 +247,20 @@ public enum HistoriApp {
 		return bloqueCompletado(cursoActual.getTitulo(), nombreBloque);
 	}
 	
+	/* Ver y crear valoraciones */
+	public List<InfoValoracion> obtenerValoraciones() {
+		return usuario.getValoraciones().stream()
+				.map(InfoValoracion::new)
+				.collect(Collectors.toList());
+	}
+	
+	public List<InfoValoracion> obtenerValoracionesPorCursoNombre(String cursoNombre) {
+		return usuario.getValoracionesPorCursoNombre(cursoNombre).stream()
+				.map(InfoValoracion::new)
+				.collect(Collectors.toList());
+	}
+	
+	public boolean hacerValoracion(String comentario, int puntuacion) {
+		return usuario.hacerValoracion(cursoActual, comentario, puntuacion);		
+	}
 }
