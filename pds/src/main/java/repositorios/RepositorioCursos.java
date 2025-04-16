@@ -7,6 +7,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import dominio.ServicioJSON;
@@ -59,11 +61,11 @@ public enum RepositorioCursos {
 		return cursosPorNombre.get(nombreCurso);
 	}
     
-    public BloqueContenidos buscarBloquePorNombre(String nombreBloque) {
+    public Optional<BloqueContenidos> buscarBloquePorNombre(String nombreBloque) {
 		return cursosPorNombre.values().stream()
-				.map(curso -> curso.getBloquePorNombre(nombreBloque)) 
-				.findFirst()
-				.orElse(null);
+				.map(curso -> curso.getBloquePorNombre(nombreBloque))
+				.filter(Objects::nonNull)
+				.findFirst();
 	}
     
     public List<BloqueContenidos> getBloques(Curso curso) {

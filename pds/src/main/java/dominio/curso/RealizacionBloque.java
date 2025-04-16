@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import repositorios.RepositorioCursos;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Entity
 public class RealizacionBloque {
@@ -14,8 +13,8 @@ public class RealizacionBloque {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "realizacion_curso_id")
+	@ManyToOne
+	@JoinColumn(name = "realizacionCurso_id", nullable = false)
     private RealizacionCurso realizacionCurso;
 	
 	/* Atributos iniciales */
@@ -32,7 +31,8 @@ public class RealizacionBloque {
 	
 	protected RealizacionBloque() {}
 
-	public RealizacionBloque(BloqueContenidos bloque, double puntuacion) {
+	public RealizacionBloque(RealizacionCurso realizacionCurso, BloqueContenidos bloque, double puntuacion) {
+		this.realizacionCurso = realizacionCurso;
 		if(bloque == null)
 			throw new IllegalArgumentException("Bloque no puede ser nulo.");
 		this.bloque = bloque;
@@ -46,7 +46,9 @@ public class RealizacionBloque {
 
 	public BloqueContenidos getBloque() {
 		if(bloque == null) {
-			bloque = RepositorioCursos.INSTANCE.buscarBloquePorNombre(bloqueNombre);
+			if(bloqueNombre == null)
+				throw new IllegalStateException("El nombre del bloque no ha sido asignado.");	
+			bloque = RepositorioCursos.INSTANCE.buscarBloquePorNombre(bloqueNombre).orElseGet(null);
 		}
 		return bloque;
 	}
