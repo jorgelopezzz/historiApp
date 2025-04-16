@@ -171,7 +171,7 @@ Una vez que el Estudiante/Profesor ha cursado total o parcialmente un curso, el 
 
 **Flujo principal:**
 1. El Estudiante/Profesor accede a la sección de reseñas del curso.
-2. El sistema solicita una puntuación del 1 al 5.
+2. El sistema solicita una puntuación del 1 al 10.
 3. El Estudiante/Profesor introduce una puntuación.
 4. El sistema ofrece un campo de texto para añadir un comentario opcional.
 5. El Estudiante/Profesor escribe un comentario (opcional) y confirma el envío.
