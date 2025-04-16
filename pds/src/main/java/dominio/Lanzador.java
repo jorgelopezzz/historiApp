@@ -12,7 +12,6 @@ public class Lanzador {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					RepositorioCursos.INSTANCE.getCursos();
 					new SelectorVentana();
 				} catch (Exception e) {
 					e.printStackTrace();
