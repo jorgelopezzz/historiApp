@@ -38,7 +38,7 @@ classDiagram
     }
 
     class Valoracion {
-        - puntuacion : Double
+        - puntuacion : int
         - comentario : String
     }
 
