@@ -1,6 +1,5 @@
 package gui.ventanas;
 
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -19,9 +18,11 @@ import dominio.info.contenidos.InfoBloque;
 import dominio.info.contenidos.InfoCurso;
 import dominio.metodoAprendizaje.MetodoAprendizaje;
 import gui.GestorGUI;
+import gui.componentes.Componente;
 import gui.componentes.contenidos.ComponenteBloque;
 import gui.componentes.contenidos.ComponenteContenido;
 import gui.componentes.contenidos.ComponenteCurso;
+import gui.emergentes.EmergenteValoracion;
 import gui.scroll.ScrollBloques;
 
 @SuppressWarnings("serial")
@@ -31,6 +32,7 @@ public class VentanaBloques extends VentanaMenu {
 	//private ComponenteCurso cursoSeleccionado;
 	private JLabel etiquetaBienvenida;
 	private JButton botonVolver;
+	private JButton botonValorar;
 		
 	/* Método de aprendizaje */
 	//private MetodoAprendizaje metodoAprendizaje;
@@ -53,17 +55,21 @@ public class VentanaBloques extends VentanaMenu {
 	    panelInicial.add(Box.createHorizontalStrut(ESPACIO_HORIZONTAL_PEQUENO));
 	    ///
 	    
-	    etiquetaBienvenida = new JLabel("A continuación, puedes elegir tu bloque de contenidos.");
+	    etiquetaBienvenida = new JLabel("Elige un bloque de contenidos.");
 	    GestorGUI.configurarEtiqueta(etiquetaBienvenida, false, GestorGUI.getInstancia().getColorOscuro(), GestorGUI.getInstancia().getFuenteTexto());
-	    panelInicial.add(etiquetaBienvenida, BorderLayout.WEST);
-	    
+	    panelInicial.add(etiquetaBienvenida);
+	    panelInicial.add(Box.createHorizontalStrut(ESPACIO_HORIZONTAL_GRANDE));
 
-	    panelInicial.add(Box.createHorizontalGlue());
+	    botonValorar = GestorGUI.getBotonPredeterminadoLargo("Valorar curso");
+	    manejadorValorar();
+	    
+	    panelInicial.add(botonValorar);
+	    panelInicial.add(Box.createHorizontalStrut(ESPACIO_HORIZONTAL_PEQUENO));
 	    
 	    botonVolver = GestorGUI.getBotonPredeterminadoLargo("Volver a cursos");
 	    manejadorVolver();
 	    
-	    panelInicial.add(botonVolver, BorderLayout.EAST);
+	    panelInicial.add(botonVolver);
 	    
 	    ///
 	    panelInicial.add(Box.createHorizontalStrut(ESPACIO_HORIZONTAL_PEQUENO));
@@ -75,26 +81,28 @@ public class VentanaBloques extends VentanaMenu {
 		
 		List<InfoBloque> infoBloques = HistoriApp.INSTANCE.getBloques();
     	
-		List<ComponenteContenido> componentesBloques = infoBloques.stream()
+		List<Componente> componentesBloques = infoBloques.stream()
 			    .map(ComponenteBloque::new)
 			    .collect(Collectors.toList());
 		
-		/*ComponenteBloque[] componentes = new ComponenteBloque[5];
-		for (int i = 0; i < 5; i++) {
-	        componentes[i] = new ComponenteBloque(new InfoBloque(
-	                "Arte renacentista", "Descubre el esplendor del Renacimiento, una era de innovación artística y cultural que transformó la historia del arte. Exploraremos las obras maestras de artistas como Leonardo da Vinci, Miguel Ángel y Rafael, analizando sus técnicas, influencias y el contexto histórico que dio forma a este movimiento. Ideal para apasionados del arte y la historia.", 
-	                "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Pistachio_vera.jpg/800px-Pistachio_vera.jpg", true));
-	    }*/
-		
 		scroll = new ScrollBloques(VentanaBloques.this, selector, componentesBloques);
 		
+	}
+	
+	private void manejadorValorar() {
+		botonValorar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				EmergenteValoracion emergenteValoracion = new EmergenteValoracion(VentanaBloques.this);
+				emergenteValoracion.mostrar();
+			}
+		});
 	}
 	
 	private void manejadorVolver() {
 		botonVolver.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int rol = 1;
 				selector.cambiarVentana(new VentanaCursos(selector));
 			}
 		});

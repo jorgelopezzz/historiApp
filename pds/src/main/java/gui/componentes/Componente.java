@@ -18,17 +18,29 @@ public class Componente extends JPanel {
 	protected static final int ANCHO_IMAGEN = 300;
 	protected static final int ALTO_IMAGEN = 150;
 	
-	public Componente() {
+	public Componente(int ancho, int alto) {
 		super();
 		/* Configuración del panel */
 		setBackground(GestorGUI.getInstancia().getColorMedio());
-		GestorGUI.fijarTamano(ANCHO_COMPONENTE, ALTO_COMPONENTE, this);
+		GestorGUI.fijarTamano(ancho, alto, this);
 		setBorder(new LineBorder(GestorGUI.getInstancia().getColorBlanco()));
+	}
+	
+	public Componente() {
+		this(ANCHO_COMPONENTE, ALTO_COMPONENTE);
 	}
 	
 	public Componente(LayoutManager layout) {
 		this();
 		GestorGUI.configurarPanel(this, layout, true);
+	}
+	
+	public void seleccionar() {
+		setBackground(GestorGUI.getInstancia().getColorOscuro());
+	}
+
+	public void deseleccionar() {
+		setBackground(GestorGUI.getInstancia().getColorMedio());
 	}
 	
 }

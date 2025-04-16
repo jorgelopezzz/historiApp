@@ -151,7 +151,7 @@ public class GestorGUI {
             URL url = new URL(ruta);
             BufferedImage img = ImageIO.read(url);
             return escalarIcono(new ImageIcon(img), ancho, alto);
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.err.println("No se pudo cargar la imagen desde la ruta: " + ruta);
             return null;
         }

@@ -43,18 +43,29 @@ public abstract class EmergenteBotones extends Emergente {
 
 	/* Métodos */
 
+	protected JPanel construirPanelTexto() {
+		JPanel panel = new JPanel();
+		GestorGUI.configurarPanel(panel, new BoxLayout(panel, BoxLayout.Y_AXIS), false);
+		return panel;
+	}
+	
+	protected JPanel construirPanelEnvolvente() {
+		/* Panel envolvente */
+		JPanel panel = new JPanel();
+		GestorGUI.centrarPanel(panel, this);
+		panel.setBorder(new EmptyBorder(MARGEN, MARGEN, MARGEN, MARGEN));
+		GestorGUI.fijarTamano(ANCHO_CUADRO, ALTO_CUADRO, panel);
+		return panel;
+	}
+	
 	@Override
 	protected void construir() {
 
 		/* Panel envolvente */
-		panelEnvolvente = new JPanel();
-		GestorGUI.centrarPanel(panelEnvolvente, this);
-		GestorGUI.fijarTamano(ANCHO_CUADRO, ALTO_CUADRO, panelEnvolvente);
-		panelEnvolvente.setBorder(new EmptyBorder(MARGEN, MARGEN, MARGEN, MARGEN));
+		panelEnvolvente = construirPanelEnvolvente();
 
 		/* Panel texto */
-		panelTexto = new JPanel();
-		GestorGUI.configurarPanel(panelTexto, new BoxLayout(panelTexto, BoxLayout.Y_AXIS), false);
+		panelTexto = construirPanelTexto(); 
 
 		/* Etiqueta imagen */
 		etiquetaImagen = new JLabel();
