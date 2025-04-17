@@ -65,7 +65,3 @@ Cada una de estas secciones está diseñada para facilitar la navegación y el a
 Para el desarrollo de HistoriApp, nos hemos inspirado en plataformas educativas exitosas como [Duolingo](https://www.duolingo.com/), que utiliza la gamificación y lecciones cortas para facilitar el aprendizaje de idiomas. Duolingo ofrece características como lecciones adaptativas basadas en inteligencia artificial, seguimiento del progreso y elementos sociales que fomentan la competencia amistosa entre usuarios. Estas características han demostrado ser efectivas para mantener la motivación y mejorar la retención del aprendizaje.
 
 Al igual que Duolingo, HistoriApp incorporará elementos de gamificación y personalización para crear una experiencia de aprendizaje atractiva y efectiva en el ámbito de la historia.
-
-## Enlace a la Asignatura
-
-Para más información sobre la asignatura **Procesos de Desarrollo de Software** impartida en la Universidad de Murcia, puede consultarse el siguiente enlace: [Procesos de Desarrollo de Software - Universidad de Murcia]([https://www.um.es/web/estudios/masteres/ingenieria-software/descripcion](https://api.um.es/aulavirtual/guiasdocentes-api/public/v1/guias/1910/G/2024/E/html)).
