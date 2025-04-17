@@ -31,20 +31,26 @@ public class ScrollCursos extends Scroll {
 	                int index = listaComponentes.locationToIndex(evt.getPoint());
 	                if (index != -1) {
 	                    ComponenteCurso cursoSeleccionado = (ComponenteCurso) listaComponentes.getModel().getElementAt(index);
-	                    EmergenteTriple emergente1 = new EmergenteTriple(ventanaMadre, cursoSeleccionado.getTitulo(), "¿Deseas acceder a este curso?");
-	    				emergente1.mostrar();
-	    				if(emergente1.obtenerRespuesta().orElse(false)) {
-	    					if(! HistoriApp.INSTANCE.usuarioMatriculado(cursoSeleccionado.getTitulo())) {
-	    						/* Si el usuario no está matriculado, se matricula */
-	    						EmergenteMetodoAprendizaje emergente2 = new EmergenteMetodoAprendizaje(ventanaMadre);
-	    						emergente2.mostrar();
-	    						MetodoAprendizaje metodoAprendizaje = emergente2.obtenerRespuesta().orElse(null);
-	    						HistoriApp.INSTANCE.matricularCurso(cursoSeleccionado.getTitulo(), metodoAprendizaje);
-	    					}
-		    				HistoriApp.INSTANCE.realizarCurso(cursoSeleccionado.getTitulo());
-	    					selector.cambiarVentana(new VentanaBloques(selector));
-	    				}
-	                }
+	                    EmergenteTriple emergente;
+	                    if(HistoriApp.INSTANCE.usuarioMatriculado(cursoSeleccionado.getTitulo())) {
+	                    	emergente = new EmergenteTriple(ventanaMadre, cursoSeleccionado.getTitulo(), "¿Deseas acceder a este curso?");
+	                    	emergente.mostrar();
+	                    	if(emergente.obtenerRespuesta().orElse(false)) {
+	                    		HistoriApp.INSTANCE.realizarCurso(cursoSeleccionado.getTitulo());
+		    					selector.cambiarVentana(new VentanaBloques(selector));
+	                    	}
+	                    } else {
+	                    	emergente = new EmergenteTriple(ventanaMadre, cursoSeleccionado.getTitulo(), "¿Deseas matricularte en este curso?");
+	                    	emergente.mostrar();
+	                    	if(emergente.obtenerRespuesta().orElse(false)) {	                    		
+	                    		EmergenteMetodoAprendizaje emergenteMetodo = new EmergenteMetodoAprendizaje(ventanaMadre);
+	    						emergenteMetodo.mostrar();
+	                    		MetodoAprendizaje metodoAprendizaje = emergenteMetodo.obtenerRespuesta().orElse(null);
+	                    		HistoriApp.INSTANCE.matricularCurso(cursoSeleccionado.getTitulo(), metodoAprendizaje);
+	                    	}
+	                    }
+	                    
+	               }
 	            }
 	        }
 	    });

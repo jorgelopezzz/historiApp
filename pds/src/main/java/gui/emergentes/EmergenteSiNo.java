@@ -73,7 +73,7 @@ public class EmergenteSiNo extends EmergenteBotones {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				opcion = false;
-				dispose();
+				cerrar();
 			}
 		});
 		
@@ -85,7 +85,7 @@ public class EmergenteSiNo extends EmergenteBotones {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				opcion = true;
-				dispose();
+				cerrar();
 			}
 		});
 		
