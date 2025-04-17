@@ -237,8 +237,8 @@ public class EmergenteRegistro extends Emergente {
 					emergente.mostrar();
 					return;
 				/* Caso 3: Usuario ya registrado */
-				} else if(HistoriApp.INSTANCE.usuarioRegistrado(campoNombre.getTexto())) {
-					EmergenteMensaje emergente = new EmergenteMensaje(ventanaMadre, "El nombre de usuario ya está registrado.");
+				} else if(HistoriApp.INSTANCE.usuarioRegistrado(campoNombre.getTexto(), campoCorreo.getTexto())) {
+					EmergenteMensaje emergente = new EmergenteMensaje(ventanaMadre, "El nombre de usuario o el correo ya están registrados");
 					emergente.mostrar();
 					return;
 				}

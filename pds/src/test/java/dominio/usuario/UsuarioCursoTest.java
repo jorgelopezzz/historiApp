@@ -74,14 +74,14 @@ class UsuarioCursoTest {
     void testHaCompletadoCurso() {
         usuario.matricularCurso(curso, metodo);
         usuario.completarBloque(curso, bloque, 10.0);
-        assertFalse(usuario.haCompletado(curso));
+        assertFalse(usuario.haCompletado(curso.getTitulo()));
         assertEquals(0, usuario.getCursosCompletados());
         usuario.completarBloque(curso, segundoBloque, 10.0);
-        assertTrue(usuario.haCompletado(curso));
+        assertTrue(usuario.haCompletado(curso.getTitulo()));
         assertEquals(1, usuario.getCursosCompletados());
         usuario.matricularCurso(curso, metodo);
         usuario.completarBloque(curso, bloque, 10.0);
-        assertTrue(usuario.haCompletado(curso));
+        assertTrue(usuario.haCompletado(curso.getTitulo()));
     }
     
     @Test

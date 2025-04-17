@@ -14,11 +14,14 @@ public class EmergenteMensaje extends EmergenteBotones {
 	
 	/* Botones */
 	private JButton botonAceptar;
-
+	
+	public EmergenteMensaje(JFrame ventanaMadre, String mensaje, String rutaImagen) {
+		super(ventanaMadre, mensaje, rutaImagen);
+		construir();
+	}
 	
 	public EmergenteMensaje(JFrame ventanaMadre, String mensaje) {
 		super(ventanaMadre, mensaje);
-		
 		construir();
 	}
 	

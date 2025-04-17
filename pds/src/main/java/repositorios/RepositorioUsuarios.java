@@ -36,6 +36,18 @@ public enum RepositorioUsuarios {
             return null;
         }
     }
+    
+    // Método para encontrar un usuario por correo
+    public Usuario encontrarUsuarioPorCorreo(String correo) {
+        try {
+            return entityManager.createQuery("SELECT u FROM Usuario u WHERE u.correo = :correo", Usuario.class)
+                                .setParameter("correo", correo)
+                                .getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+    
 
     // Método para obtener todos los usuarios
     public List<Usuario> obtenerTodosLosUsuarios() {

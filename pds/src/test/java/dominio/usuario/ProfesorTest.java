@@ -102,7 +102,7 @@ class ProfesorTest {
     @Test
     void testSesionYTiempoUso() throws InterruptedException {
         profesor.iniciarSesion();
-        Thread.sleep(100);
+        Thread.sleep(1000);
         profesor.cerrarSesion();
         infoEstadisticasProfesor est = profesor.getEstadisticas();
         assertNotNull(est.getMinutosUso());

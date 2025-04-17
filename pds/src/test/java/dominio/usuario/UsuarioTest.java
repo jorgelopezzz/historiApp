@@ -78,7 +78,7 @@ class UsuarioTest {
     @MethodSource("usuarioValido")
     void testIniciarYcerrarSesionAumentaTiempoUso(Usuario usuario) throws InterruptedException {
         usuario.iniciarSesion();
-        Thread.sleep(100);
+        Thread.sleep(1000);
         usuario.cerrarSesion();
         infoEstadisticas estadisticas = usuario.getEstadisticas();
         assertNotNull(estadisticas.getMinutosUso());

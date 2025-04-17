@@ -61,7 +61,7 @@ public enum HistoriApp {
 	// 1.1.- Registro de un nuevo usuario
 	
 	public boolean registrarUsuario(String nombre, String contrasena, String correo, String imagen, String saludo) {
-		if (usuarioRegistrado(nombre)){
+		if (usuarioRegistrado(nombre, correo)){
 			return false;
 		}
 		
@@ -71,7 +71,7 @@ public enum HistoriApp {
 	}
 
 	public boolean registrarProfesor(String nombre, String contrasena, String correo, String imagen, String saludo) {
-		if (usuarioRegistrado(nombre))
+		if (usuarioRegistrado(nombre, correo))
 			return false;
 			
 		Profesor profesor = new Profesor(nombre, contrasena, correo, imagen, saludo);
@@ -216,6 +216,10 @@ public enum HistoriApp {
 	}
 	
 	/* Comprobación de registro */
+	public boolean usuarioRegistrado(String nombre, String correo) {
+		return usuarioRegistrado(nombre) || usuarios.encontrarUsuarioPorCorreo(correo) != null;
+	}
+	
 	public boolean usuarioRegistrado(String nombre) {
 		return usuarios.encontrarUsuarioPorNombre(nombre) != null;
 	}

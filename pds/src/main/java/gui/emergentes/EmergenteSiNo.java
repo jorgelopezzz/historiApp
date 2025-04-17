@@ -17,7 +17,9 @@ import gui.GestorGUI;
 public class EmergenteSiNo extends EmergenteBotones {
 
 	protected JPanel panelBotones;
-
+	
+	private static final String RUTA_INTERROGACION = "/question.png";
+	
 	/* Botones */
 	private JButton botonNo;
 	private JButton botonSi;
@@ -27,7 +29,11 @@ public class EmergenteSiNo extends EmergenteBotones {
 
 	/* Constructor */
 	public EmergenteSiNo(JFrame ventanaMadre, String mensaje) {
-		super(ventanaMadre, mensaje);
+		this(ventanaMadre, mensaje, RUTA_INTERROGACION);
+	}
+	
+	public EmergenteSiNo(JFrame ventanaMadre, String mensaje, String rutaImagen) {
+		super(ventanaMadre, mensaje, rutaImagen);
 		
 		opcion = false;
 		

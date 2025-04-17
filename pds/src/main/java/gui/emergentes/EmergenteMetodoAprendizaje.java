@@ -25,6 +25,8 @@ import dominio.metodoAprendizaje.MetodoAprendizaje;
 @SuppressWarnings("serial")
 public class EmergenteMetodoAprendizaje extends EmergenteBotones {
 
+	private static final String RUTA_INFO = "/info.png";
+	
     /* Componentes de organización */
     private JPanel panelEnvolvente;
     private JPanel panelContenido;
@@ -45,7 +47,7 @@ public class EmergenteMetodoAprendizaje extends EmergenteBotones {
 
     /* Constructor */
     public EmergenteMetodoAprendizaje(JFrame ventanaMadre) {
-        super(ventanaMadre, "Método de Aprendizaje");
+        super(ventanaMadre, "Método de Aprendizaje", RUTA_INFO);
 
         gestionarCierre();
 		
@@ -68,7 +70,7 @@ public class EmergenteMetodoAprendizaje extends EmergenteBotones {
 
         /* Etiqueta Imagen */
         etiquetaImagen = new JLabel();
-        etiquetaImagen.setIcon(GestorGUI.getInstancia().iconoDeRecursos(RUTA_ALERTA, LADO_IMAGEN, LADO_IMAGEN));
+        etiquetaImagen.setIcon(GestorGUI.getInstancia().iconoDeRecursos(RUTA_INFO, LADO_IMAGEN, LADO_IMAGEN));
         etiquetaImagen.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 		/* Etiqueta Título */
