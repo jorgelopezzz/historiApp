@@ -11,6 +11,7 @@ import dominio.info.usuario.infoPerfilUsuario;
 @PrimaryKeyJoinColumn(name = "id") // Clave foránea que apunta a Usuario.id
 public class Profesor extends Usuario {
 
+	@Column(nullable = false)
 	private int cursosPublicados;
 	
 	public Profesor() {

@@ -134,6 +134,7 @@ public class Usuario {
 
     public void setImagen(String imagen) {
         this.imagen = imagen;
+        RepositorioUsuarios.INSTANCE.actualizarUsuario(this);
     }
     public String getSaludo() {
     	return saludo;
@@ -141,6 +142,7 @@ public class Usuario {
 
     public void setSaludo(String saludo) {
     	this.saludo = saludo;
+    	RepositorioUsuarios.INSTANCE.actualizarUsuario(this);
     }
 
     public int getPuntuacion() {
@@ -252,6 +254,8 @@ public class Usuario {
 	}
 
 	public boolean hacerValoracion(Curso curso, String comentario, int puntuacion) {
-		return valoraciones.add(new Valoracion(curso, this, puntuacion, comentario));
+		boolean exito = valoraciones.add(new Valoracion(curso, this, puntuacion, comentario));
+		RepositorioUsuarios.INSTANCE.actualizarUsuario(this);
+		return exito;
 	}
 }
