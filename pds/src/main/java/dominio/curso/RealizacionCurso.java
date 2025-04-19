@@ -114,6 +114,7 @@ public class RealizacionCurso {
 		return metodoAprendizaje;
 	}
 
+	@Transactional
 	public void setMetodoAprendizaje(MetodoAprendizaje metodoAprendizaje) {
 		this.metodoAprendizaje = metodoAprendizaje;
 	}
@@ -122,6 +123,7 @@ public class RealizacionCurso {
 		return List.copyOf(listaBloques);
 	}
 
+	@Transactional
 	public void setUsuario(Usuario usuario) {
 	    this.usuario = usuario;
 	}

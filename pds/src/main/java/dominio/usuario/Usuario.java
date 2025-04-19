@@ -132,6 +132,7 @@ public class Usuario {
         
     }
 
+    @Transactional
     public void setImagen(String imagen) {
         this.imagen = imagen;
         RepositorioUsuarios.INSTANCE.actualizarUsuario(this);
@@ -140,6 +141,7 @@ public class Usuario {
     	return saludo;
     }
 
+    @Transactional
     public void setSaludo(String saludo) {
     	this.saludo = saludo;
     	RepositorioUsuarios.INSTANCE.actualizarUsuario(this);
