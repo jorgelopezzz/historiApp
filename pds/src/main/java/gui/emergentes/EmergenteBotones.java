@@ -29,18 +29,24 @@ public abstract class EmergenteBotones extends Emergente {
 	private static final int NUMERO_COLUMNAS_TEXTO = 25;
 
 	/* Rutas imágenes */
-	protected static final String RUTA_ALERTA = "/alerta.png";
-
-	/* Mensaje temporal */
+	public static final String RUTA_ALERTA = "/alerta.png";
+	
+	/* Atributos de información */
 	private String mensaje;
+	private String rutaImagen;
 
 	/* Constructor */
 	public EmergenteBotones(JFrame ventanaMadre, String mensaje) {
+		this(ventanaMadre, mensaje, RUTA_ALERTA);
+	}
+
+	public EmergenteBotones(JFrame ventanaMadre, String mensaje, String ruta) {
 		super(" Mensaje", GestorGUI.getInstancia().getColorClaro(), ventanaMadre,
 				ANCHO_EMERGENTE, ALTO_EMERGENTE);
 		this.mensaje = mensaje;
+		this.rutaImagen = ruta;
 	}
-
+	
 	/* Métodos */
 
 	protected JPanel construirPanelTexto() {
@@ -69,7 +75,7 @@ public abstract class EmergenteBotones extends Emergente {
 
 		/* Etiqueta imagen */
 		etiquetaImagen = new JLabel();
-		etiquetaImagen.setIcon(GestorGUI.getInstancia().iconoDeRecursos(RUTA_ALERTA, LADO_IMAGEN, LADO_IMAGEN));
+		etiquetaImagen.setIcon(GestorGUI.getInstancia().iconoDeRecursos(rutaImagen, LADO_IMAGEN, LADO_IMAGEN));
 		etiquetaImagen.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 		/* Campo texto */

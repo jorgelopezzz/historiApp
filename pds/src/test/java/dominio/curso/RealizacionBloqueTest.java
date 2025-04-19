@@ -15,65 +15,68 @@ import dominio.tarea.Tip;
 
 class RealizacionBloqueTest {
 
+	private static RealizacionCurso rc = new RealizacionCurso();
+	
 	private static BloqueContenidos bloqueValido = new BloqueContenidos("Titulo", "Descripcion", null, List.of(new Tip("Enunciado", null)));
 	static List<Arguments> argumentosInvalidos() {
         return List.of(
-        	Arguments.of((BloqueContenidos)null, 1.0)
+        	Arguments.of((BloqueContenidos)null, 1.0, rc)
         );
     }
 	
 	static List<Arguments> argumentosInvalidosNota() {
 		return List.of(
-        		Arguments.of(bloqueValido, -1.4),
-        		Arguments.of(bloqueValido, 23121.4),
-        		Arguments.of(bloqueValido, Double.MAX_VALUE),
-        		Arguments.of(bloqueValido, -1*Double.MIN_VALUE)
+        		Arguments.of(bloqueValido, -1.4, rc),
+        		Arguments.of(bloqueValido, 23121.4, rc),
+        		Arguments.of(bloqueValido, Double.MAX_VALUE, rc),
+        		Arguments.of(bloqueValido, -1*Double.MIN_VALUE, rc)
         );
     }
 	
 	static List<Arguments> argumentosValidosNota() {
 		return List.of(
-        		Arguments.of(bloqueValido, 1.4),
-        		Arguments.of(bloqueValido, 0.0),
-        		Arguments.of(bloqueValido, 10.0),
-        		Arguments.of(bloqueValido, Double.MIN_VALUE)
+        		Arguments.of(bloqueValido, 1.4, rc),
+        		Arguments.of(bloqueValido, 0.0, rc),
+        		Arguments.of(bloqueValido, 10.0, rc),
+        		Arguments.of(bloqueValido, Double.MIN_VALUE, rc)
         );
     }
 	
 	static List<Arguments> argumentosValidos() {
+		
         return List.of(
-        	Arguments.of(bloqueValido, 3.0),
-        	Arguments.of(bloqueValido, 0.0),
-        	Arguments.of(bloqueValido, 10.0)
+        	Arguments.of(bloqueValido, 3.0, rc),
+        	Arguments.of(bloqueValido, 0.0, rc),
+        	Arguments.of(bloqueValido, 10.0, rc)
         );
     }
 	
     @ParameterizedTest
     @MethodSource("argumentosInvalidos")
-    void testArgumentosInvalidos(BloqueContenidos bloque, double puntuacion) {
+    void testArgumentosInvalidos(BloqueContenidos bloque, double puntuacion, RealizacionCurso realizacionCurso) {
         assertThrows(IllegalArgumentException.class, () -> {
-            new RealizacionBloque(bloque, puntuacion);
+            new RealizacionBloque(realizacionCurso, bloque, puntuacion);
         });
     }
     
     @ParameterizedTest
     @MethodSource("argumentosValidos")
-    void testArgumentosValidos(BloqueContenidos bloque, double puntuacion) {
-        assertDoesNotThrow(() -> { new RealizacionBloque(bloque, puntuacion); });
-        assertEquals(bloque, new RealizacionBloque(bloque, puntuacion).getBloque());
-        assertEquals(puntuacion, new RealizacionBloque(bloque, puntuacion).getPuntuacion());
+    void testArgumentosValidos(BloqueContenidos bloque, double puntuacion, RealizacionCurso realizacionCurso) {
+        assertDoesNotThrow(() -> { new RealizacionBloque(realizacionCurso, bloque, puntuacion); });
+        assertEquals(bloque, new RealizacionBloque(realizacionCurso, bloque, puntuacion).getBloque());
+        assertEquals(puntuacion, new RealizacionBloque(realizacionCurso, bloque, puntuacion).getPuntuacion());
     }
     
     @ParameterizedTest
     @MethodSource("argumentosInvalidosNota")
-    void testCompletarIncorrecto(BloqueContenidos bloque, double puntuacion) {
-    	assertThrows(IllegalArgumentException.class, () -> new RealizacionBloque(bloque, puntuacion));
+    void testCompletarIncorrecto(BloqueContenidos bloque, double puntuacion, RealizacionCurso realizacionCurso) {
+    	assertThrows(IllegalArgumentException.class, () -> new RealizacionBloque(realizacionCurso, bloque, puntuacion));
     }
     
     @ParameterizedTest
     @MethodSource("argumentosValidosNota")
-    void testCompletarCorrecto(BloqueContenidos bloque, double puntuacion) {
-    	assertDoesNotThrow(() -> new RealizacionBloque(bloque, puntuacion));
+    void testCompletarCorrecto(BloqueContenidos bloque, double puntuacion, RealizacionCurso realizacionCurso) {
+    	assertDoesNotThrow(() -> new RealizacionBloque(realizacionCurso, bloque, puntuacion));
     	
     }
     
@@ -83,7 +86,7 @@ class RealizacionBloqueTest {
         double puntuacion = 8.5;
         
         // When
-        RealizacionBloque realizacion = new RealizacionBloque(bloqueValido, puntuacion);
+        RealizacionBloque realizacion = new RealizacionBloque(rc, bloqueValido, puntuacion);
         
         // Then
         LocalDateTime fechaCompletado = realizacion.getFechaCompletado();

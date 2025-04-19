@@ -23,6 +23,7 @@ import gui.componentes.tarea.ComponentePregunta;
 import gui.componentes.tarea.ComponenteRellenar;
 import gui.componentes.tarea.ComponenteTarea;
 import gui.componentes.tarea.FactoriaComponenteTarea;
+import gui.emergentes.EmergenteBotones;
 import gui.emergentes.EmergenteMensaje;
 import gui.emergentes.EmergenteSiNo;
 
@@ -32,6 +33,8 @@ public class VentanaTareas extends VentanaMenu {
 	
 	/* Dimensiones */
 	private static final int MARGEN = 15;
+	
+	private static final String RUTA_CHECK = "/check.png";
 	
 	/* Componentes de organización */
 	JPanel panelGeneral;
@@ -117,7 +120,7 @@ public class VentanaTareas extends VentanaMenu {
 			@Override
 			public void actionPerformed(ActionEvent e) {		
 				// Lanzar la ventana emergente
-				EmergenteSiNo emergente = new EmergenteSiNo(VentanaTareas.this, "¿Estás seguro de que quieres salir?\nNo se guardará tu progreso.");
+				EmergenteSiNo emergente = new EmergenteSiNo(VentanaTareas.this, "¿Estás seguro de que quieres salir?\nNo se guardará tu progreso.", EmergenteBotones.RUTA_ALERTA);
 				emergente.mostrar();
 				if(emergente.obtenerRespuesta().orElse(false)) {
 					HistoriApp.INSTANCE.cerrarBloque();
@@ -155,11 +158,11 @@ public class VentanaTareas extends VentanaMenu {
 				} else {
 					double puntuacion = HistoriApp.INSTANCE.obtenerPuntuacion();
 					String mensaje = "Tu puntuación es " + String.valueOf(puntuacion);
-					EmergenteMensaje emergentePuntuacion = new EmergenteMensaje(VentanaTareas.this, mensaje);
+					EmergenteMensaje emergentePuntuacion = new EmergenteMensaje(VentanaTareas.this, mensaje, RUTA_CHECK);
 					emergentePuntuacion.mostrar();
 					if(HistoriApp.INSTANCE.cursoCompletado()) {
 						EmergenteMensaje emergenteFinCurso = new EmergenteMensaje(VentanaTareas.this,
-								"¡Enhorabuena! Has completado el curso: " + HistoriApp.INSTANCE.getCursoActual());
+								"¡Enhorabuena! Has completado el curso: " + HistoriApp.INSTANCE.getCursoActual(), RUTA_CHECK);
 						emergenteFinCurso.mostrar();
 						selector.cambiarVentana(new VentanaCursos(selector));
 					} else {						
