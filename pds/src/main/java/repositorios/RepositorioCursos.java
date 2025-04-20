@@ -2,7 +2,6 @@ package repositorios;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -22,14 +21,7 @@ public enum RepositorioCursos {
     private Map<String, Curso> cursosPorNombre;
 
     private RepositorioCursos() {  	
-    	URL recurso = getClass().getClassLoader().getResource("cursos");
-    	
-        if (recurso == null) {
-            System.out.println("No se encontró la carpeta.");
-            return;
-        }
-        
-    	File carpeta = new File(recurso.getFile());
+    	File carpeta = new File("resources/cursos");
         if(!carpeta.exists() || !carpeta.isDirectory()) {
         	System.err.println("La carpeta 'resources' no existe o no es un directorio válido");
             cursosPorNombre = new HashMap<String, Curso>();
