@@ -22,6 +22,7 @@ public enum RepositorioCursos {
     private Map<String, Curso> cursosPorNombre;
 
     private RepositorioCursos() {  	
+<<<<<<< HEAD
     	URL recurso = getClass().getClassLoader().getResource("cursos");
     	
         if (recurso == null) {
@@ -30,6 +31,9 @@ public enum RepositorioCursos {
         }
         
     	File carpeta = new File(recurso.getFile());
+=======
+    	File carpeta = new File("resources/cursos");
+>>>>>>> branch 'main' of git@github.com:jorgelopezzz/historiApp.git
         if(!carpeta.exists() || !carpeta.isDirectory()) {
         	System.err.println("La carpeta 'resources' no existe o no es un directorio válido");
             cursosPorNombre = new HashMap<String, Curso>();
