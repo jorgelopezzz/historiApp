@@ -21,7 +21,7 @@ public enum RepositorioCursos {
     private Map<String, Curso> cursosPorNombre;
 
     private RepositorioCursos() {  	
-    	File carpeta = new File("pds/resources/cursos");
+    	File carpeta = new File("/pds/resources/cursos");
         if(!carpeta.exists() || !carpeta.isDirectory()) {
         	System.err.println("La carpeta 'resources' no existe o no es un directorio válido");
             cursosPorNombre = new HashMap<String, Curso>();
