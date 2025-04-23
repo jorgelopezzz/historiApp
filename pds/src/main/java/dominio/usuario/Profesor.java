@@ -7,11 +7,10 @@ import dominio.info.usuario.infoEstadisticasProfesor;
 import dominio.info.usuario.infoPerfilUsuario;
 
 @Entity
-@Table(name = "profesores")
-@PrimaryKeyJoinColumn(name = "id") // Clave foránea que apunta a Usuario.id
+@DiscriminatorValue("PROFESOR")
 public class Profesor extends Usuario {
 
-	@Column(nullable = false)
+	@Column(nullable = true) // Para que funcione bien "single table" de usuario
 	private int cursosPublicados;
 	
 	public Profesor() {

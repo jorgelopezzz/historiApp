@@ -7,6 +7,10 @@
 			<property name="jakarta.persistence.jdbc.url" value="jdbc:sqlite:basedatos.db" />
 			<property name="dialect" value="org.hibernate.community.dialect.SQLiteDialect" />
 			<property name="hibernate.show_sql" value="true" />
+			<!--
+			Le da formato de SQL
+			-->
+			<property name="hibernate.format_sql" value="true" />
 			<!-- 
 			Esta property es para el funcionamiento normal: guarda la base de datos 
 			También puedes eliminar basedatos.db manualmente del Workspace

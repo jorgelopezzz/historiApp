@@ -22,8 +22,10 @@ import dominio.info.usuario.infoPerfilUsuario;
 import dominio.metodoAprendizaje.MetodoAprendizaje;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = "usuario")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "TIPO_USUARIO")
+@DiscriminatorValue("ESTUDIANTE")
+@Table(name = "USUARIOS")
 public class Usuario {
     
     private static final String RUTA_PERFIL_PREDETERMINADO = "/perfil.png";
