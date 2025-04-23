@@ -12,6 +12,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import dominio.info.usuario.infoEstadisticas;
 import dominio.info.usuario.infoPerfilUsuario;
+import repositorios.RepositorioUsuarios;
 
 class UsuarioTest {
     
@@ -19,6 +20,14 @@ class UsuarioTest {
         return List.of(Arguments.of(new Usuario("Jorge", "1234", "egea@correo.com", null, "Alfonso")));
     }
 
+    @BeforeEach
+    void setUp() {
+        RepositorioUsuarios repositorio = RepositorioUsuarios.INSTANCE;
+        for(Usuario u : repositorio.obtenerTodosLosUsuarios()) {
+        	repositorio.eliminarUsuario(u);
+        }
+    }
+    
     @ParameterizedTest
     @MethodSource("usuariosValidos")
     void testConstructorValido(String nombre, String contrasena, String correo, String rutaImagen, String saludo) {

@@ -20,9 +20,9 @@ class RepositorioUsuariosTest {
     @BeforeEach
     void setUp() {
         repositorio = RepositorioUsuarios.INSTANCE;
-        repositorio.eliminarUsuario(new Usuario("Jorge", "1234", "jorge@correo.com", null, "Alfonso"));
-        repositorio.eliminarUsuario(new Usuario("Alfonso", "abcd", "alfonso@correo.com", null, "Alejandro"));
-        repositorio.eliminarUsuario(new Usuario("Alejandro", "clave", "alejandro@correo.com", null, "Jorge"));
+        for(Usuario u : repositorio.obtenerTodosLosUsuarios()) {
+        	repositorio.eliminarUsuario(u);
+        }
     }
 
     @ParameterizedTest
