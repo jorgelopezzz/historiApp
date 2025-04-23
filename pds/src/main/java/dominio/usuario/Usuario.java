@@ -137,7 +137,6 @@ public class Usuario {
     @Transactional
     public void setImagen(String imagen) {
         this.imagen = imagen;
-        RepositorioUsuarios.INSTANCE.actualizarUsuario(this);
     }
     public String getSaludo() {
     	return saludo;
@@ -146,7 +145,6 @@ public class Usuario {
     @Transactional
     public void setSaludo(String saludo) {
     	this.saludo = saludo;
-    	RepositorioUsuarios.INSTANCE.actualizarUsuario(this);
     }
 
     public int getPuntuacion() {
@@ -202,7 +200,6 @@ public class Usuario {
 		if(! estaMatriculado(curso.getTitulo())) {
 			RealizacionCurso rc = new RealizacionCurso(curso, this, metodoAprendizaje);
 			cursos.add(rc);
-			RepositorioUsuarios.INSTANCE.actualizarUsuario(this);
 			return true;
 		}
 		return false;
@@ -214,8 +211,6 @@ public class Usuario {
 		getRealizacion(curso.getTitulo()).ifPresentOrElse(
 				rc -> rc.completarBloque(bloque, puntuacion),
 				() -> {throw new IllegalStateException("El usuario no está matriculado en el curso.");});
-		RepositorioUsuarios.INSTANCE.actualizarUsuario(this);
-		
 	}
 	
 	public int getCursosCompletados() {
@@ -259,7 +254,6 @@ public class Usuario {
 
 	public boolean hacerValoracion(Curso curso, String comentario, int puntuacion) {
 		boolean exito = valoraciones.add(new Valoracion(curso, this, puntuacion, comentario));
-		RepositorioUsuarios.INSTANCE.actualizarUsuario(this);
 		return exito;
 	}
 }
