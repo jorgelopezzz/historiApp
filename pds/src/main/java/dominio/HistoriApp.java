@@ -259,7 +259,8 @@ public enum HistoriApp {
 	}
 	
 	public List<InfoValoracion> obtenerValoracionesPorCursoNombre(String cursoNombre) {
-		return usuario.getValoracionesPorCursoNombre(cursoNombre).stream()
+		return usuarios.obtenerTodosLosUsuarios().stream()
+				.flatMap(usuario -> usuario.getValoracionesPorCursoNombre(cursoNombre).stream())
 				.map(InfoValoracion::new)
 				.collect(Collectors.toList());
 	}
