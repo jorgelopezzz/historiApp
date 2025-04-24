@@ -52,7 +52,7 @@ Nuestro objetivo es ofrecer una experiencia educativa accesible y atractiva, com
 
 Este repositorio está estructurado en diferentes carpetas, cada una conteniendo información relevante para el desarrollo y documentación del proyecto. A continuación, se detallan las secciones principales:
 
-- **[Vistas](./vistas/README.md)**: En esta sección se encuentran las descripciones y recursos relacionados con la interfaz gráfica de la aplicación. Desde su `README.md` se puede acceder a una vista previa de las diferentes ventanas y su disposición dentro del sistema.
+- **[Manual](./manual/README.md)**: Esta sección contiene una guía paso a paso para el uso de la aplicación, incluyendo el proceso de registro, inicio de sesión, exploración de cursos, matriculación y navegación por los contenidos. También se explican las tareas que deben completarse dentro de cada bloque. Las instrucciones están acompañadas por capturas de pantalla que ilustran cada parte de la interfaz gráfica.
 
 - **[Memoria](./memoria/README.md)**: Contiene toda la documentación sobre los requisitos del sistema y su modelado. Incluye información detallada sobre los casos de uso, el modelo del dominio y otros aspectos esenciales para la comprensión del proyecto.
 
