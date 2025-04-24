@@ -2,7 +2,7 @@
 
 ## Caso de uso adicional
 
-Como parte de la funcionalidad adicional de **HistoriApp**, se ha añadido un **caso de uso adicional** que permite a los estudiantes dejar **reseñas sobre los cursos**. Esta herramienta busca fomentar una mejora continua en la calidad del contenido y en la experiencia educativa de la aplicación. Se desarrolló en el issue #69.
+Como parte de la funcionalidad adicional de **HistoriApp**, se ha añadido un **caso de uso adicional** que permite a los estudiantes dejar **reseñas sobre los cursos**. Esta herramienta busca fomentar una mejora continua en la calidad del contenido y en la experiencia educativa de la aplicación. Se desarrolló en el [issue #69](https://github.com/jorgelopezzz/historiApp/issues/69).
 
 ### Detalles
 
@@ -13,7 +13,7 @@ Una vez que un estudiante ha cursado parcial o totalmente un curso, tiene la pos
 
 ## Otras características adicionales
 
-Como adiciones al enunciado de la práctica, hemos desarrollado una ventana de estadísticas globales que permiten a los usuarios ver su posición en un ranking basado en su desempeño dentro de la aplicación. Este ranking se genera a partir de un coeficiente calculado en función de diversas métricas que reflejan la actividad del estudiante.
+Como adiciones al enunciado de la práctica, hemos desarrollado una ventana de estadísticas globales que permiten a los usuarios ver su posición en un ranking basado en su desempeño dentro de la aplicación. Este ranking se genera a partir de un coeficiente calculado en función de diversas métricas que reflejan la actividad del estudiante. Esta ventana se implementa en el [issue #52](https://github.com/jorgelopezzz/historiApp/issues/52).
 
 ### Detalles
 
