@@ -9,7 +9,7 @@ Nótese que un miembro de la aplicación puede registrarse como Profesor y cursa
 
 ### 1. Acceso
 
-#### 1.1 Registro
+#### 1.1 Registro (#6)
 **Resumen:** El Estudiante/Profesor proporciona sus datos para registrarse en el sistema.
 
 **Actores:** 

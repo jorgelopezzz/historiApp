@@ -60,6 +60,14 @@ Este repositorio está estructurado en diferentes carpetas, cada una conteniendo
 
 Cada una de estas secciones está diseñada para facilitar la navegación y el acceso a la información relevante dentro del repositorio.
 
+## 🚀 Características Principales
+
+- **Sistema de Valoraciones de Cursos**: Implementación de un sistema que permite a los usuarios valorar los cursos completados. [Issue #69](https://github.com/jorgelopezzz/historiApp/issues/69)
+- **Creación de Cursos**: Funcionalidad para que los usuarios puedan crear y personalizar sus propios cursos. [Issue #63](https://github.com/jorgelopezzz/historiApp/issues/63)
+- **Importación de Cursos**: Posibilidad de importar cursos existentes para facilitar el acceso a contenido diverso. [Issue #12](https://github.com/jorgelopezzz/historiApp/issues/12)
+- **Mejoras en la Interfaz de Usuario**: Ajustes en la GUI, incluyendo la opción de cerrar sesión de manera más intuitiva. [Issue #44](https://github.com/jorgelopezzz/historiApp/issues/44)
+- **Sistema de Estadísticas**: Implementación de estadísticas para que los usuarios puedan seguir su progreso. [Issue #55](https://github.com/jorgelopezzz/historiApp/issues/55)
+
 ## Inspiración en Plataformas Educativas
 
 Para el desarrollo de HistoriApp, nos hemos inspirado en plataformas educativas exitosas como [Duolingo](https://www.duolingo.com/), que utiliza la gamificación y lecciones cortas para facilitar el aprendizaje de idiomas. Duolingo ofrece características como lecciones adaptativas basadas en inteligencia artificial, seguimiento del progreso y elementos sociales que fomentan la competencia amistosa entre usuarios. Estas características han demostrado ser efectivas para mantener la motivación y mejorar la retención del aprendizaje.
