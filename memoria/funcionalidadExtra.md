@@ -2,7 +2,7 @@
 
 ## Caso de uso adicional
 
-Como parte de la funcionalidad adicional de **HistoriApp**, se ha añadido un **caso de uso adicional** que permite a los estudiantes dejar **reseñas sobre los cursos**. Esta herramienta busca fomentar una mejora continua en la calidad del contenido y en la experiencia educativa de la aplicación.
+Como parte de la funcionalidad adicional de **HistoriApp**, se ha añadido un **caso de uso adicional** que permite a los estudiantes dejar **reseñas sobre los cursos**. Esta herramienta busca fomentar una mejora continua en la calidad del contenido y en la experiencia educativa de la aplicación. Se desarrolló en el issue #69.
 
 ### Detalles
 
