@@ -54,7 +54,7 @@ class RepositorioCursosTest {
         // Crear archivo temporal con contenido JSON de un curso
         File tempFile = File.createTempFile("comprobarAnadirCurso", ".json");
         tempFile.deleteOnExit(); // se borra al salir del programa
-
+        
         try (FileWriter writer = new FileWriter(tempFile)) {
             writer.write("""
             		     {
@@ -69,7 +69,7 @@ class RepositorioCursosTest {
 							        "tareas": [
 						          	  {
 							            "tipo": "Tip",
-							            "enunciado": null,
+							            "enunciado": "Hola",
 							            "imagen": "soyese.png"
 						          	  }
 						        	]
