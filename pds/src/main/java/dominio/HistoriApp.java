@@ -36,13 +36,15 @@ public enum HistoriApp {
 	private RepositorioUsuarios usuarios;
 	private RepositorioCursos cursos;
 	
-	private HistoriApp() {
-		usuarios = RepositorioUsuarios.INSTANCE;
-		cursos = RepositorioCursos.INSTANCE;
-		//registrarUsuario("a", "a", "a", null, "a");
-	}
+	private boolean inicializado = false;
+
+    public void init(RepositorioUsuarios usuarios, RepositorioCursos cursos) {
+        if (inicializado) return;
+        this.usuarios = usuarios;
+        this.cursos = cursos;
+        this.inicializado = true;
+    }
 	
-	// NO CASOS DE USO
 	
 	private void actualizarUsuario(Usuario usuario) {
         usuarios.actualizarUsuario(usuario);
