@@ -32,8 +32,11 @@ public class Valoracion {
     	if (usuario == null) {
     		throw new IllegalArgumentException("El usuario no puede ser nulo.");
         }
-    	if (puntuacion == 0 && comentario == null) {
-    		throw new IllegalArgumentException("La puntuación o el comentario deben ser no nulos.");
+    	if ( comentario == null) {
+    		throw new IllegalArgumentException("El comentario debe ser no nulos.");
+    	}
+    	if(puntuacion < 0 || puntuacion > 10) {
+    		throw new IllegalArgumentException("La puntuación debe pertenecer a [0,10].");
     	}
         this.curso = curso;
         this.cursoNombre = curso.getTitulo();
