@@ -10,7 +10,7 @@ Se aplica el patrón **Iterator** para recorrer las tareas (`Tarea`) contenidas 
 
 - **Propósito:** encapsular la lógica de iteración y hacerla extensible según el método de aprendizaje.
 - **Ventaja:** separación clara entre la colección (`BloqueContenidos`) y la forma de recorrerla.
-- **Implementación:** la incorporación de esta funcionalidad a la rama principal del proyecto se hizo en [este pull request](https://github.com/usuario/repositorio/pull/26).
+- **Implementación:** la incorporación de esta funcionalidad a la rama principal del proyecto se hizo en [este pull request](https://github.com/jorgelopezzz/historiApp/pull/26).
 
 ---
 
@@ -43,7 +43,7 @@ Esto permite:
 - Ejecutar **pruebas de integración** mediante objetos **Mock**.
 - Mejorar la **modularidad** y la **testabilidad** del sistema.
 
-- **Implementación:** la incorporación de esta funcionalidad a la rama principal del proyecto se hizo en [este pull request](https://github.com/usuario/repositorio/pull/73).
+- **Implementación:** la incorporación de esta funcionalidad a la rama principal del proyecto se hizo en [este pull request](https://github.com/jorgelopezzz/historiApp/pull/73).
 
 ---
 
@@ -53,7 +53,7 @@ La jerarquía de `Tarea` cuenta con una **factoría jerarquizada** que genera ob
 
 - **Propósito:** desacoplar la lógica de construcción entre modelo y vista.
 - **Ventaja:** diseño limpio y expansible para nuevas representaciones gráficas o tipos de tareas.
-- **Implementación:** la incorporación de esta funcionalidad a la rama principal del proyecto se hizo en [este pull request](https://github.com/usuario/repositorio/pull/28).
+- **Implementación:** la incorporación de esta funcionalidad a la rama principal del proyecto se hizo en [este pull request](https://github.com/jorgelopezzz/historiApp/pull/28).
 
 ---
 
