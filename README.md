@@ -58,6 +58,8 @@ Este repositorio está estructurado en diferentes carpetas, cada una conteniendo
 
 - **[Pruebas Software](./pruebas/README.md)**: Contiene toda la documentación relacionada con las pruebas realizadas en la aplicación. Incluye información detallada sobre la cobertura alcanzada, los casos de prueba ejecutados y otros aspectos esenciales para garantizar la calidad del proyecto.
 
+- **[Patrones de diseño](./patrones.md)**: Contiene información detallada sobre la aplicación de patrones de diseño en nuestro proyecto, así como otras buenas prácticas.
+
 Cada una de estas secciones está diseñada para facilitar la navegación y el acceso a la información relevante dentro del repositorio.
 
 ## 🚀 Características Principales
