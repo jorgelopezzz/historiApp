@@ -1,6 +1,7 @@
 package repositorios;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
 import java.util.*;
 
@@ -43,6 +44,7 @@ class RepositorioCursosTest {
         } catch (IllegalStateException e) {
             // Ya estaba inicializado: lo ignoramos en test repetidos
         }
+        repo.anadirCurso(null);
     }
 
     @Test

@@ -36,11 +36,13 @@ class ServicioJSONTest {
 	
 	/* Tests de serialización de tareas */
 	
+	private final ServicioJSON servicio = new ServicioJSON();
+	
 	@Test
 	void testTarea() {
 		String path = ServicioJSON.class.getResource(rutaTareas).getPath(); 
 		assertDoesNotThrow(() -> {
-			ServicioJSON.INSTANCE.cargarCurso(path);
+			servicio.cargarCurso(path);
         });
 	}
 	
@@ -53,7 +55,7 @@ class ServicioJSONTest {
 	void testTipInvalido() {
 		String path = ServicioJSON.class.getResource(rutaEnunciadoInvalido).getPath(); 
 		assertThrows(JsonMappingException.class, () -> {
-			ServicioJSON.INSTANCE.cargarCurso(path);
+			servicio.cargarCurso(path);
         });
 	}
 	
@@ -61,7 +63,7 @@ class ServicioJSONTest {
 	void testVFInvalido() {
 		String path = ServicioJSON.class.getResource(rutaVFInvalido).getPath(); 
 		assertThrows(JsonMappingException.class, () -> {
-			ServicioJSON.INSTANCE.cargarCurso(path);
+			servicio.cargarCurso(path);
         });
 	}
 	
@@ -69,7 +71,7 @@ class ServicioJSONTest {
 	void testRellenarInvalido() {
 		String path = ServicioJSON.class.getResource(rutaRellenarInvalido).getPath(); 
 		assertThrows(JsonMappingException.class, () -> {
-			ServicioJSON.INSTANCE.cargarCurso(path);
+			servicio.cargarCurso(path);
         });
 	}
 	
@@ -77,7 +79,7 @@ class ServicioJSONTest {
 	void testTipSinImagen() {
 		String path = ServicioJSON.class.getResource(rutaTipSinImagen).getPath(); 
 		try {
-			Tip t = (Tip) ServicioJSON.INSTANCE.cargarCurso(path).getBloquesContenidos().get(0).getTareas().get(0);
+			Tip t = (Tip) servicio.cargarCurso(path).getBloquesContenidos().get(0).getTareas().get(0);
 			assertTrue(t.getRutaImagen().isEmpty());
 		} catch (IOException e) {
 			System.err.println(e.getMessage());
@@ -89,7 +91,7 @@ class ServicioJSONTest {
 	void testHerenciaPregunta() {
 		String path = ServicioJSON.class.getResource(rutaVFValido).getPath(); 
 		try {
-			List<Tarea> li = ServicioJSON.INSTANCE.cargarCurso(path).getBloquesContenidos().get(0).getTareas();
+			List<Tarea> li = servicio.cargarCurso(path).getBloquesContenidos().get(0).getTareas();
 			assertTrue(((PreguntaVF)li.get(0)).evaluar(PreguntaVF.CADENA_VERDADERO));
 			assertTrue(((PreguntaVF)li.get(1)).evaluar(PreguntaVF.CADENA_FALSO));
 		} catch (IOException e) {
@@ -107,7 +109,7 @@ class ServicioJSONTest {
 	void testTipoTestInvalido(String ruta) {
 		String path = ServicioJSON.class.getResource(ruta).getPath(); 
 		assertThrows(JsonMappingException.class, () -> {
-			ServicioJSON.INSTANCE.cargarCurso(path);
+			servicio.cargarCurso(path);
         });
 	}
 	

@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -12,6 +13,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import dominio.info.usuario.infoEstadisticas;
 import dominio.info.usuario.infoPerfilUsuario;
+import jakarta.persistence.Persistence;
 import repositorios.RepositorioUsuarios;
 
 class UsuarioTest {
@@ -20,6 +22,11 @@ class UsuarioTest {
         return List.of(Arguments.of(new Usuario("Jorge", "1234", "egea@correo.com", null, "Alfonso")));
     }
 
+    @BeforeAll
+    static void repositorySetUp() {
+    	RepositorioUsuarios.INSTANCE.init(Persistence.createEntityManagerFactory("usuarios"));
+    }
+    
     @BeforeEach
     void setUp() {
         RepositorioUsuarios repositorio = RepositorioUsuarios.INSTANCE;

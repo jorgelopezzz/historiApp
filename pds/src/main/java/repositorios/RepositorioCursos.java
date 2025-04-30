@@ -22,7 +22,8 @@ public enum RepositorioCursos {
 
     public void init(ServicioCursoLoader loader) {
         if (this.loader != null) {
-            throw new IllegalStateException("El RepositorioCursos ya ha sido inicializado");
+           System.err.println("El RepositorioCursos ya ha sido inicializado");
+           return;
         }
 
         this.loader = loader;
