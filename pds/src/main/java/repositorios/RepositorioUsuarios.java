@@ -8,16 +8,18 @@ import dominio.usuario.Usuario;
 public enum RepositorioUsuarios {
     INSTANCE;
 
-    private EntityManagerFactory entityManagerFactory;
+    private EntityManagerFactory entityManagerFactory = null;
     private EntityManager entityManager;
 
-    // Constructor privado para inicializar el EntityManager
-    private RepositorioUsuarios() {
-        // Inicializa el EntityManagerFactory
-        this.entityManagerFactory = Persistence.createEntityManagerFactory("usuarios");
-        this.entityManager = entityManagerFactory.createEntityManager();
+    public void init(EntityManagerFactory factory) {
+        if (this.entityManagerFactory != null) {
+        	System.err.println("El RepositorioUsuarios ya ha sido inicializado");
+        	return;
+        }
+    	this.entityManagerFactory = factory;
+        this.entityManager = factory.createEntityManager();
     }
-
+    
     // Método para agregar un nuevo usuario
     public void agregarUsuario(Usuario usuario) {
         entityManager.getTransaction().begin();

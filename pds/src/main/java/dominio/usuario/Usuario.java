@@ -155,6 +155,10 @@ public class Usuario {
         return maxRacha;
     }
     
+    public String getCorreo() {
+        return correo;
+    }
+    
     public infoEstadisticas getEstadisticas(){
         return new infoEstadisticas(nombre, puntuacion, getCursosCompletados(), getBloquesCompletados(), tiempoUso, diasUso, maxRacha);
     }

@@ -1,19 +1,18 @@
 package dominio;
 
-
 import com.fasterxml.jackson.databind.*;
 
 import dominio.curso.Curso;
+import repositorios.ServicioCursoLoader;
 
 import java.io.File;
 import java.io.IOException;
 
-public enum ServicioJSON {
-	INSTANCE;
+public class ServicioJSON implements ServicioCursoLoader{
 	
-    private ObjectMapper objectMapper;
+    private final ObjectMapper objectMapper;
     
-    private ServicioJSON() {
+    public ServicioJSON() {
     	objectMapper = new ObjectMapper();
     	objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
