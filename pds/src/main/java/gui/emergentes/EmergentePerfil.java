@@ -37,6 +37,9 @@ public class EmergentePerfil extends Emergente {
     private JPanel panelRol;
 
     /* Datos de Usuario */
+    private static final String RUTA_PERFIL_PREDETERMINADO = "/perfil.png";
+    private infoPerfilUsuario datos;
+
     private JLabel etiquetaNombreEtiqueta;
     private JLabel etiquetaCorreoEtiqueta;
     private JLabel etiquetaSaludoEtiqueta;
@@ -73,6 +76,8 @@ public class EmergentePerfil extends Emergente {
     private static final int ANCHO_ETIQUETAS = 150;
     private static final int LADO_IMAGEN = 75;
     private static final int ANCHO_BOTON_GRANDE = 140;
+    private static final int ANCHO_NUEVO_SALUDO = ANCHO_ETIQUETAS + ANCHO_CAMPOS + 10;
+    private static final int ALTO_NUEVO_SALUDO = ALTO_CAMPOS + 7;
 
     public EmergentePerfil(JFrame ventanaMadre) {
         super("Perfil", GestorGUI.getInstancia().getColorClaro(), ventanaMadre);
@@ -97,7 +102,7 @@ public class EmergentePerfil extends Emergente {
         panelEnvolvente = new JPanel();
         GestorGUI.configurarPanel(panelEnvolvente, new BorderLayout(), GestorGUI.getInstancia().getColorBlanco());
         panelEnvolvente.setBorder(new EmptyBorder(MARGEN, MARGEN, MARGEN, MARGEN));
-        GestorGUI.fijarTamano(ANCHO_PANEL - MARGEN, ALTO_PANEL - MARGEN - 40 - 40, panelEnvolvente);
+        GestorGUI.fijarTamano(ANCHO_PANEL - MARGEN, ALTO_PANEL - 17*MARGEN, panelEnvolvente);
 
         panelCampos = new JPanel();
         GestorGUI.configurarPanel(panelCampos, new BoxLayout(panelCampos, BoxLayout.Y_AXIS), false);
@@ -106,87 +111,43 @@ public class EmergentePerfil extends Emergente {
         panelCampos.setBorder(GestorGUI.bordeTexto("Datos de perfil", GestorGUI.getInstancia().getFuenteTexto(),
                 GestorGUI.getInstancia().getColorOscuro(), GestorGUI.getInstancia().getColorOscuro()));
 
-        infoPerfilUsuario datos = HistoriApp.INSTANCE.pedirDatosUsuario();
+        datos = HistoriApp.INSTANCE.pedirDatosUsuario();
         
         // Nombre
         panelNombre = new JPanel();
-        GestorGUI.configurarPanel(panelNombre, new BoxLayout(panelNombre, BoxLayout.X_AXIS), false);
         etiquetaNombreEtiqueta = new JLabel("Nombre:");
         etiquetaNombre = new JLabel(datos.getNombre());
-        
-        GestorGUI.configurarEtiqueta(etiquetaNombreEtiqueta, false, GestorGUI.getInstancia().getColorOscuro(),
-                GestorGUI.hacerNegrita(GestorGUI.getInstancia().getFuenteTexto()));
-        GestorGUI.fijarTamano(ANCHO_ETIQUETAS, ALTO_CAMPOS, etiquetaNombreEtiqueta);
-    
-        GestorGUI.configurarEtiqueta(etiquetaNombre, false, GestorGUI.getInstancia().getColorOscuro(),
-                GestorGUI.getInstancia().getFuenteTexto());
-        GestorGUI.fijarTamano(ANCHO_CAMPOS, ALTO_CAMPOS, etiquetaNombre);
-
-        panelNombre.add(etiquetaNombreEtiqueta);
-        panelNombre.add(etiquetaNombre);
+        montarEtiquetas(panelNombre, etiquetaNombreEtiqueta, etiquetaNombre);
 
         // Correo
         panelCorreo = new JPanel();
-        GestorGUI.configurarPanel(panelCorreo, new BoxLayout(panelCorreo, BoxLayout.X_AXIS), false);
         etiquetaCorreoEtiqueta = new JLabel("Correo:");
         etiquetaCorreo = new JLabel(datos.getCorreo());
-        
-        GestorGUI.configurarEtiqueta(etiquetaCorreoEtiqueta, false, GestorGUI.getInstancia().getColorOscuro(),
-                GestorGUI.hacerNegrita(GestorGUI.getInstancia().getFuenteTexto()));
-        GestorGUI.fijarTamano(ANCHO_ETIQUETAS, ALTO_CAMPOS, etiquetaCorreoEtiqueta);
-    
-        GestorGUI.configurarEtiqueta(etiquetaCorreo, false, GestorGUI.getInstancia().getColorOscuro(),
-                GestorGUI.getInstancia().getFuenteTexto());
-        GestorGUI.fijarTamano(ANCHO_CAMPOS, ALTO_CAMPOS, etiquetaCorreo);
-
-        panelCorreo.add(etiquetaCorreoEtiqueta);
-        panelCorreo.add(etiquetaCorreo);
+        montarEtiquetas(panelCorreo, etiquetaCorreoEtiqueta, etiquetaCorreo);
 
         // Saludo
         panelSaludo = new JPanel();
-        GestorGUI.configurarPanel(panelSaludo, new BoxLayout(panelSaludo, BoxLayout.X_AXIS), false);
         etiquetaSaludoEtiqueta = new JLabel("Saludo:");
         etiquetaSaludo = new JLabel(datos.getSaludo());
-        
-        GestorGUI.configurarEtiqueta(etiquetaSaludoEtiqueta, false, GestorGUI.getInstancia().getColorOscuro(),
-                GestorGUI.hacerNegrita(GestorGUI.getInstancia().getFuenteTexto()));
-        GestorGUI.fijarTamano(ANCHO_ETIQUETAS, ALTO_CAMPOS, etiquetaSaludoEtiqueta);
-    
-        GestorGUI.configurarEtiqueta(etiquetaSaludo, false, GestorGUI.getInstancia().getColorOscuro(),
-                GestorGUI.getInstancia().getFuenteTexto());
-        GestorGUI.fijarTamano(ANCHO_CAMPOS, ALTO_CAMPOS, etiquetaSaludo);
-
-        panelSaludo.add(etiquetaSaludoEtiqueta);
-        panelSaludo.add(etiquetaSaludo);
+        montarEtiquetas(panelSaludo, etiquetaSaludoEtiqueta, etiquetaSaludo);
 
         // Nuevo saludo
         campoNuevoSaludo = new CampoTexto("Nuevo saludo:", ANCHO_CAMPOS, ALTO_CAMPOS, ANCHO_ETIQUETAS);
         panelNuevoSaludo = new JPanel();
         GestorGUI.configurarPanel(panelNuevoSaludo, new BoxLayout(panelNuevoSaludo, BoxLayout.X_AXIS), false);
-        GestorGUI.fijarTamano(ANCHO_ETIQUETAS + ANCHO_CAMPOS, ALTO_CAMPOS, panelNuevoSaludo);
+        GestorGUI.fijarTamano(ANCHO_NUEVO_SALUDO, ALTO_NUEVO_SALUDO, panelNuevoSaludo);
         panelNuevoSaludo.add(Box.createHorizontalGlue());
         panelNuevoSaludo.add(campoNuevoSaludo.getPanel());
         panelNuevoSaludo.add(Box.createHorizontalGlue());
 
         // Rol
         panelRol = new JPanel();
-        GestorGUI.configurarPanel(panelRol, new BoxLayout(panelRol, BoxLayout.X_AXIS), false);
         etiquetaRolEtiqueta = new JLabel("Rol:");
         etiquetaRol = new JLabel(datos.getRol());
-        
-        GestorGUI.configurarEtiqueta(etiquetaRolEtiqueta, false, GestorGUI.getInstancia().getColorOscuro(),
-                GestorGUI.hacerNegrita(GestorGUI.getInstancia().getFuenteTexto()));
-        GestorGUI.fijarTamano(ANCHO_ETIQUETAS, ALTO_CAMPOS, etiquetaRolEtiqueta);
-    
-        GestorGUI.configurarEtiqueta(etiquetaRol, false, GestorGUI.getInstancia().getColorOscuro(),
-                GestorGUI.getInstancia().getFuenteTexto());
-        GestorGUI.fijarTamano(ANCHO_CAMPOS, ALTO_CAMPOS, etiquetaRol);
-        
-        panelRol.add(etiquetaRolEtiqueta);
-        panelRol.add(etiquetaRol);
+        montarEtiquetas(panelRol, etiquetaRolEtiqueta, etiquetaRol);
 
         // Imagen
-        construirPanelImagen(datos.getImagen());
+        construirPanelImagen(HistoriApp.INSTANCE.getImagenUsuario());
 
         panelCampos.add(Box.createVerticalStrut(MARGEN));
         panelCampos.add(panelNombre);
@@ -203,13 +164,29 @@ public class EmergentePerfil extends Emergente {
         panelEnvolvente.add(panelImagen, BorderLayout.SOUTH);
     }
 
+    private void montarEtiquetas(JPanel panel, JLabel etiquetaEtiqueta, JLabel etiqueta){
+        GestorGUI.configurarPanel(panel, new BoxLayout(panel, BoxLayout.X_AXIS), false);
+        
+        GestorGUI.configurarEtiqueta(etiquetaEtiqueta, false, GestorGUI.getInstancia().getColorOscuro(),
+                GestorGUI.hacerNegrita(GestorGUI.getInstancia().getFuenteTexto()));
+        GestorGUI.fijarTamano(ANCHO_ETIQUETAS, ALTO_CAMPOS, etiquetaEtiqueta);
+    
+        GestorGUI.configurarEtiqueta(etiqueta, false, GestorGUI.getInstancia().getColorOscuro(),
+                GestorGUI.getInstancia().getFuenteTexto());
+        GestorGUI.fijarTamano(ANCHO_CAMPOS, ALTO_CAMPOS, etiqueta);
+
+        panel.add(etiquetaEtiqueta);
+        panel.add(etiqueta);
+    }
+
     private void construirPanelImagen(String ruta) {
+        System.out.println(ruta);
         panelImagen = new JPanel();
         GestorGUI.configurarPanel(panelImagen, new BoxLayout(panelImagen, BoxLayout.X_AXIS), false);
         GestorGUI.fijarTamano(ANCHO_PANEL - 60, 120, panelImagen);
 
         etiquetaImagen = new JLabel();
-        etiquetaImagen.setIcon(GestorGUI.getInstancia().iconoDeRecursos(GestorGUI.IMAGEN_PREDET_OSC, LADO_IMAGEN, LADO_IMAGEN));
+        etiquetaImagen.setIcon(GestorGUI.getInstancia().iconoDeRecursos(HistoriApp.INSTANCE.getImagenUsuario(), LADO_IMAGEN, LADO_IMAGEN));
         etiquetaImagen.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         botonSeleccionarImagen = GestorGUI.getBotonPredeterminado("Seleccionar imagen", ANCHO_BOTON_GRANDE);
@@ -245,8 +222,10 @@ public class EmergentePerfil extends Emergente {
     }
 
     private void establecerImagenPredeterminada() {
-        rutaImagen = null;
+        rutaImagen = RUTA_PERFIL_PREDETERMINADO;
         etiquetaImagen.setIcon(GestorGUI.getInstancia().iconoDeRecursos(GestorGUI.IMAGEN_PREDET_OSC, LADO_IMAGEN, LADO_IMAGEN));
+        etiquetaImagen.validate();
+        etiquetaImagen.repaint();
     }
 
     private void manejadorSeleccionarImagen() {
@@ -258,6 +237,7 @@ public class EmergentePerfil extends Emergente {
 
                 emergente.obtenerFichero().ifPresentOrElse((ruta) -> {
                     rutaImagen = ruta;
+                    System.out.println(ruta);
                     etiquetaImagen.setIcon(GestorGUI.getInstancia().iconoAbsoluto(rutaImagen, LADO_IMAGEN, LADO_IMAGEN));
                 }, () -> {});
             }
