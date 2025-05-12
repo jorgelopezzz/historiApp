@@ -7,14 +7,14 @@ import dominio.info.Info;
 
 public class infoEstadisticas extends Info{
     
-    private int puntuacion;
+    private double puntuacion;
     private int cursosCompletados;
     private int bloquesCompletados;
     private String minutosUso;
     private String minutosUsoDiario;
     private int maxRacha;
 
-    public infoEstadisticas (String texto, int puntuacion, int cursosCompletados, int bloquesCompletados, Duration tiempoUso, int diasUso, int maxRacha){
+    public infoEstadisticas (String texto, double puntuacion, int cursosCompletados, int bloquesCompletados, Duration tiempoUso, int diasUso, int maxRacha){
         super(texto);
         this.puntuacion = puntuacion;
         this.cursosCompletados = cursosCompletados;
@@ -42,7 +42,7 @@ public class infoEstadisticas extends Info{
 
     /* Getters */
 
-    public int getPuntuacion (){
+    public double getPuntuacion (){
         return puntuacion;
     }
 

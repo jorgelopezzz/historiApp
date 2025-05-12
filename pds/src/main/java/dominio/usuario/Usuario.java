@@ -55,8 +55,6 @@ public class Usuario {
     private List<RealizacionCurso> cursos = new ArrayList<>();
     
     /* Estadísticas */
-    @Column(nullable = true)
-    protected int puntuacion;
     @Convert(converter = DurationConverter.class)
     protected Duration tiempoUso;
 	@Column(nullable = true)
@@ -121,6 +119,13 @@ public class Usuario {
     	return fechaRegistro;
     }
 
+    public double getPuntuacion() {
+        return cursos.stream()
+            .flatMap(rc -> rc.getBloques().stream())
+            .mapToDouble(rb -> rb.getPuntuacion())
+            .sum();
+    }
+
     /* Alterables */
     public String getImagen() {
     	if(!imagen.equals(RUTA_PERFIL_PREDETERMINADO))
@@ -147,10 +152,6 @@ public class Usuario {
     	this.saludo = saludo;
     }
 
-    public int getPuntuacion() {
-        return puntuacion;
-    }
-
     public int getMaxRacha() {
         return maxRacha;
     }
@@ -160,7 +161,7 @@ public class Usuario {
     }
     
     public infoEstadisticas getEstadisticas(){
-        return new infoEstadisticas(nombre, puntuacion, getCursosCompletados(), getBloquesCompletados(), tiempoUso, diasUso, maxRacha);
+        return new infoEstadisticas(nombre, getPuntuacion(), getCursosCompletados(), getBloquesCompletados(), tiempoUso, diasUso, maxRacha);
     }
 
     public infoPerfilUsuario getDatosPerfil(){
