@@ -134,10 +134,11 @@ public enum HistoriApp {
 	
 	public String getImagenUsuario() {
 		String imagenRuta = usuario.getImagen();
+		System.out.println(imagenRuta);
 		return imagenRuta == null ? "/perfil.png" : imagenRuta;
 	}
 
-	public int getPuntuacionUsuario(){
+	public double getPuntuacionUsuario(){
 		return usuario.getPuntuacion();
 	}
 
