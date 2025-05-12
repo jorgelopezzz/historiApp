@@ -6,6 +6,7 @@ import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -15,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import dominio.HistoriApp;
 import gui.GestorGUI;
 
 @SuppressWarnings("serial")
@@ -93,16 +95,29 @@ public class EmergenteClasificacion extends Emergente {
         panelContenedor.setBorder(GestorGUI.bordeTexto("Clasificación", GestorGUI.getInstancia().getFuenteTitulo(),
                 GestorGUI.getInstancia().getColorOscuro(), GestorGUI.getInstancia().getColorOscuro()));
 
-        List<String[]> clasificacion = List.of(new String[] { "Jorge", "920" }, new String[] { "Egea", "850" }, new String[] { "Alfonso", "800" }, new String[] { "Cuello", "760" }, new String[] { "Tontolpijo", "720" }, new String[] { "Pesao", "690" });
+        Map<String, String> clasificacion = HistoriApp.INSTANCE.obtenerInfoRanking().getRanking();
 
-        for (int i = 0; i < clasificacion.size() && i < MAX_USUARIOS_MOSTRADOS; i++) {
-            String[] persona = clasificacion.get(i);
+        System.out.println(clasificacion.toString());
+
+        int i = 0;
+        for (Map.Entry<String, String> entrada : clasificacion.entrySet()) {
+
             boolean esPrimero = (i == 0);
-            panelContenedor.add(crearPanelPersona(persona[0], persona[1], esPrimero));
+            System.out.println(entrada.toString());
+
+            String nombre = entrada.getKey();
+            String puntuacion = entrada.getValue();
+
+            System.out.println(nombre);
+            System.out.println(puntuacion);
+
+            panelContenedor.add(crearPanelPersona(nombre, puntuacion, esPrimero));
             panelContenedor.add(Box.createVerticalStrut(ESPACIADO_VERTICAL_ENTRE_CAJAS));
+            i++;
         }
 
         panelEnvolvente.add(panelContenedor);
+
     }
 
     private JPanel crearPanelPersona(String nombre, String puntuacion, boolean esPrimero) {
