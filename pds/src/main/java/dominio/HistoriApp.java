@@ -5,7 +5,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -17,6 +19,7 @@ import dominio.info.contenidos.InfoBloque;
 import dominio.info.contenidos.InfoCurso;
 import dominio.info.usuario.infoEstadisticas;
 import dominio.info.usuario.infoPerfilUsuario;
+import dominio.info.usuario.infoRanking;
 import dominio.metodoAprendizaje.FactoriaIteradorTarea;
 import dominio.metodoAprendizaje.IteradorTarea;
 import dominio.metodoAprendizaje.MetodoAprendizaje;
@@ -134,17 +137,36 @@ public enum HistoriApp {
 	
 	public String getImagenUsuario() {
 		String imagenRuta = usuario.getImagen();
+		System.out.println(imagenRuta);
 		return imagenRuta == null ? "/perfil.png" : imagenRuta;
 	}
 
-	public int getPuntuacionUsuario(){
+	public double getPuntuacionUsuario(){
 		return usuario.getPuntuacion();
 	}
 
 	public int getMaxRachaUsuario(){
 		return usuario.getMaxRacha();
 	}
+
+	////////////
 	
+	public infoRanking obtenerInfoRanking() {
+		Map<String, String> top7 = usuarios.obtenerTodosLosUsuarios().stream()
+			.sorted((u1, u2) -> Double.compare(u2.getPuntuacion(), u1.getPuntuacion()))
+			.limit(6)
+			.collect(Collectors.toMap(
+				Usuario::getNombre,
+				u -> String.format("%.2f", u.getPuntuacion()),
+				(a, b) -> a,
+				LinkedHashMap::new
+			));
+
+		System.out.println(top7.toString());
+		return new infoRanking(top7);
+	}
+
+
 	////////////
 	
 	public String getCursoActual() {

@@ -98,7 +98,7 @@ public class EmergenteEstadisticas extends Emergente {
         panelEnvolvente.add(Box.createVerticalStrut(MARGEN_INTERNO));
         panelEnvolvente.add(crearPanelEstadistica("Bloques completados:", Integer.toString(estadisticas.getBloquesCompletados())));
         panelEnvolvente.add(Box.createVerticalStrut(MARGEN_INTERNO));
-        panelEnvolvente.add(crearPanelEstadistica("Puntuación:", Integer.toString(estadisticas.getPuntuacion())));
+        panelEnvolvente.add(crearPanelEstadistica("Puntuación:", Double.toString(estadisticas.getPuntuacion())));
         panelEnvolvente.add(Box.createVerticalStrut(MARGEN_INTERNO));
         panelEnvolvente.add(crearPanelEstadistica("Tiempo de uso:", estadisticas.getMinutosUso()));
         panelEnvolvente.add(Box.createVerticalStrut(MARGEN_INTERNO));
