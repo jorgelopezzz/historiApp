@@ -57,8 +57,6 @@ public class Usuario {
     private List<RealizacionCurso> cursos = new ArrayList<>();
     
     /* Estadísticas */
-    @Column(nullable = true)
-    protected int puntuacion;
     @Convert(converter = DurationConverter.class)
     protected Duration tiempoUso;
 	@Column(nullable = true)
@@ -69,6 +67,9 @@ public class Usuario {
     protected int rachaActual;
     @Column(nullable = true)
     protected LocalDate ultimaConexion;
+
+    @Transient
+    protected int puntuacion;
 
     
     /* Valoraciones */
