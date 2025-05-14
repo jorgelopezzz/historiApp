@@ -107,7 +107,7 @@ public class Usuario {
         this.maxRacha = 0;
 
         this.fechaRegistro = LocalDateTime.now();
-        this.ultimaConexion = null;
+        this.ultimaConexion = LocalDate.now().minusDays(1);
     }
 
     // Getters y setters
@@ -196,12 +196,7 @@ public class Usuario {
         tiempoUso = tiempoUso.plus(Duration.between(inicio, ahora));
 
         int dias = 0;
-
-        if(ultimaConexion == null){
-            dias = (int)ChronoUnit.DAYS.between(inicio, hoy) + 1;
-        } else {
-            dias = (int)ChronoUnit.DAYS.between(ultimaConexion, hoy);
-        }
+        dias = (int)ChronoUnit.DAYS.between(ultimaConexion, hoy); 
 
         if (dias > 0) {
             diasUso += dias;
