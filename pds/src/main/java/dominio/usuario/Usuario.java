@@ -67,10 +67,6 @@ public class Usuario {
     protected int rachaActual;
     @Column(nullable = true)
     protected LocalDate ultimaConexion;
-
-    @Transient
-    protected int puntuacion;
-
     
     /* Valoraciones */
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -156,8 +152,11 @@ public class Usuario {
     	this.saludo = saludo;
     }
 
-    public int getPuntuacion() {
-        return puntuacion;
+    public double getPuntuacion() {
+        return cursos.stream()
+            .flatMap(rc -> rc.getBloques().stream())
+            .mapToDouble(rb -> rb.getPuntuacion())
+            .sum();
     }
 
     public int getMaxRacha() {
@@ -169,7 +168,7 @@ public class Usuario {
     }
     
     public infoEstadisticas getEstadisticas(){
-        return new infoEstadisticas(nombre, puntuacion, getCursosCompletados(), getBloquesCompletados(), tiempoUso, diasUso, maxRacha);
+        return new infoEstadisticas(nombre, getPuntuacion(), getCursosCompletados(), getBloquesCompletados(), tiempoUso, diasUso, maxRacha);
     }
 
     public infoPerfilUsuario getDatosPerfil(){
