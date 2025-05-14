@@ -57,8 +57,6 @@ public class Usuario {
     private List<RealizacionCurso> cursos = new ArrayList<>();
     
     /* Estadísticas */
-    @Column(nullable = true)
-    protected int puntuacion;
     @Convert(converter = DurationConverter.class)
     protected Duration tiempoUso;
 	@Column(nullable = true)
@@ -69,7 +67,6 @@ public class Usuario {
     protected int rachaActual;
     @Column(nullable = true)
     protected LocalDate ultimaConexion;
-
     
     /* Valoraciones */
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -102,11 +99,11 @@ public class Usuario {
 
         
         this.tiempoUso = Duration.ofSeconds(0);
-        this.diasUso = 0;
-        this.maxRacha = 0;
+        this.diasUso = 1;
+        this.maxRacha = 1;
 
         this.fechaRegistro = LocalDateTime.now();
-        this.ultimaConexion = null;
+        this.ultimaConexion = fechaRegistro.toLocalDate();
     }
 
     // Getters y setters
@@ -155,8 +152,11 @@ public class Usuario {
     	this.saludo = saludo;
     }
 
-    public int getPuntuacion() {
-        return puntuacion;
+    public double getPuntuacion() {
+        return cursos.stream()
+            .flatMap(rc -> rc.getBloques().stream())
+            .mapToDouble(rb -> rb.getPuntuacion())
+            .sum();
     }
 
     public int getMaxRacha() {
@@ -168,7 +168,7 @@ public class Usuario {
     }
     
     public infoEstadisticas getEstadisticas(){
-        return new infoEstadisticas(nombre, puntuacion, getCursosCompletados(), getBloquesCompletados(), tiempoUso, diasUso, maxRacha);
+        return new infoEstadisticas(nombre, getPuntuacion(), getCursosCompletados(), getBloquesCompletados(), tiempoUso, diasUso, maxRacha);
     }
 
     public infoPerfilUsuario getDatosPerfil(){
@@ -191,17 +191,9 @@ public class Usuario {
         LocalDateTime ahora = LocalDateTime.now();
         LocalDate hoy = ahora.toLocalDate();
         LocalDate inicio = inicioSesion.toLocalDate();
-
-        tiempoUso = tiempoUso.plus(Duration.between(inicio, ahora));
-
+        tiempoUso = tiempoUso.plus(Duration.between(inicioSesion, ahora));
         int dias = 0;
-
-        if(ultimaConexion == null){
-            dias = (int)ChronoUnit.DAYS.between(inicio, hoy) + 1;
-        } else {
-            dias = (int)ChronoUnit.DAYS.between(ultimaConexion, hoy);
-        }
-
+        dias = (int)ChronoUnit.DAYS.between(ultimaConexion, hoy); 
         if (dias > 0) {
             diasUso += dias;
             rachaActual += dias;
@@ -210,7 +202,6 @@ public class Usuario {
             }
             ultimaConexion = hoy;
         }
-
         RepositorioUsuarios.INSTANCE.actualizarUsuario(this);
         return true;
     }
