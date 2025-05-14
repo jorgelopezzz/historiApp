@@ -103,11 +103,11 @@ public class Usuario {
 
         
         this.tiempoUso = Duration.ofSeconds(0);
-        this.diasUso = 0;
-        this.maxRacha = 0;
+        this.diasUso = 1;
+        this.maxRacha = 1;
 
         this.fechaRegistro = LocalDateTime.now();
-        this.ultimaConexion = LocalDate.now().minusDays(1);
+        this.ultimaConexion = fechaRegistro.toLocalDate();
     }
 
     // Getters y setters
@@ -192,12 +192,9 @@ public class Usuario {
         LocalDateTime ahora = LocalDateTime.now();
         LocalDate hoy = ahora.toLocalDate();
         LocalDate inicio = inicioSesion.toLocalDate();
-
-        tiempoUso = tiempoUso.plus(Duration.between(inicio, ahora));
-
+        tiempoUso = tiempoUso.plus(Duration.between(inicioSesion, ahora));
         int dias = 0;
         dias = (int)ChronoUnit.DAYS.between(ultimaConexion, hoy); 
-
         if (dias > 0) {
             diasUso += dias;
             rachaActual += dias;
@@ -206,7 +203,6 @@ public class Usuario {
             }
             ultimaConexion = hoy;
         }
-
         RepositorioUsuarios.INSTANCE.actualizarUsuario(this);
         return true;
     }
