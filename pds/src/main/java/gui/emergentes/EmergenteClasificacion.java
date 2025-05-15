@@ -94,19 +94,13 @@ public class EmergenteClasificacion extends Emergente {
 
         Map<String, String> clasificacion = HistoriApp.INSTANCE.obtenerInfoClasificacion().getClasificacion();
 
-        System.out.println(clasificacion.toString());
-
         int i = 0;
         for (Map.Entry<String, String> entrada : clasificacion.entrySet()) {
 
             boolean esPrimero = (i == 0);
-            System.out.println(entrada.toString());
-
+            
             String nombre = entrada.getKey();
             String puntuacion = entrada.getValue();
-
-            System.out.println(nombre);
-            System.out.println(puntuacion);
 
             panelContenedor.add(crearPanelPersona(nombre, puntuacion, esPrimero));
             panelContenedor.add(Box.createVerticalStrut(ESPACIADO_VERTICAL_ENTRE_CAJAS));

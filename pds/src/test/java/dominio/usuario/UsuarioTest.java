@@ -74,6 +74,7 @@ class UsuarioTest {
         assertEquals(esperado, u.checkContrasena(input));
     }
 
+
     static List<Arguments> contrasenas() {
         return List.of(
             Arguments.of("clave123", true),
@@ -109,8 +110,9 @@ class UsuarioTest {
         assertEquals(0, estadisticas.getCursosCompletados());
         assertEquals("00:00:00", estadisticas.getMinutosUso());
         assertEquals("00:00:00", estadisticas.getMinutosUsoDiario());
-        assertEquals(0, estadisticas.getMaxRacha());
+        assertTrue(estadisticas.getMaxRacha() >= 1);
     }
+
 
     @ParameterizedTest
     @MethodSource("usuarioValido")
@@ -133,5 +135,21 @@ class UsuarioTest {
         assertEquals("aaaa.png", usuario.getImagen());
     }
     
-    
+    @ParameterizedTest
+    @MethodSource("usuarioValido")
+    void testRachaSeReiniciaAlSaltarDia(Usuario usuario) {
+        usuario.iniciarSesion();
+        usuario.cerrarSesion();
+
+        // Simular salto de más de un día
+        usuario.ultimaConexion = usuario.ultimaConexion.minusDays(2);
+
+        usuario.iniciarSesion();
+        usuario.cerrarSesion();
+
+        assertEquals(1, usuario.getMaxRacha());
+    }
+
+
+
 }
