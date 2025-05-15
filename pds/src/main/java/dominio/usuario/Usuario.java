@@ -106,6 +106,7 @@ public class Usuario {
         this.diasUso = 1;
         this.maxRacha = 1;
         this.rachaActual = 1;
+        this.cursosCompletados = 0;
 
         this.fechaRegistro = LocalDateTime.now();
         this.ultimaConexion = fechaRegistro.toLocalDate();
