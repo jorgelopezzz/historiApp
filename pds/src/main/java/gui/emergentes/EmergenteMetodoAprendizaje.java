@@ -26,8 +26,8 @@ public class EmergenteMetodoAprendizaje extends EmergenteBotones {
 
 	private static final String RUTA_INFO = "/info.png";
     /* Dimensiones */
-    private static int ANCHO = 200;
-    private static int ALTO = 30;
+    private static final int ANCHO = 200;
+    private static final int ALTO = 30;
 	
     /* Componentes de organización */
     private JPanel panelEnvolvente;
