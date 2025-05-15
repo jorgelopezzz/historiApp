@@ -2,8 +2,6 @@ package gui.emergentes;
 
 import gui.GestorGUI;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import dominio.HistoriApp;
@@ -13,9 +11,6 @@ import dominio.info.usuario.infoEstadisticas;
 public class EmergenteEstadisticas extends Emergente {
 
     // Dimensiones
-    private static final int ANCHO_VENTANA = 526;
-    private static final int ALTO_VENTANA = 480;
-
     private static final int ANCHO_PANEL = 486;
     private static final int ALTO_PANEL = 370;
     private static final int MARGEN = 10;
@@ -25,8 +20,6 @@ public class EmergenteEstadisticas extends Emergente {
     private static final int ANCHO_DATOS = 80;
 
     private static final int ALTO_ESTATISTICA = 40;
-
-    // Estadísticas
 
     // Componentes
     private JPanel panelPrincipal;
@@ -78,19 +71,15 @@ public class EmergenteEstadisticas extends Emergente {
     private void construirPanelEnvolvente() {
         // Panel Envolvente
         panelEnvolvente = new JPanel();
-        GestorGUI.configurarPanel(panelEnvolvente, new BoxLayout(panelEnvolvente, BoxLayout.Y_AXIS), 
-                GestorGUI.getInstancia().getColorBlanco());
+        GestorGUI.configurarPanel(panelEnvolvente, new BoxLayout(panelEnvolvente, BoxLayout.Y_AXIS), GestorGUI.getInstancia().getColorBlanco());
         GestorGUI.fijarTamano(ANCHO_PANEL, ALTO_PANEL, panelEnvolvente);
-        panelEnvolvente.setBorder(GestorGUI.bordeTexto("Estadísticas de Uso",
-                GestorGUI.getInstancia().getFuenteTexto(),
-                GestorGUI.getInstancia().getColorOscuro(),
-                GestorGUI.getInstancia().getColorOscuro()));
+        panelEnvolvente.setBorder(GestorGUI.bordeTexto("Estadísticas de Uso", GestorGUI.getInstancia().getFuenteTexto(),
+                GestorGUI.getInstancia().getColorOscuro(), GestorGUI.getInstancia().getColorOscuro()));
 
         // Añadir margen
         panelEnvolvente.add(Box.createVerticalStrut(MARGEN));
 
         // Pedir estadísticas
-
         infoEstadisticas estadisticas = HistoriApp.INSTANCE.pedirEstadisticasUsuario();
 
         // Añadir estadísticas
@@ -120,16 +109,14 @@ public class EmergenteEstadisticas extends Emergente {
         panel.add(Box.createHorizontalStrut(MARGEN_INTERNO));
 
         JLabel lblNombre = new JLabel(nombre);
-        GestorGUI.configurarEtiqueta(lblNombre, false, GestorGUI.getInstancia().getColorOscuro(), 
-                GestorGUI.hacerNegrita(GestorGUI.getInstancia().getFuenteTexto()));
+        GestorGUI.configurarEtiqueta(lblNombre, false, GestorGUI.getInstancia().getColorOscuro(), GestorGUI.hacerNegrita(GestorGUI.getInstancia().getFuenteTexto()));
         GestorGUI.fijarTamano(ANCHO_ETIQUETAS, ALTO_ESTATISTICA, lblNombre);
         panel.add(lblNombre);
 
         panel.add(Box.createHorizontalGlue());
 
         JLabel lblDato = new JLabel(dato);
-        GestorGUI.configurarEtiqueta(lblDato, false, GestorGUI.getInstancia().getColorOscuro(),
-                GestorGUI.getInstancia().getFuenteTexto());
+        GestorGUI.configurarEtiqueta(lblDato, false, GestorGUI.getInstancia().getColorOscuro(), GestorGUI.getInstancia().getFuenteTexto());
         GestorGUI.fijarTamano(ANCHO_DATOS, ALTO_ESTATISTICA, lblDato);
         panel.add(lblDato);
 
