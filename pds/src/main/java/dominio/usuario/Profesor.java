@@ -1,7 +1,6 @@
 package dominio.usuario;
 
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
 
 import dominio.info.usuario.infoEstadisticasProfesor;
 import dominio.info.usuario.infoPerfilUsuario;
@@ -20,6 +19,11 @@ public class Profesor extends Usuario {
 	public Profesor(String nombre, String contrasena, String correo, String imagen, String saludo) {
 		super(nombre, contrasena, correo, imagen, saludo);
 		cursosPublicados = 0;
+	}
+
+	public boolean publicarCurso(){
+		cursosPublicados++;
+		return true;
 	}
 	
 	@Override

@@ -19,7 +19,7 @@ import dominio.info.contenidos.InfoBloque;
 import dominio.info.contenidos.InfoCurso;
 import dominio.info.usuario.infoEstadisticas;
 import dominio.info.usuario.infoPerfilUsuario;
-import dominio.info.usuario.infoRanking;
+import dominio.info.usuario.infoClasificacion;
 import dominio.metodoAprendizaje.FactoriaIteradorTarea;
 import dominio.metodoAprendizaje.IteradorTarea;
 import dominio.metodoAprendizaje.MetodoAprendizaje;
@@ -151,8 +151,8 @@ public enum HistoriApp {
 
 	////////////
 	
-	public infoRanking obtenerInfoRanking() {
-		Map<String, String> top7 = usuarios.obtenerTodosLosUsuarios().stream()
+	public infoClasificacion obtenerInfoClasificacion() {
+		Map<String, String> clasificacion = usuarios.obtenerTodosLosUsuarios().stream()
 			.sorted((u1, u2) -> Double.compare(u2.getPuntuacion(), u1.getPuntuacion()))
 			.limit(6)
 			.collect(Collectors.toMap(
@@ -162,8 +162,7 @@ public enum HistoriApp {
 				LinkedHashMap::new
 			));
 
-		System.out.println(top7.toString());
-		return new infoRanking(top7);
+		return new infoClasificacion(clasificacion);
 	}
 
 
@@ -232,6 +231,7 @@ public enum HistoriApp {
 	    try {
 	        Files.copy(origen, destino, StandardCopyOption.REPLACE_EXISTING);
 	        cursos.anadirCurso(destino.toString());
+			((Profesor) usuario).publicarCurso(); //Ya hemos asegurado que usuario es profesor
 	        return true;
 	    } catch (IOException e) {
 	        e.printStackTrace();
