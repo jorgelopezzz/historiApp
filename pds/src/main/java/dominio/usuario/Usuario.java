@@ -45,13 +45,13 @@ public class Usuario {
     protected String contrasena;
     @Column(nullable = true)
     protected String imagen;
-    @Column(nullable = true)
+    @Column(nullable = false)
     protected String saludo;
     
     
     /* Progresos */
     
-    @Column(nullable = true)
+    @Column(nullable = false)
     protected int cursosCompletados;
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<RealizacionCurso> cursos = new ArrayList<>();
@@ -59,13 +59,13 @@ public class Usuario {
     /* Estadísticas */
     @Convert(converter = DurationConverter.class)
     protected Duration tiempoUso;
-	@Column(nullable = true)
+	@Column(nullable = false)
     protected int diasUso;
-    @Column(nullable = true)
+    @Column(nullable = false)
     protected int maxRacha;
-    @Column(nullable = true)
+    @Column(nullable = false)
     protected int rachaActual;
-    @Column(nullable = true)
+    @Column(nullable = false)
     protected LocalDate ultimaConexion;
     
     /* Valoraciones */
@@ -75,7 +75,7 @@ public class Usuario {
     @Transient
     private LocalDateTime inicioSesion;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private LocalDateTime fechaRegistro;
     
     public Usuario() {}
@@ -90,12 +90,16 @@ public class Usuario {
         if(correo == null) 
     		throw new IllegalArgumentException("El correo no puede ser nulo");
 
+        if(saludo == null) 
+    		throw new IllegalArgumentException("El saludo no puede ser nulo");
+
         this.nombre = nombre;
         this.contrasena = contrasena;
         this.correo = correo;
+
+        this.saludo = saludo;
         
         this.imagen = imagen == null ? RUTA_PERFIL_PREDETERMINADO : imagen;
-        this.saludo = saludo;
 
         
         this.tiempoUso = Duration.ofSeconds(0);
