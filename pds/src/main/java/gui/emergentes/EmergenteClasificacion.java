@@ -3,9 +3,6 @@ package gui.emergentes;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.List;
 import java.util.Map;
 
 import javax.swing.Box;
@@ -114,6 +111,7 @@ public class EmergenteClasificacion extends Emergente {
             panelContenedor.add(crearPanelPersona(nombre, puntuacion, esPrimero));
             panelContenedor.add(Box.createVerticalStrut(ESPACIADO_VERTICAL_ENTRE_CAJAS));
             i++;
+            if(i >= MAX_USUARIOS_MOSTRADOS) break;
         }
 
         panelEnvolvente.add(panelContenedor);

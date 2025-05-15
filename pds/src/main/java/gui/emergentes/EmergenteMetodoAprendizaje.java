@@ -18,7 +18,6 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowAdapter;
 
 import gui.GestorGUI;
-import dominio.HistoriApp;
 import dominio.metodoAprendizaje.MetodoAprendizaje;
 
 
@@ -26,6 +25,9 @@ import dominio.metodoAprendizaje.MetodoAprendizaje;
 public class EmergenteMetodoAprendizaje extends EmergenteBotones {
 
 	private static final String RUTA_INFO = "/info.png";
+    /* Dimensiones */
+    private static final int ANCHO = 200;
+    private static final int ALTO = 30;
 	
     /* Componentes de organización */
     private JPanel panelEnvolvente;
@@ -99,7 +101,7 @@ public class EmergenteMetodoAprendizaje extends EmergenteBotones {
         comboEstrategias = new JComboBox<>(MetodoAprendizaje.values());
         comboEstrategias.setFont(GestorGUI.getInstancia().getFuenteTexto());
         comboEstrategias.setForeground(GestorGUI.getInstancia().getColorOscuro());
-        comboEstrategias.setMaximumSize(new java.awt.Dimension(200, 30));
+        comboEstrategias.setMaximumSize(new java.awt.Dimension(ANCHO, ALTO));
 
         panelOpciones.add(Box.createHorizontalGlue());
         panelOpciones.add(comboEstrategias);
@@ -120,8 +122,6 @@ public class EmergenteMetodoAprendizaje extends EmergenteBotones {
         /* Montaje*/
         panelBotones.add(Box.createHorizontalGlue());
         panelBotones.add(botonConfirmar);
-        /*panelBotones.add(Box.createHorizontalStrut(MARGEN));
-        panelBotones.add(botonSalir);*/
         panelBotones.add(Box.createHorizontalGlue());
 
         panelContenido.add(panelOpciones);

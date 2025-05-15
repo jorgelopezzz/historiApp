@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Optional;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -67,14 +66,18 @@ public class EmergentePerfil extends Emergente {
     private JButton botonCerrar;
 
     /* Dimensiones */
-    private static final int ANCHO_PANEL = 466;
-    private static final int ALTO_PANEL = 400;
+    private static final int ANCHO_PANEL = (int) (ANCHO_EMERGENTE_PREDET * 2.0/3.0);
+	private static final int ALTO_PANEL = (int) (ALTO_EMERGENTE_PREDET * 2.0/3.0);
     private static final int MARGEN = 5;
+    private static final int FACTOR_MARGEN_PANEL_ENVOLVENTE = 17;
     private static final int ESPACIADO_ENTRE_CAMPOS = 1;
+    private static final int ESPACIADO_ENTRE_CAMPOS_FINAL = 21;
     private static final int ANCHO_CAMPOS = 175;
     private static final int ALTO_CAMPOS = 25;
     private static final int ANCHO_ETIQUETAS = 150;
     private static final int LADO_IMAGEN = 75;
+    private static final int ANCHO_PANEL_IMAGEN = ANCHO_PANEL - 60;
+    private static final int ALTO_PANEL_IMAGEN = 120;
     private static final int ANCHO_BOTON_GRANDE = 140;
     private static final int ANCHO_NUEVO_SALUDO = ANCHO_ETIQUETAS + ANCHO_CAMPOS + 10;
     private static final int ALTO_NUEVO_SALUDO = ALTO_CAMPOS + 7;
@@ -102,7 +105,7 @@ public class EmergentePerfil extends Emergente {
         panelEnvolvente = new JPanel();
         GestorGUI.configurarPanel(panelEnvolvente, new BorderLayout(), GestorGUI.getInstancia().getColorBlanco());
         panelEnvolvente.setBorder(new EmptyBorder(MARGEN, MARGEN, MARGEN, MARGEN));
-        GestorGUI.fijarTamano(ANCHO_PANEL - MARGEN, ALTO_PANEL - 17*MARGEN, panelEnvolvente);
+        GestorGUI.fijarTamano(ANCHO_PANEL - MARGEN, ALTO_PANEL - FACTOR_MARGEN_PANEL_ENVOLVENTE*MARGEN, panelEnvolvente);
 
         panelCampos = new JPanel();
         GestorGUI.configurarPanel(panelCampos, new BoxLayout(panelCampos, BoxLayout.Y_AXIS), false);
@@ -157,7 +160,7 @@ public class EmergentePerfil extends Emergente {
         panelCampos.add(panelSaludo);
         panelCampos.add(Box.createVerticalStrut(ESPACIADO_ENTRE_CAMPOS));
         panelCampos.add(panelNuevoSaludo);
-        panelCampos.add(Box.createVerticalStrut(ESPACIADO_ENTRE_CAMPOS + 20));
+        panelCampos.add(Box.createVerticalStrut(ESPACIADO_ENTRE_CAMPOS_FINAL));
         panelCampos.add(panelRol);
         panelCampos.add(Box.createVerticalStrut(MARGEN));
 
@@ -183,7 +186,7 @@ public class EmergentePerfil extends Emergente {
         System.out.println(ruta);
         panelImagen = new JPanel();
         GestorGUI.configurarPanel(panelImagen, new BoxLayout(panelImagen, BoxLayout.X_AXIS), false);
-        GestorGUI.fijarTamano(ANCHO_PANEL - 60, 120, panelImagen);
+        GestorGUI.fijarTamano(ANCHO_PANEL_IMAGEN, ALTO_PANEL_IMAGEN, panelImagen);
 
         etiquetaImagen = new JLabel();
         etiquetaImagen.setIcon(GestorGUI.getInstancia().iconoDeRecursos(HistoriApp.INSTANCE.getImagenUsuario(), LADO_IMAGEN, LADO_IMAGEN));
