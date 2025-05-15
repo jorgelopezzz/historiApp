@@ -66,8 +66,8 @@ public class EmergentePerfil extends Emergente {
     private JButton botonCerrar;
 
     /* Dimensiones */
-    private static final int ANCHO_PANEL = 466;
-    private static final int ALTO_PANEL = 400;
+    private static final int ANCHO_PANEL = (int) (ANCHO_EMERGENTE_PREDET * 2.0/3.0);
+	private static final int ALTO_PANEL = (int) (ALTO_EMERGENTE_PREDET * 2.0/3.0);
     private static final int MARGEN = 5;
     private static final int FACTOR_MARGEN_PANEL_ENVOLVENTE = 17;
     private static final int ESPACIADO_ENTRE_CAMPOS = 1;
@@ -76,7 +76,7 @@ public class EmergentePerfil extends Emergente {
     private static final int ALTO_CAMPOS = 25;
     private static final int ANCHO_ETIQUETAS = 150;
     private static final int LADO_IMAGEN = 75;
-    private static final int ANCHO_PANEL_IMAGEN = 406;
+    private static final int ANCHO_PANEL_IMAGEN = ANCHO_PANEL - 60;
     private static final int ALTO_PANEL_IMAGEN = 120;
     private static final int ANCHO_BOTON_GRANDE = 140;
     private static final int ANCHO_NUEVO_SALUDO = ANCHO_ETIQUETAS + ANCHO_CAMPOS + 10;
