@@ -18,7 +18,6 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowAdapter;
 
 import gui.GestorGUI;
-import dominio.HistoriApp;
 import dominio.metodoAprendizaje.MetodoAprendizaje;
 
 
