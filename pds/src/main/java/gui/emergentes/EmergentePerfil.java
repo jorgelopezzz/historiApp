@@ -183,7 +183,6 @@ public class EmergentePerfil extends Emergente {
     }
 
     private void construirPanelImagen(String ruta) {
-        System.out.println(ruta);
         panelImagen = new JPanel();
         GestorGUI.configurarPanel(panelImagen, new BoxLayout(panelImagen, BoxLayout.X_AXIS), false);
         GestorGUI.fijarTamano(ANCHO_PANEL_IMAGEN, ALTO_PANEL_IMAGEN, panelImagen);
@@ -240,7 +239,6 @@ public class EmergentePerfil extends Emergente {
 
                 emergente.obtenerFichero().ifPresentOrElse((ruta) -> {
                     rutaImagen = ruta;
-                    System.out.println(ruta);
                     etiquetaImagen.setIcon(GestorGUI.getInstancia().iconoAbsoluto(rutaImagen, LADO_IMAGEN, LADO_IMAGEN));
                 }, () -> {});
             }
