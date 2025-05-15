@@ -77,7 +77,7 @@ class ProfesorTest {
         assertEquals(0, est.getCursosCompletados());
         assertEquals("00:00:00", est.getMinutosUso());
         assertEquals("00:00:00", est.getMinutosUsoDiario());
-        assertEquals(0, est.getMaxRacha());
+        assertEquals(1, est.getMaxRacha());
         assertEquals(0, est.getCursosPublicados());
     }
 

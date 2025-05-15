@@ -74,6 +74,7 @@ class UsuarioTest {
         assertEquals(esperado, u.checkContrasena(input));
     }
 
+
     static List<Arguments> contrasenas() {
         return List.of(
             Arguments.of("clave123", true),
