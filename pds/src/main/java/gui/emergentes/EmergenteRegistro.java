@@ -59,6 +59,8 @@ public class EmergenteRegistro extends Emergente {
 	private static final int ALTO_CAMPOS = 25;
 	private static final int ANCHO_ETIQUETAS = 150;
 	private static final int LADO_IMAGEN = 75;
+	private static final int ANCHO_PANEL_IMAGEN = ANCHO_PANEL - 60;
+    private static final int ALTO_PANEL_IMAGEN = 120;
 	private static final int ANCHO_BOTON_GRANDE = 140;
 	
 	public EmergenteRegistro(JFrame ventanaMadre) {
@@ -136,7 +138,7 @@ public class EmergenteRegistro extends Emergente {
 		/* Configuración panel */
 		panelImagen = new JPanel();
 		GestorGUI.configurarPanel(panelImagen, new BoxLayout(panelImagen, BoxLayout.X_AXIS), false);
-		GestorGUI.fijarTamano(ANCHO_PANEL-60, 120, panelImagen);
+		GestorGUI.fijarTamano(ANCHO_PANEL_IMAGEN, ALTO_PANEL_IMAGEN, panelImagen);
 		
 		/* Vista previa */
 		etiquetaImagen = new JLabel();
