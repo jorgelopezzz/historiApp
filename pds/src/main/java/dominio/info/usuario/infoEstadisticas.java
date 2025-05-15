@@ -1,7 +1,6 @@
 package dominio.info.usuario;
 
 import java.time.Duration;
-import java.util.Optional;
 
 import dominio.info.Info;
 

@@ -190,7 +190,7 @@ public class Usuario {
     public boolean cerrarSesion(){
         LocalDateTime ahora = LocalDateTime.now();
         LocalDate hoy = ahora.toLocalDate();
-        LocalDate inicio = inicioSesion.toLocalDate();
+        
         tiempoUso = tiempoUso.plus(Duration.between(inicioSesion, ahora));
         int dias = 0;
         dias = (int)ChronoUnit.DAYS.between(ultimaConexion, hoy); 

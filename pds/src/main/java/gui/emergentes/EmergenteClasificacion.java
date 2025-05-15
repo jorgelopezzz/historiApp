@@ -92,7 +92,7 @@ public class EmergenteClasificacion extends Emergente {
         panelContenedor.setBorder(GestorGUI.bordeTexto("Clasificación", GestorGUI.getInstancia().getFuenteTitulo(),
                 GestorGUI.getInstancia().getColorOscuro(), GestorGUI.getInstancia().getColorOscuro()));
 
-        Map<String, String> clasificacion = HistoriApp.INSTANCE.obtenerInfoRanking().getRanking();
+        Map<String, String> clasificacion = HistoriApp.INSTANCE.obtenerInfoClasificacion().getClasificacion();
 
         System.out.println(clasificacion.toString());
 

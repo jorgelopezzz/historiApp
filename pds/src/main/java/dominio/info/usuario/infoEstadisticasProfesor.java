@@ -1,7 +1,6 @@
 package dominio.info.usuario;
 
 import java.time.Duration;
-import java.util.Optional;
 
 public class infoEstadisticasProfesor extends infoEstadisticas{
     
@@ -11,7 +10,6 @@ public class infoEstadisticasProfesor extends infoEstadisticas{
         super(texto, puntuacion, cursosCompletados, bloquesCompletados, minutosUso, diasUso, maxRacha);
         
         this.cursosPublicados = cursosPublicados;
-
     }
 
 

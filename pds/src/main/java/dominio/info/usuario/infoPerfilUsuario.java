@@ -1,6 +1,5 @@
 package dominio.info.usuario;
 
-import java.util.Optional;
 
 import dominio.info.Info;
 
