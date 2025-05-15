@@ -86,4 +86,14 @@ class RepositorioUsuariosTest {
         Usuario encontrado = RepositorioUsuarios.INSTANCE.encontrarUsuarioPorNombre("Borrar");
         assertNull(encontrado);
     }
+
+    @Test
+    void testBuscarUsuarioInexistenteDevuelveNull() {
+        Usuario noExiste = RepositorioUsuarios.INSTANCE.encontrarUsuarioPorNombre("no_existe");
+        assertNull(noExiste);
+
+        Usuario noExisteCorreo = RepositorioUsuarios.INSTANCE.encontrarUsuarioPorCorreo("no@existe.com");
+        assertNull(noExisteCorreo);
+    }
+
 }
