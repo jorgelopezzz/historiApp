@@ -114,6 +114,7 @@ public class EmergenteClasificacion extends Emergente {
             panelContenedor.add(crearPanelPersona(nombre, puntuacion, esPrimero));
             panelContenedor.add(Box.createVerticalStrut(ESPACIADO_VERTICAL_ENTRE_CAJAS));
             i++;
+            if(i >= MAX_USUARIOS_MOSTRADOS) break;
         }
 
         panelEnvolvente.add(panelContenedor);
