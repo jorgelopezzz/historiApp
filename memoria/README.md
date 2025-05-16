@@ -20,7 +20,7 @@ La documentación completa del proyecto HistoriApp está organizada en los sigui
 
 ## Cómo ejecutar HistoriApp
 
-La clase principal de la aplicación es `controlador.Lanzador`, que contiene el método `main`. Para ejecutar HistoriApp, inicia la ejecución desde dicha clase.
+La clase principal de la aplicación es `controlador.Lanzador`, que contiene el método `main`. Para ejecutar HistoriApp, se debe iniciar la ejecución desde dicha clase.
 
 ## Propósito de la Documentación
 
