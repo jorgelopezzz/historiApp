@@ -2,8 +2,7 @@ package dominio;
 
 import java.awt.EventQueue;
 
-
-import gui.ventanas.SelectorVentana;
+import gui.SelectorVentana;
 import jakarta.persistence.Persistence;
 import repositorios.RepositorioCursos;
 import repositorios.RepositorioUsuarios;

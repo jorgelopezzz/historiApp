@@ -7,8 +7,12 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.time.LocalDate;
 
-import dominio.metodoAprendizaje.MetodoAprendizaje;
-import dominio.usuario.Usuario;
+import dominio.BloqueContenidos;
+import dominio.Curso;
+import dominio.MetodoAprendizaje;
+import dominio.RealizacionCurso;
+import dominio.Usuario;
+
 import java.util.List;
 
 public class RealizacionCursoTest {

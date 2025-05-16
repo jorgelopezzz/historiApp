@@ -1,7 +1,5 @@
 package gui;
 
-import gui.estilo.Tema;
-
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
@@ -25,8 +23,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.RootPaneContainer;
 import javax.swing.border.TitledBorder;
-
-import gui.estilo.ArchivoTemas;
 
 public class GestorGUI {
 	

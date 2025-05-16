@@ -16,11 +16,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import com.fasterxml.jackson.databind.JsonMappingException;
 
-import dominio.curso.Curso;
-import dominio.tarea.PreguntaVF;
-import dominio.tarea.Tarea;
-import dominio.tarea.Tip;
-
 class ServicioJSONTest {
 
 	/* Rutas JSON Tareas */

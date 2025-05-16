@@ -2,7 +2,6 @@ package dominio;
 
 import com.fasterxml.jackson.databind.*;
 
-import dominio.curso.Curso;
 import repositorios.ServicioCursoLoader;
 
 import java.io.File;

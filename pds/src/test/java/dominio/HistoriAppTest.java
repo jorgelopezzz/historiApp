@@ -1,10 +1,5 @@
 package dominio;
 
-import dominio.metodoAprendizaje.MetodoAprendizaje;
-import dominio.usuario.Usuario;
-import dominio.info.InfoValoracion;
-import dominio.info.usuario.infoEstadisticas;
-import dominio.info.usuario.infoPerfilUsuario;
 import jakarta.persistence.Persistence;
 import repositorios.RepositorioCursos;
 import repositorios.RepositorioUsuarios;

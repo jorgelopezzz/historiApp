@@ -11,21 +11,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import dominio.curso.BloqueContenidos;
-import dominio.curso.Curso;
-import dominio.info.Info;
-import dominio.info.InfoValoracion;
-import dominio.info.contenidos.InfoBloque;
-import dominio.info.contenidos.InfoCurso;
-import dominio.info.usuario.infoEstadisticas;
-import dominio.info.usuario.infoPerfilUsuario;
-import dominio.info.usuario.infoClasificacion;
-import dominio.metodoAprendizaje.FactoriaIteradorTarea;
-import dominio.metodoAprendizaje.IteradorTarea;
-import dominio.metodoAprendizaje.MetodoAprendizaje;
-import dominio.tarea.Tarea;
-import dominio.usuario.Profesor;
-import dominio.usuario.Usuario;
 import repositorios.RepositorioCursos;
 import repositorios.RepositorioUsuarios;
 
