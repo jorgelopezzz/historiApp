@@ -26,7 +26,7 @@ public class HistoriAppTest {
     static public void setUp() {
         RepositorioUsuarios.INSTANCE.init(Persistence.createEntityManagerFactory("usuarios"));
         RepositorioCursos.INSTANCE.init(new ServicioJSON());
-        
+        HistoriApp.INSTANCE.init(RepositorioUsuarios.INSTANCE, RepositorioCursos.INSTANCE);
         RepositorioUsuarios repositorio = RepositorioUsuarios.INSTANCE;
         for(Usuario u : repositorio.obtenerTodosLosUsuarios()) {
         	repositorio.eliminarUsuario(u);
