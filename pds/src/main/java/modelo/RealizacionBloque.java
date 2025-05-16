@@ -27,11 +27,11 @@ public class RealizacionBloque {
 	@Column(nullable = false)
 	private LocalDateTime fechaCompletado;
 	@Column(nullable = false)
-	private Double puntuacion;
+	private int puntuacion;
 	
 	protected RealizacionBloque() {}
 
-	public RealizacionBloque(RealizacionCurso realizacionCurso, BloqueContenidos bloque, double puntuacion) {
+	public RealizacionBloque(RealizacionCurso realizacionCurso, BloqueContenidos bloque, int puntuacion) {
 		this.realizacionCurso = realizacionCurso;
 		if(bloque == null)
 			throw new IllegalArgumentException("Bloque no puede ser nulo.");
@@ -57,7 +57,7 @@ public class RealizacionBloque {
 		return fechaCompletado;
 	}
 
-	public double getPuntuacion() {
+	public int getPuntuacion() {
 		return puntuacion;
 	}
 

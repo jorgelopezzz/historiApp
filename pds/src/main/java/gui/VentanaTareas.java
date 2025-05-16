@@ -147,7 +147,7 @@ public class VentanaTareas extends VentanaMenu {
 	                panelGeneral.revalidate();
 	                panelGeneral.repaint();
 				} else {
-					double puntuacion = HistoriApp.INSTANCE.obtenerPuntuacion();
+					int puntuacion = HistoriApp.INSTANCE.obtenerPuntuacion();
 					String mensaje = "Tu puntuación es " + String.valueOf(puntuacion);
 					EmergenteMensaje emergentePuntuacion = new EmergenteMensaje(VentanaTareas.this, mensaje, RUTA_CHECK);
 					emergentePuntuacion.mostrar();

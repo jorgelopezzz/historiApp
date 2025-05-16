@@ -127,7 +127,7 @@ public enum HistoriApp {
 		return imagenRuta;
 	}
 
-	public double getPuntuacionUsuario(){
+	public int getPuntuacionUsuario(){
 		return usuario.getPuntuacion();
 	}
 
@@ -139,11 +139,11 @@ public enum HistoriApp {
 	
 	public infoClasificacion obtenerInfoClasificacion() {
 		Map<String, String> clasificacion = usuarios.obtenerTodosLosUsuarios().stream()
-			.sorted((u1, u2) -> Double.compare(u2.getPuntuacion(), u1.getPuntuacion()))
+			.sorted((u1, u2) -> Integer.compare(u2.getPuntuacion(), u1.getPuntuacion()))
 			.limit(6)
 			.collect(Collectors.toMap(
 				Usuario::getNombre,
-				u -> String.format("%.2f", u.getPuntuacion()),
+				u -> String.format("%d", u.getPuntuacion()),
 				(a, b) -> a,
 				LinkedHashMap::new
 			));
@@ -199,8 +199,8 @@ public enum HistoriApp {
 		return infoTarea;
 	}
 	
-	public double obtenerPuntuacion() {
-		double puntuacion = iteradorTarea.obtenerPuntuacion();
+	public int obtenerPuntuacion() {
+		int puntuacion = iteradorTarea.obtenerPuntuacion();
 		usuario.completarBloque(cursoActual, bloqueActual, puntuacion);
 		return puntuacion;
 	}

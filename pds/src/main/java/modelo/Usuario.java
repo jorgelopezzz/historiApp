@@ -150,10 +150,10 @@ public class Usuario {
     	this.saludo = saludo;
     }
 
-    public double getPuntuacion() {
+    public int getPuntuacion() {
         return cursos.stream()
             .flatMap(rc -> rc.getBloques().stream())
-            .mapToDouble(rb -> rb.getPuntuacion())
+            .mapToInt(rb -> rb.getPuntuacion())
             .sum();
     }
 
@@ -188,17 +188,22 @@ public class Usuario {
     public boolean cerrarSesion(){
         LocalDateTime ahora = LocalDateTime.now();
         LocalDate hoy = ahora.toLocalDate();
-        
+        LocalDate inicio = inicioSesion.toLocalDate();
+
         tiempoUso = tiempoUso.plus(Duration.between(inicioSesion, ahora));
         int dias = 0;
-        dias = (int)ChronoUnit.DAYS.between(ultimaConexion, hoy); 
+        dias = (int)ChronoUnit.DAYS.between(inicio, hoy); 
         if (dias > 0) {
             diasUso += dias;
-            rachaActual += dias;
-            if (rachaActual > maxRacha) {
-                maxRacha = rachaActual;
+            if((int)ChronoUnit.DAYS.between(ultimaConexion, hoy) == 1){
+                rachaActual += dias;
+                if (rachaActual > maxRacha) {
+                    maxRacha = rachaActual;
+                }
+            } else if ((int)ChronoUnit.DAYS.between(ultimaConexion, hoy) > 1){
+                rachaActual = 0;
+                ultimaConexion = hoy;
             }
-            ultimaConexion = hoy;
         }
         RepositorioUsuarios.INSTANCE.actualizarUsuario(this);
         return true;
@@ -232,7 +237,7 @@ public class Usuario {
 	}
 	
 	@Transactional //MUY IMPORTANTEEE
-	public void completarBloque(Curso curso, BloqueContenidos bloque, double puntuacion) {
+	public void completarBloque(Curso curso, BloqueContenidos bloque, int puntuacion) {
 		/* Caso 1: El usuario no está matriculado en el curso */
 		getRealizacion(curso.getTitulo()).ifPresentOrElse(
 				rc -> rc.completarBloque(bloque, puntuacion),

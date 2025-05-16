@@ -1,4 +1,4 @@
-package dominio;
+package controlador;
 
 import jakarta.persistence.Persistence;
 import modelo.InfoValoracion;

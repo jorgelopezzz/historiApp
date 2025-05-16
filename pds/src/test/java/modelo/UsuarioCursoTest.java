@@ -1,6 +1,7 @@
-package dominio.usuario;
+package modelo;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.*;
 import org.junit.jupiter.params.provider.*;
@@ -46,14 +47,14 @@ class UsuarioCursoTest {
 
     @Test
     void testCompletarBloqueCuandoNoMatriculado() {
-        assertThrows(IllegalStateException.class, () -> usuario.completarBloque(curso, curso.getBloquesContenidos().get(0), 10.0)); // debería imprimir error, no lanzar excepción
+        assertThrows(IllegalStateException.class, () -> usuario.completarBloque(curso, curso.getBloquesContenidos().get(0), 10));
         assertEquals(0, usuario.getBloquesCompletados());
     }
 
     @Test
     void testCompletarBloqueCuandoMatriculado() {
         usuario.matricularCurso(curso, metodo);
-        usuario.completarBloque(curso, bloque, 9.5);
+        usuario.completarBloque(curso, bloque, 9);
         assertEquals(1, usuario.getBloquesCompletados());
     }
 
@@ -74,29 +75,29 @@ class UsuarioCursoTest {
     @Test
     void testHaCompletadoCurso() {
         usuario.matricularCurso(curso, metodo);
-        usuario.completarBloque(curso, bloque, 10.0);
+        usuario.completarBloque(curso, bloque, 10);
         assertFalse(usuario.haCompletado(curso.getTitulo()));
         assertEquals(0, usuario.getCursosCompletados());
-        usuario.completarBloque(curso, segundoBloque, 10.0);
+        usuario.completarBloque(curso, segundoBloque, 10);
         assertTrue(usuario.haCompletado(curso.getTitulo()));
         assertEquals(1, usuario.getCursosCompletados());
         usuario.matricularCurso(curso, metodo);
-        usuario.completarBloque(curso, bloque, 10.0);
+        usuario.completarBloque(curso, bloque, 10);
         assertTrue(usuario.haCompletado(curso.getTitulo()));
     }
     
     @Test
     void testMayorPuntuacion() {
         usuario.matricularCurso(curso, metodo);
-        usuario.completarBloque(curso, bloque, 5.0);
-        usuario.completarBloque(curso, bloque, 6.5);
-        assertEquals(6.5, usuario.getRealizacion(curso.getTitulo()).get().getBloques().get(0).getPuntuacion());
+        usuario.completarBloque(curso, bloque, 5);
+        usuario.completarBloque(curso, bloque, 6);
+        assertEquals(6, usuario.getRealizacion(curso.getTitulo()).get().getBloques().get(0).getPuntuacion());
     }
 
     @Test
     void testBloqueCompletadoDetectaCorrectamente() {
         usuario.matricularCurso(curso, metodo);
-        usuario.completarBloque(curso, bloque, 8.0);
+        usuario.completarBloque(curso, bloque, 8);
 
         assertTrue(usuario.bloqueCompletado(curso.getTitulo(), bloque.getTitulo()));
         assertFalse(usuario.bloqueCompletado(curso.getTitulo(), segundoBloque.getTitulo()));
@@ -129,10 +130,10 @@ class UsuarioCursoTest {
     @Test
     void testGetPuntuacionAcumulaCorrectamente() {
         usuario.matricularCurso(curso, metodo);
-        usuario.completarBloque(curso, bloque, 7.5);
-        usuario.completarBloque(curso, segundoBloque, 8.5);
+        usuario.completarBloque(curso, bloque, 7);
+        usuario.completarBloque(curso, segundoBloque, 8);
 
-        assertEquals(16.0, usuario.getPuntuacion(), 0.01);
+        assertEquals(15, usuario.getPuntuacion());
     }
 
 }
