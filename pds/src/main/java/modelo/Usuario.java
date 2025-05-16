@@ -191,17 +191,17 @@ public class Usuario {
         LocalDate inicio = inicioSesion.toLocalDate();
 
         tiempoUso = tiempoUso.plus(Duration.between(inicioSesion, ahora));
-        int dias = 0;
-        dias = (int)ChronoUnit.DAYS.between(inicio, hoy); 
-        if (dias > 0) {
-            diasUso += dias;
-            if((int)ChronoUnit.DAYS.between(ultimaConexion, hoy) == 1){
-                rachaActual += dias;
+        int diasSesion = 0;
+        diasSesion = (int)ChronoUnit.DAYS.between(inicio, hoy); 
+        if (diasSesion > 0) {
+            diasUso += diasSesion;
+            if((int)ChronoUnit.DAYS.between(ultimaConexion, inicio) == 1){
+                rachaActual += diasSesion;
                 if (rachaActual > maxRacha) {
                     maxRacha = rachaActual;
                 }
-            } else if ((int)ChronoUnit.DAYS.between(ultimaConexion, hoy) > 1){
-                rachaActual = 0;
+            } else if ((int)ChronoUnit.DAYS.between(ultimaConexion, inicio) > 1){
+                rachaActual = 1;
             }
             ultimaConexion = hoy;
         }
