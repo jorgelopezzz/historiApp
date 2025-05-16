@@ -20,7 +20,7 @@ class ProfesorTest {
 
     @BeforeEach
     void setUp() {
-        profesor = new Profesor("Jorge", "1234", "jorge@correo.com", null, "Alfonso");
+        profesor = new Profesor("Jorge", "1234", "jorge@correo.com", "/perfil.png", "Alfonso");
     }
 
     @ParameterizedTest
