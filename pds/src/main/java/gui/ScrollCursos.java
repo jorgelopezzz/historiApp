@@ -39,6 +39,9 @@ public class ScrollCursos extends Scroll {
 	    						emergenteMetodo.mostrar();
 	                    		MetodoAprendizaje metodoAprendizaje = emergenteMetodo.obtenerRespuesta().orElse(null);
 	                    		HistoriApp.INSTANCE.matricularCurso(cursoSeleccionado.getTitulo(), metodoAprendizaje);
+								//Actualizamos VentanaCursos para que muestre el nuevo curso
+								/* Cambio de ventana */
+								selector.cambiarVentana(new VentanaCursos(selector));	
 	                    	}
 	                    }
 	                    
