@@ -1,7 +1,6 @@
 package repositorios;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
 
 import java.util.*;
 

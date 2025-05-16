@@ -12,9 +12,6 @@ import servicios.ServicioJSON;
 
 import org.junit.jupiter.api.*;
 
-import controlador.HistoriApp;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;

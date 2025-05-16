@@ -4,9 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 import java.util.Optional;
-import java.util.Random;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -15,7 +13,6 @@ import javax.swing.JPanel;
 
 import controlador.HistoriApp;
 import modelo.Info;
-import modelo.Tarea;
 import utils.GestorGUI;
 
 

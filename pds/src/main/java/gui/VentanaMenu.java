@@ -53,7 +53,6 @@ public abstract class VentanaMenu extends Ventana {
 	/* Rutas */
 	private static final String RUTA_PUNTUACION = "/puntuacion.png";
 	private static final String RUTA_RACHA = "/racha.png";
-	private static final String RUTA_PERFIL_PREDETERMINADO = "/perfil.png";
 	
 	public VentanaMenu(SelectorVentana selector) {
 		super(selector, GestorGUI.NOMBRE_APP + " Menu", GestorGUI.getInstancia().getColorClaro(), JFrame.DO_NOTHING_ON_CLOSE);

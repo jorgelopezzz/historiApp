@@ -3,7 +3,6 @@ package gui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 import javax.swing.Box;
@@ -13,10 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controlador.HistoriApp;
-import modelo.Curso;
 import modelo.InfoBloque;
-import modelo.InfoCurso;
-import modelo.MetodoAprendizaje;
 import utils.GestorGUI;
 
 @SuppressWarnings("serial")
