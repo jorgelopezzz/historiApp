@@ -13,7 +13,6 @@ import javax.swing.JList;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.ListCellRenderer;
-import javax.swing.ListModel;
 import javax.swing.border.EmptyBorder;
 
 import utils.GestorGUI;

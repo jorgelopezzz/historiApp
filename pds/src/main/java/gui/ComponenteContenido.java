@@ -2,7 +2,6 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
-import java.util.Optional;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -11,7 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 
 import utils.GestorGUI;
 

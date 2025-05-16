@@ -1,8 +1,6 @@
 package gui;
 
-import java.awt.BorderLayout;
 import java.awt.LayoutManager;
-import java.util.Optional;
 
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;

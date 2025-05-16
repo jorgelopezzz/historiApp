@@ -1,6 +1,5 @@
 package gui;
 
-import modelo.InfoTipoTest;
 import modelo.InfoVF;
 
 public class ComponenteVF extends ComponenteTipoTest {

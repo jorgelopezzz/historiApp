@@ -1,9 +1,6 @@
 package gui;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.LayoutManager;
-import java.util.Optional;
 
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;

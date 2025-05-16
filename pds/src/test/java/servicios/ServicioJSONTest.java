@@ -2,13 +2,8 @@ package servicios;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.nio.file.Path;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -19,7 +14,6 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import modelo.PreguntaVF;
 import modelo.Tarea;
 import modelo.Tip;
-import servicios.ServicioJSON;
 
 class ServicioJSONTest {
 

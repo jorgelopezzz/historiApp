@@ -226,7 +226,7 @@ public class Usuario {
 		return getRealizacion(nombreCurso).isPresent();
 	}
 	
-	@Transactional //MUY IMPORTANTEEE
+	@Transactional
 	public boolean matricularCurso(Curso curso, MetodoAprendizaje metodoAprendizaje) {
 		if(! estaMatriculado(curso.getTitulo())) {
 			RealizacionCurso rc = new RealizacionCurso(curso, this, metodoAprendizaje);
@@ -236,7 +236,7 @@ public class Usuario {
 		return false;
 	}
 	
-	@Transactional //MUY IMPORTANTEEE
+	@Transactional
 	public void completarBloque(Curso curso, BloqueContenidos bloque, int puntuacion) {
 		/* Caso 1: El usuario no está matriculado en el curso */
 		getRealizacion(curso.getTitulo()).ifPresentOrElse(

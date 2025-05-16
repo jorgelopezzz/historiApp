@@ -1,12 +1,10 @@
 package gui;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.swing.JFrame;
 
 import controlador.HistoriApp;
-import modelo.MetodoAprendizaje;
 
 
 @SuppressWarnings("serial")

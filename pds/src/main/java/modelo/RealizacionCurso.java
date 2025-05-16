@@ -60,8 +60,6 @@ public class RealizacionCurso {
         this.bloquesTotales = listaBloquesOriginal.size();
         this.listaBloques = new ArrayList<RealizacionBloque>(listaBloquesOriginal.size());
         
-        
-        
     }
     
     public boolean estaCompletado(){
@@ -74,7 +72,7 @@ public class RealizacionCurso {
     			
     }
     
-    @Transactional //MUY IMPORTANTEEE
+    @Transactional
     public void completarBloque(BloqueContenidos bloque, int puntuacion) {
         getRealizacionBloque(bloque).ifPresentOrElse(
             // Caso 1: El bloque ya ha sido realizado

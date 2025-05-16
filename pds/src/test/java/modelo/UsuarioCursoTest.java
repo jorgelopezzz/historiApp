@@ -3,15 +3,6 @@ package modelo;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.params.*;
-import org.junit.jupiter.params.provider.*;
-
-import gui.EmergenteMetodoAprendizaje;
-import modelo.BloqueContenidos;
-import modelo.Curso;
-import modelo.MetodoAprendizaje;
-import modelo.Tip;
-import modelo.Usuario;
 
 import java.util.List;
 import java.util.Optional;
