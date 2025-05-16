@@ -91,4 +91,47 @@ class UsuarioCursoTest {
         usuario.completarBloque(curso, bloque, 6.5);
         assertEquals(6.5, usuario.getRealizacion(curso.getTitulo()).get().getBloques().get(0).getPuntuacion());
     }
+
+    @Test
+    void testBloqueCompletadoDetectaCorrectamente() {
+        usuario.matricularCurso(curso, metodo);
+        usuario.completarBloque(curso, bloque, 8.0);
+
+        assertTrue(usuario.bloqueCompletado(curso.getTitulo(), bloque.getTitulo()));
+        assertFalse(usuario.bloqueCompletado(curso.getTitulo(), segundoBloque.getTitulo()));
+    }
+
+    @Test
+    void testHacerValoracionYObtenerValoraciones() {
+        assertTrue(usuario.hacerValoracion(curso, "Muy bueno", 9));
+
+        var valoraciones = usuario.getValoraciones();
+        assertEquals(1, valoraciones.size());
+
+        var v = valoraciones.get(0);
+        assertEquals("Muy bueno", v.getComentario());
+        assertEquals("titulo", v.getCursoNombre());
+        assertEquals(9, v.getPuntuacion());
+    }
+
+    @Test
+    void testGetValoracionesPorCursoNombre() {
+        usuario.hacerValoracion(curso, "Valoración 1", 8);
+        usuario.hacerValoracion(curso, "Valoración 2", 9);
+
+        var valoracionesCurso = usuario.getValoracionesPorCursoNombre(curso.getTitulo());
+
+        assertEquals(2, valoracionesCurso.size());
+        assertTrue(valoracionesCurso.stream().allMatch(v -> v.getCursoNombre().equals(curso.getTitulo())));
+    }
+
+    @Test
+    void testGetPuntuacionAcumulaCorrectamente() {
+        usuario.matricularCurso(curso, metodo);
+        usuario.completarBloque(curso, bloque, 7.5);
+        usuario.completarBloque(curso, segundoBloque, 8.5);
+
+        assertEquals(16.0, usuario.getPuntuacion(), 0.01);
+    }
+
 }

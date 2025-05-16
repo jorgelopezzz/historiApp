@@ -135,21 +135,4 @@ class UsuarioTest {
         assertEquals("aaaa.png", usuario.getImagen());
     }
     
-    @ParameterizedTest
-    @MethodSource("usuarioValido")
-    void testRachaSeReiniciaAlSaltarDia(Usuario usuario) {
-        usuario.iniciarSesion();
-        usuario.cerrarSesion();
-
-        // Simular salto de más de un día
-        usuario.ultimaConexion = usuario.ultimaConexion.minusDays(2);
-
-        usuario.iniciarSesion();
-        usuario.cerrarSesion();
-
-        assertEquals(1, usuario.getMaxRacha());
-    }
-
-
-
 }

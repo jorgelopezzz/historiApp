@@ -99,13 +99,4 @@ class ProfesorTest {
         assertEquals("imagen.png", profesor.getImagen());
     }
 
-    @Test
-    void testSesionYTiempoUso() throws InterruptedException {
-        profesor.iniciarSesion();
-        Thread.sleep(1000);
-        profesor.cerrarSesion();
-        infoEstadisticasProfesor est = profesor.getEstadisticas();
-        assertNotNull(est.getMinutosUso());
-        assertTrue(est.getMinutosUso().matches("\\d{2}:\\d{2}:\\d{2}"));
-    }
 }

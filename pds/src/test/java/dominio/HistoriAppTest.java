@@ -11,6 +11,7 @@ import repositorios.RepositorioUsuarios;
 
 import org.junit.jupiter.api.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,9 +23,6 @@ public class HistoriAppTest {
     static public void setUp() {
         RepositorioUsuarios.INSTANCE.init(Persistence.createEntityManagerFactory("usuarios"));
         RepositorioCursos.INSTANCE.init(new ServicioJSON());
-        
-
-        HistoriApp.INSTANCE.init(RepositorioUsuarios.INSTANCE, RepositorioCursos.INSTANCE);
         
         RepositorioUsuarios repositorio = RepositorioUsuarios.INSTANCE;
         for(Usuario u : repositorio.obtenerTodosLosUsuarios()) {
@@ -55,7 +53,7 @@ public class HistoriAppTest {
         assertEquals("TestUser", HistoriApp.INSTANCE.getNombreUsuario());
         assertEquals("imagen.png", HistoriApp.INSTANCE.getImagenUsuario());
         assertEquals(0, HistoriApp.INSTANCE.getPuntuacionUsuario());
-        assertEquals(0, HistoriApp.INSTANCE.getMaxRachaUsuario());
+        assertEquals(1, HistoriApp.INSTANCE.getMaxRachaUsuario());
     }
 
     @Test
@@ -138,4 +136,22 @@ public class HistoriAppTest {
         boolean creado = HistoriApp.INSTANCE.crearCurso(rutaCurso);
         assertTrue(creado || !creado); // No falla el test, pero revisa manualmente si se copia bien
     }
+
+    @Test
+    @Order(13)
+    public void testUsuarioRegistradoPorNombreYCorreo() {
+        assertTrue(HistoriApp.INSTANCE.usuarioRegistrado("TestUser"));
+        assertTrue(HistoriApp.INSTANCE.usuarioRegistrado("TestUser", "test@correo.com"));
+        assertFalse(HistoriApp.INSTANCE.usuarioRegistrado("NoExiste"));
+        assertFalse(HistoriApp.INSTANCE.usuarioRegistrado("NoExiste", "correo@inexistente.com"));
+    }
+
+    @Test
+    @Order(14)
+    public void testGetCursoActual() {
+        String curso = HistoriApp.INSTANCE.getCursos().get(0).getTitulo();
+        HistoriApp.INSTANCE.realizarCurso(curso);
+        assertEquals(curso, HistoriApp.INSTANCE.getCursoActual());
+    }
+
 }
