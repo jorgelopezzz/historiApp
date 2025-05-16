@@ -202,8 +202,8 @@ public class Usuario {
                 }
             } else if ((int)ChronoUnit.DAYS.between(ultimaConexion, hoy) > 1){
                 rachaActual = 0;
-                ultimaConexion = hoy;
             }
+            ultimaConexion = hoy;
         }
         RepositorioUsuarios.INSTANCE.actualizarUsuario(this);
         return true;

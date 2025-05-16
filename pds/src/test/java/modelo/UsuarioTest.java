@@ -20,7 +20,7 @@ import repositorios.RepositorioUsuarios;
 class UsuarioTest {
     
     static List<Arguments> usuarioValido() {
-        return List.of(Arguments.of(new Usuario("Jorge", "1234", "egea@correo.com", null, "Alfonso")));
+        return List.of(Arguments.of(new Usuario("Jorge", "1234", "egea@correo.com", "/perfil.png", "Alfonso")));
     }
 
     @BeforeAll
