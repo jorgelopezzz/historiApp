@@ -99,9 +99,9 @@ public class Usuario {
 
         this.saludo = saludo;
         
-        this.imagen = imagen == null ? RUTA_PERFIL_PREDETERMINADO : imagen;
+        this.imagen = imagen;
 
-        
+
         this.tiempoUso = Duration.ofSeconds(0);
         this.diasUso = 1;
         this.maxRacha = 1;

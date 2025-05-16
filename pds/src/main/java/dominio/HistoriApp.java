@@ -137,7 +137,7 @@ public enum HistoriApp {
 	
 	public String getImagenUsuario() {
 		String imagenRuta = usuario.getImagen();
-		return imagenRuta == null ? "/perfil.png" : imagenRuta;
+		return imagenRuta;
 	}
 
 	public double getPuntuacionUsuario(){

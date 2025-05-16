@@ -188,7 +188,13 @@ public class EmergentePerfil extends Emergente {
         GestorGUI.fijarTamano(ANCHO_PANEL_IMAGEN, ALTO_PANEL_IMAGEN, panelImagen);
 
         etiquetaImagen = new JLabel();
-        etiquetaImagen.setIcon(GestorGUI.getInstancia().iconoDeRecursos(HistoriApp.INSTANCE.getImagenUsuario(), LADO_IMAGEN, LADO_IMAGEN));
+
+        rutaImagen = datos.getImagen();
+        if(rutaImagen.equals(RUTA_PERFIL_PREDETERMINADO)){
+            etiquetaImagen.setIcon(GestorGUI.getInstancia().iconoDeRecursos(GestorGUI.IMAGEN_PREDET_OSC, LADO_IMAGEN, LADO_IMAGEN));
+        } else {
+            etiquetaImagen.setIcon(GestorGUI.getInstancia().iconoAbsoluto(rutaImagen, LADO_IMAGEN, LADO_IMAGEN));
+        }
         etiquetaImagen.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         botonSeleccionarImagen = GestorGUI.getBotonPredeterminado("Seleccionar imagen", ANCHO_BOTON_GRANDE);

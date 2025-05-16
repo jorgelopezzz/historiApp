@@ -50,6 +50,7 @@ public class EmergenteRegistro extends Emergente {
 	
 	/* Atributos a recabar */
 	private String rutaImagen;
+	private static final String RUTA_PERFIL_PREDETERMINADO = "/perfil.png";
 
 	/* Dimensiones */
 	private static final int ANCHO_PANEL = (int) (ANCHO_EMERGENTE_PREDET * 2.0/3.0);
@@ -246,6 +247,7 @@ public class EmergenteRegistro extends Emergente {
 				}
 				
 				/* Controlador */
+				rutaImagen = rutaImagen == null ? RUTA_PERFIL_PREDETERMINADO : rutaImagen;
 				boolean check;
 				if (campoRol.getTexto().equals("Profesor")){
 					check = HistoriApp.INSTANCE.registrarProfesor(campoNombre.getTexto(), campoContrasena.getTexto(), campoCorreo.getTexto(), rutaImagen, campoSaludo.getTexto());
