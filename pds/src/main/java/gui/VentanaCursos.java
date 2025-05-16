@@ -98,7 +98,8 @@ public class VentanaCursos extends VentanaMenu {
 						//Añadimos el curso a resources
 						HistoriApp.INSTANCE.crearCurso(rutaJSON);
 						//Actualizamos VentanaCursos para que muestre el nuevo curso
-						actualizarScroll();						 
+						/* Cambio de ventana */
+						selector.cambiarVentana(new VentanaCursos(selector));					 
 					},
 							() ->  {return;} 
 					);
