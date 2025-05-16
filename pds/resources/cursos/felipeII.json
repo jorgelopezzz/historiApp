@@ -1,0 +1,135 @@
+{
+  "titulo": "El Reinado de Felipe II",
+  "descripcion": "Explora el apogeo del Imperio español bajo el mando de Felipe II: su gobierno, guerras, administración y legado cultural.",
+  "rutaImagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Portrait_of_Philip_II_of_Spain_by_Sofonisba_Anguissola_-_002b.jpg/250px-Portrait_of_Philip_II_of_Spain_by_Sofonisba_Anguissola_-_002b.jpg",
+  "bloquesContenidos": [
+    {
+      "titulo": "La herencia imperial de Felipe II y la organización del Imperio",
+      "descripcion": "Felipe II heredó un vasto imperio que abarcaba territorios en Europa, América y Asia. Centralizó el gobierno en Madrid y continuó la política de monarquía autoritaria.",
+      "rutaImagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Portrait_of_Philip_II_of_Spain_by_Sofonisba_Anguissola_-_002b.jpg/250px-Portrait_of_Philip_II_of_Spain_by_Sofonisba_Anguissola_-_002b.jpg",
+      "tareas": [
+        {
+          "tipo": "Tip",
+          "enunciado": "En 1555 Carlos I, ya mayor y cansado, decidió renunciar a más territorios en favor de su hijo Felipe, que es coronado como Felipe II."
+        },
+        {
+          "tipo": "PreguntaTipoTest",
+          "enunciado": "¿Qué importante decisión política tomó Felipe II en 1561?",
+          "opciones": [
+            "Abolir la Inquisición",
+            "Hacer de Madrid la capital del reino",
+            "Dividir el Imperio entre sus hijos",
+            "Declarar la independencia de Flandes"
+          ],
+          "correcta": 2
+        },
+        {
+          "tipo": "PreguntaRellenar",
+          "enunciado": "El Imperio español en tiempos de Felipe II se describía como “el imperio donde nunca se ponía el ________”.",
+          "respuesta": "sol"
+        },
+        {
+          "tipo": "PreguntaVF",
+          "enunciado": "Felipe II gobernaba directamente todos sus territorios desde Bruselas, como había hecho su padre Carlos V.",
+          "esVerdadero": false
+        }
+      ]
+    },
+    {
+      "titulo": "Guerras, enemigos exteriores y política internacional",
+      "descripcion": "El reinado de Felipe II estuvo marcado por importantes conflictos: la batalla de Lepanto, las guerras de Flandes y la fallida invasión de Inglaterra con la Armada Invencible.",
+      "rutaImagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Invincible_Armada.jpg/1024px-Invincible_Armada.jpg",
+      "tareas": [
+        {
+          "tipo": "Tip",
+          "enunciado": "En 1571, la Santa Liga liderada por España derrotó a los turcos en la batalla de Lepanto, consolidando el dominio cristiano en el Mediterráneo."
+        },
+        {
+          "tipo": "PreguntaTipoTest",
+          "enunciado": "¿Qué país fue el principal enemigo de Felipe II tras la ejecución de María Estuardo?",
+          "opciones": [
+            "Francia",
+            "Inglaterra",
+            "Portugal",
+            "Austria"
+          ],
+          "correcta": 2
+        },
+        {
+          "tipo": "PreguntaRellenar",
+          "enunciado": "La flota enviada por Felipe II para invadir Inglaterra en 1588 fue conocida como la Armada ________.",
+          "respuesta": "Invencible"
+        },
+        {
+          "tipo": "PreguntaVF",
+          "enunciado": "La derrota de la Armada Invencible supuso un duro golpe para la hegemonía naval española.",
+          "esVerdadero": true
+        }
+      ]
+    },
+    {
+      "titulo": "Gobierno, religión y conflictos internos",
+      "descripcion": "Felipe II impuso una monarquía autoritaria, defendió el catolicismo frente a la herejía protestante y sofocó revueltas internas como la rebelión de los moriscos en las Alpujarras.",
+      "rutaImagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/An_auto-da-f%C3%A9_of_the_Spanish_Inquisition_and_the_execution_o_Wellcome_V0041892.jpg/1024px-An_auto-da-f%C3%A9_of_the_Spanish_Inquisition_and_the_execution_o_Wellcome_V0041892.jpg",
+      "tareas": [
+        {
+          "tipo": "Tip",
+          "enunciado": "Felipe II consideraba que su deber era gobernar como “rey católico”, y usó la Inquisición como herramienta clave para mantener la ortodoxia religiosa."
+        },
+        {
+          "tipo": "PreguntaTipoTest",
+          "enunciado": "¿Qué conflicto interno estalló en el sur de España durante su reinado?",
+          "opciones": [
+            "La guerra de sucesión castellana",
+            "La rebelión comunera",
+            "La rebelión morisca de las Alpujarras",
+            "El motín de Esquilache"
+          ],
+          "correcta": 3
+        },
+        {
+          "tipo": "PreguntaRellenar",
+          "enunciado": "La Inquisición, el Índice de Libros Prohibidos y el control del clero fueron instrumentos de control ________ usados por Felipe II.",
+          "respuesta": "religioso"
+        },
+        {
+          "tipo": "PreguntaVF",
+          "enunciado": "Felipe II permitió la práctica de otras religiones en sus territorios para evitar conflictos.",
+          "esVerdadero": false
+        }
+      ]
+    },
+    {
+      "titulo": "Felipe II: personalidad, Escorial y cultura del Siglo de Oro",
+      "descripcion": "Felipe II fue un rey austero, defensor del catolicismo y gran promotor de la cultura. Mandó construir el monasterio de El Escorial, símbolo de su ideología y poder.",
+      "rutaImagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Monasterio_de_El_Escorial_en_Madrid.jpg/1024px-Monasterio_de_El_Escorial_en_Madrid.jpg",
+      "tareas": [
+        {
+          "tipo": "Tip",
+          "enunciado": "El Escorial fue proyectado como monasterio, palacio y panteón real. Representaba la fe, la autoridad y el poder del monarca."
+        },
+        {
+          "tipo": "PreguntaTipoTest",
+          "enunciado": "¿Cuál de estas afirmaciones define mejor a Felipe II?",
+          "opciones": [
+            "Rey alegre y populista",
+            "Estratega diplomático y protestante",
+            "Rey reservado, meticuloso y profundamente católico",
+            "Guerrero carismático y liberal"
+          ],
+          "correcta": 3
+        },
+        {
+          "tipo": "PreguntaRellenar",
+          "enunciado": "Felipe II es conocido como “el Rey ________” por su carácter reservado y su dedicación al gobierno.",
+          "respuesta": "Prudente"
+        },
+        {
+          "tipo": "PreguntaVF",
+          "enunciado": "Durante el reinado de Felipe II se vivió una de las épocas de mayor esplendor cultural con figuras como Cervantes o El Greco.",
+          "esVerdadero": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "titulo": "La Primera Guerra Carlista",
+  "descripcion": "Un recorrido por las causas, desarrollo, protagonistas y consecuencias del conflicto entre carlistas e isabelinos en la España del siglo XIX.",
+  "rutaImagen": "https://upload.wikimedia.org/wikipedia/commons/1/16/Cuadro_-Calderote-_Primera_Guerra_Carlistas_by_Ferrer_Dalmau.jpg",
+  "bloquesContenidos": [
+    {
+      "titulo": "Orígenes del conflicto: sucesión y división ideológica",
+      "descripcion": "La muerte de Fernando VII en 1833 desencadenó una crisis sucesoria entre su hija Isabel II y su hermano, Carlos, lo que dio lugar a un conflicto armado.",
+      "rutaImagen": "https://upload.wikimedia.org/wikipedia/commons/5/51/Carlos_Mar%C3%ADa_Isidro_de_Borb%C3%B3n.png",
+      "tareas": [
+        {
+          "tipo": "Tip",
+          "enunciado": "El conflicto surgió cuando Fernando VII derogó la Ley Sálica, permitiendo a su hija Isabel heredar el trono."
+        },
+        {
+          "tipo": "PreguntaTipoTest",
+          "enunciado": "¿Qué medida permitió a Isabel II ser proclamada reina tras la muerte de Fernando VII, derogando la Ley Sálica?",
+          "opciones": [
+            "La Constitución de Cádiz",
+            "La Ley de Partidas",
+            "La Pragmática Sanción",
+            "El Estatuto Real"
+          ],
+          "correcta": 3
+        },
+        {
+          "tipo": "PreguntaRellenar",
+          "enunciado": "El hermano de Fernando VII que reclamaba el trono se llamaba Carlos María ________.",
+          "respuesta": "Isidro"
+        },
+        {
+          "tipo": "PreguntaVF",
+          "enunciado": "La Primera Guerra Carlista fue principalmente un conflicto entre liberales y absolutistas.",
+          "esVerdadero": true
+        }
+      ]
+    },
+    {
+      "titulo": "Desarrollo militar del conflicto y principales campañas",
+      "descripcion": "La guerra se libró en regiones del norte y este de España, con importantes enfrentamientos y tácticas de guerrilla. Tuvo un carácter muy territorial y prolongado.",
+      "rutaImagen": "https://upload.wikimedia.org/wikipedia/commons/1/16/Cuadro_-Calderote-_Primera_Guerra_Carlistas_by_Ferrer_Dalmau.jpg",
+      "tareas": [
+        {
+          "tipo": "Tip",
+          "enunciado": "Las regiones donde el carlismo tuvo más fuerza fueron las regiones del norte y este de España."
+        },
+        {
+          "tipo": "PreguntaTipoTest",
+          "enunciado": "¿Qué zona fue un bastión clave del carlismo durante la guerra?",
+          "opciones": [
+            "Andalucía",
+            "Galicia",
+            "Navarra",
+            "Castilla la Nueva"
+          ],
+          "correcta": 3
+        },
+        {
+          "tipo": "PreguntaRellenar",
+          "enunciado": "El acuerdo que puso fin a la guerra fue el Abrazo de ________, firmado en 1839.",
+          "respuesta": "Vergara"
+        },
+        {
+          "tipo": "PreguntaVF",
+          "enunciado": "La guerra terminó con la victoria del bando carlista y la proclamación de Carlos V como rey.",
+          "esVerdadero": false
+        }
+      ]
+    },
+    {
+      "titulo": "Líderes y bandos: carlistas vs isabelinos",
+      "descripcion": "El conflicto enfrentó a dos proyectos políticos: los carlistas defendían el absolutismo y la tradición, mientras los isabelinos apoyaban el liberalismo moderado.",
+      "rutaImagen": "https://upload.wikimedia.org/wikipedia/commons/5/54/Baldomero_Espartero.jpg",
+      "tareas": [
+        {
+          "tipo": "Tip",
+          "enunciado": "El bando carlista destacó por sus tácticas de guerra de guerrillas."
+        },
+        {
+          "tipo": "PreguntaTipoTest",
+          "enunciado": "¿Quién fue el principal líder militar carlista durante los primeros años del conflicto?",
+          "opciones": [
+            "Baldomero Espartero",
+            "Leopoldo O'Donnell",
+            "Tomás de Zumalacárregui",
+            "Ramón María Narváez"
+          ],
+          "correcta": 3
+        },
+        {
+          "tipo": "PreguntaRellenar",
+          "enunciado": "El partido de los isabelinos también era conocido como el bando ________, por el apoyo de la regente María Cristina.",
+          "respuesta": "cristino"
+        },
+        {
+          "tipo": "PreguntaVF",
+          "enunciado": "Zumalacárregui murió en combate durante el sitio de Bilbao.",
+          "esVerdadero": true
+        }
+      ]
+    },
+    {
+      "titulo": "Consecuencias de la guerra y su legado histórico",
+      "descripcion": "El conflicto dejó heridas abiertas, marcó la política del siglo XIX y fue el inicio del carlismo como fuerza ideológica y militar.",
+      "rutaImagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Isabel-II-1853-author-Federico-de-Madrazo.jpg/120px-Isabel-II-1853-author-Federico-de-Madrazo.jpg",
+      "tareas": [
+        {
+          "tipo": "Tip",
+          "enunciado": "El carlismo no desapareció con la derrota, y volvería a protagonizar nuevas guerras en 1846 y 1872."
+        },
+        {
+          "tipo": "PreguntaTipoTest",
+          "enunciado": "¿Qué militar liberal firmó el convenio de Vergara con los carlistas en 1839?",
+          "opciones": [
+            "O'Donnell",
+            "Espartero",
+            "Maroto",
+            "Serrano"
+          ],
+          "correcta": 3
+        },
+        {
+          "tipo": "PreguntaRellenar",
+          "enunciado": "Tras el final de la guerra, Isabel II fue reconocida como reina y se consolidó el régimen ________.",
+          "respuesta": "liberal"
+        },
+        {
+          "tipo": "PreguntaVF",
+          "enunciado": "La Primera Guerra Carlista supuso el fin definitivo de las ideas del absolutismo en España.",
+          "esVerdadero": false
+        }
+      ]
+    }
+  ]
+}
