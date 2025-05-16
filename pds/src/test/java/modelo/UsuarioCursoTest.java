@@ -26,7 +26,7 @@ class UsuarioCursoTest {
 
     @BeforeEach
     void setup() {
-        usuario = new Usuario("Ana", "pass", "ana@mail.com", null, "¡Hola!");
+        usuario = new Usuario("Ana", "pass", "ana@mail.com", "/perfil.png", "¡Hola!");
         curso = new Curso("titulo", "descripcion", null, List.of(bloque, segundoBloque));
         metodo = MetodoAprendizaje.SECUENCIAL;
     }
