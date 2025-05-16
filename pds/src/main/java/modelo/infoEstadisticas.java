@@ -4,14 +4,14 @@ import java.time.Duration;
 
 public class infoEstadisticas extends Info{
     
-    private double puntuacion;
+    private int puntuacion;
     private int cursosCompletados;
     private int bloquesCompletados;
     private String minutosUso;
     private String minutosUsoDiario;
     private int maxRacha;
 
-    public infoEstadisticas (String texto, double puntuacion, int cursosCompletados, int bloquesCompletados, Duration tiempoUso, int diasUso, int maxRacha){
+    public infoEstadisticas (String texto, int puntuacion, int cursosCompletados, int bloquesCompletados, Duration tiempoUso, int diasUso, int maxRacha){
         super(texto);
         this.puntuacion = puntuacion;
         this.cursosCompletados = cursosCompletados;
@@ -39,7 +39,7 @@ public class infoEstadisticas extends Info{
 
     /* Getters */
 
-    public double getPuntuacion (){
+    public int getPuntuacion (){
         return puntuacion;
     }
 

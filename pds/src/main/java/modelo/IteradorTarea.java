@@ -23,8 +23,8 @@ public abstract class IteradorTarea {
 	
 	public abstract Optional<Tarea> siguiente(Optional<String> respuesta);
 	
-	public double obtenerPuntuacion() {
-		return preguntasTotales == 0.0 ? 10.0 : preguntasCorrectas*10/preguntasTotales;
+	public int obtenerPuntuacion() {
+		return preguntasTotales == 0 ? 10 : preguntasCorrectas*10/preguntasTotales;
 	}
 	
 }

@@ -1,4 +1,4 @@
-package dominio.tarea;
+package modelo;
 
 import static org.junit.jupiter.api.Assertions.*;
 

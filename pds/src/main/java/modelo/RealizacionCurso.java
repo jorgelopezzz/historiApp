@@ -75,7 +75,7 @@ public class RealizacionCurso {
     }
     
     @Transactional //MUY IMPORTANTEEE
-    public void completarBloque(BloqueContenidos bloque, double puntuacion) {
+    public void completarBloque(BloqueContenidos bloque, int puntuacion) {
         getRealizacionBloque(bloque).ifPresentOrElse(
             // Caso 1: El bloque ya ha sido realizado
             rb -> {

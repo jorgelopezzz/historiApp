@@ -1,4 +1,4 @@
-package dominio;
+package servicios;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,4 +1,4 @@
-package dominio.usuario;
+package modelo;
 
 import static org.junit.jupiter.api.Assertions.*;
 
