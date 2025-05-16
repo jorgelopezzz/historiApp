@@ -1,15 +1,18 @@
 package dominio;
 
-import dominio.metodoAprendizaje.MetodoAprendizaje;
-import dominio.usuario.Usuario;
-import dominio.info.InfoValoracion;
-import dominio.info.usuario.infoEstadisticas;
-import dominio.info.usuario.infoPerfilUsuario;
 import jakarta.persistence.Persistence;
+import modelo.InfoValoracion;
+import modelo.MetodoAprendizaje;
+import modelo.Usuario;
+import modelo.infoEstadisticas;
+import modelo.infoPerfilUsuario;
 import repositorios.RepositorioCursos;
 import repositorios.RepositorioUsuarios;
+import servicios.ServicioJSON;
 
 import org.junit.jupiter.api.*;
+
+import controlador.HistoriApp;
 
 import java.util.ArrayList;
 import java.util.List;

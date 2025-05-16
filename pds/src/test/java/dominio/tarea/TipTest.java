@@ -11,6 +11,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import modelo.Tip;
+
 class TipTest {
 	static List<Arguments> argumentosInvalidos() {
 		String rutaImagen = "unaRuta";

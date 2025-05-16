@@ -5,10 +5,13 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.time.LocalDate;
+import modelo.BloqueContenidos;
+import modelo.Curso;
+import modelo.MetodoAprendizaje;
+import modelo.RealizacionCurso;
+import modelo.Usuario;
 
-import dominio.metodoAprendizaje.MetodoAprendizaje;
-import dominio.usuario.Usuario;
+import java.time.LocalDate;
 import java.util.List;
 
 public class RealizacionCursoTest {

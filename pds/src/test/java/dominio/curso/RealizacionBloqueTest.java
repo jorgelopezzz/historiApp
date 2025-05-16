@@ -10,8 +10,11 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import dominio.tarea.PreguntaVF;
-import dominio.tarea.Tip;
+import modelo.BloqueContenidos;
+import modelo.PreguntaVF;
+import modelo.RealizacionBloque;
+import modelo.RealizacionCurso;
+import modelo.Tip;
 
 class RealizacionBloqueTest {
 

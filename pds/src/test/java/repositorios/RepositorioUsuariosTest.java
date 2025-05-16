@@ -1,7 +1,8 @@
 package repositorios;
 
-import dominio.usuario.Usuario;
 import jakarta.persistence.*;
+import modelo.Usuario;
+
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.parallel.Isolated;
 
