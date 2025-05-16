@@ -16,7 +16,11 @@ La documentación completa del proyecto HistoriApp está organizada en los sigui
 
 - [Casos de Uso](casosDeUso.md): Describe las interacciones entre los usuarios y el sistema, detallando los flujos principales y alternativos para cada funcionalidad.
 
-- [Funcionalidad extra](funcionalidadExtra.md): Este documento describe las características adicionales del proyecto que mejoran su rendimiento y experiencia de usuario. 
+- [Funcionalidad extra](funcionalidadExtra.md): Este documento describe las características adicionales del proyecto que mejoran su rendimiento y experiencia de usuario.
+
+## Cómo ejecutar HistoriApp
+
+La clase principal de la aplicación es `controlador.Lanzador`, que contiene el método `main`. Para ejecutar HistoriApp, inicia la ejecución desde dicha clase.
 
 ## Propósito de la Documentación
 
