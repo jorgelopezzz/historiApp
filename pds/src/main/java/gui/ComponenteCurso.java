@@ -1,6 +1,6 @@
 package gui;
 
-import dominio.InfoCurso;
+import modelo.InfoCurso;
 
 @SuppressWarnings("serial")
 public class ComponenteCurso extends ComponenteContenido {

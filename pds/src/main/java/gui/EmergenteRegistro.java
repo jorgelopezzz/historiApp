@@ -14,7 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import dominio.HistoriApp;
+import controlador.HistoriApp;
+import utils.GestorGUI;
 
 @SuppressWarnings("serial")
 public class EmergenteRegistro extends Emergente {

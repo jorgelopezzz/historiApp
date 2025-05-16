@@ -11,8 +11,8 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import dominio.BloqueContenidos;
-import dominio.Curso;
+import modelo.BloqueContenidos;
+import modelo.Curso;
 
 public enum RepositorioCursos {
     INSTANCE;

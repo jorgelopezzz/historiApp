@@ -13,6 +13,8 @@ import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import utils.GestorGUI;
+
 @SuppressWarnings("serial")
 public abstract class ComponenteContenido extends Componente {
 	

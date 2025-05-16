@@ -9,9 +9,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import dominio.Curso;
-import dominio.Usuario;
-import dominio.Valoracion;
+import modelo.Curso;
+import modelo.Usuario;
+import modelo.Valoracion;
 
 class ValoracionTest {
 

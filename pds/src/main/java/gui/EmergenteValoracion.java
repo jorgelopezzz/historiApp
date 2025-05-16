@@ -2,7 +2,8 @@ package gui;
 
 import javax.swing.*;
 
-import dominio.HistoriApp;
+import controlador.HistoriApp;
+import utils.GestorGUI;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;

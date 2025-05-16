@@ -14,7 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import dominio.MetodoAprendizaje;
+import modelo.MetodoAprendizaje;
+import utils.GestorGUI;
 
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowAdapter;

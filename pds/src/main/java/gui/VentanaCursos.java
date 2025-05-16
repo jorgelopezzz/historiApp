@@ -14,8 +14,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import dominio.HistoriApp;
-import dominio.InfoCurso;
+import controlador.HistoriApp;
+import modelo.InfoCurso;
+import utils.GestorGUI;
 
 @SuppressWarnings("serial")
 public class VentanaCursos extends VentanaMenu {

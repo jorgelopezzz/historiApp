@@ -5,12 +5,12 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.*;
 import org.junit.jupiter.params.provider.*;
 
-import dominio.BloqueContenidos;
-import dominio.Curso;
-import dominio.MetodoAprendizaje;
-import dominio.Tip;
-import dominio.Usuario;
 import gui.EmergenteMetodoAprendizaje;
+import modelo.BloqueContenidos;
+import modelo.Curso;
+import modelo.MetodoAprendizaje;
+import modelo.Tip;
+import modelo.Usuario;
 
 import java.util.List;
 import java.util.Optional;

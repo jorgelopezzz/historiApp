@@ -1,10 +1,10 @@
 package repositorios;
 
 import jakarta.persistence.*;
+import modelo.Usuario;
+
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.parallel.Isolated;
-
-import dominio.Usuario;
 
 import java.util.List;
 

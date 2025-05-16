@@ -10,7 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
-import dominio.Info;
+import modelo.Info;
+import utils.GestorGUI;
 
 @SuppressWarnings("serial")
 public abstract class ComponenteTarea extends Componente { 

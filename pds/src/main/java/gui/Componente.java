@@ -7,6 +7,8 @@ import java.util.Optional;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import utils.GestorGUI;
+
 public class Componente extends JPanel {
 
 	/* Dimensiones */

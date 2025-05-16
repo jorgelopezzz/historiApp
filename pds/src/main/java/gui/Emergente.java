@@ -8,6 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 
+import utils.GestorGUI;
+
 @SuppressWarnings("serial")
 public abstract class Emergente extends JDialog {
 	

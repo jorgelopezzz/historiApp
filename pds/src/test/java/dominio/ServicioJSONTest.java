@@ -16,6 +16,11 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import com.fasterxml.jackson.databind.JsonMappingException;
 
+import modelo.PreguntaVF;
+import modelo.Tarea;
+import modelo.Tip;
+import servicios.ServicioJSON;
+
 class ServicioJSONTest {
 
 	/* Rutas JSON Tareas */

@@ -1,6 +1,6 @@
 package gui;
 
-import dominio.InfoBloque;
+import modelo.InfoBloque;
 
 @SuppressWarnings("serial")
 public class ComponenteBloque extends ComponenteContenido {

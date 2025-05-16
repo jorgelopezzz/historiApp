@@ -4,6 +4,8 @@ import java.awt.Color;
 
 import javax.swing.JFrame;
 
+import utils.GestorGUI;
+
 @SuppressWarnings("serial")
 public abstract class Ventana extends JFrame {
 	

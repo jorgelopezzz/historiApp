@@ -12,11 +12,12 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import dominio.Curso;
-import dominio.HistoriApp;
-import dominio.InfoBloque;
-import dominio.InfoCurso;
-import dominio.MetodoAprendizaje;
+import controlador.HistoriApp;
+import modelo.Curso;
+import modelo.InfoBloque;
+import modelo.InfoCurso;
+import modelo.MetodoAprendizaje;
+import utils.GestorGUI;
 
 @SuppressWarnings("serial")
 public class VentanaBloques extends VentanaMenu {

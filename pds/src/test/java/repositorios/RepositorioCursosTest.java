@@ -8,10 +8,10 @@ import java.util.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import dominio.BloqueContenidos;
-import dominio.Curso;
-import dominio.Tarea;
-import dominio.Tip;
+import modelo.BloqueContenidos;
+import modelo.Curso;
+import modelo.Tarea;
+import modelo.Tip;
 
 class RepositorioCursosTest {
 

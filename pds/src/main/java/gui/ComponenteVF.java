@@ -1,7 +1,7 @@
 package gui;
 
-import dominio.InfoTipoTest;
-import dominio.InfoVF;
+import modelo.InfoTipoTest;
+import modelo.InfoVF;
 
 public class ComponenteVF extends ComponenteTipoTest {
 

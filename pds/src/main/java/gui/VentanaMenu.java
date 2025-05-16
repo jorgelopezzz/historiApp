@@ -15,7 +15,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import dominio.HistoriApp;
+import controlador.HistoriApp;
+import utils.GestorGUI;
 
 @SuppressWarnings("serial")
 public abstract class VentanaMenu extends Ventana {

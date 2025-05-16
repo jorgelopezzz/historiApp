@@ -13,8 +13,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import dominio.HistoriApp;
-import dominio.infoPerfilUsuario;
+import controlador.HistoriApp;
+import modelo.infoPerfilUsuario;
+import utils.GestorGUI;
 
 @SuppressWarnings("serial")
 public class EmergentePerfil extends Emergente {

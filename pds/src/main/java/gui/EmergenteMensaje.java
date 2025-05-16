@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import utils.GestorGUI;
+
 @SuppressWarnings("serial")
 public class EmergenteMensaje extends EmergenteBotones {
 	

@@ -9,7 +9,8 @@ import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 
-import dominio.InfoTipoTest;
+import modelo.InfoTipoTest;
+import utils.GestorGUI;
 
 public class ComponenteTipoTest extends ComponentePregunta {
 

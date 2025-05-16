@@ -13,9 +13,10 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import dominio.HistoriApp;
-import dominio.Info;
-import dominio.Tarea;
+import controlador.HistoriApp;
+import modelo.Info;
+import modelo.Tarea;
+import utils.GestorGUI;
 
 
 @SuppressWarnings("serial")

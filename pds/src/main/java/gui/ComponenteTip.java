@@ -8,7 +8,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import dominio.InfoTip;
+import modelo.InfoTip;
+import utils.GestorGUI;
 
 public class ComponenteTip extends ComponenteTarea {
 

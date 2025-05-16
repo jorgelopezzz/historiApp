@@ -3,6 +3,8 @@ package gui;
 import javax.swing.JTextField;
 import javax.swing.text.JTextComponent;
 
+import utils.GestorGUI;
+
 public class CampoTexto extends CampoPredeterminado {
 	
 	public CampoTexto(String texto, int ancho, int alto) {

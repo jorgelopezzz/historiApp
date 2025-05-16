@@ -1,10 +1,10 @@
 package gui;
 
-import dominio.Info;
-import dominio.InfoRellenar;
-import dominio.InfoTip;
-import dominio.InfoTipoTest;
-import dominio.InfoVF;
+import modelo.Info;
+import modelo.InfoRellenar;
+import modelo.InfoTip;
+import modelo.InfoTipoTest;
+import modelo.InfoVF;
 
 public class FactoriaComponenteTarea {
     

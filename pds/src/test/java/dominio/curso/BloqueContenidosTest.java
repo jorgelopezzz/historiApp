@@ -6,8 +6,8 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import dominio.BloqueContenidos;
-import dominio.Tip;
+import modelo.BloqueContenidos;
+import modelo.Tip;
 
 public class BloqueContenidosTest {
 

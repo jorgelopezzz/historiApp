@@ -4,6 +4,8 @@ import java.awt.Component;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import utils.GestorGUI;
+
 @SuppressWarnings("serial")
 public abstract class EmergenteBotones extends Emergente {
 

@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
+import utils.GestorGUI;
+
 public abstract class CampoPredeterminado {
 	private JPanel panel;
 	private JLabel etiqueta;

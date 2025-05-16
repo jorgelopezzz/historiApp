@@ -2,7 +2,7 @@ package gui;
 
 import java.util.Optional;
 
-import dominio.Info;
+import modelo.Info;
 
 public abstract class ComponentePregunta extends ComponenteTarea {
 

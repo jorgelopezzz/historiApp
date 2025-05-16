@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import utils.GestorGUI;
+
 public class EmergenteImagen extends EmergenteFichero {
 
 	/* Vista previa */

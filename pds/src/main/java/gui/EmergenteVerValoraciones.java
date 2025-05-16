@@ -8,8 +8,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import dominio.HistoriApp;
-import dominio.InfoValoracion;
+import controlador.HistoriApp;
+import modelo.InfoValoracion;
+import utils.GestorGUI;
 
 @SuppressWarnings("serial")
 public class EmergenteVerValoraciones extends Emergente {

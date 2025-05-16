@@ -10,7 +10,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import dominio.HistoriApp;
+import controlador.HistoriApp;
+import utils.GestorGUI;
 
 @SuppressWarnings("serial")
 public class VentanaLogin extends Ventana {

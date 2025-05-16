@@ -16,6 +16,8 @@ import javax.swing.ListCellRenderer;
 import javax.swing.ListModel;
 import javax.swing.border.EmptyBorder;
 
+import utils.GestorGUI;
+
 @SuppressWarnings("serial")
 public abstract class Scroll extends JScrollPane {
 	

@@ -11,10 +11,10 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import dominio.Usuario;
-import dominio.infoEstadisticas;
-import dominio.infoPerfilUsuario;
 import jakarta.persistence.Persistence;
+import modelo.Usuario;
+import modelo.infoEstadisticas;
+import modelo.infoPerfilUsuario;
 import repositorios.RepositorioUsuarios;
 
 class UsuarioTest {

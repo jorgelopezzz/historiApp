@@ -3,8 +3,9 @@ package gui;
 import java.awt.*;
 import javax.swing.*;
 
-import dominio.HistoriApp;
-import dominio.infoEstadisticas;
+import controlador.HistoriApp;
+import modelo.infoEstadisticas;
+import utils.GestorGUI;
 
 @SuppressWarnings("serial")
 public class EmergenteEstadisticas extends Emergente {

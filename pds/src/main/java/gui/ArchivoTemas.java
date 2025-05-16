@@ -3,6 +3,8 @@ package gui;
 import java.awt.Color;
 import java.awt.Font;
 
+import utils.GestorGUI;
+
 public enum ArchivoTemas {	
 	NATURALEZA(new Tema(
 						new Color(237, 241, 214),

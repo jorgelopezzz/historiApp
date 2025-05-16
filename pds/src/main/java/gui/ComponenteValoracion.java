@@ -2,7 +2,8 @@ package gui;
 
 import javax.swing.*;
 
-import dominio.InfoValoracion;
+import modelo.InfoValoracion;
+import utils.GestorGUI;
 
 import java.awt.*;
 

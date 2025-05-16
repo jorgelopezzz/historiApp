@@ -11,6 +11,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import utils.GestorGUI;
+
 @SuppressWarnings("serial")
 public class EmergenteSiNo extends EmergenteBotones {
 

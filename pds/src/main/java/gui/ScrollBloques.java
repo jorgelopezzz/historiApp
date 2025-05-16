@@ -5,8 +5,8 @@ import java.util.Optional;
 
 import javax.swing.JFrame;
 
-import dominio.HistoriApp;
-import dominio.MetodoAprendizaje;
+import controlador.HistoriApp;
+import modelo.MetodoAprendizaje;
 
 
 @SuppressWarnings("serial")

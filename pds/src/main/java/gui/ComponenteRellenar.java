@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import javax.swing.JLabel;
 
-import dominio.Info;
+import modelo.Info;
 
 public class ComponenteRellenar extends ComponentePregunta {
 
