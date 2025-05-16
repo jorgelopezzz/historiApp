@@ -44,7 +44,6 @@ class RepositorioCursosTest {
         } catch (IllegalStateException e) {
             // Ya estaba inicializado: lo ignoramos en test repetidos
         }
-        repo.anadirCurso(null);
     }
 
     @Test

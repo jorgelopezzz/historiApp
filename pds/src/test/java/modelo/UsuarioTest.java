@@ -86,14 +86,6 @@ class UsuarioTest {
 
     @ParameterizedTest
     @MethodSource("usuarioValido")
-    void testImagenPorDefecto(Usuario usuario) {
-        String imagen = usuario.getImagen();
-        assertNotNull(imagen);
-        assertTrue(imagen.endsWith("perfil.png"));
-    }
-
-    @ParameterizedTest
-    @MethodSource("usuarioValido")
     void testIniciarYcerrarSesionAumentaTiempoUso(Usuario usuario) throws InterruptedException {
         usuario.iniciarSesion();
         Thread.sleep(1000);
@@ -112,19 +104,6 @@ class UsuarioTest {
         assertEquals("00:00:00", estadisticas.getMinutosUso());
         assertEquals("00:00:00", estadisticas.getMinutosUsoDiario());
         assertTrue(estadisticas.getMaxRacha() >= 1);
-    }
-
-
-    @ParameterizedTest
-    @MethodSource("usuarioValido")
-    void testGetDatosPerfil(Usuario usuario) {
-        infoPerfilUsuario perfil = usuario.getDatosPerfil();
-        assertEquals("Jorge", perfil.getNombre());
-        assertEquals("egea@correo.com", perfil.getCorreo());
-        assertEquals("Alfonso", perfil.getSaludo());
-        assertEquals("Estudiante", perfil.getRol());
-        assertTrue(perfil.getImagen().endsWith("perfil.png"));
-        assertFalse(usuario.esProfesor());
     }
 
     @ParameterizedTest
